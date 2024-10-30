@@ -3,10 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # Avvia il deploy quando ci sono modifiche su "main"
 
 permissions:
-  contents: write  # Aggiunge l'autorizzazione per scrivere sui contenuti
+  contents: write  # Autorizzazione per scrivere sui contenuti
 
 jobs:
   build-and-deploy:
@@ -15,20 +15,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set permissions for Vite
-        run: chmod +x ./node_modules/.bin/vite
-
       - name: Install dependencies
         run: npm install
 
       - name: Build project
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            publish_dir: ./dist
-            # Imposta il branch di pubblicazione
-            publish_branch: gh-pages
-      
+      - name: Move build files to root
+        run: |
+          rm -rf .git
+          mv dist/* .
+        shell: bash
+
+      - name: Commit and Push to Main
+        run: |
+          git config --global user.email "lollo176ita@gmail.com"
+          git config --global user.name "GitHub Actions"
+          git add .
+          git commit -m "Deploy to GitHub Pages"
+          git push origin main --force
