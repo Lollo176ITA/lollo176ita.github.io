@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/lollo176ita/' 
+  base: '', // Rimuove il prefisso aggiunto nel percorso del build
 });
