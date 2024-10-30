@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Sostituisci con il nome del branch principale se diverso
+      - main  # Assicurati che il branch principale sia "main" o personalizzalo
 
 jobs:
   build-and-deploy:
@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Set permissions for Vite
+        run: chmod +x ./node_modules/.bin/vite
 
       - name: Install dependencies
         run: npm install
