@@ -2,7 +2,7 @@
   "name": "lollo176ita.github.io",
   "version": "1.0.0",
   "description": "ciao",
-  "homepage": "https://lollo176ita.github.io/index.html",
+  "homepage": "https://lollo176ita.github.io",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
