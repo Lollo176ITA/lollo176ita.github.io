@@ -2,9 +2,11 @@
   "name": "lollo176ita.github.io",
   "version": "1.0.0",
   "description": "ciao",
-  "main": "index.js",
+  "homepage": "https://github.com/Lollo176ITA/lollo176ita.github.io",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "keywords": [],
   "author": "",
@@ -13,9 +15,11 @@
     "tailwindcss": "^3.4.14"
   },
   "dependencies": {
+    "@vitejs/plugin-react": "^4.3.3",
+    "gh-pages": "^6.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",
-    "react-scripts": "^5.0.1"
+    "vite": "^5.4.10"
   }
 }
