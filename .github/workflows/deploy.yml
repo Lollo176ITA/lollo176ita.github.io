@@ -3,7 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Assicurati che il branch principale sia "main" o personalizzalo
+      - main
+
+permissions:
+  contents: write  # Aggiunge l'autorizzazione per scrivere sui contenuti
 
 jobs:
   build-and-deploy:
