@@ -15,7 +15,7 @@ function App() {
       ) : (
         // Contenuto principale dell'app
         <div className="main-content">
-          <h1>Benvenuto nella schermata principale!</h1>
+          <h1 className="text-center text-4xl mt-20">Benvenuto nella schermata principale!</h1>
         </div>
       )}
     </div>

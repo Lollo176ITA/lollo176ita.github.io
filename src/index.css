@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes lineFadeOut {
+  from {
+    opacity: 1;
+    transform-origin: center;
+  }
+  to {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+}
