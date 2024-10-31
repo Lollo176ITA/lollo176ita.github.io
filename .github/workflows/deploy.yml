@@ -21,12 +21,12 @@ jobs:
       - name: Set permissions for Vite
         run: chmod +x ./node_modules/.bin/vite
 
-      - name: Build project
-        run: npm run build
-
       - name: Clear dist folder
         run:  |
           rm -rf dist/* assets/*
+
+      - name: Build project
+        run: npm run build
 
       - name: Move build files to root
         run: |
