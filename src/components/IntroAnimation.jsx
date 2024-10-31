@@ -1,44 +1,76 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Transition } from '@headlessui/react';
 
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
 const IntroAnimation = ({ onAnimationEnd }) => {
   const [currentLetterIndex, setCurrentLetterIndex] = useState(0);
   const [showLines, setShowLines] = useState(true);
+  const [showCentralLetter, setShowCentralLetter] = useState(false);
+  const intervalRef = useRef(null);
 
   useEffect(() => {
     if (currentLetterIndex < letters.length) {
-      const timeout = setTimeout(() => {
-        setCurrentLetterIndex(currentLetterIndex + 1);
-        setShowLines(!showLines);  // Alterna i trattini per creare l'animazione
-      }, 200 / (currentLetterIndex + 1));  // Aumenta la velocità
-      return () => clearTimeout(timeout);
+      intervalRef.current = setTimeout(() => {
+        setCurrentLetterIndex((prev) => prev + 1);
+        setShowLines(true);
+      }, 500 / (currentLetterIndex + 1)); // Aumenta la velocità
     } else {
-      onAnimationEnd();
+      setShowCentralLetter(true);
+      setTimeout(onAnimationEnd, 2000); // Attendi prima di passare alla schermata principale
     }
-  }, [currentLetterIndex, showLines, onAnimationEnd]);
+    return () => clearTimeout(intervalRef.current);
+  }, [currentLetterIndex, onAnimationEnd]);
+
+  useEffect(() => {
+    if (showLines) {
+      const timeout = setTimeout(() => setShowLines(false), 200);
+      return () => clearTimeout(timeout);
+    }
+  }, [showLines]);
 
   return (
-    <div className="flex items-center justify-center h-screen bg-black text-white">
-      {currentLetterIndex < letters.length ? (
+    <div className="relative flex items-center justify-center h-screen bg-black text-white overflow-hidden">
+      {currentLetterIndex < letters.length && (
         <>
-          <div className="absolute top-10 left-10 text-4xl">
-            {letters[Math.max(0, currentLetterIndex - 1)]}
-          </div>
-          <div className="absolute top-10 right-10 text-4xl">
+          {/* Prima Lettera */}
+          <div className="absolute top-10 left-10 text-6xl font-bold transition-all duration-300">
             {letters[currentLetterIndex]}
           </div>
+
+          {/* Seconda Lettera */}
+          <div className="absolute top-10 right-10 text-6xl font-bold transition-all duration-300">
+            {letters[currentLetterIndex + 1] || letters[currentLetterIndex]}
+          </div>
+
+          {/* Linee Animate */}
           {showLines && (
-            <div className="absolute w-full h-full top-0 left-0">
-              {/* Linee animate */}
-              <div className="border-t border-white w-full opacity-50 animate-pulse" style={{ transform: `rotate(${Math.random() * 180}deg)` }} />
+            <div className="absolute inset-0 flex items-center justify-center">
+              {[...Array(5)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-px h-full bg-white opacity-70"
+                  style={{
+                    transform: `rotate(${Math.random() * 360}deg)`,
+                    animation: 'lineAnimation 0.5s forwards',
+                  }}
+                />
+              ))}
             </div>
           )}
         </>
-      ) : (
-        <div className="text-9xl font-bold transition-opacity duration-700 opacity-100">
-          Z
-        </div>
+      )}
+
+      {/* Lettera Centrale Finale */}
+      {showCentralLetter && (
+        <Transition
+          show={showCentralLetter}
+          enter="transition-opacity duration-1000"
+          enterFrom="opacity-0 scale-50"
+          enterTo="opacity-100 scale-100"
+        >
+          <div className="text-9xl font-extrabold">Z</div>
+        </Transition>
       )}
     </div>
   );
