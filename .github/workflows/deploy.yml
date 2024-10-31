@@ -6,7 +6,7 @@ on:
       - main  # Avvia il deploy quando ci sono modifiche su "main"
 
 permissions:
-  contents: write  # Autorizzazione per scrivere sui contenuti
+  contents: write
 
 jobs:
   build-and-deploy:
@@ -21,22 +21,13 @@ jobs:
       - name: Set permissions for Vite
         run: chmod +x ./node_modules/.bin/vite
 
-      - name: Clear dist folder
-        run:  |
-          rm -rf dist/* assets/*
-
       - name: Build project
         run: npm run build
-
-      - name: Move build files to root
-        run: |
-          mv dist/* .
-        shell: bash
-
-      - name: Commit and Push to Main
+        
+      - name: Deploy to gh-pages branch
         run: |
           git config --global user.email "lollo176ita@gmail.com"
           git config --global user.name "GitHub Actions"
-          git add .
+          git add dist -f
           git commit -m "Deploy to GitHub Pages"
-          git push origin main --force
+          git push -f origin `git subtree split --prefix dist main`:gh-pages
