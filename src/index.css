@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes lineFadeOut {
-  from {
-    opacity: 1;
-    transform-origin: center;
-  }
-  to {
+@keyframes starTwinkle {
+  0%, 100% {
     opacity: 0;
-    transform: scaleY(0);
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
