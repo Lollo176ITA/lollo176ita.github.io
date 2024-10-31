@@ -24,6 +24,10 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Clean up existing files
+        run: |
+          find . -mindepth 1 -maxdepth 1 -not -name 'dist' -exec rm -rf {} \;
+
       - name: Move build files to root
         run: |
           mv dist/* .
