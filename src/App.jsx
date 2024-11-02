@@ -30,7 +30,7 @@ function App() {
 
   // Contenuto normale del sito con le rotte
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence mode="wait">
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<HomePage />} />
         <Route path="/alphabet/:alphabetName" element={<AlphabetPage />} />
