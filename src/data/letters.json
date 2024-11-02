@@ -1,0 +1,25 @@
+{
+    "latin": {
+      "a": {
+        "name": "A",
+        "description": "Prima lettera dell'alfabeto latino."
+      },
+      "b": {
+        "name": "B",
+        "description": "Seconda lettera dell'alfabeto latino."
+      }
+    },
+    "greek": {
+      "alpha": {
+        "name": "Alpha",
+        "description": "Prima lettera dell'alfabeto greco."
+      }
+    },
+    "cyrillic": {
+      "а": {
+        "name": "А",
+        "description": "Prima lettera dell'alfabeto cirillico."
+      }
+    }
+  }
+  

@@ -1,24 +1,43 @@
-import React, { useState } from 'react';
-import IntroAnimation from './components/IntroAnimation';
+// src/App.jsx
+import React, { useEffect, useState } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import HomePage from './pages/HomePage';
+import AlphabetPage from './pages/AlphabetPage';
+import LetterPage from './pages/LetterPage';
+import NotFoundPage from './pages/NotFoundPage';
+import InitialAnimation from './components/InitialAnimation';
 
 function App() {
-  const [showMainContent, setShowMainContent] = useState(false);
+  const [isFirstVisit, setIsFirstVisit] = useState(false);
+  const [showAnimation, setShowAnimation] = useState(true);
+  const location = useLocation();
 
-  const handleAnimationEnd = () => {
-    setShowMainContent(true);
-  };
+  useEffect(() => {
+    const visited = localStorage.getItem('visited');
+    if (!visited) {
+      setIsFirstVisit(true);
+      localStorage.setItem('visited', 'true');
+    } else {
+      setShowAnimation(false);
+    }
+  }, []);
 
+  // Se è la prima visita e l'animazione è ancora da mostrare
+  if (isFirstVisit && showAnimation) {
+    return <InitialAnimation onAnimationEnd={() => setShowAnimation(false)} />;
+  }
+
+  // Contenuto normale del sito con le rotte
   return (
-    <div className="App">
-      {!showMainContent ? (
-        <IntroAnimation onAnimationEnd={handleAnimationEnd} />
-      ) : (
-        // Contenuto principale dell'app
-        <div className="main-content">
-          <h1 className="text-center text-4xl mt-20">Benvenuto nella schermata principale!</h1>
-        </div>
-      )}
-    </div>
+    <AnimatePresence exitBeforeEnter>
+      <Routes key={location.pathname} location={location}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/alphabet/:alphabetName" element={<AlphabetPage />} />
+        <Route path="/alphabet/:alphabetName/:letterName" element={<LetterPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </AnimatePresence>
   );
 }
 
