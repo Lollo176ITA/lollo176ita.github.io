@@ -1,5 +1,0 @@
-{
-  "dependencies": {
-    "@sveltejs/adapter-auto": "^3.3.1"
-  }
-}
