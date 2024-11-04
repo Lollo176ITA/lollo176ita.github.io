@@ -1,15 +1,10 @@
-<script>
-    import AlphabetCard from '../components/AlphabetCard.svelte';
-  </script>
-  
-  <div class="text-center">
-    <h1 class="text-4xl font-bold mb-4">Benvenuto nella Wiki dell'Alfabeto</h1>
-    <p class="text-lg text-gray-300 mb-8">Esplora la storia, i significati e i segreti delle lettere</p>
-  
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <AlphabetCard name="Alfabeto Romano" route="/alfabeto/romano" />
-      <AlphabetCard name="Alfabeto Greco" route="/alfabeto/greco" />
-      <AlphabetCard name="Alfabeto Ebraico" route="/alfabeto/ebraico" />
-    </div>
+<!-- src/routes/+page.svelte -->
+
+<div class="text-center mt-10">
+    <h1 class="text-4xl font-bold">Benvenuto nella Wiki degli Alfabeti</h1>
+    <p class="mt-4">Esplora diversi alfabeti e le loro lettere.</p>
+    <a href="/alfabeti" class="mt-6 inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+      Scopri gli Alfabeti
+    </a>
   </div>
   
