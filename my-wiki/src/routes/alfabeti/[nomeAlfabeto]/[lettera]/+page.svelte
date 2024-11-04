@@ -19,9 +19,7 @@
             <div class="bg-gray-800 p-4 rounded-lg shadow-md">
                 <h2 class="text-xl font-semibold mb-2 text-white">Sidebar</h2>
                 <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-300 hover:text-white">Link 1</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-white">Link 2</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-white">Link 3</a></li>
+
                 </ul>
             </div>
         </div>
