@@ -13,7 +13,8 @@
 		"lint": "prettier --check . && eslint .",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
-    "check:all": "npm run check && npm run lint && npm run format"
+    "check:all": "npm run check && npm run lint && npm run format",
+    "deploy:gh-pages": "git subtree push --prefix wiki/dist origin gh-pages"
 	},
 	"files": [
 		"dist",
