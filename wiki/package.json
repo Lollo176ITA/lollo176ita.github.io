@@ -13,8 +13,8 @@
 		"lint": "prettier --check . && eslint .",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
-    "check:all": "npm run check && npm run lint && npm run format",
-    "deploy:gh-pages": "git subtree push --prefix wiki/dist origin gh-pages"
+		"check:all": "npm run check && npm run lint && npm run format",
+		"deploy:gh-pages": "git subtree push --prefix wiki/dist origin gh-pages"
 	},
 	"files": [
 		"dist",
@@ -69,6 +69,7 @@
 	},
 	"dependencies": {
 		"@inlang/paraglide-sveltekit": "^0.11.1",
+		"@sveltejs/adapter-static": "^3.0.6",
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.15"

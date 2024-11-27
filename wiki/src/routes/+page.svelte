@@ -1,8 +1,4 @@
-<script>
-    // Nessuna logica dinamica, solo struttura statica
-  </script>
-  
-  <div class="flex flex-col min-h-screen bg-primary text-secondary">
+<div class="flex flex-col min-h-screen bg-primary text-secondary">
     <!-- Topbar -->
     <header class="bg-secondary text-primary p-4 shadow">
       <div class="container mx-auto flex justify-between items-center">

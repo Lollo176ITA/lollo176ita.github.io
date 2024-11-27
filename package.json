@@ -1,5 +1,5 @@
 {
     "scripts": {
-        "deploy:gh-pages": "git subtree push --prefix wiki/dist origin gh-pages"
+        "deploy:gh-pages": "git subtree push --prefix wiki/build origin gh-pages"
     }
 }
