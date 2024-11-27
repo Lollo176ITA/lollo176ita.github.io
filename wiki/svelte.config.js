@@ -16,7 +16,10 @@ const config = {
 		  }),
 		  prerender: {
 			handleMissingId: 'ignore' // Ignora i link a ID mancanti
-		  }
+		  },
+		  paths: {
+			base: '/lollo176ita.github.io', // Nome del repository
+		  },
 	},
 
 	extensions: ['.svelte', '.svx']
