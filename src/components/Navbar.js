@@ -15,9 +15,6 @@ export default function Navbar({ isOpen, toggleMenu }) {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/projects">Projects</Link></li>
-        <li><a href="*" className="hover:underline text-xl">Home</a></li>
-        <li><a href="*" className="hover:underline text-xl">About</a></li>
-        <li><a href="*" className="hover:underline text-xl">Projects</a></li>
       </ul>
     </div>
   );
