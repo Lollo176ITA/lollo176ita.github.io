@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar({ isOpen, toggleMenu }) {
   return (
@@ -11,6 +12,9 @@ export default function Navbar({ isOpen, toggleMenu }) {
         &times; {/* Close icon */}
       </button>
       <ul className="flex flex-col p-8 space-y-6 mt-12">
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/projects">Projects</Link></li>
         <li><a href="*" className="hover:underline text-xl">Home</a></li>
         <li><a href="*" className="hover:underline text-xl">About</a></li>
         <li><a href="*" className="hover:underline text-xl">Projects</a></li>

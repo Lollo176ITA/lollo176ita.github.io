@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
@@ -12,10 +12,9 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Hero />} />
-        <Route path="/projects" element={<Projects />} />
-        {/* Aggiungi le rotte dei link non funzionanti */}
+        <Route path="/projects" element={<WorkInProgress />} />
+        {/* Rotte per le pagine in costruzione */}
         <Route path="/about" element={<WorkInProgress />} />
-        <Route path="/services" element={<WorkInProgress />} />
         {/* Rotta per gestire percorsi non definiti */}
         <Route path="*" element={<WorkInProgress />} />
       </Routes>
