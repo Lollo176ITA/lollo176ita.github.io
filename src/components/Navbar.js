@@ -11,9 +11,9 @@ export default function Navbar({ isOpen, toggleMenu }) {
         &times; {/* Close icon */}
       </button>
       <ul className="flex flex-col p-8 space-y-6 mt-12">
-        <li><a href="#home" className="hover:underline text-xl">Home</a></li>
-        <li><a href="#about" className="hover:underline text-xl">About</a></li>
-        <li><a href="#projects" className="hover:underline text-xl">Projects</a></li>
+        <li><a href="*" className="hover:underline text-xl">Home</a></li>
+        <li><a href="*" className="hover:underline text-xl">About</a></li>
+        <li><a href="*" className="hover:underline text-xl">Projects</a></li>
       </ul>
     </div>
   );

@@ -73,7 +73,7 @@ export default function AnimatedGrid() {
                 setGameStarted(false);
                 setTimeout(() => {
                     document.getElementById('game-container').classList.add('blur-sm', 'pointer-events-none');
-                }, 500);
+                }, 200);
             } else {
                 // Set 2 new random cells to 'A'
                 setTimeout(() => setInitialLetters(), 200);
@@ -101,7 +101,7 @@ export default function AnimatedGrid() {
             49, 48,                               // Fourth bottom row (right to left)
             39                                   // Center
         ];
-        return spiralOrder.indexOf(index) * 0.05;
+        return spiralOrder.indexOf(index) * 0.02;
     };
 
     return (

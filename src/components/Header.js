@@ -23,7 +23,7 @@ export default function Header() {
         </div>
         {/* Contact Button */}
         <a
-          href="mailto:lollo@example.com"
+          href="mailto:lollo176ita@gmail.com"
           className="relative px-6 py-2 border-2 border-black text-black font-medium rounded-full bg-white transition-all duration-300 hover:bg-black hover:text-white"
         >
           Contact
