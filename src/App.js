@@ -10,8 +10,7 @@ import ThemeSwitch from './components/ThemeSwich';
 export default function App() {
   return (
     <Router>
-      <Header />
-      <ThemeSwitch />
+      <Header /> 
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route path="/projects" element={<WorkInProgress />} />

@@ -10,7 +10,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 w-full bg-white text-black py-4 z-30 shadow-lg">
+    <header className="fixed top-0 w-full bg-white text-black dark:bg-black dark:text-white py-4 z-30 shadow-lg dark:shadow-white">
       <div className="container mx-auto flex justify-between items-center px-8">
         {/* Parte sinistra con l'hamburger e il titolo */}
         <div className="flex items-center space-x-4">
@@ -24,7 +24,8 @@ export default function Header() {
         {/* Contact Button */}
         <a
           href="mailto:lollo176ita@gmail.com"
-          className="relative px-6 py-2 border-2 border-black text-black font-medium rounded-full bg-white transition-all duration-300 hover:bg-black hover:text-white"
+          className="relative px-6 py-2 border-2 border-black text-black font-medium rounded-full bg-white transition-all duration-300 hover:bg-black hover:text-white dark:border-white dark:text-white dark:bg-black dark:hover:bg-white dark:hover:text-black"
+
         >
           Contact
         </a>

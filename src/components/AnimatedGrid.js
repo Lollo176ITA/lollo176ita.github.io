@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function AnimatedGrid() {
     const [gameStarted, setGameStarted] = useState(false);
@@ -73,7 +74,7 @@ export default function AnimatedGrid() {
                 setGameStarted(false);
                 setTimeout(() => {
                     document.getElementById('game-container').classList.add('blur-sm', 'pointer-events-none');
-                }, 200);
+                }, 50);
             } else {
                 // Set 2 new random cells to 'A'
                 setTimeout(() => setInitialLetters(), 200);
@@ -107,17 +108,25 @@ export default function AnimatedGrid() {
     return (
         <div className="lg:w-1/2 flex flex-col items-center relative">
             <p className="text-2xl font-bold text-center mb-4 font-inter">
-            <a 
-                href="https://example.com" 
-                onClick={(e) => {
-                    if (currentLetter !== 'D') e.preventDefault();
-                    if (!gameStarted && currentLetter !== 'D') handleStartGame();
-                }}
-                className={`text-black mb-4   px-2 py-1 rounded-lg ${gameStarted || currentLetter === 'D' ? 'cursor-not-allowed' : 'hover:bg-black hover:text-white'}`}
-                style={{ fontFamily: 'Arial, sans-serif', fontWeight: 'bold' }}
-            >
-                {!gameStarted && currentLetter === 'D' ? 'Thanks for playing! (Click me to see the full game)' : !gameStarted ? 'Click me to try the demo!' : 'Enjoy the demo!'}
-            </a>
+                <Link
+                    to={gameStarted || currentLetter !== 'D' ? '#' : '/projects'} // Evita la navigazione se la condizione non è soddisfatta
+                    onClick={(e) => {
+                        if (currentLetter !== 'D') e.preventDefault(); // Evita la navigazione
+                        if (!gameStarted && currentLetter !== 'D') handleStartGame(); // Avvia il gioco
+                    }}
+                    className={`text-black dark:text-white mb-4 px-2 py-1 rounded-lg ${
+                        gameStarted || currentLetter === 'D'
+                            ? 'cursor-not-allowed'
+                            : 'hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black'
+                    }`}
+                    style={{ fontFamily: 'Arial, sans-serif', fontWeight: 'bold' }}
+                >
+                    {!gameStarted && currentLetter === 'D'
+                        ? 'Thanks for playing!'
+                        : !gameStarted
+                        ? 'Click me to try the demo!'
+                        : 'Enjoy the demo!'}
+                </Link>
             </p>
             <div id="game-container" className="grid grid-cols-9 gap-1 relative z-10">
                 {gridItems.map((item, index) => (
@@ -126,14 +135,20 @@ export default function AnimatedGrid() {
                         onClick={() => handleCellClick(item.id)}
                         onMouseDown={() => handleDragStart(item.id)}
                         onMouseUp={() => handleDragEnd(item.id)}
-                        className={`w-8 h-8 bg-gray-300 rounded-md flex items-center justify-center cursor-pointer ${selectedCell === item.id ? 'ring-2 ring-blue-500' : ''}`}
+                        className={`w-8 h-8 bg-gray-300 rounded-md flex items-center justify-center dark:text-black cursor-pointer ${
+                            selectedCell === item.id ? 'ring-2 ring-blue-500' : ''
+                        }`}
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{
                             delay: generateSpiralDelay(index), // Improved spiral effect
                             duration: 0.2,
                         }}
-                        style={{ fontFamily: 'Arial, sans-serif', fontWeight: 'bold', fontSize: '1.5rem' }}
+                        style={{
+                            fontFamily: 'Arial, sans-serif',
+                            fontWeight: 'bold',
+                            fontSize: '1.5rem',
+                        }}
                     >
                         {item.letter}
                     </motion.div>
@@ -141,4 +156,4 @@ export default function AnimatedGrid() {
             </div>
         </div>
     );
-}
+}    

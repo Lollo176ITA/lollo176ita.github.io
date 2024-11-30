@@ -1,5 +1,6 @@
 import React from "react";
 import { FaTwitter, FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
+import ThemeSwitch from "./ThemeSwich";
 
 export default function Footer() {
   return (
@@ -7,6 +8,7 @@ export default function Footer() {
       <div className="container mx-auto text-center border-t border-gray-700 pt-4">
         {/* Social Media Icons */}
         <div className="flex justify-center items-center mb-4 space-x-6">
+          <ThemeSwitch />
           <a
             href="https://twitter.com/"
             target="_blank"

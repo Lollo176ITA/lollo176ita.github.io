@@ -10,7 +10,7 @@ export default function HeroText() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1 }}
             >
-                Web <span className="text-black">&</span> Game Developer
+                Web <span className="text-black dark:text-white">&</span> Game Developer
             </motion.h1>
             <motion.div
                 initial={{ opacity: 0, x: 50 }}
