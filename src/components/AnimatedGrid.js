@@ -106,7 +106,7 @@ export default function AnimatedGrid() {
     };
 
     return (
-        <div className="lg:w-1/2 flex flex-col items-center relative">
+        <div className="lg:w-1/2 flex flex-col items-center relative mb-10">
             <p className="text-2xl font-bold text-center mb-4 font-inter">
                 <Link
                     to={gameStarted || currentLetter !== 'D' ? '#' : '/projects'} // Evita la navigazione se la condizione non è soddisfatta
