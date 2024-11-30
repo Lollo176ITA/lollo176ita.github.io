@@ -5,11 +5,13 @@ import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Footer from './components/Footer';
 import WorkInProgress from './components/WorkInProgress';
+import ThemeSwitch from './components/ThemeSwich';
 
 export default function App() {
   return (
     <Router>
       <Header />
+      <ThemeSwitch />
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route path="/projects" element={<WorkInProgress />} />

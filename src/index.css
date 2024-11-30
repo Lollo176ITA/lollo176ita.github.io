@@ -12,6 +12,14 @@ code {
     monospace;
 }
 
+:root {
+  --transition-duration: 300ms;
+}
+
+html {
+  transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
