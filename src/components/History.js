@@ -37,10 +37,6 @@ const historyData = i18n.language === 'it' ? historyIt : historyEn;
       .catch((err) => setError(err.message));
   }, []);
 
-  const loadMore = () => {
-    setVisibleCount((prev) => Math.min(prev + 5, sortedHistory.length));
-  };
-
   return (
     <div className="container mx-auto px-8 py-20 ">
       <h2 className="text-4xl font-bold mb-6">{t('history.title')}</h2>

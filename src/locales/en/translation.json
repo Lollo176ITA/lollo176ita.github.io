@@ -3,7 +3,8 @@
     "home": "Home",
     "about": "About",
     "projects": "Projects",
-    "history": "Site History"
+    "history": "Site History",
+    "creations": "Creations"
   },
   "header": {
     "contact": "Contact"
@@ -16,6 +17,13 @@
     "thanks": "Thanks for playing!",
     "clickDemo": "Click me to try the demo!",
     "enjoyDemo": "Enjoy the demo!"
+  },
+  "creations": {
+    "heroTitle": "My Creations",
+    "games":     "Games",
+    "gamesDesc": "Dive into the WebGL prototype",
+    "novel":     "Books",
+    "novelDesc": "Flip through my light novel"
   },
   "history": {
     "title": "Site History",
@@ -34,5 +42,10 @@
     "title": "Site Under Construction",
     "text": "I'm working to bring you a better experience (hope).",
     "button": "Back to Homepage"
+  },
+  "stocazzato": {
+    "title": "You are about to be stocazzato",
+    "button": "Click here to evacuate ({{timer}})"
   }
+
 }

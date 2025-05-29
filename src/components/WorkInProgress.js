@@ -24,15 +24,15 @@ export default function WorkInProgress() {
       >
         <FaTools className="text-6xl text-black  dark:text-white mb-4" />
       </motion.div>
-      <h1 className="text-5xl font-extrabold text-black dark:text-white text-center mb-6">Sito in costruzione</h1>
-      <p className="text-lg text-black dark:text-white text-center mb-8">Sto lavorando per offrirti una migliore esperienza (spero).</p>
+      <h1 className="text-5xl font-extrabold text-black dark:text-white text-center mb-6">{t('wip.title')}</h1>
+      <p className="text-lg text-black dark:text-white text-center mb-8">{t('wip.text')}</p>
       <Link to="/">
         <motion.button
           className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-full hover:bg-black focus:outline-none focus:ring-2 focus:ring-black transition duration-300"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          Torna alla Homepage
+          {t('wip.button')}
         </motion.button>
       </Link>
     </motion.div>

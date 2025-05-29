@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import { FiMenu } from "react-icons/fi"; // Importa l'icona dal pacchetto react-icons
-import { useTranslation } from 'react-i18next';
+//import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const { t } = useTranslation();
+  //const { t } = useTranslation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);

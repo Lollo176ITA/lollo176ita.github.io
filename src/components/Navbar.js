@@ -23,6 +23,7 @@ export default function Navbar({ isOpen, toggleMenu }) {
         <li><Link to="/" onClick={handleLinkClick}>{t('nav.home')}</Link></li>
         <li><Link to="/about" onClick={handleLinkClick}>{t('nav.about')}</Link></li>
         <li><Link to="/projects" onClick={handleLinkClick}>{t('nav.projects')}</Link></li>
+        <li><Link to="/creations" onClick={handleLinkClick}>{t('nav.creations')}</Link></li>
         <li><Link to="/history" onClick={handleLinkClick}>{t('nav.history')}</Link></li>
       </ul>
     </div>

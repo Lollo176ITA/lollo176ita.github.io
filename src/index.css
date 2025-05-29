@@ -21,12 +21,15 @@ code {
   --transition-duration: 300ms;
 }
 
-:root {
-  --transition-duration: 300ms;
-}
-
 html {
   transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+/* in fondo al file */
+.paper-bg {
+  background-image: url('/public/textures/paper.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 
