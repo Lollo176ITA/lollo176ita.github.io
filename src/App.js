@@ -8,6 +8,7 @@ import WorkInProgress from './components/WorkInProgress';
 //import ThemeSwitch from './components/ThemeSwich';
 import History from './components/History';
 import CreationsPage from './components/CreationsPage';
+import Stocazzato from './components/Stocazzato';
 
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="*" element={<WorkInProgress />} />
         <Route path="/creations" element={<CreationsPage />} />
         <Route path="/history" element={<History />} />
+         <Route path="/stocazzato" element={<Stocazzato />} />
       </Routes>
       <Footer />
     </Router>
