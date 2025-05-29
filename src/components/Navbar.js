@@ -26,6 +26,9 @@ export default function Navbar({ isOpen, toggleMenu }) {
         <li>
           <Link to="/projects" onClick={handleLinkClick}>Projects</Link>
         </li>
+        <li>
+          <Link to="/history" onClick={handleLinkClick}>Storia del sito</Link>
+        </li>
       </ul>
     </div>
   );

@@ -34,7 +34,12 @@ export default function AnimatedGrid() {
         if (!gameStarted) return;
         if (selectedCell === null) {
             setSelectedCell(index);
-        } else {
+        } 
+        else if (selectedCell === index) {
+        // Deselect on clicking same cell
+        setSelectedCell(null);
+        }
+        else {
             mergeCells(selectedCell, index);
             setSelectedCell(null);
         }
@@ -135,7 +140,7 @@ export default function AnimatedGrid() {
                         onClick={() => handleCellClick(item.id)}
                         onMouseDown={() => handleDragStart(item.id)}
                         onMouseUp={() => handleDragEnd(item.id)}
-                        className={`w-8 h-8 bg-gray-300 rounded-md flex items-center justify-center dark:text-black cursor-pointer ${
+                        className={`w-8 h-8 bg-gray-300 rounded-md flex items-center justify-center dark:text-black cursor-pointer select-none ${
                             selectedCell === item.id ? 'ring-2 ring-blue-500' : ''
                         }`}
                         initial={{ scale: 0, opacity: 0 }}

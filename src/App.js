@@ -6,9 +6,11 @@ import Projects from './components/Projects';
 import Footer from './components/Footer';
 import WorkInProgress from './components/WorkInProgress';
 import ThemeSwitch from './components/ThemeSwich';
+import History from './components/History';
 
 export default function App() {
   return (
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
     <Router>
       <Header /> 
       <Routes>
@@ -18,8 +20,10 @@ export default function App() {
         <Route path="/about" element={<WorkInProgress />} />
         {/* Rotta per gestire percorsi non definiti */}
         <Route path="*" element={<WorkInProgress />} />
+        <Route path="/history" element={<History />} />
       </Routes>
       <Footer />
     </Router>
+    </div>
   );
 }
