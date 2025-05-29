@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Chi sono",
+    "projects": "Progetti",
+    "history": "Storia del sito"
+  },
+  "header": {
+    "contact": "Contatti"
+  },
+  "hero": {
+    "title": "Sviluppatore Web & Game",
+    "intro": "Sono Lorenzo Censi, studente di informatica alla Sapienza University, attualmente {{age}} anni. Lavoro come sviluppatore web con Drupal, sono anche programmatore di giochi con Unity nel tempo libero, e creatore di siti come quello che stai vedendo."
+  },
+  "grid": {
+    "thanks": "Grazie per aver giocato!",
+    "clickDemo": "Cliccami per provare la demo!",
+    "enjoyDemo": "Divertiti con la demo!"
+  },
+  "history": {
+    "title": "Storia del sito",
+    "timeline": "Linea temporale",
+    "loadMore": "Carica altri",
+    "technical": "Storia tecnica – ultimi 10 commit",
+    "loading": "Caricamento dei commit in corso…",
+    "error": "Errore caricamento commit:",
+    "repoLabel": "Repository:",
+    "moreInfo": "Per ulteriori informazioni, visita il mio profilo GitHub:"
+  },
+  "footer": {
+    "copyright": "© {{year}} Lollo. Tutti i diritti riservati."
+  },
+  "wip": {
+    "title": "Sito in costruzione",
+    "text": "Sto lavorando per offrirti una migliore esperienza (spero).",
+    "button": "Torna alla homepage"
+  }
+}

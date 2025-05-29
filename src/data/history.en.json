@@ -1,0 +1,47 @@
+[
+  {
+    "date": "2023-01-15",
+    "title": "First Release",
+    "description": "The site is published for the first time on GitHub Pages with a simple landing page."
+  },
+  {
+    "date": "2023-03-10",
+    "title": "Introduction to React",
+    "description": "The site is rewritten in React for better state management and interactions."
+  },
+  {
+    "date": "2023-05-05",
+    "title": "Projects Section Added",
+    "description": "Implemented the Projects section with a list of personal and professional projects."
+  },
+  {
+    "date": "2023-07-20",
+    "title": "GitHub API Integration",
+    "description": "The site now shows recent GitHub repositories via the GitHub API."
+  },
+  {
+    "date": "2023-09-15",
+    "title": "Responsive Design",
+    "description": "Redesigned the layout to be fully responsive on mobile devices and tablets."
+  },
+  {
+    "date": "2023-11-01",
+    "title": "Blog Section Added",
+    "description": "Implemented the Blog section with articles on web development and technology."
+  },
+  {
+    "date": "2024-01-10",
+    "title": "SEO & Performance",
+    "description": "SEO optimizations and performance improvements across the site."
+  },
+  {
+    "date": "2024-02-20",
+    "title": "Dark Mode",
+    "description": "Implemented dark mode with ThemeSwitch and persisted via localStorage."
+  },
+  {
+    "date": "2024-11-05",
+    "title": "Animated Grid Demo",
+    "description": "Added the animated grid game demo with Framer Motion and GSAP."
+  }
+]

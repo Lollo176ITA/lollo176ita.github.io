@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import { FiMenu } from "react-icons/fi"; // Importa l'icona dal pacchetto react-icons
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -21,15 +24,17 @@ export default function Header() {
           {/* Brand Name */}
           <div className="text-2xl font-bold">Lollo176ITA</div>
         </div>
-        {/* Contact Button */}
-        <a
-          href="mailto:lollo176ita@gmail.com"
-          className="relative px-6 py-2 border-2 border-black text-black font-medium rounded-full bg-white transition-all duration-300 hover:bg-black hover:text-white dark:border-white dark:text-white dark:bg-black dark:hover:bg-white dark:hover:text-black"
-
-        >
-          Contact
-        </a>
-        {/* Navbar Component */}
+        
+        <div className="flex items-center space-x-4">
+         {/* Parte destra con il pulsante di contatto e il LanguageSwitcher 
+         <a
+           href="mailto:lollo176ita@gmail.com"
+           className="relative px-6 py-2 border-2 border-black text-black font-medium rounded-full bg-white transition-all duration-300 hover:bg-black hover:text-white dark:border-white dark:text-white dark:bg-black dark:hover:bg-white dark:hover:text-black"
+         >
+           {t('header.contact')}
+         </a>*/}
+         <LanguageSwitcher />  {/* ← qui, subito a destra */}
+       </div>
         <Navbar isOpen={isOpen} toggleMenu={toggleMenu} />
       </div>
     </header>

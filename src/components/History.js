@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import historyData from '../data/history.json';
+import historyIt from '../data/history.it.json';
+import historyEn from '../data/history.en.json';
+import { useTranslation } from 'react-i18next';
 
 export default function History() {
   const [commits, setCommits] = useState([]);
   const [error, setError] = useState(null);
   const [visibleCount, setVisibleCount] = useState(5);
+  const { t, i18n } = useTranslation();
+
+const historyData = i18n.language === 'it' ? historyIt : historyEn;
 
   // Ordina la storia manuale dalla più recente
   const sortedHistory = [...historyData].sort(
@@ -38,11 +43,11 @@ export default function History() {
 
   return (
     <div className="container mx-auto px-8 py-20 ">
-      <h2 className="text-4xl font-bold mb-6">Storia del sito</h2>
+      <h2 className="text-4xl font-bold mb-6">{t('history.title')}</h2>
 
       {/* --- Storia Manuale --- */}
       <section className="mb-12">
-        <h3 className="text-2xl font-semibold mb-4">Linea temporale</h3>
+        <h3 className="text-2xl font-semibold mb-4">{t('history.timeline')}</h3>
         <ul className="border-l-2 border-dashed border-gray-300 dark:border-gray-600">
             {visibleHistory.map((item) => (
             <li
@@ -93,7 +98,7 @@ export default function History() {
                 transition
                 "
             >
-                Carica altri
+                {t('history.loadMore')}
             </button>
             </div>
         )}
@@ -103,7 +108,7 @@ export default function History() {
       {/* --- Storia Tecnica --- */}
       <section>
         <h3 className="text-2xl font-semibold mb-4">
-          Storia tecnica – last 10 commits
+          {t('history.technical')}
         </h3>
 
         {/* Profilo GitHub e progetto */}
@@ -126,7 +131,7 @@ export default function History() {
               </a>
             </p>
             <p>
-              Per ulteriori informazioni, visita il mio profilo GitHub:{' '}
+              {t('history.moreInfo')}{' '}
               <a
                 href="https://github.com/lollo176ita"
                 target="_blank"
@@ -140,11 +145,11 @@ export default function History() {
         </div>
 
         {error && (
-          <p className="text-red-500">Errore caricamento commit: {error}</p>
+          <p className="text-red-500">{t('history.error')}{error}</p>
         )}
         {!error && commits.length === 0 && (
           <p className="text-gray-600 dark:text-gray-400">
-            Caricamento dei commit in corso…
+            {t('history.loading')}
           </p>
         )}
         <ul className="space-y-4">

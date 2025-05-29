@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function Navbar({ isOpen, toggleMenu }) {
   const handleLinkClick = () => {
     // Puoi aggiungere altra logica qui se necessario
     toggleMenu();
   };
+
+  const { t } = useTranslation();
 
   return (
     <div
@@ -17,18 +20,10 @@ export default function Navbar({ isOpen, toggleMenu }) {
         &times; {/* Icona di chiusura */}
       </button>
       <ul className="flex flex-col p-8 space-y-6 mt-12">
-        <li>
-          <Link to="/" onClick={handleLinkClick}>Home</Link>
-        </li>
-        <li>
-          <Link to="/about" onClick={handleLinkClick}>About</Link>
-        </li>
-        <li>
-          <Link to="/projects" onClick={handleLinkClick}>Projects</Link>
-        </li>
-        <li>
-          <Link to="/history" onClick={handleLinkClick}>Storia del sito</Link>
-        </li>
+        <li><Link to="/" onClick={handleLinkClick}>{t('nav.home')}</Link></li>
+        <li><Link to="/about" onClick={handleLinkClick}>{t('nav.about')}</Link></li>
+        <li><Link to="/projects" onClick={handleLinkClick}>{t('nav.projects')}</Link></li>
+        <li><Link to="/history" onClick={handleLinkClick}>{t('nav.history')}</Link></li>
       </ul>
     </div>
   );

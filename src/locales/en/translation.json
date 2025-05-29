@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "history": "Site History"
+  },
+  "header": {
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Web & Game Developer",
+    "intro": "I'm Lorenzo Censi, a computer science student at Sapienza University, currently {{age}} years old. I work as a web developer using Drupal, I'm also a game programmer in Unity in my spare time, and the creator of websites like the one you’re currently viewing."
+  },
+  "grid": {
+    "thanks": "Thanks for playing!",
+    "clickDemo": "Click me to try the demo!",
+    "enjoyDemo": "Enjoy the demo!"
+  },
+  "history": {
+    "title": "Site History",
+    "timeline": "Timeline",
+    "loadMore": "Load more",
+    "technical": "Technical History – last 10 commits",
+    "loading": "Loading commits…",
+    "error": "Error loading commits:",
+    "repoLabel": "Repository:",
+    "moreInfo": "For more information, visit my GitHub profile:"
+  },
+  "footer": {
+    "copyright": "© {{year}} Lollo. All rights reserved."
+  },
+  "wip": {
+    "title": "Site Under Construction",
+    "text": "I'm working to bring you a better experience (hope).",
+    "button": "Back to Homepage"
+  }
+}

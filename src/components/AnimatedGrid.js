@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
 
 export default function AnimatedGrid() {
@@ -8,6 +9,7 @@ export default function AnimatedGrid() {
     const [currentLetter, setCurrentLetter] = useState('A');
     const [selectedCell, setSelectedCell] = useState(null);
     const dragStartRef = useRef(null);
+    const { t } = useTranslation();
 
     const handleStartGame = () => {
         setGameStarted(true);
@@ -127,10 +129,10 @@ export default function AnimatedGrid() {
                     style={{ fontFamily: 'Arial, sans-serif', fontWeight: 'bold' }}
                 >
                     {!gameStarted && currentLetter === 'D'
-                        ? 'Thanks for playing!'
+                        ? t('grid.thanks')
                         : !gameStarted
-                        ? 'Click me to try the demo!'
-                        : 'Enjoy the demo!'}
+                        ? t('grid.clickDemo')
+                        : t('grid.enjoyDemo')}
                 </Link>
             </p>
             <div id="game-container" className="grid grid-cols-9 gap-1 relative z-10">

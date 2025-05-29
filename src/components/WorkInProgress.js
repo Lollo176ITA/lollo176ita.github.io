@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaTools } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 export default function WorkInProgress() {
+  const { t } = useTranslation();
   return (
     <motion.div
       className="flex flex-col items-center justify-center min-h-screen bg-white dark:bg-black px-4"

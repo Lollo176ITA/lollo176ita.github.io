@@ -1,8 +1,13 @@
 import React from "react";
 import { FaTwitter, FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
 import ThemeSwitch from "./ThemeSwich";
+import { useTranslation } from 'react-i18next';
+
 
 export default function Footer() {
+
+  const { t } = useTranslation();
+  const year = new Date().getFullYear();
   return (
     <footer className="bg-black text-white py-8">
       <div className="container mx-auto text-center border-t border-gray-700 pt-4">
@@ -43,7 +48,7 @@ export default function Footer() {
           </a>
         </div>
         {/* Footer Text */}
-        <p className="text-sm text-gray-400">&copy; 2024 Lollo. All rights reserved.</p>
+        <p className="text-sm text-gray-400">{t('footer.copyright', { year })}</p>
       </div>
     </footer>
   );
