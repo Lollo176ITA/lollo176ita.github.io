@@ -1,10 +1,20 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+// We avoid react-router here and parse the hash manually
 import { useTranslation } from 'react-i18next';
 import books from '../../data/books';
 
-export default function BookOverview() {
-  const { type, name } = useParams();
+export default function BookOverview({ type: propType, name: propName }) {
+  let type = propType;
+  let name = propName;
+  if (!type || !name) {
+    const hash = window.location.hash.replace(/^#\/?/, '');
+    const parts = hash.split('/');
+    const idx = parts.indexOf('books');
+    if (idx !== -1) {
+      type = parts[idx + 1];
+      name = parts[idx + 2];
+    }
+  }
   const { t } = useTranslation();
   const book = books.find(b => b.type === type && b.slug === name);
 
@@ -18,12 +28,12 @@ export default function BookOverview() {
       <ul className="list-disc list-inside space-y-1">
         {book.chapters.map(ch => (
           <li key={ch.slug}>
-            <Link
+            <a
               className="text-blue-600 dark:text-blue-400 hover:underline"
-              to={`/creations/books/${type}/${name}/${ch.slug}`}
+              href={`#/creations/books/${type}/${name}/${ch.slug}`}
             >
               {ch.title}
-            </Link>
+            </a>
           </li>
         ))}
       </ul>

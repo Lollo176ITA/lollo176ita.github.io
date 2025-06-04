@@ -1,10 +1,22 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+// Manual hash-based navigation, avoiding react-router
 import { useTranslation } from 'react-i18next';
 import books from '../../data/books';
 
-export default function BookChapter() {
-  const { type, name, chapter } = useParams();
+export default function BookChapter({ type: propType, name: propName, chapter: propChapter }) {
+  let type = propType;
+  let name = propName;
+  let chapter = propChapter;
+  if (!type || !name || !chapter) {
+    const hash = window.location.hash.replace(/^#\/?/, '');
+    const parts = hash.split('/');
+    const idx = parts.indexOf('books');
+    if (idx !== -1) {
+      type = type || parts[idx + 1];
+      name = name || parts[idx + 2];
+      chapter = chapter || parts[idx + 3];
+    }
+  }
   const { t } = useTranslation();
   const book = books.find(b => b.type === type && b.slug === name);
   if (!book) return <div className="p-8">Book not found</div>;
@@ -21,20 +33,20 @@ export default function BookChapter() {
       <p className="mb-8 whitespace-pre-line">{ch.content}</p>
       <div className="flex justify-between">
         {prev ? (
-          <Link
-            to={`/creations/books/${type}/${name}/${prev}`}
+          <a
+            href={`#/creations/books/${type}/${name}/${prev}`}
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
             {t('books.prev')}
-          </Link>
+          </a>
         ) : <span />}
         {next ? (
-          <Link
-            to={`/creations/books/${type}/${name}/${next}`}
+          <a
+            href={`#/creations/books/${type}/${name}/${next}`}
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
             {t('books.next')}
-          </Link>
+          </a>
         ) : <span />}
       </div>
     </div>
