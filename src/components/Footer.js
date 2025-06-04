@@ -1,6 +1,6 @@
 import React from "react";
 import { FaTwitter, FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
-import ThemeSwitch from "./ThemeSwich";
+import ThemeSwitch from "./ThemeSwitch";
 import { useTranslation } from 'react-i18next';
 
 
