@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// Navigation is handled via hash links so we don't rely on react-router
 import { useTranslation } from 'react-i18next';
 import books from '../../data/books';
 
@@ -20,12 +20,12 @@ export default function BooksHome() {
           <ul className="space-y-2">
             {list.map(book => (
               <li key={book.slug}>
-                <Link
-                  to={`/creations/books/${book.type}/${book.slug}/overview`}
+                <a
+                  href={`#/creations/books/${book.type}/${book.slug}/overview`}
                   className="text-blue-600 dark:text-blue-400 hover:underline"
                 >
                   {book.title}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
