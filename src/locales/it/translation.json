@@ -23,7 +23,11 @@
     "games":     "Giochi",
     "gamesDesc": "Immergiti nel prototipo WebGL",
     "novel":     "Libri",
-    "novelDesc": "Sfoglia la mia light novel"
+    "novelDesc": "Sfoglia la mia light novel",
+    "playGame": "Avvia il gioco",
+    "leaderboard": "Classifica",
+    "chapter1Title": "Capitolo 1",
+    "novelAbout": "Informazioni sulla novel"
   },
   "history": {
     "title": "Storia del sito",
