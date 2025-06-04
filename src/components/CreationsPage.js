@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { FaGamepad } from 'react-icons/fa';
 import { GiOpenBook } from 'react-icons/gi';
 import { motion, AnimatePresence } from 'framer-motion';
+import books from '../data/books';
 
 const iconTarget = { top: 5, left: 5, scale: 0.5 };
 const sparkleColors = { games: 'bg-yellow-300', novel: 'bg-emerald-300' };
@@ -142,10 +143,10 @@ export default function CreationsPage() {
           variant="novel"
           icon={<GiOpenBook className="text-6xl drop-shadow-lg" />}
           label={t('creations.novel')}
-          links={[
-            { href: '/novel/chapter-1', text: t('creations.chapter1Title') },
-            { href: '/novel/about', text: t('creations.novelAbout') }
-          ]}
+          links={books.map(b => ({
+            href: `/creations/books/${b.type}/${b.slug}/overview`,
+            text: b.title
+          }))}
           hovered={hovered === 'novel'}
           onHover={() => setHovered('novel')}
           onLeave={() => setHovered(null)}

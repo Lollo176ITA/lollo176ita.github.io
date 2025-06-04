@@ -9,6 +9,9 @@ import WorkInProgress from './components/WorkInProgress';
 import History from './components/History';
 import CreationsPage from './components/CreationsPage';
 import Stocazzato from './components/Stocazzato';
+import BooksHome from './components/books/BooksHome';
+import BookOverview from './components/books/BookOverview';
+import BookChapter from './components/books/BookChapter';
 
 
 export default function App() {
@@ -24,6 +27,9 @@ export default function App() {
         {/* Rotta per gestire percorsi non definiti */}
         <Route path="*" element={<WorkInProgress />} />
         <Route path="/creations" element={<CreationsPage />} />
+        <Route path="/creations/books" element={<BooksHome />} />
+        <Route path="/creations/books/:type/:name/overview" element={<BookOverview />} />
+        <Route path="/creations/books/:type/:name/:chapter" element={<BookChapter />} />
         <Route path="/history" element={<History />} />
          <Route path="/stocazzato" element={<Stocazzato />} />
       </Routes>
