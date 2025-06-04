@@ -128,8 +128,8 @@ export default function CreationsPage() {
           icon={<FaGamepad className="text-6xl drop-shadow-lg" />}
           label={t('creations.games')}
           links={[
-            { href: '/games/play', text: t('creations.playGame') },
-            { href: '/games/leaderboard', text: t('creations.leaderboard') }
+            { href: '#/games/play', text: t('creations.playGame') },
+            { href: '#/games/leaderboard', text: t('creations.leaderboard') }
           ]}
           hovered={hovered === 'games'}
           onHover={() => setHovered('games')}
@@ -144,7 +144,7 @@ export default function CreationsPage() {
           icon={<GiOpenBook className="text-6xl drop-shadow-lg" />}
           label={t('creations.novel')}
           links={books.map(b => ({
-            href: `/creations/books/${b.type}/${b.slug}/overview`,
+            href: `#/creations/books/${b.type}/${b.slug}/overview`,
             text: b.title
           }))}
           hovered={hovered === 'novel'}
