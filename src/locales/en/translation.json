@@ -23,7 +23,11 @@
     "games":     "Games",
     "gamesDesc": "Dive into the WebGL prototype",
     "novel":     "Books",
-    "novelDesc": "Flip through my light novel"
+    "novelDesc": "Flip through my light novel",
+    "playGame": "Play now",
+    "leaderboard": "Leaderboard",
+    "chapter1Title": "Chapter 1",
+    "novelAbout": "About the novel"
   },
   "history": {
     "title": "Site History",
