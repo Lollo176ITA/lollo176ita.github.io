@@ -9,6 +9,7 @@ export default function ThemeSwitch() {
   return (
     <button
       onClick={toggleTheme}
+      aria-label="Toggle theme"
       className="relative w-14 h-8 bg-gray-300 dark:bg-gray-600 rounded-full shadow-inner transition-colors duration-300 focus:outline-none"
     >
       <div

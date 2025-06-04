@@ -5,7 +5,7 @@ import Hero from './components/Hero';
 //import Projects from './components/Projects';
 import Footer from './components/Footer';
 import WorkInProgress from './components/WorkInProgress';
-//import ThemeSwitch from './components/ThemeSwich';
+//import ThemeSwitch from './components/ThemeSwitch';
 import History from './components/History';
 import CreationsPage from './components/CreationsPage';
 import Stocazzato from './components/Stocazzato';
