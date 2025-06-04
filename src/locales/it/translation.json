@@ -23,7 +23,7 @@
     "games":     "Giochi",
     "gamesDesc": "Immergiti nel prototipo WebGL",
     "novel":     "Libri",
-    "novelDesc": "Sfoglia la mia light novel",
+    "novelDesc": "Sfoglia i miei libri",
     "playGame": "Avvia il gioco",
     "leaderboard": "Classifica",
     "chapter1Title": "Capitolo 1",
@@ -50,5 +50,16 @@
   "stocazzato": {
     "title": "Stai per essere stocazzato",
     "button": "Clicca qui per evacuare ({{timer}})"
+  },
+  "books": {
+    "chooseBook": "Scegli un libro",
+    "overview": "Panoramica",
+    "chapters": "Capitoli",
+    "next": "Capitolo successivo",
+    "prev": "Capitolo precedente"
+  },
+  "bookTypes": {
+    "novella": "Novella",
+    "poetry": "Poesie"
   }
 }

@@ -23,7 +23,7 @@
     "games":     "Games",
     "gamesDesc": "Dive into the WebGL prototype",
     "novel":     "Books",
-    "novelDesc": "Flip through my light novel",
+    "novelDesc": "Browse my books",
     "playGame": "Play now",
     "leaderboard": "Leaderboard",
     "chapter1Title": "Chapter 1",
@@ -50,6 +50,17 @@
   "stocazzato": {
     "title": "You are about to be stocazzato",
     "button": "Click here to evacuate ({{timer}})"
+  },
+  "books": {
+    "chooseBook": "Choose a book",
+    "overview": "Overview",
+    "chapters": "Chapters",
+    "next": "Next chapter",
+    "prev": "Previous chapter"
+  },
+  "bookTypes": {
+    "novella": "Novella",
+    "poetry": "Poetry"
   }
 
 }
