@@ -61,6 +61,15 @@
   "bookTypes": {
     "novella": "Novella",
     "poetry": "Poetry"
+  },
+  "aboutPage": {
+    "title": "About me",
+    "intro": "Hi! I'm Lorenzo Censi, {{age}} years old, and I love experimenting with the web and videogames.",
+    "webTitle": "Web Development",
+    "webText": "I design and build modern sites using React and Drupal.",
+    "gameTitle": "Game Dev",
+    "gameText": "In my spare time I make prototypes with Unity and other technologies.",
+    "moreHistory": "See the site history",
+    "moreCreations": "Check out my creations"
   }
-
 }

@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 //import Projects from './components/Projects';
 import Footer from './components/Footer';
 import WorkInProgress from './components/WorkInProgress';
+import About from './components/About';
 //import ThemeSwitch from './components/ThemeSwitch';
 import History from './components/History';
 import CreationsPage from './components/CreationsPage';
@@ -20,8 +21,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route path="/projects" element={<WorkInProgress />} />
-        {/* Rotte per le pagine in costruzione */}
-        <Route path="/about" element={<WorkInProgress />} />
+        {/* Pagina "Chi sono" */}
+        <Route path="/about" element={<About />} />
         {/* Rotta per gestire percorsi non definiti */}
         <Route path="*" element={<WorkInProgress />} />
         <Route path="/creations" element={<CreationsPage />} />
