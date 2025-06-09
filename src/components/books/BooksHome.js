@@ -12,7 +12,7 @@ export default function BooksHome() {
   }, {});
 
   return (
-    <div className="container mx-auto px-8 py-20">
+    <div className="min-h-screen container mx-auto px-8 py-20">
       <h1 className="text-4xl font-bold mb-8">{t('books.chooseBook')}</h1>
       {Object.entries(grouped).map(([type, list]) => (
         <div key={type} className="mb-8">

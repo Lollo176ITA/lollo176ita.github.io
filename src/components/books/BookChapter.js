@@ -27,7 +27,7 @@ export default function BookChapter({ type: propType, name: propName, chapter: p
   const next = index < book.chapters.length - 1 ? book.chapters[index + 1].slug : null;
 
   return (
-    <div className="container mx-auto px-8 py-20 max-w-2xl">
+    <div className="min-h-screen container mx-auto px-8 py-20 max-w-2xl">
       <h1 className="text-4xl font-bold mb-4">{book.title}</h1>
       <h2 className="text-2xl font-semibold mb-4">{ch.title}</h2>
       <p className="mb-8 whitespace-pre-line">{ch.content}</p>

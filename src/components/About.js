@@ -10,7 +10,7 @@ export default function About() {
 
   return (
     <motion.main
-      className="container mx-auto px-8 py-20 text-center"
+      className="min-h-screen container mx-auto px-8 py-20 text-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}

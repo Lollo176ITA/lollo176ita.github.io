@@ -21,7 +21,7 @@ export default function BookOverview({ type: propType, name: propName }) {
   if (!book) return <div className="p-8">Book not found</div>;
 
   return (
-    <div className="container mx-auto px-8 py-20 max-w-2xl">
+    <div className="min-h-screen container mx-auto px-8 py-20 max-w-2xl mb-auto">
       <h1 className="text-4xl font-bold mb-4">{book.title}</h1>
       <p className="mb-6">{book.description}</p>
       <h2 className="text-2xl font-semibold mb-2">{t('books.chapters')}</h2>
