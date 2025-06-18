@@ -1,47 +1,117 @@
 [
     {
-    "date": "2023-01-15",
-    "title": "Prima pubblicazione",
-    "description": "Il sito viene pubblicato per la prima volta su GitHub Pages con una semplice landing."
+        "date": "2023-01-15",
+        "title": "Prima pubblicazione",
+        "description": "Il sito viene pubblicato per la prima volta su GitHub Pages con una semplice landing page. Inizio ufficiale del progetto portfolio personale."
     },
     {
-    "date": "2023-03-10",
-    "title": "Introduzione a React",
-    "description": "Il sito viene riscritto in React per una migliore gestione dello stato e delle interazioni."
+        "date": "2023-02-28",
+        "title": "Primi esperimenti CSS",
+        "description": "Aggiunte le prime animazioni CSS e miglioramenti grafici. Implementazione di transizioni fluide e hover effects."
     },
     {
-    "date": "2023-05-05",
-    "title": "Aggiunta della sezione Progetti",
-    "description": "Implementata la sezione Progetti con un elenco di progetti personali e professionali."
+        "date": "2023-03-10",
+        "title": "Introduzione a React",
+        "description": "Il sito viene completamente riscritto in React per una migliore gestione dello stato e delle interazioni. Configurazione del build system con Create React App."
     },
     {
-    "date": "2023-07-20",
-    "title": "Integrazione con GitHub API",
-    "description": "Il sito ora mostra i repository GitHub recenti tramite l'API di GitHub."
+        "date": "2023-04-15",
+        "title": "Implementazione del routing",
+        "description": "Aggiunto React Router per la navigazione tra le pagine. Creazione delle prime rotte principali: Home, About, Projects."
     },
     {
-    "date": "2023-09-15",
-    "title": "Responsive Design",
-    "description": "Rifatto il layout per essere completamente responsive su dispositivi mobili e tablet."
+        "date": "2023-05-05",
+        "title": "Aggiunta della sezione Progetti",
+        "description": "Implementata la sezione Progetti con un elenco dettagliato di progetti personali e professionali. Aggiunta di filtri e categorizzazione."
     },
     {
-    "date": "2023-11-01",
-    "title": "Aggiunta della sezione Blog",
-    "description": "Implementata la sezione Blog con articoli su sviluppo web e tecnologia."
+        "date": "2023-06-20",
+        "title": "Internazionalizzazione",
+        "description": "Implementato il supporto multilingua con react-i18next. Il sito ora supporta italiano e inglese con switching dinamico."
     },
     {
-    "date": "2024-01-10",
-    "title": "SEO e Performance",
-    "description": "Ottimizzazioni SEO e miglioramenti delle performance del sito."
+        "date": "2023-07-20",
+        "title": "Integrazione con GitHub API",
+        "description": "Il sito ora mostra i repository GitHub recenti tramite l'API di GitHub. Implementazione di caching e gestione errori."
     },
     {
-    "date": "2024-02-20",
-    "title": "Dark Mode",
-    "description": "Implementata la modalità scura con ThemeSwitch e persistenza in localStorage."
+        "date": "2023-08-10",
+        "title": "Sistema di temi avanzato",
+        "description": "Implementazione di Tailwind CSS e sistema di temi. Supporto per tema chiaro/scuro con persistenza delle preferenze."
     },
     {
-    "date": "2024-11-05",
-    "title": "Animated Grid Demo",
-    "description": "Aggiunta la demo di gioco a griglia animata con Framer Motion e GSAP."
+        "date": "2023-09-15",
+        "title": "Responsive Design completo",
+        "description": "Rifatto completamente il layout per essere responsive su tutti i dispositivi. Ottimizzazioni per mobile-first design."
+    },
+    {
+        "date": "2023-10-05",
+        "title": "Animazioni con Framer Motion",
+        "description": "Integrate animazioni fluide e micro-interazioni usando Framer Motion. Page transitions e loading states animati."
+    },
+    {
+        "date": "2023-11-01",
+        "title": "Sezione Blog e CMS",
+        "description": "Implementata la sezione Blog con sistema di gestione contenuti. Supporto per Markdown e syntax highlighting del codice."
+    },
+    {
+        "date": "2023-12-15",
+        "title": "Performance e PWA",
+        "description": "Ottimizzazioni delle performance: lazy loading, code splitting, compressione immagini. Implementazione PWA con service worker."
+    },
+    {
+        "date": "2024-01-10",
+        "title": "SEO e Analytics",
+        "description": "Ottimizzazioni SEO complete: meta tags dinamici, sitemap, structured data. Integrazione Google Analytics e tracking eventi."
+    },
+    {
+        "date": "2024-02-20",
+        "title": "Dark Mode avanzato",
+        "description": "Implementata la modalità scura avanzata con ThemeSwitch, transizioni fluide e persistenza in localStorage. Supporto per preferenze di sistema."
+    },
+    {
+        "date": "2024-03-15",
+        "title": "Sezione Libri interattiva",
+        "description": "Aggiunta sezione dedicata ai libri con lettore interattivo, breadcrumb navigation e progress tracking della lettura."
+    },
+    {
+        "date": "2024-04-10",
+        "title": "Sistema di Gaming",
+        "description": "Implementazione di mini-giochi interattivi con leaderboard e sistema di punteggi. Integrazione di GSAP per animazioni gaming."
+    },
+    {
+        "date": "2024-05-25",
+        "title": "API e Backend",
+        "description": "Sviluppo di API personalizzate per gestione contenuti dinamici. Implementazione di sistema di commenti e feedback."
+    },
+    {
+        "date": "2024-07-08",
+        "title": "Refactor architetturale",
+        "description": "Grande refactoring dell'architettura: migrazione a hook personalizzati, context API, e pattern di design più moderni."
+    },
+    {
+        "date": "2024-09-12",
+        "title": "Integrazione AI",
+        "description": "Sperimentazione con integrazione di AI per generazione contenuti e chatbot di assistenza. Implementazione di features innovative."
+    },
+    {
+        "date": "2024-11-05",
+        "title": "Animated Grid Demo",
+        "description": "Aggiunta la demo di gioco a griglia animata con Framer Motion e GSAP. Showcase di competenze in game development e animazioni."
+    },
+    {
+        "date": "2024-12-15",
+        "title": "Pagina About completamente rinnovata",
+        "description": "Refactor completo della pagina About con statistiche dinamiche, timeline interattiva, e integrazione con GitHub API per dati real-time."
+    },
+    {
+        "date": "2025-01-20",
+        "title": "Sistema di routing migliorato",
+        "description": "Migrazione completa al hash-based routing per ottimale compatibilità con GitHub Pages. Implementazione di navigation hooks personalizzati."
+    },
+    {
+        "date": "2025-06-18",
+        "title": "History page modernizzata",
+        "description": "Completamento del refactor della pagina History con design moderno, statistiche dettagliate, tabs interattive e visualizzazione avanzata dei dati GitHub."
     }
 ]

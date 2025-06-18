@@ -28,16 +28,37 @@
     "leaderboard": "Classifica",
     "chapter1Title": "Capitolo 1",
     "novelAbout": "Informazioni sulla novel"
-  },
-  "history": {
+  },  "history": {
     "title": "Storia del sito",
+    "subtitle": "La storia completa del progetto, dalle prime idee fino ad oggi",
     "timeline": "Linea temporale",
     "loadMore": "Carica altri",
     "technical": "Storia tecnica – ultimi 10 commit",
     "loading": "Caricamento dei commit in corso…",
     "error": "Errore caricamento commit:",
     "repoLabel": "Repository:",
-    "moreInfo": "Per ulteriori informazioni, visita il mio profilo GitHub:"
+    "moreInfo": "Per ulteriori informazioni, visita il mio profilo GitHub:",
+    "commits": "Commits",
+    "releases": "Release",
+    "stats": "Statistiche",
+    "totalCommits": "Commits Totali",
+    "stars": "Stelle",
+    "forks": "Fork",
+    "watchers": "Osservatori",
+    "size": "Dimensioni",
+    "contributors": "Contributori",
+    "createdIn": "Creato nel",
+    "language": "Linguaggio",
+    "noReleases": "Nessuna release formale ancora pubblicata",
+    "projectInDevelopment": "Il progetto è in continuo sviluppo!",
+    "commitTypes": "Distribuzione Tipi di Commit",
+    "feature": "Nuove funzionalità",
+    "fix": "Correzioni",
+    "update": "Aggiornamenti",
+    "refactor": "Refactoring",
+    "docs": "Documentazione",
+    "style": "Stile/UI",
+    "other": "Altro"
   },
   "footer": {
     "copyright": "© {{year}} Lollo. Tutti i diritti riservati."

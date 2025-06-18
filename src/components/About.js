@@ -39,7 +39,6 @@ import {
 } from 'react-icons/si';
 import HashLink from './HashLink';
 import { useGitHubStats, useSiteStats, usePersonalStats } from '../hooks/useStats';
-import books from '../data/books';
 
 export default function About() {
   const { t } = useTranslation();

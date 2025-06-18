@@ -1,4 +1,4 @@
-export default [
+const books = [
   {
     type: 'novella',
     slug: 'il-viaggio-misterioso',
@@ -16,7 +16,8 @@ export default [
     description: 'Raccolta di poesie di esempio.',
     chapters: [
       { slug: 'poesia-1', title: 'Poesia 1', content: 'Nel cielo azzurro risplende il sole.' },
-      { slug: 'poesia-2', title: 'Poesia 2', content: 'Sotto la luna il mare riposa.' }
-    ]
+      { slug: 'poesia-2', title: 'Poesia 2', content: 'Sotto la luna il mare riposa.' }    ]
   }
 ];
+
+export default books;

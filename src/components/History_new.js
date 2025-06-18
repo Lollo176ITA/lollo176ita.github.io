@@ -4,9 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { 
   FaGithub, 
   FaCode, 
-  FaRocket,   FaStar, 
+  FaRocket, 
+  FaStar, 
   FaCodeBranch,
   FaCalendarAlt,
+  FaClock,
   FaGitAlt,
   FaBook,
   FaLightbulb,
@@ -15,6 +17,7 @@ import {
   FaDownload,
   FaExternalLinkAlt,
   FaChevronDown,
+  FaChevronUp,
   FaHistory,
   FaTag,
   FaBug,
@@ -280,7 +283,7 @@ const StatsSection = ({ repoInfo, contributors, gitHubStats, commits, loading, t
     return { typeCount, authorCount };
   };
 
-  const { typeCount } = getCommitStats();
+  const { typeCount, authorCount } = getCommitStats();
 
   return (
     <section>

@@ -28,16 +28,37 @@
     "leaderboard": "Leaderboard",
     "chapter1Title": "Chapter 1",
     "novelAbout": "About the novel"
-  },
-  "history": {
+  },  "history": {
     "title": "Site History",
+    "subtitle": "The complete project timeline, from first ideas to today",
     "timeline": "Timeline",
     "loadMore": "Load more",
     "technical": "Technical History – last 10 commits",
     "loading": "Loading commits…",
     "error": "Error loading commits:",
     "repoLabel": "Repository:",
-    "moreInfo": "For more information, visit my GitHub profile:"
+    "moreInfo": "For more information, visit my GitHub profile:",
+    "commits": "Commits",
+    "releases": "Releases",
+    "stats": "Statistics",
+    "totalCommits": "Total Commits",
+    "stars": "Stars",
+    "forks": "Forks",
+    "watchers": "Watchers",
+    "size": "Size",
+    "contributors": "Contributors",
+    "createdIn": "Created in",
+    "language": "Language",
+    "noReleases": "No formal releases published yet",
+    "projectInDevelopment": "The project is in continuous development!",
+    "commitTypes": "Commit Types Distribution",
+    "feature": "New features",
+    "fix": "Bug fixes",
+    "update": "Updates",
+    "refactor": "Refactoring",
+    "docs": "Documentation",
+    "style": "Style/UI",
+    "other": "Other"
   },
   "footer": {
     "copyright": "© {{year}} Lollo. All rights reserved."
