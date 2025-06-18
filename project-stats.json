@@ -1,6 +1,6 @@
 {
-  "generated": "2025-06-18T14:22:23.337Z",
-  "generationTime": 29481,
+  "generated": "2025-06-18T14:27:26.762Z",
+  "generationTime": 27195,
   "project": {
     "name": "lollo176ita.github.io",
     "version": "0.1.0",
@@ -14,9 +14,9 @@
   },
   "code": {
     "files": 51,
-    "totalLines": 5315,
-    "codeLines": 4695,
-    "blankLines": 620,
+    "totalLines": 5375,
+    "codeLines": 4744,
+    "blankLines": 631,
     "languages": {
       "CSS": {
         "files": 2,
@@ -25,13 +25,13 @@
       },
       "JavaScript": {
         "files": 42,
-        "lines": 3868,
-        "percentage": 82.4
+        "lines": 3917,
+        "percentage": 82.6
       },
       "JSON": {
         "files": 7,
         "lines": 722,
-        "percentage": 15.4
+        "percentage": 15.2
       }
     }
   },
@@ -55,13 +55,13 @@
     }
   },
   "performance": {
-    "avgBuildTime": 12.3,
+    "avgBuildTime": 13.8,
     "lighthouse": {
       "performance": 59,
       "accessibility": 88,
       "bestPractices": 100,
       "seo": 100,
-      "lastUpdated": "2025-06-18T14:22:22.775Z",
+      "lastUpdated": "2025-06-18T14:27:26.344Z",
       "fallback": false
     }
   }
