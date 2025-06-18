@@ -1,0 +1,68 @@
+{
+  "generated": "2025-06-18T14:12:37.257Z",
+  "generationTime": 24434,
+  "project": {
+    "name": "lollo176ita.github.io",
+    "version": "0.1.0",
+    "dependencies": 12,
+    "devDependencies": 10,
+    "scripts": 17,
+    "size": {
+      "buildSize": 0,
+      "buildSizeGzipped": 0
+    }
+  },
+  "code": {
+    "files": 51,
+    "totalLines": 5303,
+    "codeLines": 4687,
+    "blankLines": 616,
+    "languages": {
+      "CSS": {
+        "files": 2,
+        "lines": 91,
+        "percentage": 1.9
+      },
+      "JavaScript": {
+        "files": 42,
+        "lines": 3874,
+        "percentage": 82.7
+      },
+      "JSON": {
+        "files": 7,
+        "lines": 722,
+        "percentage": 15.4
+      }
+    }
+  },
+  "structure": {
+    "components": 20,
+    "routes": 8,
+    "books": 2,
+    "chapters": 4,
+    "hooks": 3,
+    "pages": 1
+  },
+  "git": {
+    "commits": 100,
+    "contributors": 0,
+    "branches": 12,
+    "lastCommit": {
+      "hash": "966f3f0",
+      "message": "feat: Implement Lighthouse metrics automation and performance optimizations",
+      "author": "Lollo176ITA",
+      "date": "2025-06-18T13:57:04.000Z"
+    }
+  },
+  "performance": {
+    "avgBuildTime": 11.5,
+    "lighthouse": {
+      "performance": 60,
+      "accessibility": 88,
+      "bestPractices": 100,
+      "seo": 100,
+      "lastUpdated": "2025-06-18T14:12:36.820Z",
+      "fallback": false
+    }
+  }
+}
