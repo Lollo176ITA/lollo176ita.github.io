@@ -1,12 +1,12 @@
 {
-  "generated": "2025-06-18T13:22:35.428Z",
-  "generationTime": 244,
+  "generated": "2025-06-18T13:54:58.652Z",
+  "generationTime": 26507,
   "project": {
     "name": "lollo176ita.github.io",
     "version": "0.1.0",
     "dependencies": 20,
-    "devDependencies": 5,
-    "scripts": 9,
+    "devDependencies": 10,
+    "scripts": 14,
     "size": {
       "buildSize": 0,
       "buildSizeGzipped": 0
@@ -14,9 +14,9 @@
   },
   "code": {
     "files": 48,
-    "totalLines": 4928,
-    "codeLines": 4416,
-    "blankLines": 512,
+    "totalLines": 4956,
+    "codeLines": 4437,
+    "blankLines": 519,
     "languages": {
       "CSS": {
         "files": 2,
@@ -25,12 +25,12 @@
       },
       "JavaScript": {
         "files": 39,
-        "lines": 3600,
-        "percentage": 81.5
+        "lines": 3619,
+        "percentage": 81.6
       },
       "JSON": {
         "files": 7,
-        "lines": 720,
+        "lines": 722,
         "percentage": 16.3
       }
     }
@@ -44,23 +44,25 @@
     "pages": 1
   },
   "git": {
-    "commits": 0,
-    "contributors": 1,
-    "branches": 1,
+    "commits": 99,
+    "contributors": 0,
+    "branches": 12,
     "lastCommit": {
-      "hash": "unknown",
-      "message": "No commit data",
-      "author": "Unknown",
-      "date": "2025-06-18T13:22:35.413Z"
+      "hash": "b735d1e",
+      "message": "feat: Add fake performance metrics section to /creations and update site statistics with dynamic data",
+      "author": "Lollo176ITA",
+      "date": "2025-06-18T13:26:58.000Z"
     }
   },
   "performance": {
-    "avgBuildTime": 41.05648322438386,
+    "avgBuildTime": 13.1,
     "lighthouse": {
-      "performance": 99,
-      "accessibility": 97,
-      "bestPractices": 99,
-      "seo": 95
+      "performance": 57,
+      "accessibility": 88,
+      "bestPractices": 100,
+      "seo": 100,
+      "lastUpdated": "2025-06-18T13:54:58.204Z",
+      "fallback": false
     }
   }
 }

@@ -1,34 +1,45 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 
 // Importa le statistiche reali generate localmente
 let projectStatsCache = null;
+let loadingPromise = null;
 
 /**
  * Carica le statistiche reali del progetto generate localmente
  */
-async function loadProjectStats() {
+const loadProjectStats = async () => {
+  // Se già in cache, restituisci immediatamente
   if (projectStatsCache) return projectStatsCache;
   
-  try {
-    const response = await fetch('/project-stats.json');
-    if (response.ok) {
-      projectStatsCache = await response.json();
-      return projectStatsCache;
-    }
-  } catch (error) {
-    console.warn('Impossibile caricare statistiche locali:', error);
-  }
+  // Se già in caricamento, aspetta il risultato
+  if (loadingPromise) return loadingPromise;
   
-  // Fallback: importa direttamente dal file
-  try {
-    const stats = await import('../data/project-stats.json');
-    projectStatsCache = stats.default || stats;
-    return projectStatsCache;
-  } catch (error) {
-    console.warn('Impossibile importare statistiche:', error);
-    return null;
-  }
-}
+  loadingPromise = (async () => {
+    try {
+      const response = await fetch('/project-stats.json');
+      if (response.ok) {
+        projectStatsCache = await response.json();
+        return projectStatsCache;
+      }
+    } catch (error) {
+      console.warn('Impossibile caricare statistiche locali:', error);
+    }
+    
+    // Fallback: importa direttamente dal file
+    try {
+      const stats = await import('../data/project-stats.json');
+      projectStatsCache = stats.default || stats;
+      return projectStatsCache;
+    } catch (error) {
+      console.warn('Impossibile importare statistiche:', error);
+      return null;
+    }
+  })();
+  
+  const result = await loadingPromise;
+  loadingPromise = null; // Reset dopo il caricamento
+  return result;
+};
 
 /**
  * Hook per ottenere statistiche reali del repository GitHub + dati locali
