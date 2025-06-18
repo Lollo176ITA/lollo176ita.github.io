@@ -26,9 +26,11 @@ import {
   SiTailwindcss,
   SiFramer
 } from 'react-icons/si';
-import { motion, AnimatePresence } from 'framer-motion';
 import HashLink from '../common/HashLink';
 import { useSiteStats } from '../../hooks/useStats';
+
+// Import standard per evitare errori React #130
+import { motion, AnimatePresence } from 'framer-motion';
 
 const sparkleColors = { games: 'bg-yellow-300', novel: 'bg-emerald-300' };
 

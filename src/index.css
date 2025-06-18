@@ -5,7 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  /* Ottimizzazioni rendering */
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
 }
+
 /* Ombra bianca */
 .shadow-white {
   box-shadow: 0 2px 3px -1px rgba(255, 255, 255, 0.2), 0 1px 2px -1px rgba(255, 255, 255, 0.1);
@@ -24,13 +29,8 @@ code {
 html {
   transition: background-color var(--transition-duration), color var(--transition-duration);
   scroll-behavior: smooth;
-}
-
-/* in fondo al file */
-.paper-bg {
-  background-image: url('/public/textures/paper.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
+  /* Preload font display per evitare FOIT */
+  font-display: swap;
 }
 
 
@@ -81,5 +81,22 @@ html {
 
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #64748b;
+}
+
+/* Performance Optimizations */
+* {
+  will-change: auto;
+}
+
+.animate-spin,
+.animate-pulse,
+[class*="animate-"] {
+  will-change: transform;
+}
+
+/* Preload critici */
+.loading-critical {
+  content-visibility: auto;
+  contain-intrinsic-size: 200px;
 }
 

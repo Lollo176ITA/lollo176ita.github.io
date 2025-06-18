@@ -1,42 +1,42 @@
 {
-  "generated": "2025-06-18T13:54:58.652Z",
-  "generationTime": 26507,
+  "generated": "2025-06-18T14:27:26.762Z",
+  "generationTime": 27195,
   "project": {
     "name": "lollo176ita.github.io",
     "version": "0.1.0",
-    "dependencies": 20,
+    "dependencies": 12,
     "devDependencies": 10,
-    "scripts": 14,
+    "scripts": 18,
     "size": {
       "buildSize": 0,
       "buildSizeGzipped": 0
     }
   },
   "code": {
-    "files": 48,
-    "totalLines": 4956,
-    "codeLines": 4437,
-    "blankLines": 519,
+    "files": 51,
+    "totalLines": 5375,
+    "codeLines": 4744,
+    "blankLines": 631,
     "languages": {
       "CSS": {
         "files": 2,
-        "lines": 96,
+        "lines": 105,
         "percentage": 2.2
       },
       "JavaScript": {
-        "files": 39,
-        "lines": 3619,
-        "percentage": 81.6
+        "files": 42,
+        "lines": 3917,
+        "percentage": 82.6
       },
       "JSON": {
         "files": 7,
         "lines": 722,
-        "percentage": 16.3
+        "percentage": 15.2
       }
     }
   },
   "structure": {
-    "components": 19,
+    "components": 20,
     "routes": 8,
     "books": 2,
     "chapters": 4,
@@ -44,24 +44,24 @@
     "pages": 1
   },
   "git": {
-    "commits": 99,
+    "commits": 100,
     "contributors": 0,
     "branches": 12,
     "lastCommit": {
-      "hash": "b735d1e",
-      "message": "feat: Add fake performance metrics section to /creations and update site statistics with dynamic data",
+      "hash": "966f3f0",
+      "message": "feat: Implement Lighthouse metrics automation and performance optimizations",
       "author": "Lollo176ITA",
-      "date": "2025-06-18T13:26:58.000Z"
+      "date": "2025-06-18T13:57:04.000Z"
     }
   },
   "performance": {
-    "avgBuildTime": 13.1,
+    "avgBuildTime": 13.8,
     "lighthouse": {
-      "performance": 57,
+      "performance": 59,
       "accessibility": 88,
       "bestPractices": 100,
       "seo": 100,
-      "lastUpdated": "2025-06-18T13:54:58.204Z",
+      "lastUpdated": "2025-06-18T14:27:26.344Z",
       "fallback": false
     }
   }

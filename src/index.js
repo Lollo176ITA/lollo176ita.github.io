@@ -15,7 +15,25 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// Performance monitoring ottimizzato
+reportWebVitals((metric) => {
+  // In produzione, invia a servizio di analytics
+  console.log('Performance Metric:', metric.name, metric.value);
+});
+
+// Lazy load Service Worker solo se necessario
+if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    // Attendi che React si sia inizializzato completamente
+    setTimeout(() => {
+      import('./utils/serviceWorker').then(({ registerServiceWorker }) => {
+        registerServiceWorker();
+      }).catch(err => {
+        console.warn('Service Worker non disponibile:', err);
+      });
+    }, 1000);
+  });
+} else {
+  console.log('Service Worker skipped (development mode or not supported)');
+}
 reportWebVitals();
