@@ -1,17 +1,15 @@
-// Service Worker per caching avanzato e performance
+// Service Worker per GitHub Pages ottimizzato
 
-const CACHE_NAME = 'lollo176ita-v1.1.0';
-const STATIC_CACHE = 'static-v1.1.0';
-const DYNAMIC_CACHE = 'dynamic-v1.1.0';
+const CACHE_NAME = 'lollo176ita-v1.2.0';
+const STATIC_CACHE = 'static-v1.2.0';
+const DYNAMIC_CACHE = 'dynamic-v1.2.0';
 
-// File da cachare immediatamente
+// File da cachare - solo quelli che esistono sempre
 const STATIC_FILES = [
-  '/',
-  '/static/js/main.js',
-  '/static/css/main.css',
   '/manifest.json',
-  '/textures/paper.webp',
-  '/project-stats.json'
+  '/favicon.ico',
+  '/logo192.png',
+  '/logo512.png'
 ];
 
 // Install event - carica cache iniziale
@@ -21,8 +19,16 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(STATIC_CACHE)
       .then(cache => {
-        console.log('SW: Caching static files');
-        return cache.addAll(STATIC_FILES);
+        console.log('SW: Caching basic files');
+        // Cache solo file statici garantiti, uno alla volta per evitare errori
+        return Promise.allSettled(
+          STATIC_FILES.map(url => 
+            cache.add(url).catch(err => {
+              console.warn('SW: Failed to cache', url, err);
+              return null;
+            })
+          )
+        );
       })
       .then(() => {
         console.log('SW: Installation complete');
@@ -30,6 +36,8 @@ self.addEventListener('install', event => {
       })
       .catch(err => {
         console.error('SW: Installation failed', err);
+        // Continua anche se il caching fallisce
+        return self.skipWaiting();
       })
   );
 });
@@ -67,14 +75,19 @@ self.addEventListener('fetch', event => {
     return;
   }
   
+  // Skip problematic requests
+  if (request.method !== 'GET' || url.pathname.includes('chrome-extension')) {
+    return;
+  }
+  
   // Strategy per diversi tipi di richieste
   if (request.destination === 'image') {
     // Immagini: Cache First con fallback
     event.respondWith(cacheFirstStrategy(request, DYNAMIC_CACHE));
   } else if (request.destination === 'script' || request.destination === 'style') {
-    // JS/CSS: Cache First con network fallback
-    event.respondWith(cacheFirstStrategy(request, STATIC_CACHE));
-  } else if (request.destination === 'document') {
+    // JS/CSS: Cache First con network fallback + handle chunks
+    event.respondWith(cacheFirstStrategyWithRetry(request, STATIC_CACHE));
+  } else if (request.destination === 'document' || url.pathname.includes('.html')) {
     // HTML: Network First con cache fallback
     event.respondWith(networkFirstStrategy(request, DYNAMIC_CACHE));
   } else {
@@ -104,6 +117,52 @@ async function cacheFirstStrategy(request, cacheName) {
     return networkResponse;
   } catch (error) {
     console.error('SW: Cache first failed for', request.url, error);
+    throw error;
+  }
+}
+
+// Cache First Strategy con retry - per JS chunks
+async function cacheFirstStrategyWithRetry(request, cacheName) {
+  try {
+    const cache = await caches.open(cacheName);
+    const cachedResponse = await cache.match(request);
+    
+    if (cachedResponse) {
+      console.log('SW: Cache hit for', request.url);
+      return cachedResponse;
+    }
+    
+    console.log('SW: Cache miss, fetching', request.url);
+    
+    // Prova il fetch con retry per i chunks
+    let networkResponse;
+    let attempts = 0;
+    const maxAttempts = 3;
+    
+    while (attempts < maxAttempts) {
+      try {
+        networkResponse = await fetch(request);
+        if (networkResponse.status === 200) {
+          break;
+        }
+        throw new Error(`HTTP ${networkResponse.status}`);
+      } catch (error) {
+        attempts++;
+        if (attempts >= maxAttempts) {
+          throw error;
+        }
+        console.warn(`SW: Retry ${attempts}/${maxAttempts} for`, request.url);
+        await new Promise(resolve => setTimeout(resolve, 1000 * attempts));
+      }
+    }
+    
+    if (networkResponse.status === 200) {
+      cache.put(request, networkResponse.clone());
+    }
+    
+    return networkResponse;
+  } catch (error) {
+    console.error('SW: Cache first with retry failed for', request.url, error);
     throw error;
   }
 }
