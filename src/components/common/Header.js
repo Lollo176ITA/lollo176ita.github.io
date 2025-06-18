@@ -2,8 +2,8 @@ import React, { useState, useRef } from "react";
 import Navbar from "./Navbar";
 import { FiMenu } from "react-icons/fi";
 import LanguageSwitcher from './LanguageSwitcher';
-import { useHashNavigation } from '../hooks/useHashRouter';
-import { HashRouter } from '../utils/hashRouter';
+import { useHashNavigation } from '../../hooks/useHashRouter';
+import { HashRouter } from '../../utils/hashRouter';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);

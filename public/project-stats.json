@@ -1,0 +1,66 @@
+{
+  "generated": "2025-06-18T12:32:42.141Z",
+  "generationTime": 227,
+  "project": {
+    "name": "lollo176ita.github.io",
+    "version": "0.1.0",
+    "dependencies": 20,
+    "devDependencies": 5,
+    "scripts": 9,
+    "size": {
+      "buildSize": 0,
+      "buildSizeGzipped": 0
+    }
+  },
+  "code": {
+    "files": 48,
+    "totalLines": 4448,
+    "codeLines": 3958,
+    "blankLines": 490,
+    "languages": {
+      "CSS": {
+        "files": 2,
+        "lines": 96,
+        "percentage": 2.4
+      },
+      "JavaScript": {
+        "files": 39,
+        "lines": 3180,
+        "percentage": 80.3
+      },
+      "JSON": {
+        "files": 7,
+        "lines": 682,
+        "percentage": 17.2
+      }
+    }
+  },
+  "structure": {
+    "components": 19,
+    "routes": 8,
+    "books": 2,
+    "chapters": 4,
+    "hooks": 3,
+    "pages": 1
+  },
+  "git": {
+    "commits": 95,
+    "contributors": 0,
+    "branches": 12,
+    "lastCommit": {
+      "hash": "c8f7114",
+      "message": "feat: Update Italian translations and add new history data",
+      "author": "Lollo176ITA",
+      "date": "2025-06-18T10:35:30.000Z"
+    }
+  },
+  "performance": {
+    "avgBuildTime": 39.18186541282739,
+    "lighthouse": {
+      "performance": 90,
+      "accessibility": 96,
+      "bestPractices": 96,
+      "seo": 97
+    }
+  }
+}

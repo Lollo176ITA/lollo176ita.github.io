@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { FaGamepad } from 'react-icons/fa';
 import { GiOpenBook } from 'react-icons/gi';
 import { motion, AnimatePresence } from 'framer-motion';
-import HashLink from './HashLink';
-import books from '../data/books';
+import HashLink from '../common/HashLink';
+import books from '../../data/books';
 
 const iconTarget = { top: 5, left: 5, scale: 0.5 };
 const sparkleColors = { games: 'bg-yellow-300', novel: 'bg-emerald-300' };

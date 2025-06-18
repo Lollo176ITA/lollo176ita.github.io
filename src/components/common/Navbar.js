@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import HashLink from './HashLink';
-import { useActiveRoute } from '../hooks/useNavigation';
+import { useActiveRoute } from '../../hooks/useNavigation';
 
 export default function Navbar({ isOpen, toggleMenu }) {
   const { t } = useTranslation();

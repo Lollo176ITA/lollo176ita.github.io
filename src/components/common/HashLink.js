@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter } from '../utils/hashRouter';
+import { HashRouter } from '../../utils/hashRouter';
 
 export default function HashLink({ 
   to, 

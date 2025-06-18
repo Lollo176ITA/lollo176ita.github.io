@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiBook, FiEdit3, FiArrowLeft } from 'react-icons/fi';
-import HashLink from '../HashLink';
+import HashLink from '../common/HashLink';
 import books from '../../data/books';
 
 export default function BooksHome() {

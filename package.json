@@ -24,14 +24,16 @@
     "react-tsparticles": "^2.12.2",
     "swiper": "^11.2.8",
     "web-vitals": "^2.1.4"
-  },
-  "scripts": {
+  },  "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run stats && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "stats": "node scripts/generate-stats.js && copy src\\data\\project-stats.json public\\project-stats.json",
+    "stats:watch": "npm run stats && npm run start",
+    "precommit": "node scripts/pre-commit-hook.js"
   },
   "eslintConfig": {
     "extends": [

@@ -4,11 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { 
   FaGithub, 
   FaCode, 
-  FaRocket, 
-  FaStar, 
+  FaRocket,   FaStar, 
   FaCodeBranch,
   FaCalendarAlt,
-  FaClock,
   FaGitAlt,
   FaBook,
   FaLightbulb,
@@ -17,7 +15,6 @@ import {
   FaDownload,
   FaExternalLinkAlt,
   FaChevronDown,
-  FaChevronUp,
   FaHistory,
   FaTag,
   FaBug,
@@ -25,9 +22,9 @@ import {
   FaPlus,
   FaEye
 } from 'react-icons/fa';
-import { useGitHubStats } from '../hooks/useStats';
-import historyIt from '../data/history.it.json';
-import historyEn from '../data/history.en.json';
+import { useGitHubStats } from '../../hooks/useStats';
+import historyIt from '../../data/history.it.json';
+import historyEn from '../../data/history.en.json';
 
 // Timeline Section Component
 const TimelineSection = ({ visibleHistory, visibleCount, setVisibleCount, sortedHistory, t }) => (
@@ -283,7 +280,7 @@ const StatsSection = ({ repoInfo, contributors, gitHubStats, commits, loading, t
     return { typeCount, authorCount };
   };
 
-  const { typeCount, authorCount } = getCommitStats();
+  const { typeCount } = getCommitStats();
 
   return (
     <section>

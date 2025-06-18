@@ -37,8 +37,8 @@ import {
   SiGit,
   SiVisualstudiocode
 } from 'react-icons/si';
-import HashLink from './HashLink';
-import { useGitHubStats, useSiteStats, usePersonalStats } from '../hooks/useStats';
+import HashLink from '../common/HashLink';
+import { useGitHubStats, useSiteStats, usePersonalStats } from '../../hooks/useStats';
 
 export default function About() {
   const { t } = useTranslation();

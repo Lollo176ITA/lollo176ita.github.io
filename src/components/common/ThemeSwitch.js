@@ -1,6 +1,6 @@
 // src/components/ThemeSwitch.js
 import React, { useContext } from 'react';
-import { ThemeContext } from '../ThemeContext';
+import { ThemeContext } from '../../ThemeContext';
 import { FaSun, FaMoon } from 'react-icons/fa';
 
 export default function ThemeSwitch() {

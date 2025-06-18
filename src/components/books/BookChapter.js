@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiArrowLeft, FiBook, FiBookOpen, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import HashLink from '../HashLink';
+import HashLink from '../common/HashLink';
 import { useHashNavigation } from '../../hooks/useHashRouter';
 import { useBookTracking } from '../../hooks/useNavigation';
 import books from '../../data/books';

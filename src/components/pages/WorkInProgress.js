@@ -2,7 +2,7 @@ import React from 'react';
 import { FaTools } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import HashLink from './HashLink';
+import HashLink from '../common/HashLink';
 
 export default function WorkInProgress() {
   const { t } = useTranslation();
