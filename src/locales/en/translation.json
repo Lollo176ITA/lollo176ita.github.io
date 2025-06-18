@@ -50,13 +50,28 @@
   "stocazzato": {
     "title": "You are about to be stocazzato",
     "button": "Click here to evacuate ({{timer}})"
-  },
-  "books": {
+  },  "books": {
+    "title": "Books",
     "chooseBook": "Choose a book",
+    "description": "Explore my collection of stories, novels, and poetry",
     "overview": "Overview",
     "chapters": "Chapters",
+    "chapter": "Chapter",
+    "book": "book",
+    "books": "books",
     "next": "Next chapter",
-    "prev": "Previous chapter"
+    "prev": "Previous chapter",
+    "read": "Read",
+    "readMore": "Read More",
+    "startReading": "Start Reading",
+    "randomChapter": "Random Chapter",
+    "backToBooks": "Back to Books",
+    "notFound": "Book Not Found",
+    "notFoundDescription": "The book you're looking for doesn't exist or has been moved.",
+    "noBooks": "No Books Available",
+    "noBooksDescription": "There are currently no books to display.",
+    "noChapters": "No chapters available for this book.",
+    "minutesRead": "min read"
   },
   "bookTypes": {
     "novella": "Novella",

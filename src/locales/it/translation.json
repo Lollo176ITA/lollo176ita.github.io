@@ -50,13 +50,28 @@
   "stocazzato": {
     "title": "Stai per essere stocazzato",
     "button": "Clicca qui per evacuare ({{timer}})"
-  },
-  "books": {
+  },  "books": {
+    "title": "Libri",
     "chooseBook": "Scegli un libro",
+    "description": "Esplora la mia collezione di storie, romanzi e poesie",
     "overview": "Panoramica",
     "chapters": "Capitoli",
+    "chapter": "Capitolo",
+    "book": "libro",
+    "books": "libri",
     "next": "Capitolo successivo",
-    "prev": "Capitolo precedente"
+    "prev": "Capitolo precedente",
+    "read": "Leggi",
+    "readMore": "Leggi di più",
+    "startReading": "Inizia a Leggere",
+    "randomChapter": "Capitolo Casuale",
+    "backToBooks": "Torna ai Libri",
+    "notFound": "Libro Non Trovato",
+    "notFoundDescription": "Il libro che stai cercando non esiste o è stato spostato.",
+    "noBooks": "Nessun Libro Disponibile",
+    "noBooksDescription": "Al momento non ci sono libri da mostrare.",
+    "noChapters": "Nessun capitolo disponibile per questo libro.",
+    "minutesRead": "min di lettura"
   },
   "bookTypes": {
     "novella": "Novella",
