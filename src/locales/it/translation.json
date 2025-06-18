@@ -21,14 +21,20 @@
     "heroTitle": "Le mie creazioni",
     "subtitle": "Scopri le mie creazioni digitali: dai giochi interattivi ai libri coinvolgenti",
     "games":     "Giochi",
-    "gamesDesc": "Immergiti nel prototipo WebGL",
+    "gamesDesc": "Giochi interattivi e prototipi",
     "novel":     "Libri",
-    "novelDesc": "Sfoglia i miei libri",
+    "novelDesc": "Racconti e narrativa digitale",
     "playGame": "Avvia il gioco",
     "leaderboard": "Classifica",
     "chapter1Title": "Capitolo 1",
     "novelAbout": "Informazioni sulla novel",
-    "moreComingSoon": "Altre creazioni in arrivo presto..."
+    "moreComingSoon": "Altre creazioni in arrivo presto...",
+    "exploreCreations": "Esplora le mie creazioni",
+    "digitalCreations": "Le mie creazioni digitali",
+    "philosophy": "La creatività è l'intelligenza che si diverte. Ogni progetto è una nuova avventura.",
+    "developmentPhilosophy": "La mia filosofia di sviluppo",
+    "newCreationsTitle": "Nuove Creazioni in Arrivo",
+    "followMe": "Seguimi"
   },"history": {
     "title": "Storia del sito",
     "subtitle": "La storia completa del progetto, dalle prime idee fino ad oggi",

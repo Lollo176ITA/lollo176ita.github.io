@@ -1,21 +1,55 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaGamepad } from 'react-icons/fa';
+import { 
+  FaGamepad, 
+  FaCode, 
+  FaRocket, 
+  FaStar,
+  FaGithub,
+  FaHeart,
+  FaLightbulb,
+  FaPlay,
+  FaTrophy,
+  FaQuoteLeft,
+  FaExternalLinkAlt
+} from 'react-icons/fa';
 import { GiOpenBook } from 'react-icons/gi';
+import { 
+  SiReact, 
+  SiJavascript, 
+  SiUnity, 
+  SiCsharp,
+  SiTailwindcss,
+  SiFramer
+} from 'react-icons/si';
 import { motion, AnimatePresence } from 'framer-motion';
 import HashLink from '../common/HashLink';
+import { useSiteStats } from '../../hooks/useStats';
 
-const iconTarget = { top: 5, left: 5, scale: 0.5 };
 const sparkleColors = { games: 'bg-yellow-300', novel: 'bg-emerald-300' };
 
-function Card({ variant, icon, label, links, hovered, onHover, onLeave, onClick, isActive, directLink }) {
+// Enhanced Card Component
+function CreationCard({ variant, icon, title, description, stats, techStack, links, hovered, onHover, onLeave, onClick, isActive, directLink }) {
   const handleClick = () => {
     if (directLink) {
-      // Se c'è un link diretto, naviga immediatamente
       window.location.hash = directLink;
     } else {
-      // Altrimenti comportamento normale di espansione
       onClick();
+    }
+  };
+
+  const cardColors = {
+    games: {
+      gradient: 'from-indigo-600 via-purple-600 to-indigo-800',
+      border: 'border-indigo-400',
+      shadow: '0 0 32px 4px #4f46e5',
+      accent: 'text-indigo-300'
+    },
+    novel: {
+      gradient: 'from-emerald-600 via-teal-600 to-emerald-800',
+      border: 'border-emerald-400', 
+      shadow: '0 0 32px 4px #10b981',
+      accent: 'text-emerald-300'
     }
   };
 
@@ -24,157 +58,378 @@ function Card({ variant, icon, label, links, hovered, onHover, onLeave, onClick,
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
       onClick={handleClick}
-      className={
-        `flex-1 relative flex flex-col items-center justify-start p-12 rounded-3xl cursor-pointer shadow-lg transition-all duration-300 border-4 min-h-[280px] ` +
-        (variant === 'games'
-          ? (isActive
-              ? 'scale-105 z-10 border-indigo-400 bg-indigo-800/90 text-white'
-              : 'border-transparent bg-gradient-to-tr from-indigo-600 to-indigo-700 text-white hover:from-indigo-500 hover:to-indigo-600')
-          : (isActive
-              ? 'scale-105 z-10 border-emerald-400 bg-emerald-800/90 text-white'
-              : 'border-transparent bg-gradient-to-tr from-emerald-600 to-emerald-700 text-white hover:from-emerald-500 hover:to-emerald-600'))
-      }
+      className={`relative flex flex-col p-8 rounded-2xl cursor-pointer backdrop-blur-sm border-2 transition-all duration-500 min-h-[420px] ${
+        isActive 
+          ? `scale-105 z-20 ${cardColors[variant].border} bg-gradient-to-br ${cardColors[variant].gradient} text-white shadow-2xl`
+          : `border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 hover:bg-gradient-to-br hover:${cardColors[variant].gradient} hover:text-white group`
+      }`}
       whileHover={!isActive ? { 
-        scale: 1.05, 
-        boxShadow: variant === 'games' ? '0 0 32px 4px #4f46e5' : '0 0 32px 4px #10b981' 
+        scale: 1.02, 
+        boxShadow: cardColors[variant].shadow,
+        transition: { duration: 0.3 }
       } : {}}
-      whileTap={{ scale: 0.95 }}
-      transition={{ type: 'spring', stiffness: 200 }}
+      whileTap={{ scale: 0.98 }}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ type: 'spring', stiffness: 100, damping: 15 }}
     >
-      {/* Sparkle effect on hover */}
+      {/* Sparkle Effect */}
       {hovered && !isActive && (
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 0.4, y: 0 }}
-          exit={{ opacity: 0, y: 40 }}
-          className="absolute inset-0 pointer-events-none z-0"
-        >
-          {[...Array(20)].map((_, i) => (
+        <motion.div className="absolute inset-0 pointer-events-none z-0 rounded-2xl overflow-hidden">
+          {[...Array(15)].map((_, i) => (
             <motion.div
               key={i}
-              className={`w-2 h-2 ${sparkleColors[variant]} rounded-sm absolute`}
+              className={`w-1.5 h-1.5 ${sparkleColors[variant]} rounded-full absolute`}
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
-                opacity: 0.7 + Math.random() * 0.3
+                opacity: 0.6 + Math.random() * 0.4
               }}
-              animate={{ y: [-10, 10, -10] }}
-              transition={{ duration: 1.2 + Math.random(), repeat: Infinity, delay: i * 0.05 }}
+              animate={{ 
+                y: [-8, 8, -8],
+                x: [-4, 4, -4],
+                opacity: [0.6, 1, 0.6]
+              }}
+              transition={{ 
+                duration: 1.5 + Math.random() * 0.5, 
+                repeat: Infinity, 
+                delay: i * 0.1 
+              }}
             />
           ))}
         </motion.div>
       )}
 
-      {/* ICONA */}
-      <motion.div
+      {/* Header with Icon */}
+      <motion.div 
+        className="flex items-center mb-6"
         layout
-        initial={false}
-        animate={
-          isActive
-            ? { top: iconTarget.top, left: iconTarget.left, scale: iconTarget.scale }
-            : { top: 0, left: 0, scale: 1 }
-        }
-        transition={{ type: 'spring', stiffness: 200, damping: 30, duration: 0.5 }}
-        style={{ zIndex: 20, position: isActive ? 'absolute' : 'relative' }}
-        className="mb-4"
-        whileHover={!isActive && hovered ? { rotate: [0, 10, -10, 0], scale: 1.15 } : {}}
+        animate={isActive ? { scale: 0.8, marginBottom: 16 } : { scale: 1, marginBottom: 24 }}
       >
-        {icon}
+        <motion.div
+          className="mr-4"
+          whileHover={!isActive && hovered ? { rotate: [0, 12, -12, 0], scale: 1.1 } : {}}
+          transition={{ duration: 0.4 }}
+        >
+          {icon}
+        </motion.div>
+        <div>
+          <h3 className={`text-2xl font-bold ${isActive || hovered ? 'text-white' : 'text-gray-800 dark:text-white group-hover:text-white'}`}>
+            {title}
+          </h3>
+          <p className={`text-sm ${isActive || hovered ? cardColors[variant].accent : 'text-gray-500 dark:text-gray-400 group-hover:' + cardColors[variant].accent}`}>
+            {description}
+          </p>
+        </div>
       </motion.div>
 
-      {/* LABEL */}
-      <motion.span
-        initial={false}
-        animate={{
-          opacity: isActive ? 0 : 1,
-          y: isActive ? -10 : 0,
-          scale: isActive ? 0.9 : 1
-        }}
-        transition={{ duration: 0.22 }}
-        className="text-3xl font-bold mt-2 mb-0"
-        style={{
-          zIndex: 10,
-          position: isActive ? 'absolute' : 'relative',
-          left: isActive ? iconTarget.left + 60 : 0,
-          top: isActive ? iconTarget.top + 5 : 0
-        }}
-      >
-        {label}
-      </motion.span>
+      {/* Stats Grid */}
+      {!isActive && (
+        <motion.div 
+          className="grid grid-cols-2 gap-4 mb-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
+          {stats.map((stat, idx) => (
+            <div key={idx} className={`text-center p-3 rounded-lg ${hovered ? 'bg-white/20' : 'bg-gray-100 dark:bg-gray-700 group-hover:bg-white/20'}`}>
+              <div className={`text-lg font-bold ${isActive || hovered ? 'text-white' : 'text-gray-800 dark:text-white group-hover:text-white'}`}>
+                {stat.value}
+              </div>
+              <div className={`text-xs ${isActive || hovered ? cardColors[variant].accent : 'text-gray-500 dark:text-gray-400 group-hover:' + cardColors[variant].accent}`}>
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </motion.div>
+      )}
 
-      {/* LISTA LINK */}
-      <AnimatePresence>
-        {isActive && (
-          <motion.ul
+      {/* Tech Stack */}
+      {!isActive && techStack && (
+        <motion.div 
+          className="mb-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          <div className={`text-sm font-medium mb-3 ${isActive || hovered ? 'text-white' : 'text-gray-600 dark:text-gray-400 group-hover:text-white'}`}>
+            Tech Stack:
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {techStack.map((tech, idx) => (
+              <motion.div
+                key={idx}
+                className={`flex items-center px-2 py-1 rounded-md text-xs ${hovered ? 'bg-white/20 text-white' : 'bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 group-hover:bg-white/20 group-hover:text-white'}`}
+                whileHover={{ scale: 1.05 }}
+              >
+                <tech.icon className="mr-1" size={12} />
+                {tech.name}
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      )}
+
+      {/* Action Button or Links */}
+      <div className="mt-auto">
+        {!isActive && (          <motion.div
+            className={`text-center py-3 px-4 rounded-lg font-medium transition-colors ${
+              hovered 
+                ? 'bg-white/20 text-white' 
+                : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 group-hover:bg-white/20 group-hover:text-white'
+            }`}
+            whileHover={{ scale: 1.02 }}
+          >
+            {directLink ? '📖 Esplora Libri' : '🎮 Espandi per vedere i giochi'}
+          </motion.div>
+        )}
+
+        {/* Expanded Links */}
+        <AnimatePresence>
+          {isActive && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="space-y-3">
+                {links.map(({ href, text, icon: LinkIcon }, idx) => (
+                  <motion.div key={idx} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.1 }}>
+                    <HashLink 
+                      to={href.replace('#', '')} 
+                      className="flex items-center p-3 bg-white/20 rounded-lg hover:bg-white/30 transition-colors text-white group/link"
+                    >
+                      <LinkIcon className="mr-3 group-hover/link:scale-110 transition-transform" />
+                      <span className="font-medium">{text}</span>
+                      <FaExternalLinkAlt className="ml-auto opacity-60 group-hover/link:opacity-100" size={12} />
+                    </HashLink>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  );
+}
+
+// Hero Section Component  
+function HeroSection({ t }) {
+  return (
+    <motion.section 
+      className="text-center mb-16"
+      initial={{ opacity: 0, y: -30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      <motion.div 
+        className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-full text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-6"
+        whileHover={{ scale: 1.05 }}
+      >
+        <FaRocket className="mr-2" />
+        {t('creations.digitalCreations')}
+      </motion.div>
+      
+      <h1 className="text-6xl md:text-7xl font-extrabold bg-gradient-to-r from-indigo-600 via-purple-600 to-teal-600 bg-clip-text text-transparent mb-6">
+        {t('creations.heroTitle')}
+      </h1>
+      
+      <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        {t('creations.subtitle')}
+      </p>
+    </motion.section>
+  );
+}
+
+// Stats Overview Component
+function StatsOverview({ stats, t }) {
+  return (
+    <motion.section 
+      className="mb-16"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+    >
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+        {[
+          { icon: FaCode, label: 'Righe di Codice', value: stats?.linesOfCode || '4K+', color: 'text-blue-500' },
+          { icon: FaRocket, label: 'Progetti Attivi', value: '8+', color: 'text-purple-500' },
+          { icon: FaHeart, label: 'Ore di Sviluppo', value: '500+', color: 'text-red-500' },
+          { icon: FaStar, label: 'Tecnologie', value: '12+', color: 'text-yellow-500' }
+        ].map((stat, idx) => (
+          <motion.div
+            key={idx}
+            className="text-center p-6 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all"
+            whileHover={{ scale: 1.05, y: -5 }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
-            className=" mx-4 mt-6 space-y-2 z-10 text-left w-full max-w-xs"
-            style={{ position: 'absolute', left: iconTarget.left + 40, top: iconTarget.top + 28 }}
-          >            {links.map(({ href, text }, idx) => (
-              <li key={idx}>
-                <HashLink to={href.replace('#', '')} className="block text-xl hover:underline hover:text-yellow-300 transition-colors">{text}</HashLink>
-              </li>
-            ))}
-          </motion.ul>
-        )}
-      </AnimatePresence>
-    </motion.div>
+            transition={{ delay: idx * 0.1 + 0.3 }}
+          >
+            <stat.icon className={`text-3xl ${stat.color} mx-auto mb-3`} />
+            <div className="text-2xl font-bold text-gray-800 dark:text-white mb-1">{stat.value}</div>
+            <div className="text-sm text-gray-500 dark:text-gray-400">{stat.label}</div>
+          </motion.div>
+        ))}
+      </div>
+    </motion.section>
+  );
+}
+
+// Quote Section Component
+function InspirationalQuote({ t }) {
+  return (
+    <motion.section 
+      className="mb-16"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.4 }}
+    >
+      <div className="max-w-4xl mx-auto text-center p-8 bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-teal-500/10 rounded-2xl border border-gray-200 dark:border-gray-700">
+        <FaQuoteLeft className="text-3xl text-gray-400 mx-auto mb-4" />
+        <blockquote className="text-xl md:text-2xl font-medium text-gray-700 dark:text-gray-300 mb-4 italic">
+          "{t('creations.philosophy')}"
+        </blockquote>
+        <cite className="text-gray-500 dark:text-gray-400">- {t('creations.developmentPhilosophy')}</cite>
+      </div>
+    </motion.section>
   );
 }
 
 export default function CreationsPage() {
   const { t } = useTranslation();
-  const [active, setActive] = useState(null);    // 'games' | null (solo games può espandersi)
-  const [hovered, setHovered] = useState(null);  // 'games' | 'novel' | null
+  const siteStats = useSiteStats();
+  const [active, setActive] = useState(null);
+  const [hovered, setHovered] = useState(null);
+  const creationsData = {
+    games: {
+      title: t('creations.games'),
+      description: t('creations.gamesDesc'),
+      stats: [
+        { label: 'Prototipi', value: '3+' },
+        { label: 'Engine', value: 'Unity' },
+        { label: 'Genere', value: 'Arcade' },
+        { label: 'Piattaforma', value: 'WebGL' }
+      ],
+      techStack: [
+        { icon: SiUnity, name: 'Unity' },
+        { icon: SiCsharp, name: 'C#' },
+        { icon: SiJavascript, name: 'JavaScript' }
+      ],
+      links: [
+        { href: '/games/play', text: t('creations.playGame'), icon: FaPlay },
+        { href: '/games/leaderboard', text: t('creations.leaderboard'), icon: FaTrophy }
+      ]
+    },
+    novel: {
+      title: t('creations.novel'),
+      description: t('creations.novelDesc'),
+      stats: [
+        { label: 'Libri', value: siteStats?.books || '2+' },
+        { label: 'Capitoli', value: '10+' },
+        { label: 'Pagine', value: '50+' },
+        { label: 'Genere', value: 'Fantasy' }
+      ],
+      techStack: [
+        { icon: SiReact, name: 'React' },
+        { icon: SiTailwindcss, name: 'Tailwind' },
+        { icon: SiFramer, name: 'Framer Motion' }
+      ]
+    }
+  };
 
   return (
-    <main className="mx-6 py-4 text-black dark:text-white min-h-screen from-white to-slate-200 dark:from-black transition-colors duration-300">
-      <h1 className="text-5xl font-extrabold text-center mt-16 mb-16">
-        {t('creations.heroTitle')}
-      </h1>
-      
-      <div className="text-center mb-8">
-        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          {t('creations.subtitle')}
-        </p>
-      </div>
+    <main className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+      <div className="container mx-auto px-6 py-12">
+        {/* Hero Section */}
+        <HeroSection t={t} />
+        
+        {/* Stats Overview */}
+        <StatsOverview stats={siteStats} t={t} />
+        
+        {/* Inspirational Quote */}
+        <InspirationalQuote t={t} />
 
-      <div className="flex flex-col md:flex-row gap-8 max-w-4xl mx-auto">
-        {/* GAMES */}
-        <Card
-          variant="games"
-          icon={<FaGamepad className="text-6xl drop-shadow-lg" />}
-          label={t('creations.games')}
-          links={[
-            { href: '/games/play', text: t('creations.playGame') },
-            { href: '/games/leaderboard', text: t('creations.leaderboard') }
-          ]}
-          hovered={hovered === 'games'}
-          onHover={() => setHovered('games')}
-          onLeave={() => setHovered(null)}
-          onClick={() => setActive(active === 'games' ? null : 'games')}
-          isActive={active === 'games'}
-        />
+        {/* Main Creations Grid */}
+        <motion.section 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >          <h2 className="text-4xl font-bold text-center mb-12 text-gray-800 dark:text-white">
+            {t('creations.exploreCreations')}
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Games Card */}
+            <CreationCard
+              variant="games"
+              icon={<FaGamepad className="text-5xl text-indigo-500" />}
+              title={creationsData.games.title}
+              description={creationsData.games.description}
+              stats={creationsData.games.stats}
+              techStack={creationsData.games.techStack}
+              links={creationsData.games.links}
+              hovered={hovered === 'games'}
+              onHover={() => setHovered('games')}
+              onLeave={() => setHovered(null)}
+              onClick={() => setActive(active === 'games' ? null : 'games')}
+              isActive={active === 'games'}
+            />
 
-        {/* LIBRI - Click diretto senza espansione */}
-        <Card
-          variant="novel"
-          icon={<GiOpenBook className="text-6xl drop-shadow-lg" />}
-          label={t('creations.novel')}
-          hovered={hovered === 'novel'}
-          onHover={() => setHovered('novel')}
-          onLeave={() => setHovered(null)}
-          directLink="#/creations/books"
-          isActive={false} // I libri non si espandono mai
-        />
-      </div>
-      
-      <div className="text-center mt-12">
-        <p className="text-gray-500 dark:text-gray-400">
-          {t('creations.moreComingSoon')}
-        </p>
+            {/* Books Card */}
+            <CreationCard
+              variant="novel"
+              icon={<GiOpenBook className="text-5xl text-emerald-500" />}
+              title={creationsData.novel.title}
+              description={creationsData.novel.description}
+              stats={creationsData.novel.stats}
+              techStack={creationsData.novel.techStack}
+              hovered={hovered === 'novel'}
+              onHover={() => setHovered('novel')}
+              onLeave={() => setHovered(null)}
+              directLink="#/creations/books"
+              isActive={false}
+            />
+          </div>
+        </motion.section>
+
+        {/* Coming Soon Section */}
+        <motion.section 
+          className="text-center mt-16"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+        >
+          <div className="p-8 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-2xl max-w-2xl mx-auto">
+            <FaLightbulb className="text-4xl text-yellow-500 mx-auto mb-4" />            <h3 className="text-2xl font-bold mb-3 text-gray-800 dark:text-white">
+              {t('creations.newCreationsTitle')}
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              {t('creations.moreComingSoon')}
+            </p>
+            <div className="flex justify-center space-x-4">
+              <motion.a
+                href="https://github.com/lollo176ita"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-600 text-white rounded-lg hover:bg-gray-900 dark:hover:bg-gray-500 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FaGithub className="mr-2" />
+                GitHub
+              </motion.a>              <motion.button
+                className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg hover:from-indigo-600 hover:to-purple-600 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FaHeart className="mr-2" />
+                {t('creations.followMe')}
+              </motion.button>
+            </div>
+          </div>
+        </motion.section>
       </div>
     </main>
   );

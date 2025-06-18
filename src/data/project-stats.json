@@ -1,6 +1,6 @@
 {
-  "generated": "2025-06-18T12:52:04.001Z",
-  "generationTime": 230,
+  "generated": "2025-06-18T13:05:20.865Z",
+  "generationTime": 240,
   "project": {
     "name": "lollo176ita.github.io",
     "version": "0.1.0",
@@ -14,24 +14,24 @@
   },
   "code": {
     "files": 48,
-    "totalLines": 4472,
-    "codeLines": 3977,
-    "blankLines": 495,
+    "totalLines": 4739,
+    "codeLines": 4232,
+    "blankLines": 507,
     "languages": {
       "CSS": {
         "files": 2,
         "lines": 96,
-        "percentage": 2.4
+        "percentage": 2.3
       },
       "JavaScript": {
         "files": 39,
-        "lines": 3197,
-        "percentage": 80.4
+        "lines": 3440,
+        "percentage": 81.3
       },
       "JSON": {
         "files": 7,
-        "lines": 684,
-        "percentage": 17.2
+        "lines": 696,
+        "percentage": 16.4
       }
     }
   },
@@ -51,16 +51,16 @@
       "hash": "unknown",
       "message": "No commit data",
       "author": "Unknown",
-      "date": "2025-06-18T12:52:03.987Z"
+      "date": "2025-06-18T13:05:20.848Z"
     }
   },
   "performance": {
-    "avgBuildTime": 38.30522194057785,
+    "avgBuildTime": 34.184070004771094,
     "lighthouse": {
-      "performance": 91,
-      "accessibility": 96,
-      "bestPractices": 99,
-      "seo": 97
+      "performance": 97,
+      "accessibility": 98,
+      "bestPractices": 95,
+      "seo": 99
     }
   }
 }

@@ -21,14 +21,20 @@
     "heroTitle": "My Creations",
     "subtitle": "Discover my digital creations: from interactive games to engaging books",
     "games":     "Games",
-    "gamesDesc": "Dive into the WebGL prototype",
+    "gamesDesc": "Interactive games and prototypes",
     "novel":     "Books",
-    "novelDesc": "Browse my books",
+    "novelDesc": "Stories and digital narratives",
     "playGame": "Play now",
     "leaderboard": "Leaderboard",
     "chapter1Title": "Chapter 1",
     "novelAbout": "About the novel",
-    "moreComingSoon": "More creations coming soon..."
+    "moreComingSoon": "More creations coming soon...",
+    "exploreCreations": "Explore my creations",
+    "digitalCreations": "My digital creations",
+    "philosophy": "Creativity is intelligence having fun. Every project is a new adventure.",
+    "developmentPhilosophy": "My development philosophy",
+    "newCreationsTitle": "New Creations Coming Soon",
+    "followMe": "Follow Me"
   },"history": {
     "title": "Site History",
     "subtitle": "The complete project timeline, from first ideas to today",

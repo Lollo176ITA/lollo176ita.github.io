@@ -1,5 +1,79 @@
 # 📝 Changelog - Riorganizzazione Progetto
 
+## [v2.1.0] - 2025-06-18 🎨
+
+### ✨ **MAJOR: Ridisegno Completo Pagina /creations**
+
+#### 🎨 **Nuovo Design Moderno e Coinvolgente**
+
+**PRIMA:**
+- Design minimalista con solo 2 card semplici
+- Poche animazioni e interazioni basic
+- Layout statico senza elementi dinamici
+- Assenza di statistiche e informazioni contestuali
+
+**DOPO:**
+- **Hero Section completa** con gradient text e animazioni
+- **Sezione statistiche** con metriche del progetto (righe di codice, progetti, ore sviluppo)
+- **Citazione ispirazionale** con filosofia di sviluppo
+- **Card arricchite** con:
+  - Statistiche specifiche per categoria (prototipi, engine, generi, ecc.)
+  - Tech Stack visualizzato con icone
+  - Hover effects avanzati con particelle sparkle
+  - Transizioni fluide e responsive
+  - Glassmorphism e backdrop blur
+- **Sezione "Coming Soon"** con call-to-action
+- **Link social** integrati (GitHub, Follow)
+
+#### 🚀 **Nuove Funzionalità**
+
+- **Background gradients** coerenti con il design del sito
+- **Animazioni staggered** per caricamento progressivo
+- **Hover effects avanzati** con scaling, shadow e particelle
+- **Statistiche dinamiche** caricate dal sistema di stats reali
+- **Responsive design** ottimizzato per mobile/desktop
+- **Tema scuro/chiaro** supportato completamente
+- **Internazionalizzazione** completa (IT/EN)
+
+#### 📊 **Statistiche Integrate**
+
+Le card ora mostrano:
+- **Games**: Prototipi, Engine (Unity), Genere, Piattaforma
+- **Books**: Numero libri, Capitoli, Pagine, Genere
+- **Tech Stack**: Unity, C#, JavaScript, React, Tailwind, Framer Motion
+
+#### 🌐 **Traduzioni Aggiornate**
+
+Nuove chiavi di traduzione aggiunte:
+- `digitalCreations`: "Le mie creazioni digitali" / "My digital creations"
+- `gamesDesc`: "Giochi interattivi e prototipi" / "Interactive games and prototypes"  
+- `novelDesc`: "Racconti e narrativa digitale" / "Stories and digital narratives"
+- `exploreCreations`: "Esplora le mie creazioni" / "Explore my creations"
+- `philosophy`: Citazione filosofica personalizzata
+- `newCreationsTitle`: "Nuove Creazioni in Arrivo" / "New Creations Coming Soon"
+- `followMe`: "Seguimi" / "Follow Me"
+
+#### 🎯 **Miglioramenti UX/UI**
+
+- **Performance**: Bundle JS aumentato solo di ~2.3kB per tutte le nuove funzionalità
+- **Accessibilità**: Focus states, hover states, contrast migliorato
+- **Mobile-first**: Design completamente responsive
+- **Loading states**: Animazioni progressive per miglior perceived performance
+- **Visual hierarchy**: Typography scale e spacing coerenti
+
+#### 🔧 **Dettagli Tecnici**
+
+- Utilizzo avanzato di **Framer Motion** per animazioni complesse
+- **Glassmorphism** con backdrop-blur-sm
+- **CSS Grid & Flexbox** per layout flessibili
+- **Tailwind gradients** e **clip-path** per effetti visuali
+- **React Hooks** per gestione stato (hover, active, stats)
+- **Component composition** modulare e riutilizzabile
+
+La pagina `/creations` ora è completamente allineata con il design moderno del resto del sito, offrendo un'esperienza utente ricca e coinvolgente! 🎉
+
+---
+
 ## [v2.0.1] - 2025-06-18 🔗
 
 ### 🎯 **Miglioramento Pagina /creations**
