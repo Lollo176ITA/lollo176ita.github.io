@@ -17,9 +17,9 @@
     "thanks": "Thanks for playing!",
     "clickDemo": "Click me to try the demo!",
     "enjoyDemo": "Enjoy the demo!"
-  },
-  "creations": {
+  },  "creations": {
     "heroTitle": "My Creations",
+    "subtitle": "Discover my digital creations: from interactive games to engaging books",
     "games":     "Games",
     "gamesDesc": "Dive into the WebGL prototype",
     "novel":     "Books",
@@ -27,8 +27,9 @@
     "playGame": "Play now",
     "leaderboard": "Leaderboard",
     "chapter1Title": "Chapter 1",
-    "novelAbout": "About the novel"
-  },  "history": {
+    "novelAbout": "About the novel",
+    "moreComingSoon": "More creations coming soon..."
+  },"history": {
     "title": "Site History",
     "subtitle": "The complete project timeline, from first ideas to today",
     "timeline": "Timeline",

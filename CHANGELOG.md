@@ -1,5 +1,28 @@
 # 📝 Changelog - Riorganizzazione Progetto
 
+## [v2.0.1] - 2025-06-18 🔗
+
+### 🎯 **Miglioramento Pagina /creations**
+
+#### ✨ **Navigazione Diretta ai Libri**
+- **Rimossa anteprima libri**: Eliminata l'espansione della card "Libri" con elenco capitoli
+- **Link diretto**: Click sulla card "Libri" naviga immediatamente a `#/creations/books`
+- **UX migliorata**: Navigazione più intuitiva e veloce per accedere ai contenuti
+- **Comportamento differenziato**: Solo la card "Giochi" mantiene l'espansione con link interni
+
+#### 🌐 **Traduzioni Aggiornate**
+- **Nuove chiavi**: Aggiunte `creations.subtitle` e `creations.moreComingSoon`
+- **Contenuti IT**: "Scopri le mie creazioni digitali..." e "Altre creazioni in arrivo presto..."
+- **Contenuti EN**: "Discover my digital creations..." e "More creations coming soon..."
+
+#### 🧪 **Test e Validazione**
+- ✅ Build di produzione completato con successo
+- ✅ Server di sviluppo testato
+- ✅ Navigazione verificata nel browser
+- ✅ Traduzioni validate in entrambe le lingue
+
+---
+
 ## [v2.0.0] - 2025-06-18 🚀
 
 ### ✨ **MAJOR: Riorganizzazione Completa dell'Architettura**

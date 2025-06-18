@@ -4,28 +4,41 @@ import { FaGamepad } from 'react-icons/fa';
 import { GiOpenBook } from 'react-icons/gi';
 import { motion, AnimatePresence } from 'framer-motion';
 import HashLink from '../common/HashLink';
-import books from '../../data/books';
 
 const iconTarget = { top: 5, left: 5, scale: 0.5 };
 const sparkleColors = { games: 'bg-yellow-300', novel: 'bg-emerald-300' };
 
-function Card({ variant, icon, label, links, hovered, onHover, onLeave, onClick, isActive }) {
+function Card({ variant, icon, label, links, hovered, onHover, onLeave, onClick, isActive, directLink }) {
+  const handleClick = () => {
+    if (directLink) {
+      // Se c'è un link diretto, naviga immediatamente
+      window.location.hash = directLink;
+    } else {
+      // Altrimenti comportamento normale di espansione
+      onClick();
+    }
+  };
+
   return (
     <motion.div
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
-      onClick={onClick}
+      onClick={handleClick}
       className={
         `flex-1 relative flex flex-col items-center justify-start p-12 rounded-3xl cursor-pointer shadow-lg transition-all duration-300 border-4 min-h-[280px] ` +
         (variant === 'games'
           ? (isActive
               ? 'scale-105 z-10 border-indigo-400 bg-indigo-800/90 text-white'
-              : 'border-transparent bg-gradient-to-tr from-indigo-600 to-indigo-700 text-white')
+              : 'border-transparent bg-gradient-to-tr from-indigo-600 to-indigo-700 text-white hover:from-indigo-500 hover:to-indigo-600')
           : (isActive
               ? 'scale-105 z-10 border-emerald-400 bg-emerald-800/90 text-white'
-              : 'border-transparent bg-gradient-to-tr from-emerald-600 to-emerald-700 text-white'))
+              : 'border-transparent bg-gradient-to-tr from-emerald-600 to-emerald-700 text-white hover:from-emerald-500 hover:to-emerald-600'))
       }
-      whileHover={!isActive ? { scale: 1.05, boxShadow: variant === 'games' ? '0 0 32px 4px #4f46e5' : '0 0 32px 4px #10b981' } : {}}
+      whileHover={!isActive ? { 
+        scale: 1.05, 
+        boxShadow: variant === 'games' ? '0 0 32px 4px #4f46e5' : '0 0 32px 4px #10b981' 
+      } : {}}
+      whileTap={{ scale: 0.95 }}
       transition={{ type: 'spring', stiffness: 200 }}
     >
       {/* Sparkle effect on hover */}
@@ -113,20 +126,28 @@ function Card({ variant, icon, label, links, hovered, onHover, onLeave, onClick,
 
 export default function CreationsPage() {
   const { t } = useTranslation();
-  const [active, setActive] = useState(null);    // 'games' | 'novel' | null
+  const [active, setActive] = useState(null);    // 'games' | null (solo games può espandersi)
   const [hovered, setHovered] = useState(null);  // 'games' | 'novel' | null
 
   return (
-    <main className="mx-6 py-4 text-black dark:text-white min-h-screen  from-white to-slate-200 dark:from-black transition-colors duration-300">
+    <main className="mx-6 py-4 text-black dark:text-white min-h-screen from-white to-slate-200 dark:from-black transition-colors duration-300">
       <h1 className="text-5xl font-extrabold text-center mt-16 mb-16">
         {t('creations.heroTitle')}
       </h1>
+      
+      <div className="text-center mb-8">
+        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          {t('creations.subtitle')}
+        </p>
+      </div>
+
       <div className="flex flex-col md:flex-row gap-8 max-w-4xl mx-auto">
         {/* GAMES */}
         <Card
           variant="games"
           icon={<FaGamepad className="text-6xl drop-shadow-lg" />}
-          label={t('creations.games')}          links={[
+          label={t('creations.games')}
+          links={[
             { href: '/games/play', text: t('creations.playGame') },
             { href: '/games/leaderboard', text: t('creations.leaderboard') }
           ]}
@@ -137,20 +158,23 @@ export default function CreationsPage() {
           isActive={active === 'games'}
         />
 
-        {/* NOVELLA */}
+        {/* LIBRI - Click diretto senza espansione */}
         <Card
           variant="novel"
           icon={<GiOpenBook className="text-6xl drop-shadow-lg" />}
-          label={t('creations.novel')}          links={books.map(b => ({
-            href: `/creations/books/${b.type}/${b.slug}/overview`,
-            text: b.title
-          }))}
+          label={t('creations.novel')}
           hovered={hovered === 'novel'}
           onHover={() => setHovered('novel')}
           onLeave={() => setHovered(null)}
-          onClick={() => setActive(active === 'novel' ? null : 'novel')}
-          isActive={active === 'novel'}
+          directLink="#/creations/books"
+          isActive={false} // I libri non si espandono mai
         />
+      </div>
+      
+      <div className="text-center mt-12">
+        <p className="text-gray-500 dark:text-gray-400">
+          {t('creations.moreComingSoon')}
+        </p>
       </div>
     </main>
   );
