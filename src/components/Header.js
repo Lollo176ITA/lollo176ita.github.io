@@ -2,7 +2,8 @@ import React, { useState, useRef } from "react";
 import Navbar from "./Navbar";
 import { FiMenu } from "react-icons/fi";
 import LanguageSwitcher from './LanguageSwitcher';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useHashNavigation } from '../hooks/useHashRouter';
+import { HashRouter } from '../utils/hashRouter';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,8 +11,8 @@ export default function Header() {
   const [stocazzatoMode, setStocazzatoMode] = useState(false);
   const timerRef = useRef(null);
   const countRef = useRef(0);
-  const navigate = useNavigate();
-  const location = useLocation();
+  const { navigate } = useHashNavigation();
+  const currentPath = HashRouter.getCurrentPath();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -23,8 +24,7 @@ export default function Header() {
       const newCount = prev + 1;
       countRef.current = newCount;
 
-      if (newCount === 1) {
-        timerRef.current = setTimeout(() => {
+      if (newCount === 1) {        timerRef.current = setTimeout(() => {
           if (countRef.current === 1) {
             navigate('/');
             setClickCount(0);
@@ -46,9 +46,8 @@ export default function Header() {
       return newCount;
     });
   };
-
   // Non mostrare la topbar se siamo in /stocazzato
-  if (location.pathname === '/stocazzato') return null;
+  if (currentPath === 'stocazzato') return null;
 
   return (
     <header className="fixed top-0 w-full bg-white text-black dark:bg-black dark:text-white py-4 z-30 shadow-lg dark:shadow-white">

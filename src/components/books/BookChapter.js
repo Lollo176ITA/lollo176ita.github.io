@@ -1,14 +1,23 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { FiArrowLeft, FiArrowRight, FiBook, FiBookOpen, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { FiArrowLeft, FiBook, FiBookOpen, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import HashLink from '../HashLink';
 import { useHashNavigation } from '../../hooks/useHashRouter';
+import { useBookTracking } from '../../hooks/useNavigation';
 import books from '../../data/books';
 
 export default function BookChapter({ type, name, chapter }) {
   const { t } = useTranslation();
   const { navigate } = useHashNavigation();
+  const { trackChapterView } = useBookTracking();
   const book = books.find(b => b.type === type && b.slug === name);
+  
+  // Track chapter view when component mounts
+  React.useEffect(() => {
+    if (book && chapter) {
+      trackChapterView({ type: book.type, slug: book.slug, title: book.title }, chapter);
+    }
+  }, [book, chapter, trackChapterView]);
   
   if (!book) {
     return (

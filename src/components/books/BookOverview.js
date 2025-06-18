@@ -1,14 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiArrowLeft, FiBook, FiClock, FiUser } from 'react-icons/fi';
 import HashLink from '../HashLink';
 import { useHashNavigation } from '../../hooks/useHashRouter';
+import { useBookTracking } from '../../hooks/useNavigation';
 import books from '../../data/books';
 
 export default function BookOverview({ type, name }) {
   const { t } = useTranslation();
   const { navigate } = useHashNavigation();
+  const { trackBookView, trackBookStart } = useBookTracking();
   const book = books.find(b => b.type === type && b.slug === name);
+
+  // Track book view when component mounts
+  useEffect(() => {
+    if (book) {
+      trackBookView({ type: book.type, slug: book.slug, title: book.title });
+    }
+  }, [book, trackBookView]);
+
+  const handleStartReading = () => {
+    if (book && book.chapters && book.chapters.length > 0) {
+      trackBookStart({ type: book.type, slug: book.slug, title: book.title });
+      navigate(`/creations/books/${type}/${name}/${book.chapters[0].slug}`);
+    }
+  };
+
+  const handleRandomChapter = () => {
+    if (book && book.chapters && book.chapters.length > 0) {
+      const randomChapter = book.chapters[Math.floor(Math.random() * book.chapters.length)];
+      navigate(`/creations/books/${type}/${name}/${randomChapter.slug}`);
+    }
+  };
 
   if (!book) {
     return (
@@ -160,18 +183,17 @@ export default function BookOverview({ type, name }) {
           )}
         </div>
 
-        {/* Action Buttons */}
-        {book.chapters && book.chapters.length > 0 && (
+        {/* Action Buttons */}        {book.chapters && book.chapters.length > 0 && (
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <HashLink
-              to={`/creations/books/${type}/${name}/${book.chapters[0].slug}`}
+            <button
+              onClick={handleStartReading}
               className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
             >
               {t('books.startReading')}
-            </HashLink>
+            </button>
             
             <button
-              onClick={() => navigate(`/creations/books/${type}/${name}/${book.chapters[Math.floor(Math.random() * book.chapters.length)].slug}`)}
+              onClick={handleRandomChapter}
               className="inline-flex items-center justify-center px-6 py-3 border border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors font-medium"
             >
               {t('books.randomChapter')}

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { FaGamepad } from 'react-icons/fa';
 import { GiOpenBook } from 'react-icons/gi';
 import { motion, AnimatePresence } from 'framer-motion';
+import HashLink from './HashLink';
 import books from '../data/books';
 
 const iconTarget = { top: 5, left: 5, scale: 0.5 };
@@ -98,10 +99,9 @@ function Card({ variant, icon, label, links, hovered, onHover, onLeave, onClick,
             transition={{ duration: 0.3, delay: 0.1 }}
             className=" mx-4 mt-6 space-y-2 z-10 text-left w-full max-w-xs"
             style={{ position: 'absolute', left: iconTarget.left + 40, top: iconTarget.top + 28 }}
-          >
-            {links.map(({ href, text }, idx) => (
+          >            {links.map(({ href, text }, idx) => (
               <li key={idx}>
-                <a href={href} className="block text-xl hover:underline">{text}</a>
+                <HashLink to={href.replace('#', '')} className="block text-xl hover:underline hover:text-yellow-300 transition-colors">{text}</HashLink>
               </li>
             ))}
           </motion.ul>
@@ -126,10 +126,9 @@ export default function CreationsPage() {
         <Card
           variant="games"
           icon={<FaGamepad className="text-6xl drop-shadow-lg" />}
-          label={t('creations.games')}
-          links={[
-            { href: '#/games/play', text: t('creations.playGame') },
-            { href: '#/games/leaderboard', text: t('creations.leaderboard') }
+          label={t('creations.games')}          links={[
+            { href: '/games/play', text: t('creations.playGame') },
+            { href: '/games/leaderboard', text: t('creations.leaderboard') }
           ]}
           hovered={hovered === 'games'}
           onHover={() => setHovered('games')}
@@ -142,9 +141,8 @@ export default function CreationsPage() {
         <Card
           variant="novel"
           icon={<GiOpenBook className="text-6xl drop-shadow-lg" />}
-          label={t('creations.novel')}
-          links={books.map(b => ({
-            href: `#/creations/books/${b.type}/${b.slug}/overview`,
+          label={t('creations.novel')}          links={books.map(b => ({
+            href: `/creations/books/${b.type}/${b.slug}/overview`,
             text: b.title
           }))}
           hovered={hovered === 'novel'}

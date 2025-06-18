@@ -7,13 +7,9 @@ import BookChapter from './BookChapter';
 export default function BooksRouter() {
   const [currentView, setCurrentView] = React.useState('home');
   const [routeParams, setRouteParams] = React.useState({});
-
   React.useEffect(() => {
     const updateRoute = () => {
-      const path = HashRouter.getCurrentPath();
-      
       // Match different book routes
-      const homeMatch = HashRouter.matchPath('creations/books');
       const overviewMatch = HashRouter.matchPath('creations/books/:type/:name/overview');
       const chapterMatch = HashRouter.matchPath('creations/books/:type/:name/:chapter');
       

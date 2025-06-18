@@ -1,14 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import HashLink from './HashLink';
+import { useActiveRoute } from '../hooks/useNavigation';
 
 export default function Navbar({ isOpen, toggleMenu }) {
+  const { t } = useTranslation();
+  const { isActive, isActivePartial } = useActiveRoute();
+  
   const handleLinkClick = () => {
-    // Puoi aggiungere altra logica qui se necessario
     toggleMenu();
   };
-
-  const { t } = useTranslation();
+    const getLinkClassName = (path) => {
+    const baseClass = "text-lg transition-colors font-medium";
+    const activeClass = "text-blue-600 dark:text-blue-400";
+    const inactiveClass = "hover:text-blue-600 dark:hover:text-blue-400";
+    
+    // For non-root paths, use partial matching; for root, use exact matching
+    const isCurrentlyActive = path === '/' ? isActive(path) : isActivePartial(path);
+    
+    return `${baseClass} ${isCurrentlyActive ? activeClass : inactiveClass}`;
+  };
 
   return (
     <div
@@ -18,13 +29,12 @@ export default function Navbar({ isOpen, toggleMenu }) {
     >
       <button onClick={toggleMenu} className="absolute top-4 right-4 text-3xl focus:outline-none">
         &times; {/* Icona di chiusura */}
-      </button>
-      <ul className="flex flex-col p-8 space-y-6 mt-12">
-        <li><Link to="/" onClick={handleLinkClick}>{t('nav.home')}</Link></li>
-        <li><Link to="/about" onClick={handleLinkClick}>{t('nav.about')}</Link></li>
-        <li><Link to="/projects" onClick={handleLinkClick}>{t('nav.projects')}</Link></li>
-        <li><Link to="/creations" onClick={handleLinkClick}>{t('nav.creations')}</Link></li>
-        <li><Link to="/history" onClick={handleLinkClick}>{t('nav.history')}</Link></li>
+      </button>      <ul className="flex flex-col p-8 space-y-6 mt-12">
+        <li><HashLink to="/" onClick={handleLinkClick} className={getLinkClassName("/")}>{t('nav.home')}</HashLink></li>
+        <li><HashLink to="/about" onClick={handleLinkClick} className={getLinkClassName("/about")}>{t('nav.about')}</HashLink></li>
+        <li><HashLink to="/projects" onClick={handleLinkClick} className={getLinkClassName("/projects")}>{t('nav.projects')}</HashLink></li>
+        <li><HashLink to="/creations" onClick={handleLinkClick} className={getLinkClassName("/creations")}>{t('nav.creations')}</HashLink></li>
+        <li><HashLink to="/history" onClick={handleLinkClick} className={getLinkClassName("/history")}>{t('nav.history')}</HashLink></li>
       </ul>
     </div>
   );

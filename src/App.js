@@ -11,6 +11,7 @@ import History from './components/History';
 import CreationsPage from './components/CreationsPage';
 import Stocazzato from './components/Stocazzato';
 import BooksRouter from './components/books/BooksRouter';
+// import RouteDebugger from './components/RouteDebugger'; // Removed for production
 
 
 export default function App() {
@@ -28,9 +29,9 @@ export default function App() {
         <Route path="/creations" element={<CreationsPage />} />
         <Route path="/creations/books/*" element={<BooksRouter />} />
         <Route path="/history" element={<History />} />
-         <Route path="/stocazzato" element={<Stocazzato />} />
-      </Routes>
+         <Route path="/stocazzato" element={<Stocazzato />} />      </Routes>
       <Footer />
+      {/* <RouteDebugger /> */}
     </Router>
     </div>
   );

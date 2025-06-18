@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { FaCode, FaGamepad } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import HashLink from './HashLink';
 
 export default function About() {
   const { t } = useTranslation();
@@ -47,14 +47,13 @@ export default function About() {
           <h3 className="text-xl font-semibold mb-2">{t('aboutPage.gameTitle')}</h3>
           <p>{t('aboutPage.gameText')}</p>
         </motion.div>
-      </div>
-      <div className="space-x-4">
-        <Link to="/history" className="underline hover:text-blue-600">
+      </div>      <div className="space-x-4">
+        <HashLink to="/history" className="underline hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
           {t('aboutPage.moreHistory')}
-        </Link>
-        <Link to="/creations" className="underline hover:text-blue-600">
+        </HashLink>
+        <HashLink to="/creations" className="underline hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
           {t('aboutPage.moreCreations')}
-        </Link>
+        </HashLink>
       </div>
     </motion.main>
   );
