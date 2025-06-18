@@ -193,6 +193,15 @@ export function useSiteStats() {
     languages: {},
     version: '',
     dependencies: 0,
+    performance: {
+      avgBuildTime: 0,
+      lighthouse: {
+        performance: 0,
+        accessibility: 0,
+        bestPractices: 0,
+        seo: 0
+      }
+    },
     loading: true
   });
 
@@ -200,8 +209,7 @@ export function useSiteStats() {
     const loadStats = async () => {
       try {
         const projectStats = await loadProjectStats();
-        
-        if (projectStats) {
+          if (projectStats) {
           setStats({
             linesOfCode: projectStats.code.codeLines,
             files: projectStats.code.files,
@@ -217,7 +225,15 @@ export function useSiteStats() {
             lastBuild: new Date(projectStats.generated),
             languages: projectStats.code.languages,
             version: projectStats.project.version,
-            dependencies: projectStats.project.dependencies + projectStats.project.devDependencies,
+            dependencies: projectStats.project.dependencies + projectStats.project.devDependencies,            performance: {
+              avgBuildTime: projectStats.performance.avgBuildTime,
+              lighthouse: {
+                performance: projectStats.performance.lighthouse.performance,
+                accessibility: projectStats.performance.lighthouse.accessibility,
+                bestPractices: projectStats.performance.lighthouse.bestPractices,
+                seo: projectStats.performance.lighthouse.seo
+              }
+            },
             loading: false
           });
         } else {
@@ -225,8 +241,7 @@ export function useSiteStats() {
         }
       } catch (error) {
         console.warn('Error loading site stats:', error);
-        
-        // Fallback ai valori calcolati manualmente
+          // Fallback ai valori calcolati manualmente
         setStats({
           linesOfCode: 3774, // Dalle statistiche generate
           files: 47,
@@ -237,7 +252,7 @@ export function useSiteStats() {
           books: 2,
           chapters: 4,
           hooks: 3,
-          buildTime: 28,
+          buildTime: 34.184070004771094,
           buildSize: 0.15, // MB stimati
           lastBuild: new Date(),
           languages: {
@@ -247,6 +262,15 @@ export function useSiteStats() {
           },
           version: '0.1.0',
           dependencies: 25,
+          performance: {
+            avgBuildTime: 34.184070004771094,
+            lighthouse: {
+              performance: 97,
+              accessibility: 98,
+              bestPractices: 95,
+              seo: 99
+            }
+          },
           loading: false
         });
       }

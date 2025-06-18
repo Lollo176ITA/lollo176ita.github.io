@@ -11,7 +11,11 @@ import {
   FaPlay,
   FaTrophy,
   FaQuoteLeft,
-  FaExternalLinkAlt
+  FaExternalLinkAlt,
+  FaTachometerAlt,
+  FaUniversalAccess,
+  FaShieldAlt,
+  FaSearchPlus
 } from 'react-icons/fa';
 import { GiOpenBook } from 'react-icons/gi';
 import { 
@@ -252,12 +256,12 @@ function StatsOverview({ stats, t }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+      {/* Main Stats Grid */}      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-8">
         {[
-          { icon: FaCode, label: 'Righe di Codice', value: stats?.linesOfCode || '4K+', color: 'text-blue-500' },
-          { icon: FaRocket, label: 'Progetti Attivi', value: '8+', color: 'text-purple-500' },
-          { icon: FaHeart, label: 'Ore di Sviluppo', value: '500+', color: 'text-red-500' },
-          { icon: FaStar, label: 'Tecnologie', value: '12+', color: 'text-yellow-500' }
+          { icon: FaCode, label: t('creations.linesOfCode'), value: stats?.linesOfCode?.toLocaleString() || '4K+', color: 'text-blue-500' },
+          { icon: FaRocket, label: t('creations.activeProjects'), value: '8+', color: 'text-purple-500' },
+          { icon: FaHeart, label: t('creations.developmentHours'), value: '500+', color: 'text-red-500' },
+          { icon: FaStar, label: t('creations.technologies'), value: '12+', color: 'text-yellow-500' }
         ].map((stat, idx) => (
           <motion.div
             key={idx}
@@ -272,7 +276,78 @@ function StatsOverview({ stats, t }) {
             <div className="text-sm text-gray-500 dark:text-gray-400">{stat.label}</div>
           </motion.div>
         ))}
-      </div>
+      </div>      {/* Performance Metrics */}
+      <motion.div 
+        className="max-w-4xl mx-auto"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8 }}
+      >        <h4 className="text-xl font-bold text-center text-gray-800 dark:text-white mb-6">
+          🚀 {t('creations.performanceTitle')}
+        </h4>
+        <div className="p-6 bg-gradient-to-r from-green-500/10 via-blue-500/10 to-purple-500/10 rounded-xl border border-gray-200 dark:border-gray-700">
+          {/* Lighthouse Scores */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">            {[
+              { 
+                icon: FaTachometerAlt, 
+                label: 'Performance', 
+                value: stats?.performance?.lighthouse?.performance || 97, 
+                color: 'text-green-500',
+                bgColor: 'bg-green-500/20'
+              },
+              { 
+                icon: FaUniversalAccess, 
+                label: 'Accessibilità', 
+                value: stats?.performance?.lighthouse?.accessibility || 98, 
+                color: 'text-blue-500',
+                bgColor: 'bg-blue-500/20'
+              },
+              { 
+                icon: FaShieldAlt, 
+                label: 'Best Practices', 
+                value: stats?.performance?.lighthouse?.bestPractices || 95, 
+                color: 'text-purple-500',
+                bgColor: 'bg-purple-500/20'
+              },
+              { 
+                icon: FaSearchPlus, 
+                label: 'SEO', 
+                value: stats?.performance?.lighthouse?.seo || 99, 
+                color: 'text-yellow-500',
+                bgColor: 'bg-yellow-500/20'
+              }
+            ].map((metric, idx) => (
+              <motion.div 
+                key={idx} 
+                className={`text-center p-4 rounded-lg ${metric.bgColor} border border-gray-200 dark:border-gray-600`}
+                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 + 0.9 }}
+              >
+                <metric.icon className={`text-2xl ${metric.color} mx-auto mb-2`} />
+                <div className={`text-2xl font-bold ${metric.color} mb-1`}>
+                  {metric.value}
+                </div>
+                <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">
+                  {metric.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          {/* Build Time */}
+          <div className="text-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">            <div className="flex items-center justify-center space-x-2 text-gray-600 dark:text-gray-300">
+              <FaRocket className="text-indigo-500" />
+              <span className="font-medium">
+                {t('creations.buildTime')}: <span className="text-indigo-600 dark:text-indigo-400 font-bold">
+                  {stats?.performance?.avgBuildTime ? `${stats.performance.avgBuildTime.toFixed(1)}s` : '34.2s'}
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </motion.section>
   );
 }
