@@ -1,5 +1,38 @@
 # 📝 Changelog - Riorganizzazione Progetto
 
+## [v2.2.0] - 2025-06-19 🧹
+
+### 🗑️ **MAJOR: Rimozione Ottimizzazioni WebP/WebM**
+
+#### ❌ **File e Codice Eliminati**
+- **Script ottimizzazione**: Rimosso `scripts/optimize-images.js`
+- **Componente WebP**: Eliminato `src/components/common/OptimizedImage.js`
+- **Dipendenza Sharp**: Rimossa libreria `sharp` dal package.json
+- **Script NPM**: Rimosso comando `optimize:images`
+- **Riferimenti codice**: Pulito `src/utils/serviceWorker.js` da texture WebP
+
+#### 📁 **Riorganizzazione Documentazione**
+- **File MD spostati**: Tutti i file markdown tecnici spostati in `docs/`
+- **Struttura creata**: 
+  - `docs/development/` - Documentazione sviluppo
+  - `docs/technical/` - Documentazione tecnica
+  - `docs/README.md` - Indice documentazione
+- **File spostati**:
+  - `CHANGELOG.md` → `docs/CHANGELOG.md`
+  - `SERVICE_WORKER_FIXES.md` → `docs/development/`
+  - `LIGHTHOUSE_METRICS.md` → `docs/development/`
+
+#### 📝 **README e Licenza**
+- **README rinnovato**: Semplificato, rimossi riferimenti WebP, struttura più pulita
+- **Licenza MIT**: Creata licenza aperta con copyright Lorenzo Censi
+- **Root pulita**: Solo file essenziali nella directory principale
+
+#### 🎯 **Risultati**
+- **Performance**: Bundle size mantenuto (~132KB), build stabile
+- **Pulizia**: Progetto più organizzato e manutenibile
+- **Documentazione**: Struttura logica e facilmente navigabile
+- **Licenza**: Progetto ora completamente open source
+
 ## [v2.1.0] - 2025-06-18 🎨
 
 ### ✨ **MAJOR: Ridisegno Completo Pagina /creations**
