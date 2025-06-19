@@ -28,11 +28,36 @@ import {
 } from 'react-icons/si';
 import HashLink from '../common/HashLink';
 import { useSiteStats } from '../../hooks/useStats';
+import books from '../../data/books';
 
 // Import standard per evitare errori React #130
 import { motion, AnimatePresence } from 'framer-motion';
 
 const sparkleColors = { games: 'bg-yellow-300', novel: 'bg-emerald-300' };
+
+// Helper function to calculate real book statistics
+const calculateBookStats = () => {
+  const totalBooks = books.length;
+  const totalChapters = books.reduce((sum, book) => sum + book.chapters.length, 0);
+  
+  // Calculate total words from book contents
+  const totalWords = books.reduce((bookSum, book) => {
+    return bookSum + book.chapters.reduce((chapterSum, chapter) => {
+      const wordCount = chapter.content ? chapter.content.split(/\s+/).filter(word => word.length > 0).length : 0;
+      return chapterSum + wordCount;
+    }, 0);
+  }, 0);
+  
+  // Estimate pages (assuming ~250 words per page)
+  const estimatedPages = Math.max(1, Math.ceil(totalWords / 250));
+  
+  return {
+    books: totalBooks,
+    chapters: totalChapters,
+    pages: estimatedPages,
+    words: totalWords
+  };
+};
 
 // Enhanced Card Component
 function CreationCard({ variant, icon, title, description, stats, techStack, links, hovered, onHover, onLeave, onClick, isActive, directLink }) {
@@ -42,20 +67,18 @@ function CreationCard({ variant, icon, title, description, stats, techStack, lin
     } else {
       onClick();
     }
-  };
-
-  const cardColors = {
+  };  const cardColors = {
     games: {
       gradient: 'from-indigo-600 via-purple-600 to-indigo-800',
       border: 'border-indigo-400',
       shadow: '0 0 32px 4px #4f46e5',
-      accent: 'text-indigo-300'
+      accent: 'text-orange-200'
     },
     novel: {
-      gradient: 'from-emerald-600 via-teal-600 to-emerald-800',
+      gradient: 'from-emerald-700 via-teal-700 to-emerald-900',
       border: 'border-emerald-400', 
       shadow: '0 0 32px 4px #10b981',
-      accent: 'text-emerald-300'
+      accent: 'text-blue-300'
     }
   };
 
@@ -63,11 +86,11 @@ function CreationCard({ variant, icon, title, description, stats, techStack, lin
     <motion.div
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
-      onClick={handleClick}
-      className={`relative flex flex-col p-8 rounded-2xl cursor-pointer backdrop-blur-sm border-2 transition-all duration-500 min-h-[420px] ${
+      onClick={handleClick}      className={`relative flex flex-col p-8 rounded-2xl cursor-pointer backdrop-blur-sm border-2 transition-all duration-500 min-h-[420px] ${
         isActive 
-          ? `scale-105 z-20 ${cardColors[variant].border} bg-gradient-to-br ${cardColors[variant].gradient} text-white shadow-2xl`
-          : `border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 hover:bg-gradient-to-br hover:${cardColors[variant].gradient} hover:text-white group`
+          ? `scale-105 z-20 ${cardColors[variant].border} bg-gradient-to-br ${cardColors[variant].gradient} text-white shadow-2xl`          : variant === 'games' 
+            ? `border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 hover:bg-gradient-to-br hover:from-indigo-600 hover:via-purple-600 hover:to-indigo-800 hover:text-white group`
+            : `border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 hover:bg-gradient-to-br hover:from-emerald-700 hover:via-teal-700 hover:to-emerald-900 hover:text-white group`
       }`}
       whileHover={!isActive ? { 
         scale: 1.02, 
@@ -379,6 +402,9 @@ export default function CreationsPage() {
   const siteStats = useSiteStats();
   const [active, setActive] = useState(null);
   const [hovered, setHovered] = useState(null);
+  
+  // Calculate real book statistics
+  const bookStats = calculateBookStats();
   const creationsData = {
     games: {
       title: t('creations.games'),
@@ -398,15 +424,14 @@ export default function CreationsPage() {
         { href: '/games/play', text: t('creations.playGame'), icon: FaPlay },
         { href: '/games/leaderboard', text: t('creations.leaderboard'), icon: FaTrophy }
       ]
-    },
-    novel: {
+    },    novel: {
       title: t('creations.novel'),
       description: t('creations.novelDesc'),
       stats: [
-        { label: 'Libri', value: siteStats?.books || '2+' },
-        { label: 'Capitoli', value: '10+' },
-        { label: 'Pagine', value: '50+' },
-        { label: 'Genere', value: 'Fantasy' }
+        { label: 'Libri', value: bookStats.books.toString() },
+        { label: 'Capitoli', value: bookStats.chapters.toString() },
+        { label: 'Pagine', value: `~${bookStats.pages}` },
+        { label: 'Parole', value: bookStats.words > 0 ? bookStats.words.toLocaleString() : '0' }
       ],
       techStack: [
         { icon: SiReact, name: 'React' },
@@ -437,11 +462,10 @@ export default function CreationsPage() {
             {t('creations.exploreCreations')}
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {/* Games Card */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">            {/* Games Card */}
             <CreationCard
               variant="games"
-              icon={<FaGamepad className="text-5xl text-indigo-500" />}
+              icon={<FaGamepad className="text-5xl text-orange-500" />}
               title={creationsData.games.title}
               description={creationsData.games.description}
               stats={creationsData.games.stats}
@@ -457,7 +481,7 @@ export default function CreationsPage() {
             {/* Books Card */}
             <CreationCard
               variant="novel"
-              icon={<GiOpenBook className="text-5xl text-emerald-500" />}
+              icon={<GiOpenBook className="text-5xl text-blue-500" />}
               title={creationsData.novel.title}
               description={creationsData.novel.description}
               stats={creationsData.novel.stats}

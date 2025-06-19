@@ -1,5 +1,31 @@
 # 📝 Changelog - Riorganizzazione Progetto
 
+## [v2.2.2] - 2025-06-19 📊
+
+### 📊 **Dati Reali e Statistiche**
+
+#### 📚 **Aggiornamento CreationsPage con Dati Reali**
+- **Problema**: CreationsPage mostrava statistiche fittizie/mock per i libri
+- **Risolto**: Implementato calcolo automatico dei dati reali
+- **Modifiche**:
+  - Aggiunta funzione `calculateBookStats()` per calcolare statistiche reali
+  - Importato `books` da `src/data/books.js` per accesso ai contenuti
+  - Statistiche aggiornate:
+    - **Libri**: da "2+" a conteggio reale (2)
+    - **Capitoli**: da "10+" a conteggio reale (4)
+    - **Pagine**: da "50+" a stima reale (~1 pagina basata su 250 parole/pagina)
+    - **Parole**: sostituito "Genere: Fantasy" con conteggio reale delle parole scritte (19)
+  - Utilizzo di `toLocaleString()` per formattazione numeri con separatori
+- **Benefici**: Dati sempre aggiornati automaticamente quando si aggiungono nuovi contenuti
+
+## [v2.2.1] - 2025-06-19 🎨
+
+### 🎨 **UI/UX Fixes**
+
+#### 🔧 **Miglioramento Contrasti CreationsPage**
+- **Problema**: Icone e testi poco visibili su gradienti simili
+- **Risolto**: Cambiati colori di icone e testi accent per migliore contrasto
+
 ## [v2.2.0] - 2025-06-19 🧹
 
 ### 🗑️ **MAJOR: Rimozione Ottimizzazioni WebP/WebM**
