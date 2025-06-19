@@ -124,8 +124,7 @@ export const getCacheStats = async () => {
  */
 export const preloadCriticalResources = () => {
   const criticalResources = [
-    '/project-stats.json',
-    '/textures/paper.webp'
+    '/project-stats.json'
   ];
   
   criticalResources.forEach(resource => {
@@ -136,7 +135,7 @@ export const preloadCriticalResources = () => {
     if (resource.endsWith('.json')) {
       link.as = 'fetch';
       link.crossOrigin = 'anonymous';
-    } else if (resource.endsWith('.webp') || resource.endsWith('.jpg')) {
+    } else if (resource.endsWith('.jpg') || resource.endsWith('.png')) {
       link.as = 'image';
     }
     

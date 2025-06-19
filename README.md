@@ -9,13 +9,14 @@
 
 ## 🚀 Caratteristiche Principali
 
-- **🌐 Multilingue**: Supporto completo per italiano e inglese
+- **🌐 Multilingue**: Supporto completo per italiano e inglese con i18next
 - **🎨 Design Responsive**: Interfaccia moderna che si adatta a tutti i dispositivi
 - **🌙 Modalità Dark/Light**: Tema personalizzabile con persistenza delle preferenze
 - **📊 Statistiche GitHub**: Integrazione con API GitHub per statistiche real-time
 - **📖 Sistema di Libri**: Piattaforma per la pubblicazione di racconti e novelle
-- **⚡ Performance**: Ottimizzato per velocità e accessibilità
-- **🎭 Easter Eggs**: Funzionalità nascoste e sorprese interattive
+- **⚡ Performance**: Ottimizzato con lazy loading e code splitting
+- **🔄 Hash Routing**: Sistema di routing personalizzato per GitHub Pages
+- **🎭 Animazioni Fluide**: Powered by Framer Motion
 
 ## 🏗️ Architettura del Progetto
 
@@ -32,7 +33,7 @@ src/
 ├── data/                # Dati statici e configurazioni
 ├── locales/             # File di traduzione i18n
 ├── pages/               # Pagine principali dell'applicazione
-└── styles/              # Stili CSS personalizzati
+└── utils/               # Utilities e helper functions
 ```
 
 ### 🧩 Componenti Principali
@@ -65,23 +66,13 @@ src/
 
 ## 🛠️ Tecnologie Utilizzate
 
-### Frontend
-- **React 18** - Framework JavaScript per UI
-- **React Router** - Navigazione single-page
+- **React 18** - Framework JavaScript per UI moderne
 - **Tailwind CSS** - Framework CSS utility-first
-- **React i18next** - Internazionalizzazione
-- **React Icons** - Libreria di icone
-
-### Tools & Build
-- **Create React App** - Toolchain di sviluppo
-- **ESLint** - Linting del codice
-- **Prettier** - Formattazione del codice
-- **GitHub Actions** - CI/CD (se configurato)
-
-### APIs & Integrations
-- **GitHub API** - Statistiche e dati repository
-- **Context API** - Gestione stato globale
-- **Local Storage** - Persistenza preferenze utente
+- **Framer Motion** - Animazioni fluide e interazioni
+- **React Router DOM** - Routing per Single Page Application  
+- **React i18next** - Sistema di internazionalizzazione
+- **GitHub API** - Integrazione per statistiche real-time
+- **Service Worker** - PWA features e caching offline
 
 ## 🚀 Installazione e Sviluppo
 
@@ -129,52 +120,31 @@ npm run lint:fix
 
 ## 🎨 Personalizzazione
 
-### Temi
-Il sito supporta modalità chiara e scura. Le preferenze sono salvate nel localStorage e rispettano le impostazioni di sistema dell'utente.
+Il sito supporta:
+- **Modalità chiara/scura** con persistenza delle preferenze
+- **Multilingua** (Italiano/Inglese) con i18next
+- **Configurazioni personalizzabili** in `src/data/`
 
-### Traduzioni
-I file di traduzione si trovano in `src/locales/`:
-- `it/translation.json` - Traduzioni italiane
-- `en/translation.json` - Traduzioni inglesi
+## 📊 Features
 
-### Configurazione
-- `src/data/` - Dati statici (storia, libri, progetti)
-- `src/hooks/useStats.js` - Configurazione statistiche
-- `tailwind.config.js` - Configurazione Tailwind CSS
-
-## 📊 Statistiche e Analytics
-
-Il sito integra:
-- **GitHub API** per statistiche real-time sui repository
-- **Metriche di performance** del sito
-- **Statistiche personali** di sviluppo
-- **Timeline interattiva** degli eventi
+- **Statistiche GitHub** integrate con API real-time
+- **Sistema di libri** per pubblicare racconti e novelle
+- **Hash routing** ottimizzato per GitHub Pages
+- **PWA features** con Service Worker
+- **Performance** ottimizzate con lazy loading
 
 ## 🌐 Deployment
 
-### GitHub Pages
-Il sito è automaticamente deployato su GitHub Pages ad ogni push sul branch main.
+Il sito è automaticamente deployato su **GitHub Pages** ad ogni push.
 
-### Build di Produzione
 ```bash
-npm run build
+# Deploy manuale
+npm run deploy
 ```
-
-I file ottimizzati saranno generati nella cartella `build/`.
-
-## 🤝 Contributi
-
-Questo è un progetto personale, ma suggerimenti e feedback sono sempre benvenuti!
-
-1. Fork del progetto
-2. Crea un branch per la tua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit delle modifiche (`git commit -m 'Add some AmazingFeature'`)
-4. Push del branch (`git push origin feature/AmazingFeature`)
-5. Apri una Pull Request
 
 ## 📝 Licenza
 
-Questo progetto è sotto licenza MIT. Vedi il file `LICENSE` per i dettagli.
+Questo progetto è sotto **licenza MIT**. Vedi il file [LICENSE](LICENSE) per i dettagli.
 
 ## 📞 Contatti
 

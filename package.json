@@ -29,8 +29,7 @@
     "stats:copy": "copy src\\data\\project-stats.json public\\project-stats.json",
     "stats:full": "npm run stats && npm run stats:copy",
     "stats:lighthouse": "npm run build:with-stats && npm run stats",
-    "stats:test": "node scripts/test-metrics.js",
-    "analyze": "node scripts/analyze-performance.js",    "optimize:images": "node scripts/optimize-images.js",
+    "stats:test": "node scripts/test-metrics.js",    "analyze": "node scripts/analyze-performance.js",
     "clean:deps": "node scripts/analyze-dependencies.js",
     "deploy:optimized": "node scripts/deploy-optimized.js",
     "stats:watch": "npm run stats && npm run start",
@@ -53,8 +52,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
+  },  "devDependencies": {
     "@lhci/cli": "^0.15.0",
     "autoprefixer": "^10.4.20",
     "chrome-launcher": "^1.2.0",
@@ -63,7 +61,6 @@
     "node-fetch": "^3.3.2",
     "postcss": "^8.4.49",
     "serve": "^14.2.4",
-    "sharp": "^0.34.2",
     "tailwindcss": "^3.4.15"
   }
 }
