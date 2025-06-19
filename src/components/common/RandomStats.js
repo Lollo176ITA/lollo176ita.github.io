@@ -176,11 +176,16 @@ const RandomStats = () => {
       label: t('aboutPage.stackOverflowVisits') || 'Stack Overflow Visits',
       gradient: 'from-orange-400 to-red-500',
       category: 'fun'
-    },
-    {
+    },    {
       icon: FaBolt,
-      value: '1.2h',
-      label: t('aboutPage.loadingSpeed') || 'Loading Speed',
+      value: (() => {
+        const now = new Date();
+        const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const secondsSinceMidnight = Math.floor((now - startOfDay) / 1000);
+        const requests = Math.floor(secondsSinceMidnight * 0.70);
+        return requests.toLocaleString();
+      })(),
+      label: t('aboutPage.chatgptRequests') || 'Richieste ChatGPT',
       gradient: 'from-yellow-400 to-orange-500',
       category: 'fun'
     },

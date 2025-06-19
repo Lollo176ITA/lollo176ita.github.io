@@ -45,7 +45,7 @@
 6. **Statistiche Divertenti** (4 card):
    - AI Bugs Found: -1
    - Stack Overflow Visits: ∞
-   - Loading Speed: 1.2h
+   - Richieste ChatGPT: (calcolato dinamicamente)
    - Growth Rate: Good
 
 #### 🎨 **Carousel Moderno e Interattivo**
@@ -88,6 +88,13 @@
 - **Build**: Test superato con successo
 - **Errori**: Nessun errore di sintassi rilevato
 - **Responsive**: Funzionamento verificato su tutti i dispositivi
+
+#### 🎯 **Statistica Dinamica "Richieste ChatGPT"**
+
+- **Sostituita**: "Velocità Caricamento" con "Richieste ChatGPT del giorno"
+- **Calcolo dinamico**: Secondi dalle 00:00 × 0.80 × fattore casuale (1.0-1.3)
+- **Aggiornamento**: Valore cambia ogni volta che si ricarica la pagina
+- **Traduzioni**: Aggiunte chiavi `chatgptRequests` in IT/EN
 
 ## [v2.2.4] - 2025-01-20 🎨
 
