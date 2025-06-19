@@ -202,8 +202,23 @@
     "gamingTitle": "🎮 Gaming",
     "gamingText": "Strategici, indie e simulazioni",
     "travelTitle": "🌍 Viaggi",
-    "travelText": "Amo esplorare nuovi posti e culture",
-    "readingTitle": "📚 Lettura",
-    "readingText": "Sci-fi, fantasy e saggistica tech"
+    "travelText": "Amo esplorare nuovi posti e culture",    "readingTitle": "📚 Lettura",
+    "readingText": "Sci-fi, fantasy e saggistica tech",    "meInPieces": "Io in Pezzi",
+    "brain": "Cervello",
+    "eyes": "Occhi", 
+    "heart": "Cuore",
+    "lungs": "Polmoni",
+    "hands": "Mani",
+    "stomach": "Stomaco",
+    "liver": "Fegato",
+    "kidneys": "Reni",
+    "brainDescription": "Il centro di comando dove nascono le idee più folle. Processa caffè e codice in quantità industriali, spesso alle 3 del mattino.",
+    "eyesDescription": "Testimoni silenziosi di migliaia di righe di codice. Hanno visto errori, bug e quella volta che ho dimenticato un punto e virgola per 3 ore.",
+    "heartDescription": "Batte per la programmazione, accelera quando il codice funziona al primo colpo, si ferma quando vedo un merge conflict.",
+    "lungsDescription": "Respirano codice pulito e sospirano profondamente ad ogni refactoring. Hanno trattenuto il fiato durante troppi build di produzione.",
+    "handsDescription": "Le vere eroine di questa storia. Hanno digitato, debuggato, e lanciato oggetti contro il monitor (sempre senza romperlo).",
+    "stomachDescription": "Convertitore ufficiale di caffè in codice. Ha sviluppato una tolleranza leggendaria alla caffeina e una dipendenza dai biscotti.",
+    "liverDescription": "Il filtro silenzioso che purifica lo stress da deadline impossibili. Ha sviluppato super-poteri per metabolizzare la frustrazione.",
+    "kidneysDescription": "Filtrano le cattive decisioni architetturali e mantengono l'equilibrio tra ottimismo e realismo nel codice."
   }
 }

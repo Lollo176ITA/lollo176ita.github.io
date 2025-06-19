@@ -1,5 +1,67 @@
 # 📝 Changelog - Riorganizzazione Progetto
 
+## [v2.2.6] - 2025-06-19 🔄
+
+### 🔄 **Trasformazione Completa: Da "Il Mio Viaggio" a "Me in Pieces"**
+
+#### ⚡ **Rivoluzione UX: Organi Senza Colori in Griglia Pulita**
+
+- **Rimosso Completamente**: SVG del corpo umano di sfondo
+- **Eliminati**: Tutti i colori, background, border, glow effects  
+- **Nuovo Layout**: Griglia 2x4 (mobile) / 4x2 (desktop) ordinata e pulita
+- **Icone Realistiche**: Sostituiti gli icon generici con organi più anatomici
+
+#### 🫀 **8 Organi con Icone Professionali**
+
+1. **Cervello** (`FaBrain`) - Centro comando idee folli
+2. **Occhi** (`FaEye`) - Testimoni di migliaia di righe codice  
+3. **Cuore** (`FaHeart`) - Batte per la programmazione
+4. **Polmoni** (`FaLungs`) - Respirano codice pulito, sospirano ai refactoring
+5. **Mani** (`FaHandPaper`) - Eroine che digitano e debuggano
+6. **Stomaco** (`GiStomach`) - Convertitore caffè → codice
+7. **Fegato** (`GiLiver`) - Filtro stress da deadline impossibili
+8. **Reni** (`GiKidneys`) - Equilibratori decisioni architetturali
+
+#### 🎨 **Design Minimalista Senza Colori**
+
+- **Zero Colori**: Solo grigio/nero, toni neutri
+- **Hover Effects**: Scale e cambio opacity, niente colori
+- **Modal Pulito**: Border grigio, pulsante neutro
+- **Pulsing Animation**: Solo scale/opacity, niente glow colorati
+- **Tipografia**: Focus su leggibilità, niente decorazioni colorate
+
+#### 🌐 **Traduzioni Complete IT/EN**
+
+**Aggiunti 6 Nuovi Organi**:
+- `lungs` / `polmoni`: "Respirano codice pulito..."
+- `liver` / `fegato`: "Filtro stress da deadline..."  
+- `kidneys` / `reni`: "Equilibratori decisioni architetturali..."
+
+**Statistiche Ironiche per Ogni Organo**:
+- Cervello: 456 idee, 2,847 caffè, 847 notti insonni
+- Polmoni: 1,205 sospiri, 3,400 respiri trattenuti
+- Fegato: 1,847 stress metabolizzati, 456 deadline superate
+- Reni: 2,100 decisioni filtrate, 67% realismo mantenuto
+
+#### 🏗️ **Architettura Semplificata**
+
+**Prima**: Posizionamento assoluto su SVG complesso
+**Dopo**: CSS Grid responsive, mobile-first
+
+**Codice Ridotto**: -120 righe eliminando SVG e logica colori
+**Performance**: Render più veloce senza animazioni SVG complesse
+**Manutenibilità**: Griglia facile da estendere con nuovi organi
+
+#### ✅ **Build & Test Completo**
+
+- ✅ **Build Success**: Nessun errore compilazione
+- ✅ **Import Fix**: Corretta `FaHandPaper` da react-icons/fa
+- ✅ **Responsive**: Griglia adattiva 2-4 colonne
+- ✅ **Accessibilità**: Hover states e focus management
+- ✅ **Performance**: Animazioni ottimizzate senza overengineering
+
+---
+
 ## [v2.2.5] - 2025-06-19 📊
 
 ### 📊 **Nuovo Componente RandomStats - Carousel Statistiche Interattivo**
@@ -95,6 +157,79 @@
 - **Calcolo dinamico**: Secondi dalle 00:00 × 0.80 × fattore casuale (1.0-1.3)
 - **Aggiornamento**: Valore cambia ogni volta che si ricarica la pagina
 - **Traduzioni**: Aggiunte chiavi `chatgptRequests` in IT/EN
+
+#### 🧍 **Nuovo Componente PersonalJourney - Omino Interattivo**
+
+- **Creato**: `src/components/common/PersonalJourney.js` (387 righe)
+- **Sostituisce**: Sezione timeline statica in `About.js`
+- **Concept**: Omino SVG animato con statistiche che partono da parti del corpo
+
+#### 🎨 **Caratteristiche PersonalJourney**
+
+- **SVG Animato**: Omino disegnato con path animate progressivamente
+- **5 Statistiche Personali**:
+  - ☕ Caffè Bevuti (2,847) → parte dal cuore
+  - 🌙 Notti in Bianco (847) → parte dagli occhi
+  - 🐛 Bug Risolti (1,203) → parte dalla mano sinistra
+  - 💡 Idee Avute (456) → parte dal cervello
+  - 💻 Repo Create (23) → parte dalla mano destra
+
+#### 🎯 **Interattività Avanzata**
+
+- **Auto-animazione**: Statistiche appaiono automaticamente ogni 2 secondi
+- **Click interaction**: Click su statistica per attivarla manualmente
+- **Hover effects**: Descrizione dettagliata al passaggio del mouse
+- **Linee di connessione**: Collegamento visivo tra stat e corpo
+- **Mobile responsive**: Griglia alternativa per dispositivi piccoli
+
+#### ⚙️ **Dettagli Tecnici**
+
+- **Animazioni SVG**: Path progressivo del disegno dell'omino
+- **Gestione stato**: Array dinamico di statistiche attive
+- **Posizionamento assoluto**: Coordinate precise per ogni statistica
+- **Cleanup automatico**: Rimozione statistiche dopo 3-4 secondi
+- **Spring animations**: Transizioni fluide con Framer Motion
+
+#### 🧬 **Trasformazione "Io in Pezzi" - Anatomia Interattiva**
+
+- **Nuovo Concept**: Da "Il Mio Viaggio" a "Io in Pezzi"
+- **Rimossa**: Sezione PersonalJourney dalla pagina About
+- **Trasformato**: PersonalJourney in componente anatomico interattivo
+
+#### 🦴 **Sistema Organi con Modal**
+
+- **7 Organi Cliccabili**:
+  - 🧠 Cervello: Centro di comando delle idee folli
+  - 👀 Occhi (x2): Testimoni di migliaia di righe di codice  
+  - ❤️ Cuore: Batte per la programmazione
+  - 🤲 Mani (x2): Eroine di digitazione e debug
+  - 🤤 Stomaco: Convertitore caffè-codice
+
+#### 🎨 **Caratteristiche Anatomiche**
+
+- **SVG Outline**: Corpo umano stilizzato con stroke animato
+- **Pulsing Effect**: Organi pulsano automaticamente ogni 3 secondi  
+- **Modal Dettagliato**: Click su organo apre modal con:
+  - Nome e personalità dell'organo
+  - Descrizione ironica e dettagliata
+  - Statistiche specifiche per organo
+  - Colore tematico personalizzato
+- **Glow Effect**: Alone colorato durante il pulsing
+- **Fixed Modal**: Modal a schermo intero con backdrop blur
+
+#### 🌐 **Traduzioni Organi**
+
+- **Aggiunte** 12+ nuove stringhe per anatomia:
+  - `meInPieces`, nomi organi, descrizioni dettagliate
+  - **IT**: Descrizioni ironiche e divertenti in italiano
+  - **EN**: Traduzioni complete in inglese
+  - Personalità per ogni organo (emoji + caratteristica)
+
+#### 📱 **Standalone Page**
+
+- **Creata**: `src/pages/MeInPiecesPage.js`
+- **Accessibile**: Come pagina indipendente
+- **Layout**: Gradiente di sfondo + container centrato
 
 ## [v2.2.4] - 2025-01-20 🎨
 

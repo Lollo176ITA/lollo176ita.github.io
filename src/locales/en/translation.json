@@ -203,8 +203,23 @@
     "gamingTitle": "🎮 Gaming",
     "gamingText": "Strategy, indie and simulation games",
     "travelTitle": "🌍 Travel",
-    "travelText": "I love exploring new places and cultures",
-    "readingTitle": "📚 Reading",
-    "readingText": "Sci-fi, fantasy and tech books"
+    "travelText": "I love exploring new places and cultures",    "readingTitle": "📚 Reading",
+    "readingText": "Sci-fi, fantasy and tech books",    "meInPieces": "Me in Pieces",
+    "brain": "Brain",
+    "eyes": "Eyes",
+    "heart": "Heart",
+    "lungs": "Lungs", 
+    "hands": "Hands",
+    "stomach": "Stomach",
+    "liver": "Liver",
+    "kidneys": "Kidneys",
+    "brainDescription": "The control center where the craziest ideas are born. Processes coffee and code in industrial quantities, often at 3 AM.",
+    "eyesDescription": "Silent witnesses to thousands of lines of code. They've seen errors, bugs, and that time I forgot a semicolon for 3 hours.",
+    "heartDescription": "Beats for programming, accelerates when code works on the first try, stops when I see a merge conflict.",
+    "lungsDescription": "Breathe clean code and sigh deeply with every refactoring. Have held their breath through too many production builds.",
+    "handsDescription": "The real heroes of this story. They've typed, debugged, and thrown objects at the monitor (always without breaking it).",
+    "stomachDescription": "Official converter of coffee to code. Has developed legendary caffeine tolerance and a cookie addiction.",
+    "liverDescription": "The silent filter that purifies stress from impossible deadlines. Has developed super-powers to metabolize frustration.",
+    "kidneysDescription": "Filter bad architectural decisions and maintain balance between optimism and realism in code."
   }
 }

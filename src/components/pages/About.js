@@ -32,6 +32,7 @@ import {
   SiVisualstudiocode
 } from 'react-icons/si';
 import RandomStats from '../common/RandomStats';
+import { MeInPieces } from '../common';
 import HashLink from '../common/HashLink';
 import { useGitHubStats, usePersonalStats } from '../../hooks/useStats';
 
@@ -60,16 +61,8 @@ export default function About() {
     { icon: SiHtml5, name: 'HTML5', color: '#E34F26' },
     { icon: SiCss3, name: 'CSS3', color: '#1572B6' },
     { icon: SiGit, name: 'Git', color: '#F05032' },
-    { icon: SiVisualstudiocode, name: 'VS Code', color: '#007ACC' }
-  ];
-
-  const timeline = [
-    { year: '2020', title: t('aboutPage.timeline2020'), icon: FaRocket, color: '#3B82F6' },
-    { year: '2021', title: t('aboutPage.timeline2021'), icon: SiReact, color: '#61DAFB' },
-    { year: '2022', title: t('aboutPage.timeline2022'), icon: FaUniversity, color: '#8B5CF6' },
-    { year: '2023', title: t('aboutPage.timeline2023'), icon: SiUnity, color: '#000000' },
-    { year: '2024', title: t('aboutPage.timeline2024'), icon: FaHeart, color: '#EF4444' }
-  ];
+    { icon: SiVisualstudiocode, name: 'VS Code', color: '#007ACC' }  ];
+  
   const interests = [
     { title: t('aboutPage.musicTitle'), description: t('aboutPage.musicText'), icon: FaMusic, color: '#F59E0B' },
     { title: t('aboutPage.gamingTitle'), description: t('aboutPage.gamingText'), icon: FaGamepad, color: '#8B5CF6' },
@@ -160,9 +153,13 @@ export default function About() {
                   {info.value}
                 </p>
               </motion.div>
-            ))}
-          </div>
-        </motion.section>        {/* Random Stats Carousel */}
+            ))}          </div>
+        </motion.section>
+
+        {/* Me In Pieces - Anatomical Journey */}
+        <MeInPieces />
+
+        {/* Random Stats Carousel */}
         <RandomStats />
 
         {/* Personal Journey Stats - Il Mio Viaggio */}
@@ -263,44 +260,7 @@ export default function About() {
                   {tech.name}
                 </p>
               </motion.div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* Timeline */}
-        <motion.section 
-          className="mb-16"
-          variants={itemVariants}
-        >
-          <h3 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-12">
-            {t('aboutPage.timeline')}
-          </h3>
-          <div className="max-w-4xl mx-auto">
-            {timeline.map((item, index) => (
-              <motion.div
-                key={index}
-                className="flex items-center mb-8 last:mb-0"
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.2 }}
-              >
-                <div className={`flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center text-white font-bold ${index % 2 === 0 ? 'order-1' : 'order-2 ml-auto'}`}
-                     style={{ backgroundColor: item.color }}>
-                  <item.icon className="text-xl" />
-                </div>
-                <div className={`flex-1 ${index % 2 === 0 ? 'order-2 ml-6' : 'order-1 mr-6 text-right'}`}>
-                  <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-                    <div className="font-bold text-lg text-gray-800 dark:text-white mb-2">
-                      {item.year}
-                    </div>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      {item.title}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+            ))}          </div>
         </motion.section>
 
         {/* Coding Languages Chart */}
