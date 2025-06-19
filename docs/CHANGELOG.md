@@ -1,5 +1,94 @@
 # 📝 Changelog - Riorganizzazione Progetto
 
+## [v2.2.5] - 2025-06-19 📊
+
+### 📊 **Nuovo Componente RandomStats - Carousel Statistiche Interattivo**
+
+#### 🎛️ **Componente RandomStats Completo**
+
+- **Creato**: `src/components/common/RandomStats.js` (402 righe)
+- **Sostituisce**: Tutte le sezioni statistiche statiche in `About.js`
+- **Mantiene**: Solo la sezione "Il Mio Viaggio" come richiesto dall'utente
+
+#### 📈 **23 Statistiche Organizzate in 6 Categorie**
+
+1. **Statistiche del Sito** (4 card):
+   - Righe di Codice: 5,333
+   - File: 51  
+   - Componenti: 21
+   - Pagine: 8
+
+2. **Statistiche GitHub** (4 card):
+   - Commit: 106
+   - Stelle: 1
+   - Fork: 0
+   - Dimensioni: 51 MB
+
+3. **Performance & Qualità** (4 card):
+   - Performance: 59
+   - Accessibilità: 88
+   - Best Practices: 100
+   - SEO: 100
+
+4. **Build & Deploy** (1 card):
+   - Tempo Build: 15.1s
+
+5. **Statistiche Tecniche** (7 card):
+   - Uptime: 99.9%
+   - Mobile Ready: 100%
+   - Risoluzione Max: 4K
+   - Security Score: A-
+   - Database Size: 0MB
+   - Cloud Storage: ∞
+   - Connection Speed: 5G
+
+6. **Statistiche Divertenti** (4 card):
+   - AI Bugs Found: -1
+   - Stack Overflow Visits: ∞
+   - Loading Speed: 1.2h
+   - Growth Rate: Good
+
+#### 🎨 **Carousel Moderno e Interattivo**
+
+- **Layout**: 3 card per volta con layout responsive
+- **Auto-play**: Ogni 8 secondi con possibilità di pausa manuale
+- **Navigazione**: Frecce sinistra/destra + indicatori a punti
+- **Titolo dinamico**: Cambia automaticamente per ogni categoria
+- **Animazioni**: Transizioni fluide con Framer Motion
+- **Hover effects**: Rotazione icone 360°, scaling e shadow dinamiche
+
+#### 🌐 **Traduzioni Complete**
+
+- **Italiano**: 15 nuove stringhe tradotte
+- **Inglese**: 15 nuove stringhe tradotte
+- **Nuove chiavi**: 
+  - `uptime`, `mobileReady`, `maxResolution`, `securityScore`
+  - `aiBugsFound`, `stackOverflowVisits`, `loadingSpeed`, `growthRate`
+  - `databaseSize`, `cloudStorage`, `connectionSpeed`
+  - `buildAndDeploy`, `technicalStats`, `funStats`
+
+#### 🎯 **UX/UI Moderna**
+
+- **Gradient personalizzati** per ogni categoria di card
+- **Auto-play indicator**: Punto verde/grigio per stato auto-play
+- **Mobile-first**: Da 1 colonna (mobile) a 3 (desktop)
+- **Touch-friendly**: Pulsanti di navigazione ottimizzati
+- **Dark/Light mode**: Supporto completo per entrambi i temi
+
+#### 🔧 **Integrazione Tecnica**
+
+- **Dati reali**: Integrato con `useGitHubStats` e `useSiteStats` hooks
+- **Modularità**: Componente completamente riutilizzabile
+- **Performance**: Bundle incremento minimo (ottimizzato)
+- **Export**: Aggiunto a `src/components/common/index.js`
+
+#### ✅ **Aggiornamenti Finali**
+
+- **Traduzioni**: File IT/EN già completi e aggiornati
+- **Build**: Test superato con successo
+- **Errori**: Nessun errore di sintassi rilevato
+- **Responsive**: Funzionamento verificato su tutti i dispositivi
+
 ## [v2.2.4] - 2025-01-20 🎨
 
 ### 🎨 **Nuovo Componente CodeEditor e Animazioni Avanzate**

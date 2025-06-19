@@ -20,9 +20,6 @@ async function optimizedDeploy() {
     console.log('📊 Generazione statistiche...');
     execSync('npm run stats', { stdio: 'inherit' });
     
-    // 3. Ottimizza immagini
-    console.log('🖼️  Ottimizzazione immagini...');
-    execSync('npm run optimize:images', { stdio: 'inherit' });
     
     // 4. Build ottimizzato
     console.log('🔨 Build ottimizzato...');

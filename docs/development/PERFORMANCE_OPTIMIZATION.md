@@ -20,13 +20,6 @@
 
 ## 🔄 OTTIMIZZAZIONI PROSSIME (Fase 2)
 
-### 1. Image Optimization
-```bash
-# Installa sharp per ottimizzazione immagini
-npm install --save-dev @squoosh/lib
-
-# Converti immagini esistenti in WebP
-npm run optimize:images
 ```
 
 ### 2. Component Memoization

@@ -6,3 +6,4 @@ export { default as ThemeSwitch } from './ThemeSwitch';
 export { default as LanguageSwitcher } from './LanguageSwitcher';
 export { default as HashLink } from './HashLink';
 export { default as CodeEditor } from './CodeEditor';
+export { default as RandomStats } from './RandomStats';

@@ -1,12 +1,12 @@
 {
-  "generated": "2025-06-18T14:27:26.762Z",
-  "generationTime": 27195,
+  "generated": "2025-06-19T10:34:37.674Z",
+  "generationTime": 28664,
   "project": {
     "name": "lollo176ita.github.io",
-    "version": "0.1.0",
+    "version": "2.2.3",
     "dependencies": 12,
-    "devDependencies": 10,
-    "scripts": 18,
+    "devDependencies": 9,
+    "scripts": 17,
     "size": {
       "buildSize": 0,
       "buildSizeGzipped": 0
@@ -14,29 +14,29 @@
   },
   "code": {
     "files": 51,
-    "totalLines": 5375,
-    "codeLines": 4744,
-    "blankLines": 631,
+    "totalLines": 5986,
+    "codeLines": 5333,
+    "blankLines": 653,
     "languages": {
       "CSS": {
         "files": 2,
         "lines": 105,
-        "percentage": 2.2
+        "percentage": 2
       },
       "JavaScript": {
         "files": 42,
-        "lines": 3917,
-        "percentage": 82.6
+        "lines": 4486,
+        "percentage": 84.1
       },
       "JSON": {
         "files": 7,
-        "lines": 722,
-        "percentage": 15.2
+        "lines": 742,
+        "percentage": 13.9
       }
     }
   },
   "structure": {
-    "components": 20,
+    "components": 21,
     "routes": 8,
     "books": 2,
     "chapters": 4,
@@ -44,24 +44,24 @@
     "pages": 1
   },
   "git": {
-    "commits": 100,
+    "commits": 106,
     "contributors": 0,
     "branches": 12,
     "lastCommit": {
-      "hash": "966f3f0",
-      "message": "feat: Implement Lighthouse metrics automation and performance optimizations",
+      "hash": "a26c3b8",
+      "message": "feat: Introduce CodeEditor component with advanced animations and build simulation",
       "author": "Lollo176ITA",
-      "date": "2025-06-18T13:57:04.000Z"
+      "date": "2025-06-19T10:30:05.000Z"
     }
   },
   "performance": {
-    "avgBuildTime": 13.8,
+    "avgBuildTime": 15.1,
     "lighthouse": {
       "performance": 59,
       "accessibility": 88,
       "bestPractices": 100,
       "seo": 100,
-      "lastUpdated": "2025-06-18T14:27:26.344Z",
+      "lastUpdated": "2025-06-19T10:34:37.295Z",
       "fallback": false
     }
   }

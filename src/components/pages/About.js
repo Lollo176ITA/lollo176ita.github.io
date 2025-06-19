@@ -10,20 +10,14 @@ import {
   FaMapMarkerAlt,
   FaLanguage,
   FaRocket,
-  FaGitAlt,
-  FaGlobe,
   FaHeart,
-  FaStar,
-  FaCodeBranch,
   FaCoffee,
   FaMoon,
   FaBug,
   FaLightbulb,
-  FaFolder,
   FaMusic,
   FaPlane,
-  FaBookOpen,
-  FaDownload
+  FaBookOpen
 } from 'react-icons/fa';
 import { 
   SiReact, 
@@ -37,13 +31,12 @@ import {
   SiGit,
   SiVisualstudiocode
 } from 'react-icons/si';
+import RandomStats from '../common/RandomStats';
 import HashLink from '../common/HashLink';
-import { useGitHubStats, useSiteStats, usePersonalStats } from '../../hooks/useStats';
+import { useGitHubStats, usePersonalStats } from '../../hooks/useStats';
 
 export default function About() {
-  const { t } = useTranslation();
-  const gitHubStats = useGitHubStats();
-  const siteStats = useSiteStats();
+  const { t } = useTranslation();  const gitHubStats = useGitHubStats();
   const personalStats = usePersonalStats();
     const age = new Date().getFullYear() - 2004 - (new Date().getMonth() < 2 || (new Date().getMonth() === 2 && new Date().getDate() < 30) ? 1 : 0);
   const currentYear = new Date().getFullYear();
@@ -169,117 +162,10 @@ export default function About() {
               </motion.div>
             ))}
           </div>
-        </motion.section>        {/* Site Statistics */}
-        <motion.section 
-          className="mb-16"
-          variants={itemVariants}
-        >
-          <h3 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-8">
-            {t('aboutPage.siteStats')}
-          </h3>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-6xl mx-auto">
-            <motion.div 
-              className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-4 lg:p-6 text-white text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaCode className="text-3xl lg:text-4xl mx-auto mb-2 lg:mb-3" />
-              <div className="text-2xl lg:text-3xl font-bold">
-                {siteStats.loading ? '...' : siteStats.linesOfCode.toLocaleString()}
-              </div>
-              <div className="text-xs lg:text-sm opacity-90">{t('aboutPage.linesOfCode')}</div>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-4 lg:p-6 text-white text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaFolder className="text-3xl lg:text-4xl mx-auto mb-2 lg:mb-3" />
-              <div className="text-2xl lg:text-3xl font-bold">
-                {siteStats.loading ? '...' : siteStats.files}
-              </div>
-              <div className="text-xs lg:text-sm opacity-90">{t('aboutPage.files')}</div>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl p-4 lg:p-6 text-white text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaRocket className="text-3xl lg:text-4xl mx-auto mb-2 lg:mb-3" />
-              <div className="text-2xl lg:text-3xl font-bold">
-                {siteStats.loading ? '...' : siteStats.components}
-              </div>
-              <div className="text-xs lg:text-sm opacity-90">{t('aboutPage.components')}</div>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl p-4 lg:p-6 text-white text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaGlobe className="text-3xl lg:text-4xl mx-auto mb-2 lg:mb-3" />
-              <div className="text-2xl lg:text-3xl font-bold">
-                {siteStats.loading ? '...' : siteStats.routes}
-              </div>
-              <div className="text-xs lg:text-sm opacity-90">{t('aboutPage.routes')}</div>
-            </motion.div>
-          </div>
-        </motion.section>
+        </motion.section>        {/* Random Stats Carousel */}
+        <RandomStats />
 
-        {/* GitHub Statistics */}
-        <motion.section 
-          className="mb-16"
-          variants={itemVariants}
-        >
-          <h3 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-8">
-            {t('aboutPage.githubStats')}
-          </h3>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            <motion.div 
-              className="bg-gradient-to-br from-gray-700 to-gray-800 rounded-xl p-6 text-white text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaGitAlt className="text-4xl mx-auto mb-3" />
-              <div className="text-3xl font-bold">
-                {gitHubStats.loading ? '...' : gitHubStats.commits}
-              </div>
-              <div className="text-sm opacity-90">{t('aboutPage.commits')}</div>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-xl p-6 text-white text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaStar className="text-4xl mx-auto mb-3" />
-              <div className="text-3xl font-bold">
-                {gitHubStats.loading ? '...' : gitHubStats.stars}
-              </div>
-              <div className="text-sm opacity-90">{t('aboutPage.stars')}</div>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl p-6 text-white text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaCodeBranch className="text-4xl mx-auto mb-3" />
-              <div className="text-3xl font-bold">
-                {gitHubStats.loading ? '...' : gitHubStats.forks}
-              </div>
-              <div className="text-sm opacity-90">{t('aboutPage.forks')}</div>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl p-6 text-white text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaDownload className="text-4xl mx-auto mb-3" />
-              <div className="text-3xl font-bold">
-                {gitHubStats.loading ? '...' : gitHubStats.size}
-              </div>
-              <div className="text-sm opacity-90">{t('aboutPage.size')}</div>
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* Personal Journey Stats */}
+        {/* Personal Journey Stats - Il Mio Viaggio */}
         <motion.section 
           className="mb-16"
           variants={itemVariants}
@@ -353,74 +239,7 @@ export default function About() {
               </div>
               <div className="text-sm opacity-90">{t('aboutPage.years')}</div>
             </motion.div>          </div>
-        </motion.section>
-
-        {/* Performance & Quality Stats */}
-        <motion.section 
-          className="mb-16"
-          variants={itemVariants}
-        >
-          <h3 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-8">
-            {t('aboutPage.performanceStats')}
-          </h3>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            <motion.div 
-              className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-6 text-white text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaRocket className="text-4xl mx-auto mb-3" />
-              <div className="text-3xl font-bold">
-                {siteStats.loading ? '...' : siteStats.performance?.lighthouse?.performance || 97}
-              </div>
-              <div className="text-sm opacity-90">{t('aboutPage.performance')}</div>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-6 text-white text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaHeart className="text-4xl mx-auto mb-3" />
-              <div className="text-3xl font-bold">
-                {siteStats.loading ? '...' : siteStats.performance?.lighthouse?.accessibility || 98}
-              </div>
-              <div className="text-sm opacity-90">{t('aboutPage.accessibility')}</div>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl p-6 text-white text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaStar className="text-4xl mx-auto mb-3" />
-              <div className="text-3xl font-bold">
-                {siteStats.loading ? '...' : siteStats.performance?.lighthouse?.bestPractices || 95}
-              </div>
-              <div className="text-sm opacity-90">{t('aboutPage.bestPractices')}</div>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-xl p-6 text-white text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaGlobe className="text-4xl mx-auto mb-3" />
-              <div className="text-3xl font-bold">
-                {siteStats.loading ? '...' : siteStats.performance?.lighthouse?.seo || 99}
-              </div>
-              <div className="text-sm opacity-90">{t('aboutPage.seo')}</div>
-            </motion.div>
-          </div>
-          
-          {/* Build Performance */}
-          <div className="mt-8 text-center">
-            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-full">
-              <FaLightbulb className="text-yellow-500 mr-3" />
-              <span className="text-gray-800 dark:text-white font-medium">
-                {t('aboutPage.avgBuildTime')}: {siteStats.loading ? '...' : `${(siteStats.performance?.avgBuildTime || 34.2).toFixed(1)}s`}
-              </span>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Tech Stack */}
+        </motion.section>        {/* Tech Stack */}
         <motion.section 
           className="mb-16"
           variants={itemVariants}
