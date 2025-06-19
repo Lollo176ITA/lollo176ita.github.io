@@ -1,6 +1,6 @@
 {
-  "generated": "2025-06-19T10:34:37.674Z",
-  "generationTime": 28664,
+  "generated": "2025-06-19T12:09:49.195Z",
+  "generationTime": 33265,
   "project": {
     "name": "lollo176ita.github.io",
     "version": "2.2.3",
@@ -13,30 +13,30 @@
     }
   },
   "code": {
-    "files": 51,
-    "totalLines": 5986,
-    "codeLines": 5333,
-    "blankLines": 653,
+    "files": 53,
+    "totalLines": 6578,
+    "codeLines": 5885,
+    "blankLines": 693,
     "languages": {
       "CSS": {
         "files": 2,
         "lines": 105,
-        "percentage": 2
+        "percentage": 1.8
       },
       "JavaScript": {
-        "files": 42,
-        "lines": 4486,
-        "percentage": 84.1
+        "files": 44,
+        "lines": 4966,
+        "percentage": 84.4
       },
       "JSON": {
         "files": 7,
-        "lines": 742,
-        "percentage": 13.9
+        "lines": 814,
+        "percentage": 13.8
       }
     }
   },
   "structure": {
-    "components": 21,
+    "components": 23,
     "routes": 8,
     "books": 2,
     "chapters": 4,
@@ -44,24 +44,24 @@
     "pages": 1
   },
   "git": {
-    "commits": 106,
+    "commits": 109,
     "contributors": 0,
     "branches": 12,
     "lastCommit": {
-      "hash": "a26c3b8",
-      "message": "feat: Introduce CodeEditor component with advanced animations and build simulation",
+      "hash": "12f05fd",
+      "message": "feat: Introduce MeInPieces component with interactive organ statistics and descriptions",
       "author": "Lollo176ITA",
-      "date": "2025-06-19T10:30:05.000Z"
+      "date": "2025-06-19T11:51:04.000Z"
     }
   },
   "performance": {
-    "avgBuildTime": 15.1,
+    "avgBuildTime": 16.8,
     "lighthouse": {
-      "performance": 59,
+      "performance": 46,
       "accessibility": 88,
       "bestPractices": 100,
       "seo": 100,
-      "lastUpdated": "2025-06-19T10:34:37.295Z",
+      "lastUpdated": "2025-06-19T12:09:48.806Z",
       "fallback": false
     }
   }

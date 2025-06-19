@@ -162,7 +162,7 @@ export default function About() {
         {/* Random Stats Carousel */}
         <RandomStats />
 
-        {/* Personal Journey Stats - Il Mio Viaggio */}
+        {/* Personal Journey Stats - Il Mio Viaggio 
         <motion.section 
           className="mb-16"
           variants={itemVariants}
@@ -236,7 +236,7 @@ export default function About() {
               </div>
               <div className="text-sm opacity-90">{t('aboutPage.years')}</div>
             </motion.div>          </div>
-        </motion.section>        {/* Tech Stack */}
+        </motion.section>*/}        {/* Tech Stack */}
         <motion.section 
           className="mb-16"
           variants={itemVariants}

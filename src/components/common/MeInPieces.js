@@ -4,27 +4,31 @@ import { useTranslation } from 'react-i18next';
 import { 
   FaBrain, 
   FaEye, 
-  FaHeart, 
   FaHandPaper,
   FaLungs,
-  FaTimes
+  FaTimes,
+  FaTooth,
+  FaBone,
+  FaSkull
 } from 'react-icons/fa';
 import { 
   GiStomach,
   GiKidneys, 
-  GiLiver
+  GiLiver,
+  GiHeartOrgan,
+  GiInternalOrgan
 } from 'react-icons/gi';
 
 const MeInPieces = () => {
   const { t } = useTranslation();
   const [selectedOrgan, setSelectedOrgan] = useState(null);
-  const [pulsingOrgans, setPulsingOrgans] = useState([]);
-  // Organi con descrizioni e statistiche ironiche
+  const [pulsingOrgans, setPulsingOrgans] = useState([]);  // Organi con descrizioni, statistiche ironiche e colori realistici
   const organs = useMemo(() => [
     {
       id: 'brain',
       icon: FaBrain,
       name: t('aboutPage.brain') || 'Cervello',
+      color: '#FFB6C1', // Rosa pallido per materia grigia
       description: t('aboutPage.brainDescription') || 'Il centro di comando dove nascono le idee più folli. Processa caffè e codice in quantità industriali, spesso alle 3 del mattino.',
       personality: '🧠 Sempre attivo, mai spento',
       stats: ['456 idee generate', '2,847 tazze di caffè processate', '847 notti insonni']
@@ -33,14 +37,15 @@ const MeInPieces = () => {
       id: 'eyes',
       icon: FaEye, 
       name: t('aboutPage.eyes') || 'Occhi',
+      color: '#87CEEB', // Azzurro per l'iride
       description: t('aboutPage.eyesDescription') || 'Testimoni silenziosi di migliaia di righe di codice. Hanno visto errori, bug e quella volta che ho dimenticato un punto e virgola per 3 ore.',
       personality: '👀 Vedono tutto, dimenticano poco',
       stats: ['5,333 righe di codice viste', '1,203 bug individuati', '∞ Stack Overflow consultazioni']
-    },
-    {
+    },{
       id: 'heart',
-      icon: FaHeart,
+      icon: GiHeartOrgan,
       name: t('aboutPage.heart') || 'Cuore',
+      color: '#DC143C', // Rosso carminio per il cuore
       description: t('aboutPage.heartDescription') || 'Batte per la programmazione, accelera quando il codice funziona al primo colpo, si ferma quando vedo un merge conflict.',
       personality: '❤️ Appassionato e determinato',
       stats: ['23 progetti amati', '100% dedicazione', 'Battiti extra per ogni deploy']
@@ -49,6 +54,7 @@ const MeInPieces = () => {
       id: 'lungs',
       icon: FaLungs,
       name: t('aboutPage.lungs') || 'Polmoni',
+      color: '#FFE4E1', // Rosa chiaro per i polmoni
       description: t('aboutPage.lungsDescription') || 'Respirano codice pulito e sospirano profondamente ad ogni refactoring. Hanno trattenuto il fiato durante troppi build di produzione.',
       personality: '� Pazienti ma spesso in apnea',
       stats: ['1,205 sospiri profondi', '3,400 respiri trattenuti', '∞ "Finalmente funziona!"']
@@ -56,6 +62,7 @@ const MeInPieces = () => {
       id: 'hands',
       icon: FaHandPaper,
       name: t('aboutPage.hands') || 'Mani',
+      color: '#FDBCB4', // Colore pelle
       description: t('aboutPage.handsDescription') || 'Le vere eroine di questa storia. Hanno digitato, debuggato, e lanciato oggetti contro il monitor (sempre senza romperlo).',
       personality: '🤲 Instancabili e creative',
       stats: ['Milioni di tasti premuti', 'Zero monitor rotti', 'Infinite gesture di frustrazione']
@@ -64,6 +71,7 @@ const MeInPieces = () => {
       id: 'stomach',
       icon: GiStomach,
       name: t('aboutPage.stomach') || 'Stomaco',
+      color: '#DDA0DD', // Viola pallido per lo stomaco
       description: t('aboutPage.stomachDescription') || 'Convertitore ufficiale di caffè in codice. Ha sviluppato una tolleranza leggendaria alla caffeina e una dipendenza dai biscotti.',
       personality: '☕ Sempre affamato di caffè',
       stats: ['2,847 caffè processati', 'Tolleranza caffeina: leggendaria', 'Biscotti consumati: innumerevoli']
@@ -72,6 +80,7 @@ const MeInPieces = () => {
       id: 'liver',
       icon: GiLiver,
       name: t('aboutPage.liver') || 'Fegato',
+      color: '#8B4513', // Marrone rossastro per il fegato
       description: t('aboutPage.liverDescription') || 'Il filtro silenzioso che purifica lo stress da deadline impossibili. Ha sviluppato super-poteri per metabolizzare la frustrazione.',
       personality: '🔄 Resiliente e purificatore',
       stats: ['1,847 stress metabolizzati', '456 deadline superate', 'Tossine da bug: eliminate']
@@ -80,9 +89,45 @@ const MeInPieces = () => {
       id: 'kidneys',
       icon: GiKidneys,
       name: t('aboutPage.kidneys') || 'Reni',
+      color: '#CD853F', // Marrone chiaro per i reni
       description: t('aboutPage.kidneysDescription') || 'Filtrano le cattive decisioni architetturali e mantengono l\'equilibrio tra ottimismo e realismo nel codice.',
       personality: '⚖️ Equilibratori nati',
-      stats: ['2,100 decisioni filtrate', '67% realismo mantenuto', 'Equilibrio: sempre instabile']
+      stats: ['2,100 decisioni filtrate', '67% realismo mantenuto', 'Equilibrio: sempre instabile']    },
+    {
+      id: 'spleen',
+      icon: GiInternalOrgan,
+      name: t('aboutPage.spleen') || 'Milza',
+      color: '#800080', // Viola scuro per la milza
+      description: t('aboutPage.spleenDescription') || 'L\'organo più misterioso, che accumula tutta la rabbia repressa quando il codice non compila. Ha una memoria perfetta di ogni errore stupido.',
+      personality: '😤 Collezionista di frustrazioni',
+      stats: ['876 arrabbiature archiviate', '3,422 bestemmie filtrate', '99% pazienza rimossa']
+    },
+    {
+      id: 'ribcage',
+      icon: FaBone,
+      name: t('aboutPage.ribcage') || 'Costole',
+      color: '#F5F5DC', // Beige per le ossa
+      description: t('aboutPage.ribcageDescription') || 'La struttura di supporto che protegge tutto il resto. Come l\'architettura del codice, se cede tutto va a rotoli.',
+      personality: '🦴 Struttura e sostegno',
+      stats: ['24 costole protettive', '0 fratture da tastiera', 'Postura: discutibile']
+    },
+    {
+      id: 'skull',
+      icon: FaSkull,
+      name: t('aboutPage.skull') || 'Cranio',
+      color: '#FFFAF0', // Bianco avorio per il cranio
+      description: t('aboutPage.skullDescription') || 'La fortezza che protegge il cervello dai colpi esterni. Ha resistito a infinite testate contro il muro quando il codice non andava.',
+      personality: '💀 Guardiano del pensiero',
+      stats: ['Infinite testate sopportate', '100% protezione cervello', 'Durezza: diamante']
+    },
+    {
+      id: 'teeth',
+      icon: FaTooth,
+      name: t('aboutPage.teeth') || 'Denti',
+      color: '#FFFFF0', // Bianco avorio per i denti
+      description: t('aboutPage.teethDescription') || 'Strumenti di sopravvivenza che masticano problemi complessi. Hanno morso troppe volte la lingua durante sessioni di debugging intense.',
+      personality: '🦷 Masticatori di problemi',
+      stats: ['4,823 problemi masticati', '67 morsi alla lingua', 'Smalto: ancora intatto']
     }
   ], [t]);
 
@@ -156,15 +201,25 @@ const MeInPieces = () => {
                   duration: isPulsing ? 0.5 : 0.3
                 }}
                 onClick={() => handleOrganClick(organ)}
-              >
-                {/* Container icona */}
+              >                {/* Container icona */}
                 <motion.div
-                  className="w-16 h-16 mb-3 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
-                  whileHover={{ scale: 1.1 }}
+                  className="w-16 h-16 mb-3 flex items-center justify-center transition-all duration-200"
+                  style={{ 
+                    color: organ.color,
+                    filter: isPulsing ? 'brightness(1.2) drop-shadow(0 0 8px rgba(255,255,255,0.3))' : 'none'
+                  }}
+                  whileHover={{ 
+                    scale: 1.1,
+                    filter: `brightness(1.1) drop-shadow(0 0 12px ${organ.color}50)`
+                  }}
                   whileTap={{ scale: 0.95 }}
                   animate={isPulsing ? {
                     scale: [1, 1.2, 1],
-                    opacity: [1, 0.7, 1]
+                    filter: [
+                      'brightness(1) drop-shadow(0 0 0px transparent)',
+                      `brightness(1.3) drop-shadow(0 0 16px ${organ.color}80)`,
+                      'brightness(1) drop-shadow(0 0 0px transparent)'
+                    ]
                   } : {}}
                   transition={isPulsing ? {
                     duration: 1,
@@ -203,8 +258,10 @@ const MeInPieces = () => {
               >
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 flex items-center justify-center text-gray-700 dark:text-gray-300 mr-4">
+                  <div className="flex items-center">                    <div 
+                      className="w-12 h-12 flex items-center justify-center mr-4"
+                      style={{ color: selectedOrgan.color }}
+                    >
                       <selectedOrgan.icon className="text-3xl" />
                     </div>
                     <div>
@@ -245,12 +302,17 @@ const MeInPieces = () => {
                       • {stat}
                     </motion.div>
                   ))}
-                </div>
-
-                {/* Pulsante chiudi */}
+                </div>                {/* Pulsante chiudi */}
                 <motion.button
-                  className="w-full mt-6 py-3 px-4 bg-gray-600 hover:bg-gray-700 dark:bg-gray-600 dark:hover:bg-gray-500 rounded-lg text-white font-medium transition-colors"
-                  whileHover={{ scale: 1.02 }}
+                  className="w-full mt-6 py-3 px-4 rounded-lg text-white font-medium transition-all duration-200"
+                  style={{ 
+                    backgroundColor: selectedOrgan.color,
+                    boxShadow: `0 4px 12px ${selectedOrgan.color}30`
+                  }}
+                  whileHover={{ 
+                    scale: 1.02,
+                    boxShadow: `0 6px 16px ${selectedOrgan.color}40`
+                  }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setSelectedOrgan(null)}
                 >

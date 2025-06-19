@@ -212,6 +212,10 @@
     "stomach": "Stomaco",
     "liver": "Fegato",
     "kidneys": "Reni",
+    "spleen": "Milza",
+    "ribcage": "Costole",
+    "skull": "Cranio",
+    "teeth": "Denti",
     "brainDescription": "Il centro di comando dove nascono le idee più folle. Processa caffè e codice in quantità industriali, spesso alle 3 del mattino.",
     "eyesDescription": "Testimoni silenziosi di migliaia di righe di codice. Hanno visto errori, bug e quella volta che ho dimenticato un punto e virgola per 3 ore.",
     "heartDescription": "Batte per la programmazione, accelera quando il codice funziona al primo colpo, si ferma quando vedo un merge conflict.",
@@ -219,6 +223,10 @@
     "handsDescription": "Le vere eroine di questa storia. Hanno digitato, debuggato, e lanciato oggetti contro il monitor (sempre senza romperlo).",
     "stomachDescription": "Convertitore ufficiale di caffè in codice. Ha sviluppato una tolleranza leggendaria alla caffeina e una dipendenza dai biscotti.",
     "liverDescription": "Il filtro silenzioso che purifica lo stress da deadline impossibili. Ha sviluppato super-poteri per metabolizzare la frustrazione.",
-    "kidneysDescription": "Filtrano le cattive decisioni architetturali e mantengono l'equilibrio tra ottimismo e realismo nel codice."
+    "kidneysDescription": "Filtrano le cattive decisioni architetturali e mantengono l'equilibrio tra ottimismo e realismo nel codice.",
+    "spleenDescription": "L'organo più misterioso, che accumula tutta la rabbia repressa quando il codice non compila. Ha una memoria perfetta di ogni errore stupido.",
+    "ribcageDescription": "La struttura di supporto che protegge tutto il resto. Come l'architettura del codice, se cede tutto va a rotoli.",
+    "skullDescription": "La fortezza che protegge il cervello dai colpi esterni. Ha resistito a infinite testate contro il muro quando il codice non andava.",
+    "teethDescription": "Strumenti di sopravvivenza che masticano problemi complessi. Hanno morso troppe volte la lingua durante sessioni di debugging intense."
   }
 }

@@ -213,6 +213,10 @@
     "stomach": "Stomach",
     "liver": "Liver",
     "kidneys": "Kidneys",
+    "spleen": "Spleen",
+    "ribcage": "Ribcage",
+    "skull": "Skull",
+    "teeth": "Teeth",
     "brainDescription": "The control center where the craziest ideas are born. Processes coffee and code in industrial quantities, often at 3 AM.",
     "eyesDescription": "Silent witnesses to thousands of lines of code. They've seen errors, bugs, and that time I forgot a semicolon for 3 hours.",
     "heartDescription": "Beats for programming, accelerates when code works on the first try, stops when I see a merge conflict.",
@@ -220,6 +224,10 @@
     "handsDescription": "The real heroes of this story. They've typed, debugged, and thrown objects at the monitor (always without breaking it).",
     "stomachDescription": "Official converter of coffee to code. Has developed legendary caffeine tolerance and a cookie addiction.",
     "liverDescription": "The silent filter that purifies stress from impossible deadlines. Has developed super-powers to metabolize frustration.",
-    "kidneysDescription": "Filter bad architectural decisions and maintain balance between optimism and realism in code."
+    "kidneysDescription": "Filter bad architectural decisions and maintain balance between optimism and realism in code.",
+    "spleenDescription": "The most mysterious organ, which accumulates all the repressed anger when code doesn't compile. Has perfect memory of every stupid mistake.",
+    "ribcageDescription": "The support structure that protects everything else. Like code architecture, if it fails everything goes to pieces.",
+    "skullDescription": "The fortress that protects the brain from external blows. Has withstood infinite head-banging against the wall when code wouldn't work.",
+    "teethDescription": "Survival tools that chew through complex problems. Have bitten the tongue too many times during intense debugging sessions."
   }
 }
