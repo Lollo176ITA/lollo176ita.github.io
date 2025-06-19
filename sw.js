@@ -128,11 +128,11 @@ async function cacheFirstStrategyWithRetry(request, cacheName) {
     const cachedResponse = await cache.match(request);
     
     if (cachedResponse) {
-      console.log('SW: Cache hit for', request.url);
+      //console.log('SW: Cache hit for', request.url);
       return cachedResponse;
     }
     
-    console.log('SW: Cache miss, fetching', request.url);
+    //console.log('SW: Cache miss, fetching', request.url);
     
     // Prova il fetch con retry per i chunks
     let networkResponse;
@@ -162,7 +162,7 @@ async function cacheFirstStrategyWithRetry(request, cacheName) {
     
     return networkResponse;
   } catch (error) {
-    console.error('SW: Cache first with retry failed for', request.url, error);
+    //console.error('SW: Cache first with retry failed for', request.url, error);
     throw error;
   }
 }
@@ -170,7 +170,7 @@ async function cacheFirstStrategyWithRetry(request, cacheName) {
 // Network First Strategy - per contenuto dinamico
 async function networkFirstStrategy(request, cacheName) {
   try {
-    console.log('SW: Network first for', request.url);
+    //console.log('SW: Network first for', request.url);
     const networkResponse = await fetch(request);
     
     if (networkResponse.status === 200) {
@@ -180,7 +180,7 @@ async function networkFirstStrategy(request, cacheName) {
     
     return networkResponse;
   } catch (error) {
-    console.log('SW: Network failed, trying cache', request.url);
+    //console.log('SW: Network failed, trying cache', request.url);
     const cache = await caches.open(cacheName);
     const cachedResponse = await cache.match(request);
     
@@ -211,11 +211,11 @@ async function staleWhileRevalidateStrategy(request, cacheName) {
   
   // Restituisci cache se disponibile, altrimenti aspetta network
   if (cachedResponse) {
-    console.log('SW: Stale cache for', request.url);
+    //console.log('SW: Stale cache for', request.url);
     return cachedResponse;
   }
   
-  console.log('SW: No cache, waiting for network', request.url);
+  //console.log('SW: No cache, waiting for network', request.url);
   return fetchPromise;
 }
 
