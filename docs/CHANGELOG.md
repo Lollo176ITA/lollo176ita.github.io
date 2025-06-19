@@ -1,5 +1,24 @@
 # 📝 Changelog - Riorganizzazione Progetto
 
+## [v2.2.3] - 2025-06-19 🌐
+
+### 🌐 **Traduzioni e Miglioramenti UI**
+
+#### 🔤 **Traduzioni Completate**
+- **Problema**: Stringhe hardcoded senza traduzione nella CreationsPage
+- **Risolto**: Aggiunte tutte le traduzioni mancanti
+- **Modifiche**:
+  - `digitalCreations`: da "Le mie creazioni digitali" a "Portfolio" (più conciso)
+  - Aggiunta traduzione per `techStack`: "Stack Tecnologico" / "Tech Stack"
+  - Aggiunte traduzioni per pulsanti card: `exploreBooks`, `expandGames`
+  - Aggiunte traduzioni per statistiche card: `prototypes`, `engine`, `genre`, `platform`, `books`, `chapters`, `pages`, `words`
+  - Passaggio parametro `t` alla funzione `CreationCard` per supporto traduzioni
+
+#### 📝 **Miglioramenti Terminologia**
+- **"Le mie creazioni digitali"** → **"Portfolio"** (più professionale)
+- Tutte le etichette statistiche ora tradotte correttamente
+- Uniformità tra italiano e inglese per tutte le stringhe
+
 ## [v2.2.2] - 2025-06-19 📊
 
 ### 📊 **Dati Reali e Statistiche**

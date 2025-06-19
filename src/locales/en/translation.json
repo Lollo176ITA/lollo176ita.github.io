@@ -30,7 +30,7 @@
     "novelAbout": "About the novel",
     "moreComingSoon": "More creations coming soon...",
     "exploreCreations": "Explore my creations",
-    "digitalCreations": "My digital creations",
+    "digitalCreations": "Portfolio",
     "philosophy": "Creativity is intelligence having fun. Every project is a new adventure.",
     "developmentPhilosophy": "My development philosophy",
     "newCreationsTitle": "New Creations Coming Soon",
@@ -40,7 +40,17 @@
     "linesOfCode": "Lines of Code",
     "activeProjects": "Active Projects",
     "developmentHours": "Development Hours",
-    "technologies": "Technologies"
+    "technologies": "Technologies",    "techStack": "Tech Stack",
+    "exploreBooks": "📖 Explore Books",
+    "expandGames": "🎮 Expand to see games",
+    "prototypes": "Prototypes",
+    "engine": "Engine",
+    "genre": "Genre",
+    "platform": "Platform",
+    "books": "Books",
+    "chapters": "Chapters",
+    "pages": "Pages",
+    "words": "Words"
   },"history": {
     "title": "Site History",
     "subtitle": "The complete project timeline, from first ideas to today",

@@ -30,7 +30,7 @@
     "novelAbout": "Informazioni sulla novel",
     "moreComingSoon": "Altre creazioni in arrivo presto...",
     "exploreCreations": "Esplora le mie creazioni",
-    "digitalCreations": "Le mie creazioni digitali",
+    "digitalCreations": "Portfolio",
     "philosophy": "La creatività è l'intelligenza che si diverte. Ogni progetto è una nuova avventura.",
     "developmentPhilosophy": "La mia filosofia di sviluppo",
     "newCreationsTitle": "Nuove Creazioni in Arrivo",
@@ -40,7 +40,17 @@
     "linesOfCode": "Righe di Codice",
     "activeProjects": "Progetti Attivi",
     "developmentHours": "Ore di Sviluppo",
-    "technologies": "Tecnologie"
+    "technologies": "Tecnologie",    "techStack": "Stack Tecnologico",
+    "exploreBooks": "📖 Esplora Libri",
+    "expandGames": "🎮 Espandi per vedere i giochi",
+    "prototypes": "Prototipi",
+    "engine": "Engine",
+    "genre": "Genere",
+    "platform": "Piattaforma",
+    "books": "Libri",
+    "chapters": "Capitoli",
+    "pages": "Pagine",
+    "words": "Parole"
   },"history": {
     "title": "Storia del sito",
     "subtitle": "La storia completa del progetto, dalle prime idee fino ad oggi",

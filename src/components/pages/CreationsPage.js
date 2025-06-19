@@ -60,7 +60,7 @@ const calculateBookStats = () => {
 };
 
 // Enhanced Card Component
-function CreationCard({ variant, icon, title, description, stats, techStack, links, hovered, onHover, onLeave, onClick, isActive, directLink }) {
+function CreationCard({ variant, icon, title, description, stats, techStack, links, hovered, onHover, onLeave, onClick, isActive, directLink, t }) {
   const handleClick = () => {
     if (directLink) {
       window.location.hash = directLink;
@@ -180,9 +180,8 @@ function CreationCard({ variant, icon, title, description, stats, techStack, lin
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-        >
-          <div className={`text-sm font-medium mb-3 ${isActive || hovered ? 'text-white' : 'text-gray-600 dark:text-gray-400 group-hover:text-white'}`}>
-            Tech Stack:
+        >          <div className={`text-sm font-medium mb-3 ${isActive || hovered ? 'text-white' : 'text-gray-600 dark:text-gray-400 group-hover:text-white'}`}>
+            {t('creations.techStack')}:
           </div>
           <div className="flex flex-wrap gap-2">
             {techStack.map((tech, idx) => (
@@ -209,7 +208,7 @@ function CreationCard({ variant, icon, title, description, stats, techStack, lin
             }`}
             whileHover={{ scale: 1.02 }}
           >
-            {directLink ? '📖 Esplora Libri' : '🎮 Espandi per vedere i giochi'}
+            {directLink ? t('creations.exploreBooks') : t('creations.expandGames')}
           </motion.div>
         )}
 
@@ -248,7 +247,7 @@ function CreationCard({ variant, icon, title, description, stats, techStack, lin
 function HeroSection({ t }) {
   return (
     <motion.section 
-      className="text-center mb-16"
+      className="text-center mt-8 mb-16"
       initial={{ opacity: 0, y: -30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
@@ -404,16 +403,15 @@ export default function CreationsPage() {
   const [hovered, setHovered] = useState(null);
   
   // Calculate real book statistics
-  const bookStats = calculateBookStats();
-  const creationsData = {
+  const bookStats = calculateBookStats();  const creationsData = {
     games: {
       title: t('creations.games'),
       description: t('creations.gamesDesc'),
       stats: [
-        { label: 'Prototipi', value: '3+' },
-        { label: 'Engine', value: 'Unity' },
-        { label: 'Genere', value: 'Arcade' },
-        { label: 'Piattaforma', value: 'WebGL' }
+        { label: t('creations.prototypes'), value: '3+' },
+        { label: t('creations.engine'), value: 'Unity' },
+        { label: t('creations.genre'), value: 'Arcade' },
+        { label: t('creations.platform'), value: 'WebGL' }
       ],
       techStack: [
         { icon: SiUnity, name: 'Unity' },
@@ -428,10 +426,10 @@ export default function CreationsPage() {
       title: t('creations.novel'),
       description: t('creations.novelDesc'),
       stats: [
-        { label: 'Libri', value: bookStats.books.toString() },
-        { label: 'Capitoli', value: bookStats.chapters.toString() },
-        { label: 'Pagine', value: `~${bookStats.pages}` },
-        { label: 'Parole', value: bookStats.words > 0 ? bookStats.words.toLocaleString() : '0' }
+        { label: t('creations.books'), value: bookStats.books.toString() },
+        { label: t('creations.chapters'), value: bookStats.chapters.toString() },
+        { label: t('creations.pages'), value: `~${bookStats.pages}` },
+        { label: t('creations.words'), value: bookStats.words > 0 ? bookStats.words.toLocaleString() : '0' }
       ],
       techStack: [
         { icon: SiReact, name: 'React' },
@@ -476,6 +474,7 @@ export default function CreationsPage() {
               onLeave={() => setHovered(null)}
               onClick={() => setActive(active === 'games' ? null : 'games')}
               isActive={active === 'games'}
+              t={t}
             />
 
             {/* Books Card */}
@@ -491,6 +490,7 @@ export default function CreationsPage() {
               onLeave={() => setHovered(null)}
               directLink="#/creations/books"
               isActive={false}
+              t={t}
             />
           </div>
         </motion.section>
