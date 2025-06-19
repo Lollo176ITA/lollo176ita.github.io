@@ -27,6 +27,7 @@ import {
   SiFramer
 } from 'react-icons/si';
 import HashLink from '../common/HashLink';
+import CodeEditor from '../common/CodeEditor';
 import { useSiteStats } from '../../hooks/useStats';
 import books from '../../data/books';
 
@@ -280,9 +281,8 @@ function StatsOverview({ stats, t }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
-      {/* Main Stats Grid */}      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-8">
+      {/* Main Stats Grid */}      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-8">
         {[
-          { icon: FaCode, label: t('creations.linesOfCode'), value: stats?.linesOfCode?.toLocaleString() || '4K+', color: 'text-blue-500' },
           { icon: FaRocket, label: t('creations.activeProjects'), value: '8+', color: 'text-purple-500' },
           { icon: FaHeart, label: t('creations.developmentHours'), value: '500+', color: 'text-red-500' },
           { icon: FaStar, label: t('creations.technologies'), value: '12+', color: 'text-yellow-500' }
@@ -296,11 +296,33 @@ function StatsOverview({ stats, t }) {
             transition={{ delay: idx * 0.1 + 0.3 }}
           >
             <stat.icon className={`text-3xl ${stat.color} mx-auto mb-3`} />
-            <div className="text-2xl font-bold text-gray-800 dark:text-white mb-1">{stat.value}</div>
-            <div className="text-sm text-gray-500 dark:text-gray-400">{stat.label}</div>
+            <div className="text-2xl font-bold text-gray-800 dark:text-white mb-1">{stat.value}</div>            <div className="text-sm text-gray-500 dark:text-gray-400">{stat.label}</div>
           </motion.div>
         ))}
-      </div>      {/* Performance Metrics */}
+      </div>      {/* Realistic Code Animation */}
+      <motion.div
+        className="max-w-5xl mx-auto mb-8"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6 }}
+      >
+        <div className="text-center mb-6">
+          <motion.div
+            className="inline-flex items-center space-x-2 text-blue-600 dark:text-blue-400"
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.7 }}
+          >
+            <FaCode className="text-2xl" />
+            <span className="text-xl font-bold">
+              {stats?.linesOfCode?.toLocaleString() || '4,744'} {t('creations.linesOfCode')}
+            </span>
+          </motion.div>
+        </div>        
+        <CodeEditor />
+      </motion.div>
+
+      {/* Performance Metrics */}
       <motion.div 
         className="max-w-4xl mx-auto"
         initial={{ opacity: 0 }}
@@ -529,8 +551,7 @@ export default function CreationsPage() {
                 {t('creations.followMe')}
               </motion.button>
             </div>
-          </div>
-        </motion.section>
+          </div>        </motion.section>
       </div>
     </main>
   );
