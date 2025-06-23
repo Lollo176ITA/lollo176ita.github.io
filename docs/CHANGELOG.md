@@ -1,5 +1,97 @@
 # 📝 Changelog - Riorganizzazione Progetto
 
+## [v2.2.7.5] - 2025-06-23 📊
+
+### 🌐 **Fix Traduzione "Statistiche"**
+
+#### 📊 **Titolo Modal Tradotto**
+- **Problema**: "📊 Statistiche:" hardcoded in italiano nel modal
+- **Soluzione**: Sostituito con `{t('common.statistics') || 'Statistiche'}:`
+- **Chiave aggiunta**: `common.statistics` in entrambi i file di traduzione
+
+#### 🌍 **Traduzioni Aggiunte**
+- **IT**: `"statistics": "Statistiche"`
+- **EN**: `"statistics": "Statistics"`
+- **Fallback**: "Statistiche" se traduzione manca
+
+#### ✅ **Completamento Internazionalizzazione**
+Il modal "Me in Pieces" ora è **100% tradotto**:
+- ✅ **Nomi organi**: `brain`, `eyes`, `heart`, etc.
+- ✅ **Descrizioni**: `brainDescription`, `eyesDescription`, etc.
+- ✅ **Personality**: `brainPersonality`, `eyesPersonality`, etc.
+- ✅ **Statistiche**: `brainStat1-3`, `eyesStat1-3`, etc.
+- ✅ **Titolo "Statistiche"**: `common.statistics`
+- ✅ **Pulsante "Chiudi"**: `common.close`
+
+#### 🎯 **Risultato**
+Interfaccia completamente localizzata per IT/EN senza testo hardcoded.
+
+---
+
+## [v2.2.7.4] - 2025-06-23 🫁
+
+### 🎨 **Fix Contrasto Polmoni + Traduzioni Personality**
+
+#### 🫁 **Contrasto Polmoni**
+- **Problema**: Testo bianco invisibile su polmoni rosa chiaro (`#FFE4E1`)
+- **Soluzione**: Aggiunto `#FFE4E1` alla logica di contrasto automatico
+- **Risultato**: Polmoni ora usano testo scuro `#333333` come cranio, denti e costole
+
+#### 🌐 **Traduzioni Personality Complete**
+- **12 nuove chiavi** aggiunte per le personality di tutti gli organi:
+  - `brainPersonality` → `eyesPersonality` → `heartPersonality` → `lungsPersonality`
+  - `handsPersonality` → `stomachPersonality` → `liverPersonality` → `kidneysPersonality`
+  - `spleenPersonality` → `ribcagePersonality` → `skullPersonality` → `teethPersonality`
+
+#### 🧠 **Esempi Traduzioni Personality**
+- **IT**: "🧠 Sempre attivo, mai spento" → **EN**: "🧠 Always active, never off"
+- **IT**: "🫁 Pazienti ma spesso in apnea" → **EN**: "🫁 Patient but often breathless"
+- **IT**: "😤 Collezionista di frustrazioni" → **EN**: "😤 Frustration collector"
+
+#### 🔍 **Organi con Testo Scuro** (contrasto migliorato)
+- **Cranio** (`#FFFAF0`) ✅
+- **Denti** (`#FFFFF0`) ✅  
+- **Costole** (`#F5F5DC`) ✅
+- **Polmoni** (`#FFE4E1`) ✅ **[NUOVO]**
+
+#### ✅ **Testing**
+- **Build successful**: ✅ Compilazione senza errori
+- **Traduzioni caricate**: ✅ Tutte le 12 personality funzionanti
+- **Contrasto verificato**: ✅ Polmoni ora leggibili
+- **Internazionalizzazione**: ✅ IT/EN completo
+
+---
+
+## [v2.2.7.3] - 2025-06-23 🔘
+
+### 🔧 **Fix Pulsante "Chiudi" Modal**
+
+#### 🌐 **Traduzione Mancante**
+- **Aggiunta chiave**: `common.close` in entrambi i file di traduzione
+- **IT**: "Chiudi" 
+- **EN**: "Close"
+- **Utilizzo**: `{t('common.close') || 'Chiudi'}` con fallback
+
+#### 🎨 **Contrasto Colori Automatico**
+- **Problema**: Testo bianco invisibile su organi chiari (cranio, denti, costole)
+- **Soluzione**: Logica automatica per colore del testo:
+  - **Organi chiari** (`#FFFAF0`, `#FFFFF0`, `#F5F5DC`): Testo scuro `#333333`
+  - **Altri organi**: Testo bianco `#FFFFFF` con text-shadow
+- **Text-shadow dinamico**: Rimosso per organi chiari, mantenuto per altri
+
+#### 🔍 **Organi Interessati**
+- **Cranio** (`#FFFAF0`): Ora testo scuro leggibile
+- **Denti** (`#FFFFF0`): Ora testo scuro leggibile  
+- **Costole** (`#F5F5DC`): Ora testo scuro leggibile
+- **Altri organi**: Mantengono testo bianco con ombra
+
+#### ✅ **Testing**
+- **Build successful**: ✅ Compilazione senza errori
+- **Traduzioni caricate**: ✅ Chiave `common.close` funzionante
+- **Contrasto verificato**: ✅ Leggibile su tutti i colori organi
+
+---
+
 ## [v2.2.7.2] - 2025-06-23 ✨
 
 ### 🔍 **Contrasto Migliorato e Traduzioni Complete**

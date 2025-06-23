@@ -1,10 +1,12 @@
-{
-  "nav": {
+{  "nav": {
     "home": "Home",
     "about": "About",
     "projects": "Projects",
     "history": "Site History",
     "creations": "Creations"
+  },  "common": {
+    "close": "Close",
+    "statistics": "Statistics"
   },
   "header": {
     "contact": "Contact"
@@ -272,9 +274,21 @@
     "skullStat1": "2,340 head-bangs avoided",
     "skullStat2": "Brain: always protected",
     "skullStat3": "Resistance: legendary",
-    
-    "teethStat1": "5,678 problems chewed",
+      "teethStat1": "5,678 problems chewed",
     "teethStat2": "234 times bit tongue",
-    "teethStat3": "Debugging intensity: maximum"
+    "teethStat3": "Debugging intensity: maximum",
+    
+    "brainPersonality": "🧠 Always active, never off",
+    "eyesPersonality": "👀 See everything, forget little",
+    "heartPersonality": "❤️ Passionate and determined",
+    "lungsPersonality": "🫁 Patient but often breathless",
+    "handsPersonality": "🤲 Tireless and creative",
+    "stomachPersonality": "☕ Always hungry for coffee",
+    "liverPersonality": "🔄 Resilient and purifier",
+    "kidneysPersonality": "⚖️ Born balancers",
+    "spleenPersonality": "😤 Frustration collector",
+    "ribcagePersonality": "🦴 Structure and support",
+    "skullPersonality": "💀 Guardian of thought",
+    "teethPersonality": "🦷 Problem chewers"
   }
 }

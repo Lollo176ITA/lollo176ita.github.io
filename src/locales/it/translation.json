@@ -1,10 +1,12 @@
-{
-  "nav": {
+{  "nav": {
     "home": "Home",
     "about": "Chi sono",
     "projects": "Progetti",
     "history": "Storia del sito",
     "creations": "Creazioni"
+  },  "common": {
+    "close": "Chiudi",
+    "statistics": "Statistiche"
   },
   "header": {
     "contact": "Contatti"
@@ -271,9 +273,21 @@
     "skullStat1": "2,340 testate evitate",
     "skullStat2": "Cervello: sempre protetto",
     "skullStat3": "Resistenza: leggendaria",
-    
-    "teethStat1": "5,678 problemi masticati",
+      "teethStat1": "5,678 problemi masticati",
     "teethStat2": "234 volte morsa la lingua",
-    "teethStat3": "Debugging intensity: massima"
+    "teethStat3": "Debugging intensity: massima",
+    
+    "brainPersonality": "🧠 Sempre attivo, mai spento",
+    "eyesPersonality": "👀 Vedono tutto, dimenticano poco",
+    "heartPersonality": "❤️ Appassionato e determinato",
+    "lungsPersonality": "🫁 Pazienti ma spesso in apnea",
+    "handsPersonality": "🤲 Instancabili e creative",
+    "stomachPersonality": "☕ Sempre affamato di caffè",
+    "liverPersonality": "🔄 Resiliente e purificatore",
+    "kidneysPersonality": "⚖️ Equilibratori nati",
+    "spleenPersonality": "😤 Collezionista di frustrazioni",
+    "ribcagePersonality": "🦴 Struttura e sostegno",
+    "skullPersonality": "💀 Guardiano del pensiero",
+    "teethPersonality": "🦷 Masticatori di problemi"
   }
 }
