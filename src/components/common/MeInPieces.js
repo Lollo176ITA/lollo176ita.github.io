@@ -367,7 +367,7 @@ const MeInPieces = () => {
                     backgroundColor: selectedOrgan.color,
                     color: selectedOrgan.color === '#FFFAF0' || selectedOrgan.color === '#FFFFF0' || selectedOrgan.color === '#F5F5DC' || selectedOrgan.color === '#FFE4E1' ? '#333333' : '#FFFFFF',
                     textShadow: selectedOrgan.color === '#FFFAF0' || selectedOrgan.color === '#FFFFF0' || selectedOrgan.color === '#F5F5DC' || selectedOrgan.color === '#FFE4E1' ? 'none' : '1px 1px 2px rgba(0,0,0,0.5)',
-                    boxShadow: `0 4px 12px ${selectedOrgan.color}30`
+                    boxShadow: `0 4px 12px black`
                   }}
                   whileHover={{ 
                     scale: 1.02,

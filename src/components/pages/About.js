@@ -98,7 +98,7 @@ export default function About() {
       >
         {/* Hero Section */}
         <motion.section 
-          className="text-center mb-16"
+          className="text-center mb-16 mt-4"
           variants={itemVariants}
         >
           <div className="relative inline-block mb-8">

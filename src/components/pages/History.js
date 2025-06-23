@@ -79,9 +79,8 @@ const TimelineSection = ({ visibleHistory, visibleCount, setVisibleCount, sorted
             className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-colors shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-          >
-            <FaChevronDown className="mr-2" />
-            Carica Altri ({sortedHistory.length - visibleCount} rimanenti)
+          >            <FaChevronDown className="mr-2" />
+            {t('history.loadMore')} ({sortedHistory.length - visibleCount} {t('history.remaining')})
           </motion.button>
         </div>
       )}
@@ -91,21 +90,20 @@ const TimelineSection = ({ visibleHistory, visibleCount, setVisibleCount, sorted
 
 // Commits Section Component
 const CommitsSection = ({ commits, visibleCommits, setVisibleCommits, totalCommits, getCommitTypeInfo, loading, error, t }) => (
-  <section>
-    <h3 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-12">
-      Commits Recenti
+  <section>    <h3 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-12">
+      {t('history.technical')}
     </h3>
     
     {loading && (
       <div className="text-center py-12">
         <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-        <p className="mt-4 text-gray-600 dark:text-gray-400">Caricamento commits...</p>
+        <p className="mt-4 text-gray-600 dark:text-gray-400">{t('history.loading')}...</p>
       </div>
     )}
 
     {error && (
       <div className="bg-red-100 dark:bg-red-900 border border-red-400 text-red-700 dark:text-red-300 px-4 py-3 rounded-lg max-w-2xl mx-auto">
-        <strong>Errore:</strong> {error}
+        <strong>{t('history.error')}:</strong> {error}
       </div>
     )}
 
@@ -181,9 +179,8 @@ const CommitsSection = ({ commits, visibleCommits, setVisibleCommits, totalCommi
               className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-colors shadow-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-            >
-              <FaChevronDown className="mr-2" />
-              Mostra Altri Commits ({totalCommits - visibleCommits} rimanenti)
+            >              <FaChevronDown className="mr-2" />
+              {t('history.showMoreCommits')} ({totalCommits - visibleCommits} {t('history.remaining')})
             </motion.button>
           </div>
         )}
@@ -194,24 +191,22 @@ const CommitsSection = ({ commits, visibleCommits, setVisibleCommits, totalCommi
 
 // Releases Section Component
 const ReleasesSection = ({ releases, loading, t }) => (
-  <section>
-    <h3 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-12">
-      Release & Versioni
+  <section>    <h3 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-12">
+      {t('history.releases')}
     </h3>
     
     {loading && (
       <div className="text-center py-12">
         <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-        <p className="mt-4 text-gray-600 dark:text-gray-400">Caricamento release...</p>
+        <p className="mt-4 text-gray-600 dark:text-gray-400">{t('history.loading')}...</p>
       </div>
     )}
 
     <div className="max-w-4xl mx-auto">
       {releases.length === 0 && !loading ? (
         <div className="text-center py-12">
-          <FaTag className="text-4xl text-gray-400 mx-auto mb-4" />
-          <p className="text-gray-600 dark:text-gray-400">
-            Nessuna release formale ancora pubblicata. Il progetto è in continuo sviluppo!
+          <FaTag className="text-4xl text-gray-400 mx-auto mb-4" />          <p className="text-gray-600 dark:text-gray-400">
+            {t('history.noReleases')}. {t('history.projectInDevelopment')}
           </p>
         </div>
       ) : (
@@ -283,10 +278,9 @@ const StatsSection = ({ repoInfo, contributors, gitHubStats, commits, loading, t
   const { typeCount } = getCommitStats();
 
   return (
-    <section>
-      <h3 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-12">
-        Statistiche Dettagliate
-      </h3>
+    <section>    <h3 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-12">
+      {t('history.stats')}
+    </h3>
       
       <div className="max-w-6xl mx-auto">
         {/* Repository Info */}
@@ -295,14 +289,13 @@ const StatsSection = ({ repoInfo, contributors, gitHubStats, commits, loading, t
             className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-          >
-            <div className="flex items-center mb-6">
-              <FaGithub className="text-3xl text-gray-800 dark:text-white mr-4" />
-              <div>
-                <h4 className="text-2xl font-bold text-gray-800 dark:text-white">
+          >            <div className="flex flex-col sm:flex-row sm:items-center mb-6">
+              <FaGithub className="text-3xl text-gray-800 dark:text-white mb-4 sm:mb-0 sm:mr-4 flex-shrink-0" />
+              <div className="min-w-0 flex-1">
+                <h4 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white break-words">
                   {repoInfo.full_name}
                 </h4>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-gray-600 dark:text-gray-300 break-words">
                   {repoInfo.description}
                 </p>
               </div>
@@ -314,7 +307,7 @@ const StatsSection = ({ repoInfo, contributors, gitHubStats, commits, loading, t
                 <div className="text-xl font-bold text-gray-800 dark:text-white">
                   {repoInfo.watchers_count}
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Watchers</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{t('history.watchers')}</div>
               </div>
               
               <div className="text-center">
@@ -322,7 +315,7 @@ const StatsSection = ({ repoInfo, contributors, gitHubStats, commits, loading, t
                 <div className="text-xl font-bold text-gray-800 dark:text-white">
                   {repoInfo.forks_count}
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Forks</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{t('history.forks')}</div>
               </div>
               
               <div className="text-center">
@@ -330,7 +323,7 @@ const StatsSection = ({ repoInfo, contributors, gitHubStats, commits, loading, t
                 <div className="text-xl font-bold text-gray-800 dark:text-white">
                   {repoInfo.language}
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Linguaggio</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{t('history.language')}</div>
               </div>
               
               <div className="text-center">
@@ -338,7 +331,7 @@ const StatsSection = ({ repoInfo, contributors, gitHubStats, commits, loading, t
                 <div className="text-xl font-bold text-gray-800 dark:text-white">
                   {new Date(repoInfo.created_at).getFullYear()}
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Creato nel</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{t('history.createdIn')}</div>
               </div>
             </div>
           </motion.div>
@@ -351,11 +344,9 @@ const StatsSection = ({ repoInfo, contributors, gitHubStats, commits, loading, t
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-          >
-            <h4 className="text-xl font-bold text-gray-800 dark:text-white mb-6">
-              Distribuzione Tipi di Commit
-            </h4>
-            <div className="space-y-4">
+          >            <h4 className="text-xl font-bold text-gray-800 dark:text-white mb-6">
+              {t('history.commitTypes')}
+            </h4>            <div className="space-y-4">
               {Object.entries(typeCount)
                 .sort(([,a], [,b]) => b - a)
                 .map(([type, count]) => {
@@ -371,20 +362,22 @@ const StatsSection = ({ repoInfo, contributors, gitHubStats, commits, loading, t
                   };
                   
                   return (
-                    <div key={type} className="flex items-center">
-                      <div className="w-20 text-sm font-medium text-gray-700 dark:text-gray-300 capitalize">
-                        {type}
+                    <div key={type} className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <div className="text-sm font-medium text-gray-700 dark:text-gray-300 capitalize">
+                          {t(`history.${type}`) || type}
+                        </div>
+                        <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                          {count} ({percentage.toFixed(1)}%)
+                        </div>
                       </div>
-                      <div className="flex-1 mx-4 bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                      <div className="bg-gray-200 dark:bg-gray-700 rounded-full h-3">
                         <motion.div
                           className={`h-3 rounded-full ${colors[type] || colors.other}`}
                           initial={{ width: 0 }}
                           animate={{ width: `${percentage}%` }}
                           transition={{ duration: 1, delay: 0.2 }}
                         />
-                      </div>
-                      <div className="w-16 text-sm font-medium text-gray-600 dark:text-gray-400 text-right">
-                        {count} ({percentage.toFixed(1)}%)
                       </div>
                     </div>
                   );
@@ -400,10 +393,9 @@ const StatsSection = ({ repoInfo, contributors, gitHubStats, commits, loading, t
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-          >
-            <h4 className="text-xl font-bold text-gray-800 dark:text-white mb-6 flex items-center">
+          >            <h4 className="text-xl font-bold text-gray-800 dark:text-white mb-6 flex items-center">
               <FaUsers className="mr-3" />
-              Contributori
+              {t('history.contributors')}
             </h4>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {contributors.slice(0, 8).map((contributor) => (
@@ -422,9 +414,8 @@ const StatsSection = ({ repoInfo, contributors, gitHubStats, commits, loading, t
                   <div>
                     <div className="font-medium text-gray-800 dark:text-white">
                       {contributor.login}
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      {contributor.contributions} commits
+                    </div>                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                      {contributor.contributions} {t('history.commits')}
                     </div>
                   </div>
                 </a>
@@ -458,30 +449,46 @@ export default function History() {
     (a, b) => new Date(b.date) - new Date(a.date)
   );
   const visibleHistory = sortedHistory.slice(0, visibleCount);
-
   // Fetch GitHub data
   useEffect(() => {
     const fetchGitHubData = async () => {
       setLoading(true);
       try {
-        // Fetch commits
-        const commitsRes = await fetch(
-          'https://api.github.com/repos/lollo176ita/lollo176ita.github.io/commits?per_page=20'
-        );
-        if (commitsRes.ok) {
-          const commitsData = await commitsRes.json();
-          const parsedCommits = commitsData.map((c) => ({
-            sha: c.sha.substring(0, 7),
-            fullSha: c.sha,
-            date: new Date(c.commit.author.date),
-            message: c.commit.message.split('\n')[0],
-            description: c.commit.message.split('\n').slice(1).join('\n').trim(),
-            author: c.commit.author.name,
-            url: c.html_url,
-            type: getCommitType(c.commit.message),
-          }));
-          setCommits(parsedCommits);
+        // Fetch all commits with pagination
+        const allCommits = [];
+        let page = 1;
+        let hasMore = true;
+        
+        while (hasMore) {
+          const commitsRes = await fetch(
+            `https://api.github.com/repos/lollo176ita/lollo176ita.github.io/commits?per_page=100&page=${page}`
+          );
+          if (commitsRes.ok) {
+            const commitsData = await commitsRes.json();
+            if (commitsData.length === 0) {
+              hasMore = false;
+            } else {
+              allCommits.push(...commitsData);
+              page++;
+              // GitHub API rate limit protection - fetch max 10 pages (1000 commits)
+              if (page > 10) hasMore = false;
+            }
+          } else {
+            hasMore = false;
+          }
         }
+        
+        const parsedCommits = allCommits.map((c) => ({
+          sha: c.sha.substring(0, 7),
+          fullSha: c.sha,
+          date: new Date(c.commit.author.date),
+          message: c.commit.message.split('\n')[0],
+          description: c.commit.message.split('\n').slice(1).join('\n').trim(),
+          author: c.commit.author.name,
+          url: c.html_url,
+          type: getCommitType(c.commit.message),
+        }));
+        setCommits(parsedCommits);
 
         // Fetch repository info
         const repoRes = await fetch('https://api.github.com/repos/lollo176ita/lollo176ita.github.io');
@@ -582,9 +589,8 @@ export default function History() {
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-800 dark:text-white mb-4">
             {t('history.title')}
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            La storia completa del progetto, dalle prime idee fino ad oggi
+          </h1>          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            {t('history.subtitle')}
           </p>
         </motion.section>
 
@@ -596,7 +602,7 @@ export default function History() {
               <div className="text-2xl font-bold text-gray-800 dark:text-white">
                 {gitHubStats.loading ? '...' : gitHubStats.commits}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Commits Totali</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">{t('history.totalCommits')}</div>
             </div>
             
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center">
@@ -604,7 +610,7 @@ export default function History() {
               <div className="text-2xl font-bold text-gray-800 dark:text-white">
                 {gitHubStats.loading ? '...' : gitHubStats.stars}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Stelle</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">{t('history.stars')}</div>
             </div>
             
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center">
@@ -612,7 +618,7 @@ export default function History() {
               <div className="text-2xl font-bold text-gray-800 dark:text-white">
                 {gitHubStats.loading ? '...' : gitHubStats.forks}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Fork</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">{t('history.forks')}</div>
             </div>
             
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center">
@@ -620,7 +626,7 @@ export default function History() {
               <div className="text-2xl font-bold text-gray-800 dark:text-white">
                 {gitHubStats.loading ? '...' : gitHubStats.size}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">MB</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">{t('history.size')}</div>
             </div>
           </div>
         </motion.section>
@@ -628,11 +634,10 @@ export default function History() {
         {/* Navigation Tabs */}
         <motion.section className="mb-12" variants={itemVariants}>
           <div className="flex flex-wrap justify-center gap-4">
-            {[
-              { id: 'timeline', label: 'Timeline', icon: FaCalendarAlt },
-              { id: 'commits', label: 'Commits Recenti', icon: FaGitAlt },
-              { id: 'releases', label: 'Release', icon: FaTag },
-              { id: 'stats', label: 'Statistiche', icon: FaRocket }
+            {[              { id: 'timeline', label: t('history.timeline'), icon: FaCalendarAlt },
+              { id: 'commits', label: t('history.technical'), icon: FaGitAlt },
+              { id: 'releases', label: t('history.releases'), icon: FaTag },
+              { id: 'stats', label: t('history.stats'), icon: FaRocket }
             ].map((tab) => (
               <motion.button
                 key={tab.id}
@@ -708,12 +713,11 @@ export default function History() {
         {/* Repository Link */}
         <motion.section className="text-center mt-16" variants={itemVariants}>
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 max-w-2xl mx-auto">
-            <FaGithub className="text-4xl text-gray-800 dark:text-white mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
-              Esplora il Codice Sorgente
+            <FaGithub className="text-4xl text-gray-800 dark:text-white mx-auto mb-4" />            <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
+              {t('history.moreInfo')}
             </h3>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
-              Tutto il codice è open source e disponibile su GitHub. Contributi e feedback sono sempre benvenuti!
+              {t('history.moreInfoText')}
             </p>
             <motion.a
               href="https://github.com/lollo176ita/lollo176ita.github.io"
@@ -722,9 +726,8 @@ export default function History() {
               className="inline-flex items-center px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-            >
-              <FaExternalLinkAlt className="mr-2" />
-              Visita Repository
+            >              <FaExternalLinkAlt className="mr-2" />
+              {t('history.repoLabel')}
             </motion.a>
           </div>
         </motion.section>
