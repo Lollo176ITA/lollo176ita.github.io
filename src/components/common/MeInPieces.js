@@ -31,7 +31,11 @@ const MeInPieces = () => {
       color: '#FFB6C1', // Rosa pallido per materia grigia
       description: t('aboutPage.brainDescription') || 'Il centro di comando dove nascono le idee più folli. Processa caffè e codice in quantità industriali, spesso alle 3 del mattino.',
       personality: '🧠 Sempre attivo, mai spento',
-      stats: ['456 idee generate', '2,847 tazze di caffè processate', '847 notti insonni']
+      stats: [
+        t('aboutPage.brainStat1') || '456 idee generate',
+        t('aboutPage.brainStat2') || '2,847 tazze di caffè processate', 
+        t('aboutPage.brainStat3') || '847 notti insonni'
+      ]
     },
     {
       id: 'eyes',
@@ -40,7 +44,11 @@ const MeInPieces = () => {
       color: '#87CEEB', // Azzurro per l'iride
       description: t('aboutPage.eyesDescription') || 'Testimoni silenziosi di migliaia di righe di codice. Hanno visto errori, bug e quella volta che ho dimenticato un punto e virgola per 3 ore.',
       personality: '👀 Vedono tutto, dimenticano poco',
-      stats: ['5,333 righe di codice viste', '1,203 bug individuati', '∞ Stack Overflow consultazioni']
+      stats: [
+        t('aboutPage.eyesStat1') || '5,333 righe di codice viste',
+        t('aboutPage.eyesStat2') || '1,203 bug individuati', 
+        t('aboutPage.eyesStat3') || '∞ Stack Overflow consultazioni'
+      ]
     },{
       id: 'heart',
       icon: GiHeartOrgan,
@@ -48,7 +56,11 @@ const MeInPieces = () => {
       color: '#DC143C', // Rosso carminio per il cuore
       description: t('aboutPage.heartDescription') || 'Batte per la programmazione, accelera quando il codice funziona al primo colpo, si ferma quando vedo un merge conflict.',
       personality: '❤️ Appassionato e determinato',
-      stats: ['23 progetti amati', '100% dedicazione', 'Battiti extra per ogni deploy']
+      stats: [
+        t('aboutPage.heartStat1') || '23 progetti amati',
+        t('aboutPage.heartStat2') || '100% dedicazione', 
+        t('aboutPage.heartStat3') || 'Battiti extra per ogni deploy'
+      ]
     },
     {
       id: 'lungs',
@@ -57,7 +69,11 @@ const MeInPieces = () => {
       color: '#FFE4E1', // Rosa chiaro per i polmoni
       description: t('aboutPage.lungsDescription') || 'Respirano codice pulito e sospirano profondamente ad ogni refactoring. Hanno trattenuto il fiato durante troppi build di produzione.',
       personality: '� Pazienti ma spesso in apnea',
-      stats: ['1,205 sospiri profondi', '3,400 respiri trattenuti', '∞ "Finalmente funziona!"']
+      stats: [
+        t('aboutPage.lungsStat1') || '1,205 sospiri profondi',
+        t('aboutPage.lungsStat2') || '3,400 respiri trattenuti', 
+        t('aboutPage.lungsStat3') || '∞ "Finalmente funziona!"'
+      ]
     },    {
       id: 'hands',
       icon: FaHandPaper,
@@ -65,7 +81,11 @@ const MeInPieces = () => {
       color: '#FDBCB4', // Colore pelle
       description: t('aboutPage.handsDescription') || 'Le vere eroine di questa storia. Hanno digitato, debuggato, e lanciato oggetti contro il monitor (sempre senza romperlo).',
       personality: '🤲 Instancabili e creative',
-      stats: ['Milioni di tasti premuti', 'Zero monitor rotti', 'Infinite gesture di frustrazione']
+      stats: [
+        t('aboutPage.handsStat1') || 'Milioni di tasti premuti',
+        t('aboutPage.handsStat2') || 'Zero monitor rotti', 
+        t('aboutPage.handsStat3') || 'Infinite gesture di frustrazione'
+      ]
     },
     {
       id: 'stomach',
@@ -74,7 +94,11 @@ const MeInPieces = () => {
       color: '#DDA0DD', // Viola pallido per lo stomaco
       description: t('aboutPage.stomachDescription') || 'Convertitore ufficiale di caffè in codice. Ha sviluppato una tolleranza leggendaria alla caffeina e una dipendenza dai biscotti.',
       personality: '☕ Sempre affamato di caffè',
-      stats: ['2,847 caffè processati', 'Tolleranza caffeina: leggendaria', 'Biscotti consumati: innumerevoli']
+      stats: [
+        t('aboutPage.stomachStat1') || '2,847 caffè processati',
+        t('aboutPage.stomachStat2') || 'Tolleranza caffeina: leggendaria', 
+        t('aboutPage.stomachStat3') || 'Biscotti consumati: innumerevoli'
+      ]
     },
     {
       id: 'liver',
@@ -83,7 +107,11 @@ const MeInPieces = () => {
       color: '#8B4513', // Marrone rossastro per il fegato
       description: t('aboutPage.liverDescription') || 'Il filtro silenzioso che purifica lo stress da deadline impossibili. Ha sviluppato super-poteri per metabolizzare la frustrazione.',
       personality: '🔄 Resiliente e purificatore',
-      stats: ['1,847 stress metabolizzati', '456 deadline superate', 'Tossine da bug: eliminate']
+      stats: [
+        t('aboutPage.liverStat1') || '1,847 stress metabolizzati',
+        t('aboutPage.liverStat2') || '456 deadline superate', 
+        t('aboutPage.liverStat3') || 'Tossine da bug: eliminate'
+      ]
     },
     {
       id: 'kidneys',
@@ -91,8 +119,11 @@ const MeInPieces = () => {
       name: t('aboutPage.kidneys') || 'Reni',
       color: '#CD853F', // Marrone chiaro per i reni
       description: t('aboutPage.kidneysDescription') || 'Filtrano le cattive decisioni architetturali e mantengono l\'equilibrio tra ottimismo e realismo nel codice.',
-      personality: '⚖️ Equilibratori nati',
-      stats: ['2,100 decisioni filtrate', '67% realismo mantenuto', 'Equilibrio: sempre instabile']    },
+      personality: '⚖️ Equilibratori nati',      stats: [
+        t('aboutPage.kidneysStat1') || '2,344 decisioni filtrate',
+        t('aboutPage.kidneysStat2') || '100% purezza architetturale', 
+        t('aboutPage.kidneysStat3') || 'Zero compromessi accettati'
+      ]    },
     {
       id: 'spleen',
       icon: GiInternalOrgan,
@@ -100,7 +131,11 @@ const MeInPieces = () => {
       color: '#800080', // Viola scuro per la milza
       description: t('aboutPage.spleenDescription') || 'L\'organo più misterioso, che accumula tutta la rabbia repressa quando il codice non compila. Ha una memoria perfetta di ogni errore stupido.',
       personality: '😤 Collezionista di frustrazioni',
-      stats: ['876 arrabbiature archiviate', '3,422 bestemmie filtrate', '99% pazienza rimossa']
+      stats: [
+        t('aboutPage.spleenStat1') || '1,567 rabbie accumulate',
+        t('aboutPage.spleenStat2') || 'Perfect bug memory', 
+        t('aboutPage.spleenStat3') || 'Errori stupidi ricordati: tutti'
+      ]
     },
     {
       id: 'ribcage',
@@ -109,7 +144,11 @@ const MeInPieces = () => {
       color: '#F5F5DC', // Beige per le ossa
       description: t('aboutPage.ribcageDescription') || 'La struttura di supporto che protegge tutto il resto. Come l\'architettura del codice, se cede tutto va a rotoli.',
       personality: '🦴 Struttura e sostegno',
-      stats: ['24 costole protettive', '0 fratture da tastiera', 'Postura: discutibile']
+      stats: [
+        t('aboutPage.ribcageStat1') || '100% codice protetto',
+        t('aboutPage.ribcageStat2') || '0 architetture crollate', 
+        t('aboutPage.ribcageStat3') || 'Struttura: sempre solida'
+      ]
     },
     {
       id: 'skull',
@@ -118,7 +157,11 @@ const MeInPieces = () => {
       color: '#FFFAF0', // Bianco avorio per il cranio
       description: t('aboutPage.skullDescription') || 'La fortezza che protegge il cervello dai colpi esterni. Ha resistito a infinite testate contro il muro quando il codice non andava.',
       personality: '💀 Guardiano del pensiero',
-      stats: ['Infinite testate sopportate', '100% protezione cervello', 'Durezza: diamante']
+      stats: [
+        t('aboutPage.skullStat1') || '2,340 testate evitate',
+        t('aboutPage.skullStat2') || 'Cervello: sempre protetto', 
+        t('aboutPage.skullStat3') || 'Resistenza: leggendaria'
+      ]
     },
     {
       id: 'teeth',
@@ -127,7 +170,11 @@ const MeInPieces = () => {
       color: '#FFFFF0', // Bianco avorio per i denti
       description: t('aboutPage.teethDescription') || 'Strumenti di sopravvivenza che masticano problemi complessi. Hanno morso troppe volte la lingua durante sessioni di debugging intense.',
       personality: '🦷 Masticatori di problemi',
-      stats: ['4,823 problemi masticati', '67 morsi alla lingua', 'Smalto: ancora intatto']
+      stats: [
+        t('aboutPage.teethStat1') || '5,678 problemi masticati',
+        t('aboutPage.teethStat2') || '234 volte morsa la lingua', 
+        t('aboutPage.teethStat3') || 'Debugging intensity: massima'
+      ]
     }
   ], [t]);
 
@@ -206,19 +253,22 @@ const MeInPieces = () => {
                   className="w-16 h-16 mb-3 flex items-center justify-center transition-all duration-200"
                   style={{ 
                     color: organ.color,
-                    filter: isPulsing ? 'brightness(1.2) drop-shadow(0 0 8px rgba(255,255,255,0.3))' : 'none'
+                    filter: isPulsing 
+                      ? `brightness(1.2) drop-shadow(0 0 8px rgba(255,255,255,0.3)) drop-shadow(0 0 2px rgba(0,0,0,0.8))` 
+                      : `drop-shadow(0 0 2px rgba(0,0,0,0.6))`,
+                    textShadow: '1px 1px 2px rgba(0,0,0,0.7)'
                   }}
                   whileHover={{ 
                     scale: 1.1,
-                    filter: `brightness(1.1) drop-shadow(0 0 12px ${organ.color}50)`
+                    filter: `brightness(1.1) drop-shadow(0 0 12px ${organ.color}50) drop-shadow(0 0 3px rgba(0,0,0,0.8))`
                   }}
                   whileTap={{ scale: 0.95 }}
                   animate={isPulsing ? {
                     scale: [1, 1.2, 1],
                     filter: [
-                      'brightness(1) drop-shadow(0 0 0px transparent)',
-                      `brightness(1.3) drop-shadow(0 0 16px ${organ.color}80)`,
-                      'brightness(1) drop-shadow(0 0 0px transparent)'
+                      `brightness(1) drop-shadow(0 0 0px transparent) drop-shadow(0 0 2px rgba(0,0,0,0.6))`,
+                      `brightness(1.3) drop-shadow(0 0 16px ${organ.color}80) drop-shadow(0 0 4px rgba(0,0,0,0.9))`,
+                      `brightness(1) drop-shadow(0 0 0px transparent) drop-shadow(0 0 2px rgba(0,0,0,0.6))`
                     ]
                   } : {}}
                   transition={isPulsing ? {
@@ -228,11 +278,17 @@ const MeInPieces = () => {
                 >
                   <organ.icon className="text-4xl" />
                 </motion.div>
-                
-                {/* Nome organo */}
+                  {/* Nome organo */}
                 <motion.span 
-                  className="text-sm font-medium text-gray-600 dark:text-gray-400 text-center"
-                  whileHover={{ color: 'inherit' }}
+                  className="text-sm font-medium text-gray-700 dark:text-gray-300 text-center"
+                  style={{
+                    textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+                    color: isSelected ? organ.color : 'inherit'
+                  }}
+                  whileHover={{ 
+                    color: organ.color,
+                    textShadow: '1px 1px 2px rgba(0,0,0,0.7)'
+                  }}
                 >
                   {organ.name}
                 </motion.span>
@@ -260,7 +316,11 @@ const MeInPieces = () => {
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center">                    <div 
                       className="w-12 h-12 flex items-center justify-center mr-4"
-                      style={{ color: selectedOrgan.color }}
+                      style={{ 
+                        color: selectedOrgan.color,
+                        filter: 'drop-shadow(0 0 2px rgba(0,0,0,0.7))',
+                        textShadow: '1px 1px 2px rgba(0,0,0,0.8)'
+                      }}
                     >
                       <selectedOrgan.icon className="text-3xl" />
                     </div>

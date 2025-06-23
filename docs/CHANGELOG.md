@@ -1,5 +1,63 @@
 # 📝 Changelog - Riorganizzazione Progetto
 
+## [v2.2.7.2] - 2025-06-23 ✨
+
+### 🔍 **Contrasto Migliorato e Traduzioni Complete**
+
+#### 🎨 **Contrasto e Leggibilità**
+
+- **Drop-shadow alle icone**: Aggiunto `drop-shadow(0 0 2px rgba(0,0,0,0.6))` permanente per contrasto di base
+- **Text-shadow ai nomi**: `textShadow: '1px 1px 2px rgba(0,0,0,0.5)'` per leggibilità su sfondi chiari/scuri
+- **Effetti hover migliorati**: Drop-shadow più intenso su hover e colore dinamico
+- **Modal icon contrast**: Icona nel modal con stesso contrasto delle icone principali
+- **Pulsing effects**: Drop-shadow più intenso durante animazioni di pulsing
+
+#### 🌐 **Traduzioni Complete Statistiche**
+
+- **Italiano** (`src/locales/it/translation.json`):
+  - Tutte le 36 statistiche tradotte (3 per ogni organo × 12 organi)
+  - Chiavi da `brainStat1` a `teethStat3`
+  - Statistiche ironiche e dettagliate per ogni organo
+
+- **Inglese** (`src/locales/en/translation.json`):
+  - Traduzioni complete e coerenti con il tono ironico
+  - Mantenuto humor tecnico in entrambe le lingue
+  - Statistiche aggiornate per coerenza (es. kidneys: "architectural purity")
+
+#### 🧩 **Statistiche Aggiornate per Coerenza**
+
+- **Reni**: Da "equilibrio instabile" a "100% purezza architetturale" 
+- **Milza**: Aggiornate per coerenza con memoria errori
+- **Cranio**: Statistiche più specifiche su protezione e resistenza
+- **Denti**: Focus su debugging intensity e problemi "masticati"
+
+#### 🛠️ **Tecniche Implementate**
+
+- **CSS Filter chaining**: Combinazione di brightness, drop-shadow multipli
+- **Dynamic text contrast**: Colore adattivo basato su tema e selezione
+- **Multi-layer shadows**: Ombreggiature stratificate per depth visivo
+- **Responsive contrast**: Contrasto che si adatta a hover e stati attivi
+
+#### ✅ **Testing e Qualità**
+
+- **Build successful**: Tutte le traduzioni caricate correttamente
+- **No console errors**: Chiavi di traduzione tutte presenti
+- **Cross-language consistency**: Humor e tono mantenuti in IT/EN
+- **Accessibility improved**: Contrasto WCAG-compliant per icone e testi
+
+### 🎯 **Risultati UX**
+
+- **Leggibilità**: Icone visibili su qualsiasi sfondo
+- **Professionalità**: Contrasto elegante senza compromettere design
+- **Internazionalizzazione**: Supporto completo per IT/EN
+- **Consistenza**: Tutte le statistiche ora traducibili dinamicamente
+
+---
+
+## [v2.2.7.1] - 2025-06-23
+
+Fix icone non utilizzate
+
 ## [v2.2.7] - 2025-06-19 🌈
 
 ### 🌈 **Trasformazione Anatomica Realistica: Organi Colorati e Espansione**

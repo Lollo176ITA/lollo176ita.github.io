@@ -226,7 +226,54 @@
     "kidneysDescription": "Filtrano le cattive decisioni architetturali e mantengono l'equilibrio tra ottimismo e realismo nel codice.",
     "spleenDescription": "L'organo più misterioso, che accumula tutta la rabbia repressa quando il codice non compila. Ha una memoria perfetta di ogni errore stupido.",
     "ribcageDescription": "La struttura di supporto che protegge tutto il resto. Come l'architettura del codice, se cede tutto va a rotoli.",
-    "skullDescription": "La fortezza che protegge il cervello dai colpi esterni. Ha resistito a infinite testate contro il muro quando il codice non andava.",
-    "teethDescription": "Strumenti di sopravvivenza che masticano problemi complessi. Hanno morso troppe volte la lingua durante sessioni di debugging intense."
+    "skullDescription": "La fortezza che protegge il cervello dai colpi esterni. Ha resistito a infinite testate contro il muro quando il codice non andava.",    "teethDescription": "Strumenti di sopravvivenza che masticano problemi complessi. Hanno morso troppe volte la lingua durante sessioni di debugging intense.",
+    
+    "brainStat1": "456 idee generate",
+    "brainStat2": "2,847 tazze di caffè processate",
+    "brainStat3": "847 notti insonni",
+    
+    "eyesStat1": "5,333 righe di codice viste",
+    "eyesStat2": "1,203 bug individuati",
+    "eyesStat3": "∞ Stack Overflow consultazioni",
+    
+    "heartStat1": "23 progetti amati",
+    "heartStat2": "100% dedicazione",
+    "heartStat3": "Battiti extra per ogni deploy",
+    
+    "lungsStat1": "1,205 sospiri profondi",
+    "lungsStat2": "3,400 respiri trattenuti",
+    "lungsStat3": "∞ 'Finalmente funziona!'",
+    
+    "handsStat1": "Milioni di tasti premuti",
+    "handsStat2": "Zero monitor rotti",
+    "handsStat3": "Infinite gesture di frustrazione",
+    
+    "stomachStat1": "2,847 caffè processati",
+    "stomachStat2": "Tolleranza caffeina: leggendaria",
+    "stomachStat3": "Biscotti consumati: innumerevoli",
+    
+    "liverStat1": "1,847 stress metabolizzati",
+    "liverStat2": "456 deadline superate",
+    "liverStat3": "Tossine da bug: eliminate",
+    
+    "kidneysStat1": "2,344 decisioni filtrate",
+    "kidneysStat2": "100% purezza architetturale",
+    "kidneysStat3": "Zero compromessi accettati",
+    
+    "spleenStat1": "1,567 rabbie accumulate",
+    "spleenStat2": "Perfect bug memory",
+    "spleenStat3": "Errori stupidi ricordati: tutti",
+    
+    "ribcageStat1": "100% codice protetto",
+    "ribcageStat2": "0 architetture crollate",
+    "ribcageStat3": "Struttura: sempre solida",
+    
+    "skullStat1": "2,340 testate evitate",
+    "skullStat2": "Cervello: sempre protetto",
+    "skullStat3": "Resistenza: leggendaria",
+    
+    "teethStat1": "5,678 problemi masticati",
+    "teethStat2": "234 volte morsa la lingua",
+    "teethStat3": "Debugging intensity: massima"
   }
 }

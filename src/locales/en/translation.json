@@ -227,7 +227,54 @@
     "kidneysDescription": "Filter bad architectural decisions and maintain balance between optimism and realism in code.",
     "spleenDescription": "The most mysterious organ, which accumulates all the repressed anger when code doesn't compile. Has perfect memory of every stupid mistake.",
     "ribcageDescription": "The support structure that protects everything else. Like code architecture, if it fails everything goes to pieces.",
-    "skullDescription": "The fortress that protects the brain from external blows. Has withstood infinite head-banging against the wall when code wouldn't work.",
-    "teethDescription": "Survival tools that chew through complex problems. Have bitten the tongue too many times during intense debugging sessions."
+    "skullDescription": "The fortress that protects the brain from external blows. Has withstood infinite head-banging against the wall when code wouldn't work.",    "teethDescription": "Survival tools that chew through complex problems. Have bitten the tongue too many times during intense debugging sessions.",
+    
+    "brainStat1": "456 ideas generated",
+    "brainStat2": "2,847 coffee cups processed",
+    "brainStat3": "847 sleepless nights",
+    
+    "eyesStat1": "5,333 lines of code seen",
+    "eyesStat2": "1,203 bugs spotted",
+    "eyesStat3": "∞ Stack Overflow consultations",
+    
+    "heartStat1": "23 beloved projects",
+    "heartStat2": "100% dedication",
+    "heartStat3": "Extra beats per deploy",
+    
+    "lungsStat1": "1,205 deep sighs",
+    "lungsStat2": "3,400 breaths held",
+    "lungsStat3": "∞ 'Finally it works!'",
+    
+    "handsStat1": "Millions of keys pressed",
+    "handsStat2": "Zero monitors broken",
+    "handsStat3": "Infinite frustration gestures",
+    
+    "stomachStat1": "2,847 coffees processed",
+    "stomachStat2": "Caffeine tolerance: legendary",
+    "stomachStat3": "Cookies consumed: countless",
+    
+    "liverStat1": "1,847 stress metabolized",
+    "liverStat2": "456 deadlines survived",
+    "liverStat3": "Bug toxins: eliminated",
+    
+    "kidneysStat1": "2,344 decisions filtered",
+    "kidneysStat2": "100% architectural purity",
+    "kidneysStat3": "Zero compromises accepted",
+    
+    "spleenStat1": "1,567 anger accumulated",
+    "spleenStat2": "Perfect bug memory",
+    "spleenStat3": "Stupid mistakes remembered: all",
+    
+    "ribcageStat1": "100% code protected",
+    "ribcageStat2": "0 architectures collapsed",
+    "ribcageStat3": "Structure: always solid",
+    
+    "skullStat1": "2,340 head-bangs avoided",
+    "skullStat2": "Brain: always protected",
+    "skullStat3": "Resistance: legendary",
+    
+    "teethStat1": "5,678 problems chewed",
+    "teethStat2": "234 times bit tongue",
+    "teethStat3": "Debugging intensity: maximum"
   }
 }
