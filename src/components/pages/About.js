@@ -11,10 +11,6 @@ import {
   FaLanguage,
   FaRocket,
   FaHeart,
-  FaCoffee,
-  FaMoon,
-  FaBug,
-  FaLightbulb,
   FaMusic,
   FaPlane,
   FaBookOpen
