@@ -1,6 +1,6 @@
 {
-  "generated": "2025-06-19T12:09:49.195Z",
-  "generationTime": 33265,
+  "generated": "2025-06-24T06:37:32.967Z",
+  "generationTime": 28310,
   "project": {
     "name": "lollo176ita.github.io",
     "version": "2.2.3",
@@ -14,24 +14,24 @@
   },
   "code": {
     "files": 53,
-    "totalLines": 6578,
-    "codeLines": 5885,
-    "blankLines": 693,
+    "totalLines": 6761,
+    "codeLines": 6043,
+    "blankLines": 718,
     "languages": {
       "CSS": {
         "files": 2,
         "lines": 105,
-        "percentage": 1.8
+        "percentage": 1.7
       },
       "JavaScript": {
         "files": 44,
-        "lines": 4966,
-        "percentage": 84.4
+        "lines": 5024,
+        "percentage": 83.1
       },
       "JSON": {
         "files": 7,
-        "lines": 814,
-        "percentage": 13.8
+        "lines": 914,
+        "percentage": 15.1
       }
     }
   },
@@ -44,24 +44,24 @@
     "pages": 1
   },
   "git": {
-    "commits": 109,
+    "commits": 114,
     "contributors": 0,
     "branches": 12,
     "lastCommit": {
-      "hash": "12f05fd",
-      "message": "feat: Introduce MeInPieces component with interactive organ statistics and descriptions",
+      "hash": "b2f687d",
+      "message": "fix: Improve mobile layout and accessibility for History and About components; enhance translations for better user experience",
       "author": "Lollo176ITA",
-      "date": "2025-06-19T11:51:04.000Z"
+      "date": "2025-06-23T08:26:33.000Z"
     }
   },
   "performance": {
-    "avgBuildTime": 16.8,
+    "avgBuildTime": 13.1,
     "lighthouse": {
-      "performance": 46,
+      "performance": 53,
       "accessibility": 88,
       "bestPractices": 100,
       "seo": 100,
-      "lastUpdated": "2025-06-19T12:09:48.806Z",
+      "lastUpdated": "2025-06-24T06:37:32.543Z",
       "fallback": false
     }
   }

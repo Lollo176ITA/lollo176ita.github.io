@@ -1,11 +1,12 @@
 {
   "name": "lollo176ita.github.io",
-  "version": "2.2.3",
+  "version": "2.2.7.2",
   "private": true,
   "homepage": "https://lollo176ita.github.io",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
+    "caniuse-lite": "^1.0.30001724",
     "framer-motion": "^11.12.0",
     "i18next": "^25.2.1",
     "react": "^18.3.1",
@@ -29,7 +30,8 @@
     "stats:copy": "copy src\\data\\project-stats.json public\\project-stats.json",
     "stats:full": "npm run stats && npm run stats:copy",
     "stats:lighthouse": "npm run build:with-stats && npm run stats",
-    "stats:test": "node scripts/test-metrics.js",    "analyze": "node scripts/analyze-performance.js",
+    "stats:test": "node scripts/test-metrics.js",
+    "analyze": "node scripts/analyze-performance.js",
     "clean:deps": "node scripts/analyze-dependencies.js",
     "deploy:optimized": "node scripts/deploy-optimized.js",
     "stats:watch": "npm run stats && npm run start",
@@ -52,7 +54,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },  "devDependencies": {
+  },
+  "devDependencies": {
     "@lhci/cli": "^0.15.0",
     "autoprefixer": "^10.4.20",
     "chrome-launcher": "^1.2.0",
