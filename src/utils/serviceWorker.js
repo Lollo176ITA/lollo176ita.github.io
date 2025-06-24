@@ -148,12 +148,12 @@ export const preloadCriticalResources = () => {
  */
 export const monitorWebVitals = () => {
   // Lazy load web-vitals per non impattare performance iniziale
-  import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-    getCLS(sendToAnalytics);
-    getFID(sendToAnalytics);
-    getFCP(sendToAnalytics);
-    getLCP(sendToAnalytics);
-    getTTFB(sendToAnalytics);
+  import('web-vitals').then(({ onCLS, onINP, onFCP, onLCP, onTTFB }) => {
+    onCLS(sendToAnalytics);
+    onINP(sendToAnalytics);
+    onFCP(sendToAnalytics);
+    onLCP(sendToAnalytics);
+    onTTFB(sendToAnalytics);
   }).catch(error => {
     console.warn('Web Vitals monitoring failed:', error);
   });

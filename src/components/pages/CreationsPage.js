@@ -22,7 +22,7 @@ import {
   SiReact, 
   SiJavascript, 
   SiUnity, 
-  SiCsharp,
+  SiSharp,
   SiTailwindcss,
   SiFramer
 } from 'react-icons/si';
@@ -434,10 +434,9 @@ export default function CreationsPage() {
         { label: t('creations.engine'), value: 'Unity' },
         { label: t('creations.genre'), value: 'Arcade' },
         { label: t('creations.platform'), value: 'WebGL' }
-      ],
-      techStack: [
+      ],      techStack: [
         { icon: SiUnity, name: 'Unity' },
-        { icon: SiCsharp, name: 'C#' },
+        { icon: SiSharp, name: 'C#' },
         { icon: SiJavascript, name: 'JavaScript' }
       ],
       links: [
