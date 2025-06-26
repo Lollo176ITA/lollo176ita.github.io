@@ -1,5 +1,77 @@
 # 📝 Changelog - Riorganizzazione Progetto
 
+## [v2.2.7.8] - 2025-06-26 🎨
+
+### 🎨 **Miglioramento Sistema Icone Commit - Categorizzazione Avanzata**
+
+#### 🏷️ **Nuove Categorie Commit**
+
+- **Problema**: Icone generiche e categorizzazione limitata (solo 6 tipi)
+- **Soluzione**: Sistema avanzato con 11 categorie specifiche basate sui commit reali
+- **Nuove categorie aggiunte**:
+  - `merge`: Merge & Pull Request (🔀 FaCodeBranch, indigo)
+  - `chore`: Configurazione & Build (🔧 FaTools, orange)  
+  - `security`: Sicurezza & Accessibilità (� FaLock, emerald)
+  - `performance`: Ottimizzazioni Performance (🚀 FaRocket, cyan)
+  - `test`: Testing & Spec (📄 FaFileAlt, teal)
+
+#### 🎯 **Logica Categorizzazione Migliorata**
+
+- **Merge commits**: Riconoscimento "merge pull request" e "merge branch"
+- **Features precise**: Distinzione tra `feat:`, `add:`, `implement`, `create`
+- **Bug fixes specifici**: `fix:`, `bug`, `hotfix`
+- **Chore detection**: `chore:`, `config`, `setup`, `deploy`, `build`, `version`
+- **Security focus**: `security`, `vulnerability`, `accessibility`
+- **Performance**: `perf:`, `performance`, `optimize`, `speed`
+
+#### 🌈 **Palette Colori Estesa**
+
+- **Verde**: Features (`FaPlus`) - Nuove funzionalità
+- **Rosso**: Fix (`FaBug`) - Correzioni bug
+- **Blu**: Update (`FaSync`) - Aggiornamenti
+- **Viola**: Refactor (`FaCode`) - Refactoring codice
+- **Giallo**: Docs (`FaBook`) - Documentazione
+- **Rosa**: Style (`FaPalette`) - UI/Stile
+- **Indigo**: Merge (`FaCodeBranch`) - Pull request
+- **Arancione**: Chore (`FaTools`) - Configurazione
+- **Smeraldo**: Security (`FaLock`) - Sicurezza
+- **Ciano**: Performance (`FaRocket`) - Ottimizzazioni
+- **Teal**: Test (`FaFileAlt`) - Testing
+
+#### 🌐 **Traduzioni Complete**
+
+**Italiano**:
+- `merge`: "Merge & Pull Request"
+- `chore`: "Configurazione & Build" 
+- `security`: "Sicurezza & Accessibilità"
+- `performance`: "Ottimizzazioni Performance"
+- `test`: "Testing & Spec"
+
+**Inglese**:
+- `merge`: "Merges & Pull Requests"
+- `chore`: "Configuration & Build"
+- `security`: "Security & Accessibility" 
+- `performance`: "Performance Optimizations"
+- `test`: "Testing & Specs"
+
+#### 📊 **Esempi Categorizzazione Reale**
+
+Basato sui commit effettivi del progetto:
+- ✅ `fix: update components to use min-h-screen` → **Fix** (🐛 rosso)
+- ✅ `Merge pull request #9` → **Merge** (🔀 indigo)
+- ✅ `feat: add books pages` → **Feature** (➕ verde)
+- ✅ `docs: update README and fix dependencies` → **Docs** (📖 giallo)
+- ✅ `chore: adjust deployment configuration` → **Chore** (🔧 arancione)
+
+#### 🎯 **Risultato UX**
+
+- **Riconoscimento visivo**: Ogni tipo di commit ha icona e colore distintivi
+- **Comprensione immediata**: Significato del commit chiaro a colpo d'occhio
+- **Consistenza**: Sistema di icone coerente in tutto il progetto
+- **Accessibilità**: Colori contrastanti per migliore leggibilità
+
+---
+
 ## [v2.2.7.7] - 2025-06-26 🧩
 
 ### 🧩 **Refactoring History Page - Suddivisione in Componenti**

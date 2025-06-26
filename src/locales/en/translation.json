@@ -86,6 +86,11 @@
     "refactor": "Refactoring",
     "docs": "Documentation",
     "style": "Style/UI",
+    "merge": "Merges & Pull Requests",
+    "chore": "Configuration & Build",
+    "security": "Security & Accessibility",
+    "performance": "Performance Optimizations",
+    "test": "Testing & Specs",
     "other": "Other"
   },
   "footer": {

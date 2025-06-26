@@ -10,14 +10,17 @@ import {
   FaCalendarAlt,
   FaGitAlt,
   FaBook,
-  FaHeart,
   FaDownload,
   FaExternalLinkAlt,
   FaHistory,
   FaTag,
   FaBug,
-  FaWrench,
   FaPlus,
+  FaPalette,
+  FaTools,
+  FaLock,
+  FaFileAlt,
+  FaSync
 } from 'react-icons/fa';
 import { useGitHubStats } from '../../hooks/useStats';
 import { 
@@ -129,25 +132,126 @@ export default function History() {
   // Helper function to categorize commits
   const getCommitType = (message) => {
     const msg = message.toLowerCase();
-    if (msg.includes('feat') || msg.includes('add') || msg.includes('new')) return 'feature';
-    if (msg.includes('fix') || msg.includes('bug')) return 'fix';
-    if (msg.includes('update') || msg.includes('improve')) return 'update';
-    if (msg.includes('refactor') || msg.includes('clean')) return 'refactor';
-    if (msg.includes('docs') || msg.includes('readme')) return 'docs';
-    if (msg.includes('style') || msg.includes('ui')) return 'style';
+    
+    // Merge commits
+    if (msg.includes('merge pull request') || msg.includes('merge branch')) return 'merge';
+    
+    // Features (add, feat, implement, create)
+    if (msg.includes('feat:') || msg.includes('add:') || msg.includes('implement') || 
+        msg.includes('create') || msg.includes('new feature')) return 'feature';
+    
+    // Bug fixes
+    if (msg.includes('fix:') || msg.includes('bug') || msg.includes('hotfix')) return 'fix';
+    
+    // Updates and improvements
+    if (msg.includes('update') || msg.includes('improve') || msg.includes('enhance') ||
+        msg.includes('upgrade')) return 'update';
+    
+    // Documentation
+    if (msg.includes('docs:') || msg.includes('readme') || msg.includes('documentation') ||
+        msg.includes('comment')) return 'docs';
+    
+    // Refactoring and code cleanup
+    if (msg.includes('refactor') || msg.includes('clean') || msg.includes('rename') ||
+        msg.includes('restructure')) return 'refactor';
+    
+    // Style and UI changes
+    if (msg.includes('style:') || msg.includes('ui:') || msg.includes('css') ||
+        msg.includes('design') || msg.includes('theme') || msg.includes('layout')) return 'style';
+    
+    // Configuration and setup (chore)
+    if (msg.includes('chore:') || msg.includes('config') || msg.includes('setup') ||
+        msg.includes('deploy') || msg.includes('build') || msg.includes('version')) return 'chore';
+    
+    // Security improvements
+    if (msg.includes('security') || msg.includes('vulnerability') || 
+        msg.includes('accessibility')) return 'security';
+    
+    // Performance optimizations
+    if (msg.includes('perf:') || msg.includes('performance') || msg.includes('optimize') ||
+        msg.includes('speed')) return 'performance';
+    
+    // Testing
+    if (msg.includes('test:') || msg.includes('testing') || msg.includes('spec')) return 'test';
+    
     return 'other';
   };
 
   // Get commit type icon and color
   const getCommitTypeInfo = (type) => {
     switch (type) {
-      case 'feature': return { icon: FaPlus, color: 'text-green-500', bg: 'bg-green-100 dark:bg-green-900' };
-      case 'fix': return { icon: FaBug, color: 'text-red-500', bg: 'bg-red-100 dark:bg-red-900' };
-      case 'update': return { icon: FaWrench, color: 'text-blue-500', bg: 'bg-blue-100 dark:bg-blue-900' };
-      case 'refactor': return { icon: FaCode, color: 'text-purple-500', bg: 'bg-purple-100 dark:bg-purple-900' };
-      case 'docs': return { icon: FaBook, color: 'text-yellow-500', bg: 'bg-yellow-100 dark:bg-yellow-900' };
-      case 'style': return { icon: FaHeart, color: 'text-pink-500', bg: 'bg-pink-100 dark:bg-pink-900' };
-      default: return { icon: FaGitAlt, color: 'text-gray-500', bg: 'bg-gray-100 dark:bg-gray-800' };
+      case 'feature': 
+        return { 
+          icon: FaPlus, 
+          color: 'text-green-500', 
+          bg: 'bg-green-100 dark:bg-green-900' 
+        };
+      case 'fix': 
+        return { 
+          icon: FaBug, 
+          color: 'text-red-500', 
+          bg: 'bg-red-100 dark:bg-red-900' 
+        };
+      case 'update': 
+        return { 
+          icon: FaSync, 
+          color: 'text-blue-500', 
+          bg: 'bg-blue-100 dark:bg-blue-900' 
+        };
+      case 'refactor': 
+        return { 
+          icon: FaCode, 
+          color: 'text-purple-500', 
+          bg: 'bg-purple-100 dark:bg-purple-900' 
+        };
+      case 'docs': 
+        return { 
+          icon: FaBook, 
+          color: 'text-yellow-500', 
+          bg: 'bg-yellow-100 dark:bg-yellow-900' 
+        };
+      case 'style': 
+        return { 
+          icon: FaPalette, 
+          color: 'text-pink-500', 
+          bg: 'bg-pink-100 dark:bg-pink-900' 
+        };
+      case 'merge': 
+        return { 
+          icon: FaCodeBranch, 
+          color: 'text-indigo-500', 
+          bg: 'bg-indigo-100 dark:bg-indigo-900' 
+        };
+      case 'chore': 
+        return { 
+          icon: FaTools, 
+          color: 'text-orange-500', 
+          bg: 'bg-orange-100 dark:bg-orange-900' 
+        };
+      case 'security': 
+        return { 
+          icon: FaLock, 
+          color: 'text-emerald-500', 
+          bg: 'bg-emerald-100 dark:bg-emerald-900' 
+        };
+      case 'performance': 
+        return { 
+          icon: FaRocket, 
+          color: 'text-cyan-500', 
+          bg: 'bg-cyan-100 dark:bg-cyan-900' 
+        };
+      case 'test': 
+        return { 
+          icon: FaFileAlt, 
+          color: 'text-teal-500', 
+          bg: 'bg-teal-100 dark:bg-teal-900' 
+        };
+      default: 
+        return { 
+          icon: FaGitAlt, 
+          color: 'text-gray-500', 
+          bg: 'bg-gray-100 dark:bg-gray-800' 
+        };
     }
   };
 
