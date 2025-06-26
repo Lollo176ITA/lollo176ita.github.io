@@ -1,6 +1,90 @@
 # 📝 Changelog - Riorganizzazione Progetto
 
-## [v2.2.7.6] - 2025-06-23 📱
+## [v2.2.7.7] - 2025-06-26 🧩
+
+### 🧩 **Refactoring History Page - Suddivisione in Componenti**
+
+#### 📁 **Nuova Architettura Modulare**
+
+- **Problema**: File `History.js` di 730+ righe difficile da mantenere
+- **Soluzione**: Suddiviso in 4 componenti separati nella cartella `history-sections/`
+- **Struttura creata**:
+  - `TimelineSection.js` - Gestione timeline cronologica
+  - `CommitsSection.js` - Visualizzazione commits tecnici
+  - `ReleasesSection.js` - Sezione releases e versioni
+  - `StatsSection.js` - Statistiche dettagliate e grafici
+  - `index.js` - Export centralizzato dei componenti
+
+#### 🔧 **Vantaggi Modularizzazione**
+
+- **Manutenibilità**: File più piccoli e focalizzati (80-150 righe ciascuno)
+- **Riusabilità**: Componenti potenzialmente riutilizzabili in altre pagine
+- **Testing**: Più facile testare singoli componenti isolatamente
+- **Performance**: Possibilità futura di lazy loading per sezioni specifiche
+- **Collaborazione**: Team può lavorare su componenti separati senza conflitti
+
+#### 🌐 **Fix Traduzioni Mancanti**
+
+- **Problema**: Traduzioni inglesi incomplete per alcune chiavi
+- **Risolto**: Aggiunte chiavi mancanti in `src/locales/en/translation.json`:
+  - `showMoreCommits`: "Show More Commits"
+  - `remaining`: "remaining"
+  - `moreInfoText`: "All code is open source and available on GitHub. Contributions and feedback are always welcome!"
+- **Aggiornata**: Descrizione `technical` da "last 10 commits" a "all commits" per coerenza
+
+#### 🏗️ **Architettura File**
+
+**Prima (v2.2.7.6)**:
+
+```text
+History.js (730+ righe)
+├── TimelineSection (inline)
+├── CommitsSection (inline)  
+├── ReleasesSection (inline)
+├── StatsSection (inline)
+└── Main History Component
+```
+
+**Dopo (v2.2.7.7)**:
+
+```text
+History.js (300 righe)
+└── Main History Component
+
+history-sections/
+├── TimelineSection.js (80 righe)
+├── CommitsSection.js (120 righe)
+├── ReleasesSection.js (90 righe)
+├── StatsSection.js (150 righe)
+└── index.js (export)
+```
+
+#### 📊 **Metriche Miglioramento**
+
+- **Righe per file**: Da 730 a max 150 (-79% complessità per file)
+- **Separazione responsabilità**: Ogni componente ha un singolo scopo
+- **Import/Export**: Sistema pulito con index.js centralizzato
+- **Build size**: Mantenuto identico (nessun overhead)
+- **Funzionalità**: Zero breaking changes, comportamento identico
+
+#### ✅ **Testing e Validazione**
+
+- **Build successful**: ✅ Compilazione senza errori
+- **Traduzioni complete**: ✅ IT/EN funzionanti al 100%
+- **Componenti modulari**: ✅ Import/export corretti
+- **Responsive design**: ✅ Layout mantenuto su tutti i dispositivi
+- **Funzionalità preservate**: ✅ Tutte le features operative
+
+#### 🎯 **Risultato UX**
+
+- **Esperienza utente**: Identica alla versione precedente
+- **Performance**: Nessun impatto negativo sulle prestazioni
+- **Manutenibilità**: Drasticamente migliorata per sviluppatori
+- **Localizzazione**: Supporto completo IT/EN senza testi hardcoded
+
+---
+
+## [v2.2.7.6] - 2025-06-23
 
 ### 📱 **Fix Layout Mobile Statistiche History**
 
