@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.fefc9c77.css",
-    "main.js": "/static/js/main.21956a02.js",
+    "main.js": "/static/js/main.090f4146.js",
     "static/js/250.afc761ef.chunk.js": "/static/js/250.afc761ef.chunk.js",
     "static/js/440.ffc6b404.chunk.js": "/static/js/440.ffc6b404.chunk.js",
     "static/js/775.ffc0d5ae.chunk.js": "/static/js/775.ffc0d5ae.chunk.js",
@@ -9,9 +9,9 @@
     "static/js/707.8a433746.chunk.js": "/static/js/707.8a433746.chunk.js",
     "static/js/460.7f95a0f0.chunk.js": "/static/js/460.7f95a0f0.chunk.js",
     "static/js/18.3a303a1b.chunk.js": "/static/js/18.3a303a1b.chunk.js",
-    "static/js/318.6e80908d.chunk.js": "/static/js/318.6e80908d.chunk.js",
+    "static/js/318.d7902000.chunk.js": "/static/js/318.d7902000.chunk.js",
     "static/js/376.ca5e7a1f.chunk.js": "/static/js/376.ca5e7a1f.chunk.js",
-    "static/js/213.07d5b467.chunk.js": "/static/js/213.07d5b467.chunk.js",
+    "static/js/213.927a59fc.chunk.js": "/static/js/213.927a59fc.chunk.js",
     "framer-motion.js": "/static/js/framer-motion.02af505d.js",
     "react-router.js": "/static/js/react-router.f21f5a9d.js",
     "vendors.js": "/static/js/vendors.c961d935.js",
@@ -22,6 +22,6 @@
     "static/js/react-router.f21f5a9d.js",
     "static/js/vendors.c961d935.js",
     "static/css/main.fefc9c77.css",
-    "static/js/main.21956a02.js"
+    "static/js/main.090f4146.js"
   ]
 }
