@@ -246,12 +246,7 @@ class LighthouseStatsGenerator {
           maxPotentialFID: reportData.audits?.['max-potential-fid']?.numericValue || 0,
           domSize: reportData.audits?.['dom-size']?.numericValue || 0,
           mainThreadWorkBreakdown: reportData.audits?.['mainthread-work-breakdown']?.numericValue || 0,
-          networkRequests: reportData.audits?.['network-requests']?.details?.items?.length || 0,
-          usesOptimizedImages: reportData.audits?.['uses-optimized-images']?.score === 1,
-          usesWebpImages: reportData.audits?.['uses-webp-images']?.score === 1,
-          usesTextCompression: reportData.audits?.['uses-text-compression']?.score === 1,
-          unusedCssRules: reportData.audits?.['unused-css-rules']?.details?.overallSavingsBytes || 0,
-          renderBlockingResources: reportData.audits?.['render-blocking-resources']?.details?.items?.length || 0
+          networkRequests: reportData.audits?.['network-requests']?.details?.items?.length || 0
         }
       };
     } catch (error) {

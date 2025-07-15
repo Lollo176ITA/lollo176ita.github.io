@@ -396,49 +396,6 @@ const LighthouseStats = () => {
           </div>
         </motion.div>
 
-        {/* Ottimizzazioni */}
-        <motion.div
-          className="bg-white dark:bg-gray-800 rounded-xl p-8 mb-12"
-          variants={itemVariants}
-        >
-          <h2 className="text-2xl font-bold mb-6 flex items-center">
-            <FaRocket className="mr-3 text-blue-500" />
-            Ottimizzazioni
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6">
-              <div className="flex items-center justify-between mb-4">
-                <FaCheckCircle className="text-xl text-blue-500" />
-                <FaCheckCircle className={`text-xl ${lighthouse.metrics?.usesOptimizedImages ? 'text-green-500' : 'text-red-500'}`} />
-              </div>
-              <h3 className="font-semibold mb-2">Immagini Ottimizzate</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                {lighthouse.metrics?.usesOptimizedImages ? 'Utilizzate' : 'Non utilizzate'}
-              </p>
-            </div>
-            <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6">
-              <div className="flex items-center justify-between mb-4">
-                <FaCheckCircle className="text-xl text-blue-500" />
-                <FaCheckCircle className={`text-xl ${lighthouse.metrics?.usesWebpImages ? 'text-green-500' : 'text-red-500'}`} />
-              </div>
-              <h3 className="font-semibold mb-2">Immagini WebP</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                {lighthouse.metrics?.usesWebpImages ? 'Utilizzate' : 'Non utilizzate'}
-              </p>
-            </div>
-            <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6">
-              <div className="flex items-center justify-between mb-4">
-                <FaCheckCircle className="text-xl text-blue-500" />
-                <FaCheckCircle className={`text-xl ${lighthouse.metrics?.usesTextCompression ? 'text-green-500' : 'text-red-500'}`} />
-              </div>
-              <h3 className="font-semibold mb-2">Compressione Testo</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                {lighthouse.metrics?.usesTextCompression ? 'Attiva' : 'Non attiva'}
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
         {/* Informazioni aggiuntive */}
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12"
