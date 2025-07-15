@@ -1,11 +1,11 @@
 {
-  "generated": "2025-06-24T06:37:32.967Z",
-  "generationTime": 28310,
+  "generated": "2025-07-15T07:56:52.146Z",
+  "generationTime": 12498,
   "project": {
     "name": "lollo176ita.github.io",
-    "version": "2.2.3",
-    "dependencies": 12,
-    "devDependencies": 9,
+    "version": "2.2.7.2",
+    "dependencies": 15,
+    "devDependencies": 12,
     "scripts": 17,
     "size": {
       "buildSize": 0,
@@ -13,10 +13,10 @@
     }
   },
   "code": {
-    "files": 53,
-    "totalLines": 6761,
-    "codeLines": 6043,
-    "blankLines": 718,
+    "files": 56,
+    "totalLines": 6872,
+    "codeLines": 6128,
+    "blankLines": 744,
     "languages": {
       "CSS": {
         "files": 2,
@@ -24,19 +24,19 @@
         "percentage": 1.7
       },
       "JavaScript": {
-        "files": 44,
-        "lines": 5024,
-        "percentage": 83.1
+        "files": 49,
+        "lines": 5143,
+        "percentage": 83.9
       },
       "JSON": {
-        "files": 7,
-        "lines": 914,
-        "percentage": 15.1
+        "files": 5,
+        "lines": 880,
+        "percentage": 14.4
       }
     }
   },
   "structure": {
-    "components": 23,
+    "components": 24,
     "routes": 8,
     "books": 2,
     "chapters": 4,
@@ -44,25 +44,32 @@
     "pages": 1
   },
   "git": {
-    "commits": 114,
+    "commits": 118,
     "contributors": 0,
-    "branches": 12,
+    "branches": 4,
     "lastCommit": {
-      "hash": "b2f687d",
-      "message": "fix: Improve mobile layout and accessibility for History and About components; enhance translations for better user experience",
+      "hash": "5ff86dc",
+      "message": "feat(history): add advanced commit categorization with 11 icon types",
       "author": "Lollo176ITA",
-      "date": "2025-06-23T08:26:33.000Z"
+      "date": "2025-06-26T09:03:35.000Z"
     }
   },
   "performance": {
-    "avgBuildTime": 13.1,
+    "avgBuildTime": 0,
     "lighthouse": {
-      "performance": 53,
+      "performance": 95,
       "accessibility": 88,
       "bestPractices": 100,
       "seo": 100,
-      "lastUpdated": "2025-06-24T06:37:32.543Z",
+      "metrics": {
+        "firstContentfulPaint": 753.5839000000001,
+        "largestContentfulPaint": 2869.4547,
+        "cumulativeLayoutShift": 0,
+        "totalBlockingTime": 56
+      },
+      "lastUpdated": "2025-07-15T07:56:52.147Z",
       "fallback": false
-    }
+    },
+    "buildSize": "772K"
   }
 }

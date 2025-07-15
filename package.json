@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://lollo176ita.github.io",
   "dependencies": {
+    "@loadable/component": "^5.16.7",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "caniuse-lite": "^1.0.30001724",
@@ -22,20 +23,19 @@
   "scripts": {
     "predeploy": "npm run build:with-stats",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "build:with-stats": "npm run stats:full && react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "build:analyze": "npm run build && npx source-map-explorer 'build/static/js/*.js'",
+    "build:prod": "GENERATE_SOURCEMAP=false craco build",
+    "bundle:analyze": "ANALYZE=true npm run build",
+    "build:with-stats": "npm run build:prod && npm run stats:lighthouse",
+    "test": "craco test",
     "eject": "react-scripts eject",
-    "stats": "node scripts/generate-stats.js",
-    "stats:copy": "copy src\\data\\project-stats.json public\\project-stats.json",
-    "stats:full": "npm run stats && npm run stats:copy",
-    "stats:lighthouse": "npm run build:with-stats && npm run stats",
-    "stats:test": "node scripts/test-metrics.js",
-    "analyze": "node scripts/analyze-performance.js",
-    "clean:deps": "node scripts/analyze-dependencies.js",
+    "stats:lighthouse": "node scripts/lighthouse-stats.js",
+    "stats:copy": "cp src/data/project-stats.json public/project-stats.json",
+    "stats:full": "npm run stats:lighthouse && npm run stats:copy",
+    "optimize:bundle": "node scripts/optimize-bundle.js",
     "deploy:optimized": "node scripts/deploy-optimized.js",
-    "stats:watch": "npm run stats && npm run start",
     "precommit": "node scripts/pre-commit-hook.js"
   },
   "eslintConfig": {
@@ -57,13 +57,17 @@
     ]
   },
   "devDependencies": {
+    "@craco/craco": "^7.1.0",
     "@lhci/cli": "^0.15.0",
     "autoprefixer": "^10.4.21",
     "chrome-launcher": "^1.2.0",
+    "execa": "^9.6.0",
     "gh-pages": "^6.3.0",
     "lighthouse": "^12.6.1",
     "node-fetch": "^3.3.2",
     "postcss": "^8.5.6",
-    "serve": "^14.2.4"
+    "serve": "^14.2.4",
+    "source-map-explorer": "^2.5.3",
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }
