@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header, Footer } from './components/common';
 import { Hero } from './components/layout';
+import { TrophyProvider } from './components/common/TrophySystem';
 
 // Lazy loading per componenti non critici con error boundaries
 const About = React.lazy(() => import('./components/pages/About').catch(() => ({ default: () => <div>Error loading About</div> })));
@@ -11,6 +12,7 @@ const Stocazzato = React.lazy(() => import('./components/pages/Stocazzato').catc
 const WorkInProgress = React.lazy(() => import('./components/pages/WorkInProgress').catch(() => ({ default: () => <div>Error loading WorkInProgress</div> })));
 const BooksRouter = React.lazy(() => import('./components/books/BooksRouter').catch(() => ({ default: () => <div>Error loading Books</div> })));
 const LighthouseStats = React.lazy(() => import('./components/pages/LighthouseStats').catch(() => ({ default: () => <div>Error loading LighthouseStats</div> })));
+const TrophiesPage = React.lazy(() => import('./components/pages/TrophiesPage').catch(() => ({ default: () => <div>Error loading TrophiesPage</div> })));
 
 // Componente di loading migliorato
 const LoadingSpinner = () => (
@@ -57,29 +59,33 @@ class ErrorBoundary extends React.Component {
 
 export default function App() {
   return (
-    <ErrorBoundary>
-      <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
-        <Router>
-          <Header /> 
-          <Suspense fallback={<LoadingSpinner />}>
-            <Routes>
-              <Route path="/" element={<Hero />} />
-              <Route path="/projects" element={<WorkInProgress />} />
-              {/* Pagina "Chi sono" */}
-              <Route path="/about" element={<About />} />
-              {/* Pagina Lighthouse Stats */}
-              <Route path="/lighthouse" element={<LighthouseStats />} />
-              {/* Rotta per gestire percorsi non definiti */}
-              <Route path="*" element={<WorkInProgress />} />
-              <Route path="/creations" element={<CreationsPage />} />
-              <Route path="/creations/books/*" element={<BooksRouter />} />
-              <Route path="/history" element={<History />} />
-              <Route path="/stocazzato" element={<Stocazzato />} />      
-            </Routes>
-          </Suspense>
-          <Footer />
-        </Router>
-      </div>
-    </ErrorBoundary>
+    <TrophyProvider>
+      <ErrorBoundary>
+        <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
+          <Router>
+            <Header /> 
+            <Suspense fallback={<LoadingSpinner />}>
+              <Routes>
+                <Route path="/" element={<Hero />} />
+                <Route path="/projects" element={<WorkInProgress />} />
+                {/* Pagina "Chi sono" */}
+                <Route path="/about" element={<About />} />
+                {/* Pagina Lighthouse Stats */}
+                <Route path="/lighthouse" element={<LighthouseStats />} />
+                {/* Pagina Trofei */}
+                <Route path="/trophies" element={<TrophiesPage />} />
+                {/* Rotta per gestire percorsi non definiti */}
+                <Route path="*" element={<WorkInProgress />} />
+                <Route path="/creations" element={<CreationsPage />} />
+                <Route path="/creations/books/*" element={<BooksRouter />} />
+                <Route path="/history" element={<History />} />
+                <Route path="/stocazzato" element={<Stocazzato />} />      
+              </Routes>
+            </Suspense>
+            <Footer />
+          </Router>
+        </div>
+      </ErrorBoundary>
+    </TrophyProvider>
   );
 }

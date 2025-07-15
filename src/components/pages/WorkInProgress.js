@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaTools } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import HashLink from '../common/HashLink';
+import { useTrophies } from '../common/TrophySystem';
 
 export default function WorkInProgress() {
   const { t } = useTranslation();
+  const { visitPage } = useTrophies();
+
+  useEffect(() => {
+    visitPage('projects');
+  }, [visitPage]);
   return (
     <motion.div
       className="flex flex-col items-center justify-center min-h-screen bg-white dark:bg-black px-4"

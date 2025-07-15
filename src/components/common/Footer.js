@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTwitter, FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
+import { FaTwitter, FaLinkedin, FaInstagram, FaGithub, FaTrophy } from "react-icons/fa";
 import { SiLighthouse } from "react-icons/si";
 import ThemeSwitch from "./ThemeSwitch";
 import HashLink from "./HashLink";
@@ -51,13 +51,21 @@ export default function Footer() {
         </div>
         
         {/* Site Quality Stats */}
-        <div className="mb-4">
+        <div className="mb-4 flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-6">
           <HashLink 
             to="/lighthouse" 
-            className="text-gray-400 hover:text-white transition text-sm flex items-center justify-center space-x-2"
+            className="text-gray-400 hover:text-white transition text-sm flex items-center space-x-2"
           >
             <SiLighthouse className="text-lg" />
             <span>{t('footer.siteQuality')}</span>
+          </HashLink>
+          
+          <HashLink 
+            to="/trophies" 
+            className="text-gray-400 hover:text-white transition text-sm flex items-center space-x-2"
+          >
+            <FaTrophy className="text-lg" />
+            <span>{t('trophies.viewTrophies')}</span>
           </HashLink>
         </div>
         

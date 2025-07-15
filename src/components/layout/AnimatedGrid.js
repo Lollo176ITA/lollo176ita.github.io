@@ -2,17 +2,21 @@ import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
+import { useTrophies } from '../common/TrophySystem';
 
 export default function AnimatedGrid() {
     const [gameStarted, setGameStarted] = useState(false);
     const [gridItems, setGridItems] = useState(Array.from({ length: 81 }, (_, index) => ({ id: index, letter: '' })));
     const [currentLetter, setCurrentLetter] = useState('A');
     const [selectedCell, setSelectedCell] = useState(null);
+    const [gameStartTime, setGameStartTime] = useState(null);
     const dragStartRef = useRef(null);
     const { t } = useTranslation();
+    const { completeGame, fillGrid } = useTrophies();
 
     const handleStartGame = () => {
         setGameStarted(true);
+        setGameStartTime(Date.now());
         setInitialLetters();
     };
 
@@ -25,7 +29,12 @@ export default function AnimatedGrid() {
             .map(item => item.index);
         
         if (emptyCells.length < 2) {
-            // Not enough empty cells, game should end
+            // Se ci sono meno di 2 celle vuote, controlla se la griglia è completamente piena
+            if (emptyCells.length === 0) {
+                // Griglia completamente piena! Sblocca il trofeo
+                fillGrid();
+            }
+            // Non abbastanza celle vuote, il gioco dovrebbe finire
             setGameStarted(false);
             return;
         }
@@ -92,6 +101,9 @@ export default function AnimatedGrid() {
             if (nextLetter === 'D') {
                 // Stop the game and change message, blur grid
                 setGameStarted(false);
+                const gameEndTime = Date.now();
+                const gameTimeInSeconds = (gameEndTime - gameStartTime) / 1000;
+                completeGame(gameTimeInSeconds);
                 setTimeout(() => {
                     document.getElementById('game-container').classList.add('blur-sm', 'pointer-events-none');
                 }, 50);

@@ -17,11 +17,13 @@ import {
 } from 'react-icons/fa';
 import { SiLighthouse } from 'react-icons/si';
 import statsData from '../../data/project-stats.json';
+import { useTrophies } from '../common/TrophySystem';
 
 const LighthouseStats = () => {
   const { t } = useTranslation();
   const [selectedMetric, setSelectedMetric] = useState('performance');
   const [isLoading, setIsLoading] = useState(true);
+  const { visitPage } = useTrophies();
 
   const lighthouse = statsData.performance?.lighthouse || {};
   const lastUpdated = lighthouse.lastUpdated ? new Date(lighthouse.lastUpdated) : new Date();
@@ -29,8 +31,9 @@ const LighthouseStats = () => {
   useEffect(() => {
     // Simula un caricamento per l'animazione
     const timer = setTimeout(() => setIsLoading(false), 800);
+    visitPage('lighthouse');
     return () => clearTimeout(timer);
-  }, []);
+  }, [visitPage]);
 
   // Mappa dei punteggi Lighthouse
   const lighthouses = [

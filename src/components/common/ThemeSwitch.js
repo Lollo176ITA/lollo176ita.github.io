@@ -2,13 +2,20 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../ThemeContext';
 import { FaSun, FaMoon } from 'react-icons/fa';
+import { useTrophies } from './TrophySystem';
 
 export default function ThemeSwitch() {
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const { switchTheme } = useTrophies();
+
+  const handleToggle = () => {
+    toggleTheme();
+    switchTheme(); // Trigger del trofeo
+  };
 
   return (
     <button
-      onClick={toggleTheme}
+      onClick={handleToggle}
       aria-label="Toggle theme"
       className="relative w-14 h-8 bg-gray-300 dark:bg-gray-600 rounded-full shadow-inner transition-colors duration-300 focus:outline-none"
     >

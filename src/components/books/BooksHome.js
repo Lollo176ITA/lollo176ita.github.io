@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiBook, FiEdit3, FiArrowLeft } from 'react-icons/fi';
 import HashLink from '../common/HashLink';
 import books from '../../data/books';
+import { useTrophies } from '../common/TrophySystem';
 
 export default function BooksHome() {
   const { t } = useTranslation();
+  const { visitPage } = useTrophies();
+
+  useEffect(() => {
+    visitPage('books');
+  }, [visitPage]);
   
   // Group books by type
   const groupedBooks = books.reduce((acc, book) => {

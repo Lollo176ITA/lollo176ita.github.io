@@ -298,6 +298,21 @@
     "skullPersonality": "💀 Guardiano del pensiero",
     "teethPersonality": "🦷 Masticatori di problemi"
   },
+  "trophies": {
+    "unlocked": "Trofeo Sbloccato!",
+    "close": "Chiudi",
+    "goToTrophies": "Vai ai Trofei",
+    "myTrophies": "I Miei Trofei",
+    "viewTrophies": "Vedi Trofei",
+    "lockedTrophy": "Trofeo bloccato",
+    "rarity": {
+      "common": "Comune",
+      "uncommon": "Non Comune",
+      "rare": "Raro",
+      "epic": "Epico",
+      "legendary": "Leggendario"
+    }
+  },
   "lighthouse": {
     "title": "Metriche Lighthouse",
     "subtitle": "Performance e qualità del sito web",
