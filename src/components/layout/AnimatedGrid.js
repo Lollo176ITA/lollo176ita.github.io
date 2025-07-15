@@ -17,15 +17,28 @@ export default function AnimatedGrid() {
     };
 
     const setInitialLetters = () => {
-        // Set 2 random cells to the current letter
+        // Set 2 random cells to the current letter, only in empty cells
         const updatedGrid = [...gridItems];
+        const emptyCells = updatedGrid
+            .map((item, index) => ({ ...item, index }))
+            .filter(item => item.letter === '')
+            .map(item => item.index);
+        
+        if (emptyCells.length < 2) {
+            // Not enough empty cells, game should end
+            setGameStarted(false);
+            return;
+        }
+        
         const randomIndices = [];
         while (randomIndices.length < 2) {
-            const randomIndex = Math.floor(Math.random() * 81);
-            if (!randomIndices.includes(randomIndex)) {
-                randomIndices.push(randomIndex);
+            const randomIndex = Math.floor(Math.random() * emptyCells.length);
+            const cellIndex = emptyCells[randomIndex];
+            if (!randomIndices.includes(cellIndex)) {
+                randomIndices.push(cellIndex);
             }
         }
+        
         randomIndices.forEach(index => {
             updatedGrid[index].letter = "A";
         });
