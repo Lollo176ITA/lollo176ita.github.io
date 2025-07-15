@@ -28,12 +28,16 @@ export default function AnimatedGrid() {
             .filter(item => item.letter === '')
             .map(item => item.index);
         
+        // Controlla se la griglia è completamente piena (tutti i 81 celle hanno una lettera)
+        if (emptyCells.length === 0) {
+            // Griglia completamente piena! Sblocca il trofeo
+            console.log('Griglia completamente piena! Sbloccando trofeo Grid Filler...');
+            fillGrid();
+            setGameStarted(false);
+            return;
+        }
+        
         if (emptyCells.length < 2) {
-            // Se ci sono meno di 2 celle vuote, controlla se la griglia è completamente piena
-            if (emptyCells.length === 0) {
-                // Griglia completamente piena! Sblocca il trofeo
-                fillGrid();
-            }
             // Non abbastanza celle vuote, il gioco dovrebbe finire
             setGameStarted(false);
             return;
@@ -96,6 +100,15 @@ export default function AnimatedGrid() {
             // Update current letter if merging the highest letter
             if (nextLetter > currentLetter) {
                 setCurrentLetter(nextLetter);
+            }
+
+            // Controlla se la griglia è piena dopo il merge
+            const filledCells = updatedGrid.filter(item => item.letter !== '').length;
+            console.log(`Celle piene dopo merge: ${filledCells}/81`);
+            
+            if (filledCells === 81) {
+                console.log('Griglia completamente piena dopo merge! Sbloccando trofeo Grid Filler...');
+                fillGrid();
             }
 
             if (nextLetter === 'D') {

@@ -339,9 +339,16 @@ export const TrophyProvider = ({ children }) => {
 
   // Traccia il riempimento completo della griglia
   const fillGrid = () => {
+    console.log('fillGrid() chiamata');
+    console.log('Trofei attualmente sbloccati:', unlockedTrophies);
+    console.log('Grid filler già sbloccato?', unlockedTrophies.includes('grid_filler'));
+    
     // Sblocca il trofeo solo se non è già stato sbloccato
     if (!unlockedTrophies.includes('grid_filler')) {
+      console.log('Sbloccando trofeo grid_filler...');
       unlockTrophy('grid_filler');
+    } else {
+      console.log('Trofeo grid_filler già sbloccato, saltando...');
     }
   };
 

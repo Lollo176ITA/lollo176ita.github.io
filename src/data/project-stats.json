@@ -1,12 +1,12 @@
 {
-  "generated": "2025-07-15T08:48:16.654Z",
-  "generationTime": 12865,
+  "generated": "2025-07-15T10:38:12.919Z",
+  "generationTime": 13037,
   "project": {
     "name": "lollo176ita.github.io",
-    "version": "2.2.7.2",
-    "dependencies": 15,
-    "devDependencies": 12,
-    "scripts": 16,
+    "version": "2.2.8",
+    "dependencies": 18,
+    "devDependencies": 15,
+    "scripts": 19,
     "size": {
       "buildSize": 0,
       "buildSizeGzipped": 0
@@ -57,32 +57,27 @@
   "performance": {
     "avgBuildTime": 0,
     "lighthouse": {
-      "performance": 95,
-      "accessibility": 88,
+      "performance": 93,
+      "accessibility": 86,
       "bestPractices": 100,
       "seo": 100,
       "metrics": {
-        "firstContentfulPaint": 755.4729,
-        "largestContentfulPaint": 2899.8707,
+        "firstContentfulPaint": 756.6722,
+        "largestContentfulPaint": 3025.1646,
         "cumulativeLayoutShift": 0,
-        "totalBlockingTime": 51,
-        "timeToInteractive": 2899.8707,
-        "speedIndex": 1949.9070539975671,
+        "totalBlockingTime": 59,
+        "timeToInteractive": 3025.1646,
+        "speedIndex": 3377.8154999941335,
         "firstMeaningfulPaint": 0,
-        "serverResponseTime": 1.205,
-        "maxPotentialFID": 90,
-        "domSize": 141,
-        "mainThreadWorkBreakdown": 1097.3760000000004,
-        "networkRequests": 12,
-        "usesOptimizedImages": true,
-        "usesWebpImages": false,
-        "usesTextCompression": true,
-        "unusedCssRules": 0,
-        "renderBlockingResources": 1
+        "serverResponseTime": 2.019,
+        "maxPotentialFID": 96,
+        "domSize": 174,
+        "mainThreadWorkBreakdown": 1413.4840000000033,
+        "networkRequests": 12
       },
-      "lastUpdated": "2025-07-15T08:48:16.655Z",
+      "lastUpdated": "2025-07-15T10:38:12.920Z",
       "fallback": false
     },
-    "buildSize": "772K"
+    "buildSize": "824K"
   }
 }
