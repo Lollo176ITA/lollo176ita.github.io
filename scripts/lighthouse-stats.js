@@ -238,7 +238,20 @@ class LighthouseStatsGenerator {
           firstContentfulPaint: reportData.audits?.['first-contentful-paint']?.numericValue || 0,
           largestContentfulPaint: reportData.audits?.['largest-contentful-paint']?.numericValue || 0,
           cumulativeLayoutShift: reportData.audits?.['cumulative-layout-shift']?.numericValue || 0,
-          totalBlockingTime: reportData.audits?.['total-blocking-time']?.numericValue || 0
+          totalBlockingTime: reportData.audits?.['total-blocking-time']?.numericValue || 0,
+          timeToInteractive: reportData.audits?.['interactive']?.numericValue || 0,
+          speedIndex: reportData.audits?.['speed-index']?.numericValue || 0,
+          firstMeaningfulPaint: reportData.audits?.['first-meaningful-paint']?.numericValue || 0,
+          serverResponseTime: reportData.audits?.['server-response-time']?.numericValue || 0,
+          maxPotentialFID: reportData.audits?.['max-potential-fid']?.numericValue || 0,
+          domSize: reportData.audits?.['dom-size']?.numericValue || 0,
+          mainThreadWorkBreakdown: reportData.audits?.['mainthread-work-breakdown']?.numericValue || 0,
+          networkRequests: reportData.audits?.['network-requests']?.details?.items?.length || 0,
+          usesOptimizedImages: reportData.audits?.['uses-optimized-images']?.score === 1,
+          usesWebpImages: reportData.audits?.['uses-webp-images']?.score === 1,
+          usesTextCompression: reportData.audits?.['uses-text-compression']?.score === 1,
+          unusedCssRules: reportData.audits?.['unused-css-rules']?.details?.overallSavingsBytes || 0,
+          renderBlockingResources: reportData.audits?.['render-blocking-resources']?.details?.items?.length || 0
         }
       };
     } catch (error) {

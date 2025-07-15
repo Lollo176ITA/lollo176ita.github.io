@@ -5,3 +5,4 @@ export { default as Projects } from './Projects';
 export { default as CreationsPage } from './CreationsPage';
 export { default as Stocazzato } from './Stocazzato';
 export { default as WorkInProgress } from './WorkInProgress';
+export { default as LighthouseStats } from './LighthouseStats';

@@ -10,6 +10,7 @@ const CreationsPage = React.lazy(() => import('./components/pages/CreationsPage'
 const Stocazzato = React.lazy(() => import('./components/pages/Stocazzato').catch(() => ({ default: () => <div>Error loading Stocazzato</div> })));
 const WorkInProgress = React.lazy(() => import('./components/pages/WorkInProgress').catch(() => ({ default: () => <div>Error loading WorkInProgress</div> })));
 const BooksRouter = React.lazy(() => import('./components/books/BooksRouter').catch(() => ({ default: () => <div>Error loading Books</div> })));
+const LighthouseStats = React.lazy(() => import('./components/pages/LighthouseStats').catch(() => ({ default: () => <div>Error loading LighthouseStats</div> })));
 
 // Componente di loading migliorato
 const LoadingSpinner = () => (
@@ -66,6 +67,8 @@ export default function App() {
               <Route path="/projects" element={<WorkInProgress />} />
               {/* Pagina "Chi sono" */}
               <Route path="/about" element={<About />} />
+              {/* Pagina Lighthouse Stats */}
+              <Route path="/lighthouse" element={<LighthouseStats />} />
               {/* Rotta per gestire percorsi non definiti */}
               <Route path="*" element={<WorkInProgress />} />
               <Route path="/creations" element={<CreationsPage />} />

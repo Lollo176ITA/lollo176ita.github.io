@@ -1,6 +1,8 @@
 import React from "react";
 import { FaTwitter, FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
+import { SiLighthouse } from "react-icons/si";
 import ThemeSwitch from "./ThemeSwitch";
+import HashLink from "./HashLink";
 import { useTranslation } from 'react-i18next';
 
 
@@ -47,6 +49,18 @@ export default function Footer() {
             <FaGithub />
           </a>
         </div>
+        
+        {/* Site Quality Stats */}
+        <div className="mb-4">
+          <HashLink 
+            to="/lighthouse" 
+            className="text-gray-400 hover:text-white transition text-sm flex items-center justify-center space-x-2"
+          >
+            <SiLighthouse className="text-lg" />
+            <span>{t('footer.siteQuality')}</span>
+          </HashLink>
+        </div>
+        
         {/* Footer Text */}
         <p className="text-sm text-gray-400">{t('footer.copyright', { year })}</p>
       </div>

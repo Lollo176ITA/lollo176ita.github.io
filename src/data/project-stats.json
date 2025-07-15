@@ -1,12 +1,12 @@
 {
-  "generated": "2025-07-15T07:56:52.146Z",
-  "generationTime": 12498,
+  "generated": "2025-07-15T08:48:16.654Z",
+  "generationTime": 12865,
   "project": {
     "name": "lollo176ita.github.io",
     "version": "2.2.7.2",
     "dependencies": 15,
     "devDependencies": 12,
-    "scripts": 17,
+    "scripts": 16,
     "size": {
       "buildSize": 0,
       "buildSizeGzipped": 0
@@ -62,12 +62,25 @@
       "bestPractices": 100,
       "seo": 100,
       "metrics": {
-        "firstContentfulPaint": 753.5839000000001,
-        "largestContentfulPaint": 2869.4547,
+        "firstContentfulPaint": 755.4729,
+        "largestContentfulPaint": 2899.8707,
         "cumulativeLayoutShift": 0,
-        "totalBlockingTime": 56
+        "totalBlockingTime": 51,
+        "timeToInteractive": 2899.8707,
+        "speedIndex": 1949.9070539975671,
+        "firstMeaningfulPaint": 0,
+        "serverResponseTime": 1.205,
+        "maxPotentialFID": 90,
+        "domSize": 141,
+        "mainThreadWorkBreakdown": 1097.3760000000004,
+        "networkRequests": 12,
+        "usesOptimizedImages": true,
+        "usesWebpImages": false,
+        "usesTextCompression": true,
+        "unusedCssRules": 0,
+        "renderBlockingResources": 1
       },
-      "lastUpdated": "2025-07-15T07:56:52.147Z",
+      "lastUpdated": "2025-07-15T08:48:16.655Z",
       "fallback": false
     },
     "buildSize": "772K"
