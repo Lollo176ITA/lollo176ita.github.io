@@ -1,21 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.dfbb78f2.css",
-    "main.js": "/static/js/main.cd0790d8.js",
-    "static/js/250.d476e367.chunk.js": "/static/js/250.d476e367.chunk.js",
-    "static/js/440.e3fe31a0.chunk.js": "/static/js/440.e3fe31a0.chunk.js",
-    "static/js/53.e2ab909e.chunk.js": "/static/js/53.e2ab909e.chunk.js",
-    "static/js/776.f8bd2de4.chunk.js": "/static/js/776.f8bd2de4.chunk.js",
-    "static/js/707.41d9f5cd.chunk.js": "/static/js/707.41d9f5cd.chunk.js",
-    "static/js/460.6feb34ec.chunk.js": "/static/js/460.6feb34ec.chunk.js",
-    "static/js/18.81baf7f4.chunk.js": "/static/js/18.81baf7f4.chunk.js",
-    "static/js/213.c1c0ce34.chunk.js": "/static/js/213.c1c0ce34.chunk.js",
-    "static/js/206.0b5ef09a.chunk.js": "/static/js/206.0b5ef09a.chunk.js",
-    "static/js/608.9101f01d.chunk.js": "/static/js/608.9101f01d.chunk.js",
+    "main.css": "/static/css/main.fefc9c77.css",
+    "main.js": "/static/js/main.21956a02.js",
+    "static/js/250.afc761ef.chunk.js": "/static/js/250.afc761ef.chunk.js",
+    "static/js/440.ffc6b404.chunk.js": "/static/js/440.ffc6b404.chunk.js",
+    "static/js/775.ffc0d5ae.chunk.js": "/static/js/775.ffc0d5ae.chunk.js",
+    "static/js/776.fe3066e6.chunk.js": "/static/js/776.fe3066e6.chunk.js",
+    "static/js/707.8a433746.chunk.js": "/static/js/707.8a433746.chunk.js",
+    "static/js/460.7f95a0f0.chunk.js": "/static/js/460.7f95a0f0.chunk.js",
+    "static/js/18.3a303a1b.chunk.js": "/static/js/18.3a303a1b.chunk.js",
+    "static/js/318.6e80908d.chunk.js": "/static/js/318.6e80908d.chunk.js",
+    "static/js/376.ca5e7a1f.chunk.js": "/static/js/376.ca5e7a1f.chunk.js",
+    "static/js/213.07d5b467.chunk.js": "/static/js/213.07d5b467.chunk.js",
+    "framer-motion.js": "/static/js/framer-motion.02af505d.js",
+    "react-router.js": "/static/js/react-router.f21f5a9d.js",
+    "vendors.js": "/static/js/vendors.c961d935.js",
     "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.dfbb78f2.css",
-    "static/js/main.cd0790d8.js"
+    "static/js/framer-motion.02af505d.js",
+    "static/js/react-router.f21f5a9d.js",
+    "static/js/vendors.c961d935.js",
+    "static/css/main.fefc9c77.css",
+    "static/js/main.21956a02.js"
   ]
 }
