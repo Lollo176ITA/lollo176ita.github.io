@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, useContext } from 'react';
+import React, { useState, useEffect, useCallback, createContext, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { FaTrophy, FaTimes } from 'react-icons/fa';
@@ -113,9 +113,13 @@ export const TrophyProvider = ({ children }) => {
   const [unlockedTrophies, setUnlockedTrophies] = useState([]);
   const [currentTrophy, setCurrentTrophy] = useState(null);
   const [visitedPages, setVisitedPages] = useState(new Set());
+  const [pendingTrophies, setPendingTrophies] = useState(new Set());
+  const [initialized, setInitialized] = useState(false);
 
   // Carica i trofei dal localStorage al mount
   useEffect(() => {
+    if (initialized) return;
+    
     const savedTrophies = localStorage.getItem('user_trophies');
     const savedPages = localStorage.getItem('visited_pages');
     
@@ -139,7 +143,9 @@ export const TrophyProvider = ({ children }) => {
       };
       setTimeout(unlockFirstVisit, 1000);
     }
-  }, []);
+    
+    setInitialized(true);
+  }, [initialized]);
 
   // Salva i trofei nel localStorage
   const saveTrophies = (trophies) => {
@@ -152,75 +158,102 @@ export const TrophyProvider = ({ children }) => {
   };
 
   // Sblocca un trofeo
-  const unlockTrophy = (trophyId) => {
-    if (unlockedTrophies.includes(trophyId)) {
-      return;
-    }
-    
-    const newTrophies = [...unlockedTrophies, trophyId];
-    setUnlockedTrophies(newTrophies);
-    saveTrophies(newTrophies);
-    
-    // Mostra il popup
-    const trophyData = TROPHIES[trophyId.toUpperCase()];
-    if (trophyData) {
-      setCurrentTrophy(trophyData);
-    }
-    
-    // Controlla se è il completista
-    if (newTrophies.length >= 5 && !newTrophies.includes('completionist')) {
-      setTimeout(() => unlockTrophy('completionist'), 2000);
-    }
-  };
+  const unlockTrophy = useCallback((trophyId) => {
+    setUnlockedTrophies(prevTrophies => {
+      if (prevTrophies.includes(trophyId)) {
+        return prevTrophies;
+      }
+      
+      const newTrophies = [...prevTrophies, trophyId];
+      saveTrophies(newTrophies);
+      
+      // Mostra il popup
+      const trophyData = TROPHIES[trophyId.toUpperCase()];
+      if (trophyData) {
+        setCurrentTrophy(trophyData);
+      }
+      
+      // Controlla se è il completista (evita ricorsione)
+      if (trophyId !== 'completionist' && newTrophies.length >= 5 && !newTrophies.includes('completionist')) {
+        setTimeout(() => unlockTrophy('completionist'), 2000);
+      }
+      
+      return newTrophies;
+    });
+  }, []);
 
   // Traccia la visita a una pagina
-  const visitPage = (pageName) => {
-    const newVisitedPages = new Set([...visitedPages, pageName]);
-    setVisitedPages(newVisitedPages);
-    saveVisitedPages(newVisitedPages);
+  const visitPage = useCallback((pageName) => {
+    setVisitedPages(prevPages => {
+      const newVisitedPages = new Set([...prevPages, pageName]);
+      saveVisitedPages(newVisitedPages);
+      return newVisitedPages;
+    });
     
-    // Trofei basati sulle pagine visitate
-    switch (pageName) {
-      case 'projects':
-        unlockTrophy('code_explorer');
-        break;
-      case 'lighthouse':
-        unlockTrophy('lighthouse_checker');
-        break;
-      case 'books':
-        unlockTrophy('book_reader');
-        break;
-      default:
-        break;
+    // Trofei basati sulle pagine visitate con timeout per evitare loop
+    const trophyMap = {
+      'projects': 'code_explorer',
+      'lighthouse': 'lighthouse_checker',
+      'books': 'book_reader'
+    };
+    
+    const trophyId = trophyMap[pageName];
+    if (trophyId) {
+      setPendingTrophies(prevPending => {
+        if (prevPending.has(trophyId)) {
+          return prevPending;
+        }
+        
+        // Controlla se il trofeo è già sbloccato
+        const currentTrophies = JSON.parse(localStorage.getItem('user_trophies') || '[]');
+        if (currentTrophies.includes(trophyId)) {
+          return prevPending;
+        }
+        
+        const newPending = new Set([...prevPending, trophyId]);
+        
+        setTimeout(() => {
+          unlockTrophy(trophyId);
+          setPendingTrophies(prev => {
+            const newSet = new Set(prev);
+            newSet.delete(trophyId);
+            return newSet;
+          });
+        }, 10000); // 10 secondi
+        
+        return newPending;
+      });
     }
-  };
+  }, [unlockTrophy]);
 
   // Traccia il completamento del gioco
-  const completeGame = (timeInSeconds) => {
+  const completeGame = useCallback((timeInSeconds) => {
     unlockTrophy('game_master');
     
     if (timeInSeconds <= 30) {
       unlockTrophy('speed_demon');
     }
-  };
+  }, [unlockTrophy]);
 
   // Traccia il riempimento completo della griglia
-  const fillGrid = () => {
-    if (!unlockedTrophies.includes('grid_filler')) {
+  const fillGrid = useCallback(() => {
+    const currentTrophies = JSON.parse(localStorage.getItem('user_trophies') || '[]');
+    if (!currentTrophies.includes('grid_filler')) {
       unlockTrophy('grid_filler');
     }
-  };
+  }, [unlockTrophy]);
 
   // Traccia il cambio tema
-  const switchTheme = () => {
-    if (!unlockedTrophies.includes('theme_switcher')) {
+  const switchTheme = useCallback(() => {
+    const currentTrophies = JSON.parse(localStorage.getItem('user_trophies') || '[]');
+    if (!currentTrophies.includes('theme_switcher')) {
       unlockTrophy('theme_switcher');
     }
-  };
+  }, [unlockTrophy]);
 
-  const closeTrophyPopup = () => {
+  const closeTrophyPopup = useCallback(() => {
     setCurrentTrophy(null);
-  };
+  }, []);
 
   const value = {
     unlockedTrophies,
