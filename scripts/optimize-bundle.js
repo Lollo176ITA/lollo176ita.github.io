@@ -176,7 +176,7 @@ async function createOptimizedBuild() {
   console.log('🏗️  Creazione build ottimizzato...');
   
   // Build senza source maps
-  await runCommand('npm', ['run', 'build:prod']);
+  await runCommand('pnpm', ['run', 'build:prod']);
   
   console.log('  ✅ Build ottimizzato completato');
 }
@@ -186,11 +186,11 @@ async function analyzeBundle() {
   
   try {
     // Genera report del bundle
-    await runCommand('npm', ['run', 'bundle:analyze']);
+    await runCommand('pnpm', ['run', 'bundle:analyze']);
     
     // Analizza con source-map-explorer
     console.log('📈 Generazione report dettagliato...');
-    await runCommand('npm', ['run', 'build:analyze']);
+    await runCommand('pnpm', ['run', 'build:analyze']);
     
     console.log('  ✅ Report generati - controlla build/bundle-report.html');
   } catch (error) {
@@ -227,7 +227,7 @@ async function optimizeBundle() {
     
     console.log('\n📊 CONTROLLO RISULTATI:');
     console.log('   - Apri build/bundle-report.html per l\'analisi dettagliata');
-    console.log('   - Esegui npm run stats per nuove metriche Lighthouse');
+    console.log('   - Esegui pnpm run stats per nuove metriche Lighthouse');
     console.log('   - Controlla la dimensione del bundle in build/static/js/');
     
   } catch (error) {

@@ -29,15 +29,15 @@ async function optimizedDeploy() {
 
     // 1. Genera statistiche aggiornate con Lighthouse
     console.log('📊 Generazione statistiche con Lighthouse...');
-    await runCommand('npm', ['run', 'stats:lighthouse']);
+    await runCommand('pnpm', ['run', 'stats:lighthouse']);
     
     // 2. Build ottimizzato
     console.log('🔨 Build ottimizzato...');
-    await runCommand('npm', ['run', 'build:prod']);
+    await runCommand('pnpm', ['run', 'build:prod']);
     
     // 3. Copia le statistiche
     console.log('📋 Copia delle statistiche...');
-    await runCommand('npm', ['run', 'stats:copy']);
+    await runCommand('pnpm', ['run', 'stats:copy']);
     
     // 4. Configurazione Service Worker e Manifest
     console.log('🔧 Configurazione PWA per GitHub Pages...');
@@ -48,7 +48,7 @@ async function optimizedDeploy() {
     
     // 5. Deploy
     console.log('🚀 Deploy su GitHub Pages...');
-    await runCommand('npm', ['run', 'deploy']);
+    await runCommand('pnpm', ['run', 'deploy']);
     
     console.log('\n✅ DEPLOYMENT COMPLETATO CON SUCCESSO!');
     console.log('\n📈 OTTIMIZZAZIONI APPLICATE:');
