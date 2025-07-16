@@ -1,115 +1,11 @@
 import React, { useState, useEffect, createContext, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { 
-  FaTrophy, 
-  FaStar, 
-  FaGamepad, 
-  FaCode, 
-  FaRocket, 
-  FaHeart, 
-  FaFire, 
-  FaGem, 
-  FaCrown,
-  FaTimes
-} from 'react-icons/fa';
+import { FaTrophy, FaTimes } from 'react-icons/fa';
+import { TROPHIES, getRarityColor } from '../../data/trophies';
 
 // Context per gestire i trofei globalmente
 const TrophyContext = createContext();
-
-// Definizione dei trofei disponibili
-const TROPHIES = {
-  FIRST_VISIT: {
-    id: 'first_visit',
-    name: 'Primo Visitatore',
-    nameEn: 'First Visitor',
-    description: 'Benvenuto sul mio sito!',
-    descriptionEn: 'Welcome to my website!',
-    icon: FaStar,
-    color: 'text-yellow-500',
-    rarity: 'common'
-  },
-  GAME_MASTER: {
-    id: 'game_master',
-    name: 'Maestro del Gioco',
-    nameEn: 'Game Master',
-    description: 'Hai completato il gioco della griglia!',
-    descriptionEn: 'You completed the grid game!',
-    icon: FaGamepad,
-    color: 'text-purple-500',
-    rarity: 'rare'
-  },
-  CODE_EXPLORER: {
-    id: 'code_explorer',
-    name: 'Esploratore del Codice',
-    nameEn: 'Code Explorer',
-    description: 'Hai visitato la sezione progetti!',
-    descriptionEn: 'You visited the projects section!',
-    icon: FaCode,
-    color: 'text-blue-500',
-    rarity: 'common'
-  },
-  LIGHTHOUSE_CHECKER: {
-    id: 'lighthouse_checker',
-    name: 'Ispettore Lighthouse',
-    nameEn: 'Lighthouse Inspector',
-    description: 'Hai controllato le statistiche del sito!',
-    descriptionEn: 'You checked the site statistics!',
-    icon: FaRocket,
-    color: 'text-green-500',
-    rarity: 'uncommon'
-  },
-  BOOK_READER: {
-    id: 'book_reader',
-    name: 'Lettore Appassionato',
-    nameEn: 'Book Reader',
-    description: 'Hai letto un capitolo dei miei libri!',
-    descriptionEn: 'You read a chapter of my books!',
-    icon: FaHeart,
-    color: 'text-red-500',
-    rarity: 'uncommon'
-  },
-  THEME_SWITCHER: {
-    id: 'theme_switcher',
-    name: 'Cambia Tema',
-    nameEn: 'Theme Switcher',
-    description: 'Hai cambiato il tema del sito!',
-    descriptionEn: 'You changed the site theme!',
-    icon: FaFire,
-    color: 'text-orange-500',
-    rarity: 'common'
-  },
-  COMPLETIONIST: {
-    id: 'completionist',
-    name: 'Completista',
-    nameEn: 'Completionist',
-    description: 'Hai visitato tutte le sezioni!',
-    descriptionEn: 'You visited all sections!',
-    icon: FaCrown,
-    color: 'text-gold-500',
-    rarity: 'legendary'
-  },
-  SPEED_DEMON: {
-    id: 'speed_demon',
-    name: 'Demone della Velocità',
-    nameEn: 'Speed Demon',
-    description: 'Hai completato il gioco in 30 secondi o meno!',
-    descriptionEn: 'You completed the game in 30 seconds or less!',
-    icon: FaGem,
-    color: 'text-cyan-500',
-    rarity: 'epic'
-  },
-  GRID_FILLER: {
-    id: 'grid_filler',
-    name: 'Riempitore di Griglie',
-    nameEn: 'Grid Filler',
-    description: 'Hai riempito completamente la griglia del gioco!',
-    descriptionEn: 'You completely filled the game grid!',
-    icon: FaFire,
-    color: 'text-orange-500',
-    rarity: 'rare'
-  }
-};
 
 // Hook per gestire i trofei
 export const useTrophies = () => {
@@ -212,18 +108,6 @@ const TrophyPopup = ({ trophy, onClose }) => {
   );
 };
 
-// Utility per ottenere il colore basato sulla rarità
-const getRarityColor = (rarity) => {
-  switch (rarity) {
-    case 'common': return 'bg-gray-200 text-gray-800 dark:bg-gray-600 dark:text-gray-200';
-    case 'uncommon': return 'bg-green-200 text-green-800 dark:bg-green-600 dark:text-green-200';
-    case 'rare': return 'bg-blue-200 text-blue-800 dark:bg-blue-600 dark:text-blue-200';
-    case 'epic': return 'bg-purple-200 text-purple-800 dark:bg-purple-600 dark:text-purple-200';
-    case 'legendary': return 'bg-yellow-200 text-yellow-800 dark:bg-yellow-600 dark:text-yellow-200';
-    default: return 'bg-gray-200 text-gray-800';
-  }
-};
-
 // Provider principale
 export const TrophyProvider = ({ children }) => {
   const [unlockedTrophies, setUnlockedTrophies] = useState([]);
@@ -269,13 +153,9 @@ export const TrophyProvider = ({ children }) => {
 
   // Sblocca un trofeo
   const unlockTrophy = (trophyId) => {
-    // Debug: verifica se il trofeo è già sbloccato
     if (unlockedTrophies.includes(trophyId)) {
-      console.log(`Trofeo '${trophyId}' già sbloccato, ignorando...`);
       return;
     }
-    
-    console.log(`Sbloccando trofeo: ${trophyId}`);
     
     const newTrophies = [...unlockedTrophies, trophyId];
     setUnlockedTrophies(newTrophies);
@@ -285,9 +165,6 @@ export const TrophyProvider = ({ children }) => {
     const trophyData = TROPHIES[trophyId.toUpperCase()];
     if (trophyData) {
       setCurrentTrophy(trophyData);
-      console.log(`Popup mostrato per trofeo: ${trophyId}`);
-    } else {
-      console.error(`Trofeo non trovato: ${trophyId}`);
     }
     
     // Controlla se è il completista
@@ -320,41 +197,22 @@ export const TrophyProvider = ({ children }) => {
 
   // Traccia il completamento del gioco
   const completeGame = (timeInSeconds) => {
-    // Verifica se è la prima volta che completa il gioco
-    const isFirstCompletion = !unlockedTrophies.includes('game_master');
-    
     unlockTrophy('game_master');
     
-    // Se completa velocemente (30 secondi o meno), sblocca anche speed_demon
     if (timeInSeconds <= 30) {
       unlockTrophy('speed_demon');
-    }
-    
-    // Se è la prima volta E completa velocemente, sblocca entrambi i trofei del gioco
-    if (isFirstCompletion && timeInSeconds <= 30) {
-      // Entrambi i trofei del gioco sono già stati sbloccati sopra
-      // Questa logica è per eventuali future espansioni
     }
   };
 
   // Traccia il riempimento completo della griglia
   const fillGrid = () => {
-    console.log('fillGrid() chiamata');
-    console.log('Trofei attualmente sbloccati:', unlockedTrophies);
-    console.log('Grid filler già sbloccato?', unlockedTrophies.includes('grid_filler'));
-    
-    // Sblocca il trofeo solo se non è già stato sbloccato
     if (!unlockedTrophies.includes('grid_filler')) {
-      console.log('Sbloccando trofeo grid_filler...');
       unlockTrophy('grid_filler');
-    } else {
-      console.log('Trofeo grid_filler già sbloccato, saltando...');
     }
   };
 
   // Traccia il cambio tema
   const switchTheme = () => {
-    // Sblocca il trofeo solo se non è già stato sbloccato
     if (!unlockedTrophies.includes('theme_switcher')) {
       unlockTrophy('theme_switcher');
     }
@@ -435,9 +293,16 @@ export const TrophyDisplay = () => {
               
               {/* Mostra la descrizione solo se il trofeo è sbloccato */}
               {isUnlocked ? (
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
-                  {isItalian ? trophy.description : trophy.descriptionEn}
-                </p>
+                <>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                    {isItalian ? trophy.description : trophy.descriptionEn}
+                  </p>
+                  {trophy.credits && (
+                    <p className="text-xs text-gray-500 dark:text-gray-400 italic mb-2">
+                      {trophy.credits}
+                    </p>
+                  )}
+                </>
               ) : (
                 <p className="text-sm text-gray-400 mb-2 italic">
                   {t('trophies.lockedTrophy')}

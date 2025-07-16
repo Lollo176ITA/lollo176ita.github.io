@@ -102,15 +102,6 @@ export default function AnimatedGrid() {
                 setCurrentLetter(nextLetter);
             }
 
-            // Controlla se la griglia è piena dopo il merge
-            const filledCells = updatedGrid.filter(item => item.letter !== '').length;
-            console.log(`Celle piene dopo merge: ${filledCells}/81`);
-            
-            if (filledCells === 81) {
-                console.log('Griglia completamente piena dopo merge! Sbloccando trofeo Grid Filler...');
-                fillGrid();
-            }
-
             if (nextLetter === 'D') {
                 // Stop the game and change message, blur grid
                 setGameStarted(false);
@@ -122,7 +113,18 @@ export default function AnimatedGrid() {
                 }, 50);
             } else {
                 // Set 2 new random cells to 'A'
-                setTimeout(() => setInitialLetters(), 200);
+                setTimeout(() => {
+                    setInitialLetters();
+                    // Controlla se la griglia è piena dopo aver aggiunto le nuove celle
+                    setTimeout(() => {
+                        const filledCells = gridItems.filter(item => item.letter !== '').length;
+                        console.log(`Celle piene dopo aggiunta nuove celle: ${filledCells}/81`);
+                        if (filledCells === 81) {
+                            console.log('Griglia completamente piena dopo aggiunta nuove celle! Sbloccando trofeo Grid Filler...');
+                            fillGrid();
+                        }
+                    }, 50);
+                }, 200);
             }
         }
     };

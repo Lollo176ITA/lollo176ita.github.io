@@ -310,7 +310,8 @@
       "uncommon": "Non Comune",
       "rare": "Raro",
       "epic": "Epico",
-      "legendary": "Leggendario"
+      "legendary": "Leggendario",
+      "community": "Community"
     }
   },
   "lighthouse": {

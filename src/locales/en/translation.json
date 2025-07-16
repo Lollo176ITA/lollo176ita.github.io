@@ -312,7 +312,8 @@
       "uncommon": "Uncommon",
       "rare": "Rare",
       "epic": "Epic",
-      "legendary": "Legendary"
+      "legendary": "Legendary",
+      "community": "Community"
     }
   },
   "lighthouse": {
