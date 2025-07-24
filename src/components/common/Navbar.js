@@ -32,7 +32,6 @@ export default function Navbar({ isOpen, toggleMenu }) {
       </button>      <ul className="flex flex-col p-8 space-y-6 mt-12">
         <li><HashLink to="/" onClick={handleLinkClick} className={getLinkClassName("/")}>{t('nav.home')}</HashLink></li>
         <li><HashLink to="/about" onClick={handleLinkClick} className={getLinkClassName("/about")}>{t('nav.about')}</HashLink></li>
-        <li><HashLink to="/projects" onClick={handleLinkClick} className={getLinkClassName("/projects")}>{t('nav.projects')}</HashLink></li>
         <li><HashLink to="/creations" onClick={handleLinkClick} className={getLinkClassName("/creations")}>{t('nav.creations')}</HashLink></li>
         <li><HashLink to="/history" onClick={handleLinkClick} className={getLinkClassName("/history")}>{t('nav.history')}</HashLink></li>
       </ul>

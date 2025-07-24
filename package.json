@@ -19,22 +19,16 @@
     "web-vitals": "^5.0.3"
   },
   "scripts": {
-    "predeploy": "pnpm run build:with-stats",
+    "predeploy": "pnpm run build:prod && pnpm run stats",
     "deploy": "gh-pages -d build",
     "start": "craco start",
     "build": "craco build",
     "build:analyze": "pnpm run build && pnpx source-map-explorer 'build/static/js/*.js'",
     "build:prod": "GENERATE_SOURCEMAP=false craco build",
-    "bundle:analyze": "ANALYZE=true pnpm run build",
-    "build:with-stats": "pnpm run build:prod && pnpm run stats:lighthouse",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "stats:lighthouse": "node scripts/lighthouse-stats.js",
-    "stats:copy": "cp src/data/project-stats.json public/project-stats.json",
-    "stats:full": "pnpm run stats:lighthouse && pnpm run stats:copy",
-    "optimize:bundle": "node scripts/optimize-bundle.js",
-    "deploy:optimized": "node scripts/deploy-optimized.js",
-    "precommit": "node scripts/pre-commit-hook.js"
+    "stats": "node scripts/lighthouse-stats.js && cp src/data/project-stats.json public/project-stats.json",
+    "deploy:optimized": "node scripts/deploy-optimized.js"
   },
   "eslintConfig": {
     "extends": [
@@ -57,6 +51,9 @@
   "devDependencies": {
     "@craco/craco": "^7.1.0",
     "autoprefixer": "^10.4.21",
+    "brotli-webpack-plugin": "^1.1.0",
+    "compression-webpack-plugin": "^11.1.0",
+    "css-minimizer-webpack-plugin": "^7.0.2",
     "depcheck": "^1.4.7",
     "eslint-config-react-app": "^7.0.1",
     "execa": "^9.6.0",
@@ -67,6 +64,7 @@
     "postcss": "^8.5.6",
     "serve": "^14.2.4",
     "source-map-explorer": "^2.5.3",
+    "terser-webpack-plugin": "^5.3.14",
     "webpack-bundle-analyzer": "^4.10.2"
   }
 }

@@ -67,7 +67,6 @@ export default function App() {
             <Suspense fallback={<LoadingSpinner />}>
               <Routes>
                 <Route path="/" element={<Hero />} />
-                <Route path="/projects" element={<WorkInProgress />} />
                 {/* Pagina "Chi sono" */}
                 <Route path="/about" element={<About />} />
                 {/* Pagina Lighthouse Stats */}

@@ -35,8 +35,8 @@ export const TROPHIES = {
     id: 'code_explorer',
     name: 'Esploratore del Codice',
     nameEn: 'Code Explorer',
-    description: 'Hai visitato la sezione progetti!',
-    descriptionEn: 'You visited the projects section!',
+    description: 'Hai visitato la sezione creazioni!',
+    descriptionEn: 'You visited the creations section!',
     icon: FaCode,
     color: 'text-blue-500',
     rarity: 'common'
