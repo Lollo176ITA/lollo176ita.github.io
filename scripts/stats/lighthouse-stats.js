@@ -1,22 +1,22 @@
 #!/usr/bin/env node
 /**
- * Lighthouse-based stats generator
+ * Lighthouse performance statistics generator
  */
 
 const fs = require('fs');
 const path = require('path');
 const { spawn } = require('child_process');
 const { promisify } = require('util');
-const { exec } = require('child_process');
+const { exec, execSync } = require('child_process');
 
 const execAsync = promisify(exec);
 
 const CONFIG = {
-  buildDir: path.join(__dirname, '..', 'build'),
-  statsFile: path.join(__dirname, '..', 'src', 'data', 'project-stats.json'),
-  lighthousePort: 3001,
+  buildDir: path.join(__dirname, '..', '..', 'build'),
+  statsFile: path.join(__dirname, '..', '..', 'src', 'data', 'project-stats.json'),
+  lighthousePort: 3000,
   lighthouseUrl: 'http://localhost:3000',
-  lighthouseReportPath: path.join(__dirname, '..', 'lighthouse-report.json')
+  lighthouseReportPath: path.join(__dirname, '..', '..', 'lighthouse-report.json')
 };
 
 class LighthouseStatsGenerator {
@@ -27,7 +27,7 @@ class LighthouseStatsGenerator {
 
   async run() {
     try {
-      console.log('🚀 Generating stats with Lighthouse...');
+      console.log('🚀 Generating lighthouse performance statistics...');
       
       if (!fs.existsSync(CONFIG.buildDir)) {
         throw new Error(`Build directory not found: ${CONFIG.buildDir}`);
@@ -38,10 +38,11 @@ class LighthouseStatsGenerator {
       await this.runLighthouse();
       await this.updateStats();
       
-      console.log('✅ Stats generation completed!');
+      console.log('✅ Lighthouse statistics completed!');
       
     } catch (error) {
-      console.error('❌ Error:', error.message);
+      console.error('❌ Lighthouse error:', error.message);
+      console.error('🔧 Please ensure build directory exists and ports are available');
       process.exit(1);
     } finally {
       await this.cleanup();
@@ -106,7 +107,7 @@ class LighthouseStatsGenerator {
       try {
         existingStats = JSON.parse(fs.readFileSync(CONFIG.statsFile, 'utf8'));
       } catch (error) {
-        // Ignore parsing errors
+        console.warn('Warning: Could not parse existing stats file, creating new one');
       }
     }
 
@@ -183,7 +184,7 @@ class LighthouseStatsGenerator {
 
   async getProjectMetadata() {
     try {
-      const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8'));
+      const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'package.json'), 'utf8'));
       return {
         name: packageJson.name,
         version: packageJson.version,

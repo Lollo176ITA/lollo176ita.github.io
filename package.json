@@ -27,7 +27,7 @@
     "build:prod": "GENERATE_SOURCEMAP=false craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "stats": "node scripts/lighthouse-stats.js && cp src/data/project-stats.json public/project-stats.json",
+    "stats": "node scripts/stats/code-stats.js && cp src/data/project-stats.json public/project-stats.json",
     "deploy:optimized": "node scripts/deploy-optimized.js"
   },
   "eslintConfig": {
