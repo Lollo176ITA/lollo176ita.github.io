@@ -1,6 +1,6 @@
 {
-  "generated": "2025-07-24T10:22:44.546Z",
-  "generationTime": 14284,
+  "generated": "2025-07-24T12:23:06.265Z",
+  "generationTime": 14730,
   "project": {
     "name": "lollo176ita.github.io",
     "version": "2.2.8",
@@ -13,15 +13,15 @@
     }
   },
   "code": {
-    "files": 60,
-    "totalLines": 8104,
-    "codeLines": 6364,
-    "blankLines": 507,
+    "files": 61,
+    "totalLines": 8123,
+    "codeLines": 6382,
+    "blankLines": 508,
     "commentLines": 1233,
     "languages": {
       "JavaScript": {
-        "files": 53,
-        "lines": 6869,
+        "files": 54,
+        "lines": 6888,
         "percentage": 84.8
       },
       "CSS": {
@@ -35,11 +35,11 @@
         "percentage": 13.5
       }
     },
-    "lastUpdated": "2025-07-24T10:22:29.640Z",
-    "generationTime": 126
+    "lastUpdated": "2025-07-24T12:22:50.890Z",
+    "generationTime": 121
   },
   "structure": {
-    "components": 36,
+    "components": 37,
     "pages": 15,
     "hooks": 3,
     "routes": 9,
@@ -47,54 +47,54 @@
     "chapters": 4,
     "utils": 4,
     "contexts": 1,
-    "lastUpdated": "2025-07-24T10:22:29.825Z",
-    "generationTime": 50
+    "lastUpdated": "2025-07-24T12:22:51.074Z",
+    "generationTime": 54
   },
   "git": {
-    "commits": 128,
+    "commits": 129,
     "contributors": 2,
     "branches": 4,
     "lastCommit": {
-      "hash": "9572a69",
-      "message": "refactor: update project statistics and optimize deployment scripts",
+      "hash": "93aece7",
+      "message": "feat: overhaul project statistics generation",
       "author": "Lollo176ITA",
-      "date": "2025-07-24T11:42:16+02:00",
-      "filesChanged": 14
+      "date": "2025-07-24T12:22:56+02:00",
+      "filesChanged": 7
     },
     "repoAge": {
       "days": 288,
       "firstCommit": "2024-10-08T21:26:09.000Z"
     },
     "commitFrequency": {
-      "commitsPerDay": 0.44,
-      "commitsPerWeek": 3.11,
-      "commitsPerMonth": 13.33
+      "commitsPerDay": 0.45,
+      "commitsPerWeek": 3.14,
+      "commitsPerMonth": 13.44
     },
-    "lastUpdated": "2025-07-24T10:22:30.143Z",
-    "generationTime": 202
+    "lastUpdated": "2025-07-24T12:22:51.409Z",
+    "generationTime": 216
   },
   "performance": {
     "avgBuildTime": 0,
     "lighthouse": {
       "performance": 39,
       "accessibility": 86,
-      "bestPractices": 100,
+      "bestPractices": 82,
       "seo": 100,
       "metrics": {
-        "firstContentfulPaint": 605.9411,
-        "largestContentfulPaint": 30116.8233,
+        "firstContentfulPaint": 604.03845,
+        "largestContentfulPaint": 31308.69515,
         "cumulativeLayoutShift": 0,
-        "totalBlockingTime": 1581,
-        "timeToInteractive": 30351.5822,
-        "speedIndex": 15992.068634008116,
+        "totalBlockingTime": 1624,
+        "timeToInteractive": 31309.945150000003,
+        "speedIndex": 16017.714838003229,
         "firstMeaningfulPaint": 0,
-        "serverResponseTime": 1.419,
-        "maxPotentialFID": 1455,
-        "domSize": 167,
-        "mainThreadWorkBreakdown": 2651.172000000009,
-        "networkRequests": 7
+        "serverResponseTime": 2.047,
+        "maxPotentialFID": 1480,
+        "domSize": 168,
+        "mainThreadWorkBreakdown": 2593.4880000000117,
+        "networkRequests": 9
       },
-      "lastUpdated": "2025-07-24T10:22:44.547Z",
+      "lastUpdated": "2025-07-24T12:23:06.266Z",
       "fallback": false
     },
     "buildSize": "804K"
