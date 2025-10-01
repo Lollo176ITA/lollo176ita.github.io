@@ -8,6 +8,7 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [2.3.0](#230---2025-10-01) | 2025-10-01 | Documentation refactoring |
 | [2.2.8](#228---2025-07-15) | 2025-07-15 | Trophy system, gamification |
 | [2.2.7](#227---2025-06-26) | 2025-06-26 | Advanced commit categorization |
 | [2.2.6](#226---2025-06-19) | 2025-06-19 | "Me in Pieces" component |
@@ -18,6 +19,30 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 | [1.0.0](#100---2025-03-01) | 2025-03-01 | Initial release |
 
 ---
+
+## [2.3.0] - 2025-10-01
+
+### Added
+- Documentation section in footer with direct link to README
+- Comprehensive table of contents in all documentation files
+- Quick navigation tables for better documentation accessibility
+
+### Changed
+- **Major documentation refactoring**
+  - Streamlined all documentation files removing redundant sections
+  - Converted verbose lists to compact tables
+  - Reduced code examples to essential content only
+  - ARCHITECTURE.md: Condensed best practices and removed repetitive code blocks
+  - COMPONENTS.md: Simplified component descriptions with cleaner format
+  - CONVENTIONAL_COMMITS.md: Converted commit types to table format
+  - REAL-STATS.md: Consolidated hooks documentation and simplified troubleshooting
+  - CHANGELOG.md: Added quick navigation table
+- All documentation maintained in English for consistency
+- Improved readability with better formatting and structure
+
+### Fixed
+- Documentation navigation and cross-references
+- Markdown formatting consistency across all files
 
 ## [2.2.8] - 2025-07-15
 
@@ -204,6 +229,8 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 ---
 
 ## Migration Notes
+
+**2.2.x → 2.3.x**: No breaking changes. Documentation improvements only.
 
 **2.1.x → 2.2.x**: No breaking changes. Trophy system is opt-in.
 
