@@ -7,7 +7,43 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 [![pnpm](https://img.shields.io/badge/pnpm-Package_Manager-F69220?style=flat-square&logo=pnpm)](https://pnpm.io/)
 
-**[Italiano](#italiano)** | **[English](#english)**
+---
+
+## Indice / Table of Contents
+
+### 🇮🇹 [Italiano](#italiano)
+
+- [Panoramica](#panoramica)
+- [Caratteristiche Principali](#caratteristiche-principali)
+- [Stack Tecnologico](#stack-tecnologico)
+- [Architettura del Progetto](#architettura-del-progetto)
+- [Installazione e Setup](#installazione-e-setup)
+- [Configurazione](#configurazione)
+- [Ottimizzazioni Prestazioni](#ottimizzazioni-prestazioni)
+- [Sistema di Trofei](#sistema-di-trofei)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Documentazione Tecnica](#documentazione-tecnica)
+- [Contribuire](#contribuire)
+- [Licenza](#licenza)
+- [Contatti e Links](#contatti-e-links)
+
+### 🇬🇧 [English](#english)
+
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Technology Stack](#technology-stack)
+- [Project Architecture](#project-architecture)
+- [Installation and Setup](#installation-and-setup)
+- [Configuration](#configuration)
+- [Performance Optimizations](#performance-optimizations)
+- [Trophy System](#trophy-system)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Technical Documentation](#technical-documentation)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contacts and Links](#contacts-and-links)
 
 ---
 
@@ -43,154 +79,31 @@ Questo progetto rappresenta il mio portfolio personale e una piattaforma per con
 
 ### Stack Tecnologico
 
-#### Core Technologies
-```
-React 19.1.0              Framework UI con supporto alle ultime features
-React Router DOM 7.6.2    Routing client-side
-Tailwind CSS 3.4.15      Framework CSS utility-first
-Framer Motion 12.19.1     Libreria animazioni
-```
+Il progetto utilizza tecnologie web moderne per garantire prestazioni ottimali e un'esperienza utente fluida:
 
-#### Internazionalizzazione e UI
-```
-react-i18next 15.5.3      Sistema traduzioni
-i18next 25.2.1            Framework i18n
-react-icons 5.5.0         Libreria icone
-react-country-flag 3.1.0  Componenti bandiere
-```
+- **Framework**: React 19.1.0 con React Router DOM 7.6.2
+- **Styling**: Tailwind CSS 3.4.15 con animazioni Framer Motion
+- **Internazionalizzazione**: react-i18next per supporto multilingua
+- **Build & Ottimizzazione**: CRACO, Webpack Bundle Analyzer, compressione Brotli/Gzip
 
-#### Build Tools e Ottimizzazione
-```
-CRACO 7.1.0               Configurazione Create React App
-Webpack Bundle Analyzer   Analisi bundle
-Compression Plugins       Compressione Brotli e Gzip
-Terser Webpack Plugin     Minificazione JavaScript
-CSS Minimizer             Ottimizzazione CSS
-```
-
-#### Development Tools
-```
-ESLint                    Linting codice
-Lighthouse 12.6.1         Audit prestazioni
-Source Map Explorer       Analisi bundle
-Depcheck                  Controllo dipendenze
-```
 
 ### Architettura del Progetto
 
-#### Struttura Directory
+Il progetto segue un'architettura modulare basata su best practices React moderne:
 
-```
-lollo176ita.github.io/
-├── public/                      # Asset statici e file pubblici
-│   ├── index.html              # HTML entry point
-│   ├── manifest.json           # PWA manifest
-│   ├── sw.js                   # Service Worker
-│   └── project-stats.json      # Statistiche progetto generate
-│
-├── src/                        # Codice sorgente
-│   ├── components/             # Componenti React
-│   │   ├── common/            # Componenti condivisi
-│   │   │   ├── Header.js      # Header con navigazione
-│   │   │   ├── Footer.js      # Footer
-│   │   │   ├── Navbar.js      # Menu navigazione
-│   │   │   ├── ThemeSwitch.js # Interruttore tema
-│   │   │   ├── LanguageSwitcher.js  # Selettore lingua
-│   │   │   ├── HashLink.js    # Link hash personalizzati
-│   │   │   └── TrophySystem.js # Sistema trofei
-│   │   │
-│   │   ├── layout/            # Componenti layout
-│   │   │   ├── Hero.js        # Sezione hero homepage
-│   │   │   ├── HeroText.js    # Testo animato hero
-│   │   │   └── AnimatedGrid.js # Griglia animata sfondo
-│   │   │
-│   │   ├── pages/             # Pagine applicazione
-│   │   │   ├── About.js       # Pagina chi sono
-│   │   │   ├── History.js     # Storia progetto
-│   │   │   ├── Projects.js    # Portfolio progetti
-│   │   │   ├── CreationsPage.js # Galleria creazioni
-│   │   │   ├── TrophiesPage.js  # Pagina trofei
-│   │   │   ├── LighthouseStats.js # Statistiche prestazioni
-│   │   │   └── WorkInProgress.js  # Pagine WIP
-│   │   │
-│   │   ├── books/             # Sistema gestione libri
-│   │   │   ├── BooksHome.js   # Homepage libri
-│   │   │   ├── BooksRouter.js # Router libri
-│   │   │   ├── BookOverview.js # Panoramica libro
-│   │   │   └── BookChapter.js  # Lettore capitoli
-│   │   │
-│   │   └── animations/        # Componenti animazioni
-│   │       └── LazyMotion.js  # Lazy load Framer Motion
-│   │
-│   ├── hooks/                  # Custom React Hooks
-│   │   ├── useHashRouter.js   # Hook routing hash
-│   │   ├── useNavigation.js   # Hook navigazione
-│   │   └── useStats.js        # Hook statistiche
-│   │
-│   ├── data/                   # Dati e configurazioni
-│   │   ├── books.js           # Dati libri
-│   │   ├── trophies.js        # Configurazione trofei
-│   │   ├── history.it.json    # Timeline italiana
-│   │   ├── history.en.json    # Timeline inglese
-│   │   └── project-stats.json # Statistiche generate
-│   │
-│   ├── locales/               # File traduzioni i18n
-│   │   ├── en/translation.json # Traduzioni inglese
-│   │   └── it/translation.json # Traduzioni italiano
-│   │
-│   ├── utils/                 # Utility functions
-│   │   ├── hashRouter.js     # Sistema routing hash
-│   │   ├── analytics.js      # Analytics e tracking
-│   │   ├── serviceWorker.js  # Gestione Service Worker
-│   │   └── RouteDebugger.js  # Debug routing
-│   │
-│   ├── App.js                 # Componente principale
-│   ├── index.js              # Entry point React
-│   ├── i18n.js               # Configurazione i18n
-│   └── ThemeContext.js       # Context gestione tema
-│
-├── scripts/                   # Script utility
-│   ├── stats/                # Script statistiche
-│   │   ├── code-stats.js    # Analisi codice
-│   │   ├── git-stats.js     # Statistiche Git
-│   │   ├── lighthouse-stats.js # Metriche Lighthouse
-│   │   └── structure-stats.js  # Analisi struttura
-│   ├── deploy-optimized.js   # Script deploy ottimizzato
-│   └── pre-commit-hook.js    # Hook pre-commit
-│
-├── docs/                      # Documentazione
-│   ├── ARCHITECTURE.md       # Architettura progetto
-│   ├── CHANGELOG.md          # Registro modifiche
-│   ├── COMPONENTS.md         # Documentazione componenti
-│   ├── REAL-STATS.md        # Sistema statistiche
-│   └── development/         # Documentazione sviluppo
-│
-├── build/                    # Build di produzione
-├── reports/                  # Report generati
-├── craco.config.js          # Configurazione CRACO
-├── tailwind.config.js       # Configurazione Tailwind
-├── postcss.config.js        # Configurazione PostCSS
-└── package.json             # Dipendenze e script
-```
+**Struttura Principale**:
+- `src/components/` - Componenti React organizzati per tipologia (common, layout, pages, books)
+- `src/hooks/` - Custom hooks per logica di business (routing, navigazione, statistiche)
+- `src/data/` - Dati statici e configurazioni (libri, trofei, timeline)
+- `src/utils/` - Funzioni utility (hash routing, analytics, service worker)
+- `scripts/` - Script per build, deploy e generazione statistiche
+- `docs/` - Documentazione tecnica completa
 
-#### Pattern Architetturali
+**Principi Architetturali**:
 
-**Separation of Concerns**
-- Componenti dedicati esclusivamente alla presentazione
-- Custom hooks per logica di business e gestione stato
-- Utility functions separate per operazioni comuni
-- Contexts per stato globale (tema, lingua)
-
-**Component Composition**
-- Componenti piccoli e riutilizzabili
-- Composizione su ereditarietà
-- Props drilling minimizzato tramite Context API
-
-**Performance Optimization**
-- Lazy loading di componenti non critici
-- Code splitting strategico per ridurre bundle size
-- Memoization di componenti pesanti
-- Bundle principale ottimizzato: ~131KB (riduzione 73%)
+- Separation of Concerns (componenti, hooks, utility separati)
+- Component Composition (componenti piccoli e riutilizzabili)
+- Performance First (lazy loading, code splitting, bundle optimization)
 
 ### Installazione e Setup
 
@@ -387,20 +300,10 @@ La documentazione completa del progetto è disponibile nella cartella `docs/`. C
 
 #### Guide Sviluppo
 
-- **[PERFORMANCE_OPTIMIZATION.md](docs/development/PERFORMANCE_OPTIMIZATION.md)** - Ottimizzazioni prestazioni
-  - Bundle size optimization
-  - Build performance
-  - Metriche Lighthouse
-  
 - **[LIGHTHOUSE_METRICS.md](docs/development/LIGHTHOUSE_METRICS.md)** - Automazione metriche
   - Sistema automatizzato Lighthouse
   - Integrazione statistiche
   - Monitoraggio performance
-  
-- **[SERVICE_WORKER_FIXES.md](docs/development/SERVICE_WORKER_FIXES.md)** - Service Worker
-  - Implementazione PWA
-  - Strategie di cache
-  - Risoluzione problemi comuni
 
 ### Contribuire
 
@@ -458,61 +361,35 @@ This project represents my personal portfolio and a platform to share projects, 
 
 ### Technology Stack
 
-#### Core Technologies
-```
-React 19.1.0              UI framework with latest features support
-React Router DOM 7.6.2    Client-side routing
-Tailwind CSS 3.4.15      Utility-first CSS framework
-Framer Motion 12.19.1     Animation library
-```
+The project uses modern web technologies to ensure optimal performance and a smooth user experience:
 
-#### Internationalization and UI
-```
-react-i18next 15.5.3      Translation system
-i18next 25.2.1            i18n framework
-react-icons 5.5.0         Icon library
-react-country-flag 3.1.0  Flag components
-```
+- **Framework**: React 19.1.0 with React Router DOM 7.6.2
+- **Styling**: Tailwind CSS 3.4.15 with Framer Motion animations
+- **Internationalization**: react-i18next for multilingual support
+- **Build & Optimization**: CRACO, Webpack Bundle Analyzer, Brotli/Gzip compression
 
-#### Build Tools and Optimization
-```
-CRACO 7.1.0               Create React App configuration
-Webpack Bundle Analyzer   Bundle analysis
-Compression Plugins       Brotli and Gzip compression
-Terser Webpack Plugin     JavaScript minification
-CSS Minimizer             CSS optimization
-```
-
-#### Development Tools
-```
-ESLint                    Code linting
-Lighthouse 12.6.1         Performance auditing
-Source Map Explorer       Bundle analysis
-Depcheck                  Dependency checking
-```
+📖 **For complete technology stack details, see [ARCHITECTURE.md](docs/ARCHITECTURE.md)**
 
 ### Project Architecture
 
-The architecture follows modern React best practices with clear separation of concerns. For detailed structure, see the directory tree in the Italian section above.
+The project follows a modular architecture based on modern React best practices:
 
-#### Architectural Patterns
+**Main Structure**:
+- `src/components/` - React components organized by type (common, layout, pages, books)
+- `src/hooks/` - Custom hooks for business logic (routing, navigation, statistics)
+- `src/data/` - Static data and configurations (books, trophies, timeline)
+- `src/utils/` - Utility functions (hash routing, analytics, service worker)
+- `scripts/` - Build, deploy, and statistics generation scripts
+- `docs/` - Complete technical documentation
 
-**Separation of Concerns**
-- Components dedicated exclusively to presentation
-- Custom hooks for business logic and state management
-- Separate utility functions for common operations
-- Contexts for global state (theme, language)
+**Architectural Principles**:
+- ✅ Separation of Concerns (separate components, hooks, utilities)
+- ✅ Component Composition (small, reusable components)
+- ✅ Performance First (lazy loading, code splitting, bundle optimization)
 
-**Component Composition**
-- Small and reusable components
-- Composition over inheritance
-- Minimal props drilling via Context API
-
-**Performance Optimization**
-- Lazy loading of non-critical components
-- Strategic code splitting to reduce bundle size
-- Memoization of heavy components
-- Optimized main bundle: ~131KB (73% reduction)
+📖 **For complete structure and detailed architectural patterns, see:**
+- [ARCHITECTURE.md](docs/ARCHITECTURE.md) - Architecture and design patterns
+- [COMPONENTS.md](docs/COMPONENTS.md) - Complete component documentation
 
 ### Installation and Setup
 
@@ -709,20 +586,10 @@ Complete project documentation is available in the `docs/` folder. Consult the f
 
 #### Development Guides
 
-- **[PERFORMANCE_OPTIMIZATION.md](docs/development/PERFORMANCE_OPTIMIZATION.md)** - Performance optimization
-  - Bundle size optimization
-  - Build performance
-  - Lighthouse metrics
-  
 - **[LIGHTHOUSE_METRICS.md](docs/development/LIGHTHOUSE_METRICS.md)** - Metrics automation
   - Automated Lighthouse system
   - Statistics integration
   - Performance monitoring
-  
-- **[SERVICE_WORKER_FIXES.md](docs/development/SERVICE_WORKER_FIXES.md)** - Service Worker
-  - PWA implementation
-  - Cache strategies
-  - Common issues resolution
 
 ### Contributing
 

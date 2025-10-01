@@ -1,6 +1,8 @@
 # Project Architecture and Best Practices
 
-This document describes the architectural principles, patterns, and development guidelines for the project.
+[⬅️ Back to README](../README.md)
+
+Architectural principles, patterns, and development guidelines for the project.
 
 ## Table of Contents
 
@@ -9,79 +11,44 @@ This document describes the architectural principles, patterns, and development 
 - [Project Structure](#project-structure)
 - [Design System](#design-system)
 - [Best Practices](#best-practices)
-- [Performance Considerations](#performance-considerations)
+- [Performance](#performance-considerations)
 - [State Management](#state-management)
-- [Routing Architecture](#routing-architecture)
+- [Routing](#routing-architecture)
+- [Testing & Quality](#testing--quality)
 
 ## Architectural Principles
 
-### 1. Separation of Concerns
-
-The project follows a clear separation of concerns:
-
+### Separation of Concerns
 - **Components**: Presentation logic and UI rendering
 - **Hooks**: Business logic and state management
 - **Data**: Static data and configurations
 - **Utils**: Utility functions and helpers
 - **Context**: Global state management
 
-### 2. Component Composition
+### Component Composition
+- Composition over inheritance
+- Small, reusable components
+- Minimize props drilling via Context API
+- Children props for flexible layouts
 
-- Prefer composition over inheritance
-- Create small, reusable components
-- Minimize props drilling through Context API
-- Use children props for flexible layouts
-
-### 3. Performance First
-
-- Implement code splitting and lazy loading
-- Strategic memoization for expensive operations
-- Optimize rendering with React.memo
-- Bundle size optimization through chunk splitting
+### Performance First
+- Code splitting and lazy loading
+- Strategic memoization
+- React.memo for expensive renders
+- Bundle size optimization
 
 ## Technology Stack
 
-### Core Framework
-
-```
-React 19.1.0               Modern UI framework with concurrent features
-React Router DOM 7.6.2     Client-side routing with hash support
-Tailwind CSS 3.4.15       Utility-first CSS framework
-Framer Motion 12.19.1      Animation library
-```
-
-### State Management
-
-```
-React Context              Global state (theme, language, preferences)
-useState/useReducer        Local component state
-Custom Hooks               Reusable business logic
-```
-
-### Internationalization
-
-```
-react-i18next 15.5.3      Translation framework
-i18next 25.2.1            Core i18n engine
-```
-
-### Build Tools
-
-```
-CRACO 7.1.0               Create React App configuration
-Webpack                    Module bundler
-PostCSS                    CSS processing
-Terser                     JavaScript minification
-```
-
-### Development Tools
-
-```
-ESLint                     Code linting
-Lighthouse                 Performance auditing
-Source Map Explorer        Bundle analysis
-Depcheck                   Dependency checking
-```
+| Category | Tools | Version |
+|----------|-------|---------|
+| **UI Framework** | React | 19.1.0 |
+| **Routing** | Custom Hash Router | - |
+| **Styling** | Tailwind CSS | 3.4.15 |
+| **Animation** | Framer Motion | 12.19.1 |
+| **i18n** | react-i18next | 15.5.3 |
+| **Build** | CRACO + Webpack | 7.1.0 |
+| **State** | Context API + Hooks | - |
+| **Dev Tools** | ESLint, Lighthouse, Depcheck | - |
 
 ## Project Structure
 
@@ -213,204 +180,53 @@ Based on Tailwind's spacing scale (0.25rem = 4px):
 
 ### Component Guidelines
 
-#### Naming Conventions
+### Component Guidelines
 
-```javascript
-// Good - PascalCase for components
-export default function UserProfile() {}
-
-// Bad - camelCase or snake_case
-export default function userProfile() {}
-```
-
-#### Props Destructuring
-
-```javascript
-// Good - Destructure in function signature
-function UserCard({ name, email, avatar }) {
-  return <div>{name}</div>;
-}
-
-// Avoid - Accessing via props object
-function UserCard(props) {
-  return <div>{props.name}</div>;
-}
-```
-
-#### Conditional Rendering
-
-```javascript
-// Good - Logical AND for existence checks
-{user && <UserProfile user={user} />}
-
-// Good - Ternary for alternatives
-{isLoading ? <Spinner /> : <Content />}
-
-// Good - Early return for complex conditions
-if (!user) return null;
-return <UserProfile user={user} />;
-```
-
-#### Event Handlers
-
-```javascript
-// Simple handlers - Inline arrow function
-<button onClick={() => setCount(count + 1)}>
-
-// Complex handlers - Separate function
-const handleSubmit = (event) => {
-  event.preventDefault();
-  // Complex logic here
-};
-
-<form onSubmit={handleSubmit}>
-```
+- **Naming**: PascalCase for components, camelCase for props/variables
+- **Props**: Destructure in function signature
+- **Conditional Rendering**: Use `&&` for existence checks, ternary for alternatives
+- **Event Handlers**: Inline for simple logic, separate functions for complex
 
 ### Custom Hooks
-
-#### Guidelines
 
 - Prefix with "use" (e.g., `useHashRouter`)
 - Extract reusable logic from components
 - Return objects for multiple values
-- Keep hooks focused and single-purpose
+- Keep focused and single-purpose
 
-#### Example
+### File Organization & Style
 
-```javascript
-function useHashRouter(pattern) {
-  const [params, setParams] = useState({});
-  
-  useEffect(() => {
-    const match = matchPath(pattern);
-    setParams(match?.params || {});
-  }, [pattern]);
-  
-  return { params };
-}
-```
-
-### File Organization
-
-- One component per file
-- Co-locate related components in subdirectories
+- One component per file, max 300 lines
+- Co-locate related components
 - Index files for clean imports
-- Keep files under 300 lines when possible
-
-### Code Style
-
-- Use functional components with hooks
-- Prefer const over let
-- Use template literals for string concatenation
-- Destructure objects and arrays
-- Use optional chaining (`?.`) for nested properties
-- Use nullish coalescing (`??`) for default values
+- Functional components with hooks
+- Prefer `const`, template literals, destructuring
+- Optional chaining (`?.`) and nullish coalescing (`??`)
 
 ## Performance Considerations
 
-### Code Splitting
-
-```javascript
-// Lazy load non-critical components
-const About = React.lazy(() => import('./components/pages/About'));
-const History = React.lazy(() => import('./components/pages/History'));
-
-// Wrap in Suspense
-<Suspense fallback={<LoadingSpinner />}>
-  <About />
-</Suspense>
-```
+### Code Splitting & Lazy Loading
+- React.lazy() for non-critical components
+- Suspense boundaries with fallbacks
+- Route-based code splitting
 
 ### Memoization
-
-```javascript
-// Memoize expensive components
-const MemoizedComponent = React.memo(ExpensiveComponent);
-
-// Memoize expensive calculations
-const sortedData = useMemo(
-  () => data.sort(compareFunction),
-  [data]
-);
-
-// Memoize callback functions
-const handleClick = useCallback(
-  () => doSomething(value),
-  [value]
-);
-```
+- `React.memo()` for expensive component renders
+- `useMemo()` for expensive calculations
+- `useCallback()` for callback functions passed to child components
 
 ### Bundle Optimization
+**Current Metrics**: ~131KB main bundle (73% reduction), 12 chunks, Brotli + Gzip compression
 
-- Strategic chunk splitting (see `craco.config.js`)
+- Strategic chunk splitting via CRACO config
 - Separate vendor bundles for large libraries
 - Tree shaking for unused code elimination
-- Minification and compression in production
-
-Current bundle metrics:
-- Main bundle: ~131KB (73% reduction from initial)
-- 12 separate chunks for optimal loading
-- Brotli and Gzip compression enabled
 
 ## State Management
 
-### Local State
-
-Use `useState` for component-level state:
-
-```javascript
-function Counter() {
-  const [count, setCount] = useState(0);
-  return <button onClick={() => setCount(count + 1)}>{count}</button>;
-}
-```
-
-### Global State
-
-Use Context API for app-wide state:
-
-```javascript
-// ThemeContext.js
-export const ThemeContext = createContext();
-
-export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState('light');
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
-}
-
-// Usage in components
-const { theme, setTheme } = useContext(ThemeContext);
-```
-
-### Complex State
-
-Use `useReducer` for complex state logic:
-
-```javascript
-function reducer(state, action) {
-  switch (action.type) {
-    case 'INCREMENT':
-      return { count: state.count + 1 };
-    case 'DECREMENT':
-      return { count: state.count - 1 };
-    default:
-      return state;
-  }
-}
-
-function Counter() {
-  const [state, dispatch] = useReducer(reducer, { count: 0 });
-  return (
-    <button onClick={() => dispatch({ type: 'INCREMENT' })}>
-      {state.count}
-    </button>
-  );
-}
-```
+- **Local State**: `useState` for component-level state
+- **Global State**: Context API for app-wide state (theme, language, trophies)
+- **Complex State**: `useReducer` for complex state logic with actions
 
 ## Routing Architecture
 
@@ -448,63 +264,33 @@ const params = useHashParams('books/:type/:slug');
 
 For detailed routing documentation, see [technical/HASH_ROUTING.md](./technical/HASH_ROUTING.md).
 
-## Testing Guidelines
+## Testing & Quality
 
-### Component Testing
+### Testing
+- Component testing with React Testing Library
+- Hook testing with `renderHook`
+- Unit tests for utility functions
 
-```javascript
-import { render, screen } from '@testing-library/react';
-import UserProfile from './UserProfile';
+### Accessibility
+**Current Score**: 88/100 (Lighthouse)
 
-test('renders user name', () => {
-  render(<UserProfile name="John Doe" />);
-  expect(screen.getByText('John Doe')).toBeInTheDocument();
-});
-```
+- Semantic HTML elements
+- Alt text for images
+- Keyboard navigation support
+- Sufficient color contrast
+- ARIA attributes when needed
 
-### Hook Testing
+### Documentation
+- Comments for complex logic
+- JSDoc for function documentation
+- Updated README and CHANGELOG
+- Usage examples in component docs
 
-```javascript
-import { renderHook, act } from '@testing-library/react';
-import useCounter from './useCounter';
-
-test('increments counter', () => {
-  const { result } = renderHook(() => useCounter());
-  
-  act(() => {
-    result.current.increment();
-  });
-  
-  expect(result.current.count).toBe(1);
-});
-```
-
-## Accessibility
-
-- Use semantic HTML elements
-- Provide alt text for images
-- Ensure keyboard navigation works
-- Maintain sufficient color contrast
-- Use ARIA attributes when necessary
-- Test with screen readers
-
-Current accessibility score: 88/100 (Lighthouse)
-
-## Documentation
-
-- Document complex logic with comments
-- Use JSDoc for function documentation
-- Keep README files updated
-- Document breaking changes in CHANGELOG
-- Include usage examples in component documentation
-
-## Version Control
-
-- Follow [Conventional Commits](./CONVENTIONAL_COMMITS.md)
-- Create feature branches from main
-- Write descriptive commit messages
-- Keep commits focused and atomic
-- Review code before merging
+### Version Control
+- [Conventional Commits](./CONVENTIONAL_COMMITS.md) format
+- Feature branches from main
+- Descriptive, atomic commits
+- Code review before merging
 
 ---
 

@@ -1,9 +1,23 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+[⬅️ Back to README](../README.md)
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+
+## Quick Navigation
+
+| Version | Date | Highlights |
+|---------|------|------------|
+| [2.2.8](#228---2025-07-15) | 2025-07-15 | Trophy system, gamification |
+| [2.2.7](#227---2025-06-26) | 2025-06-26 | Advanced commit categorization |
+| [2.2.6](#226---2025-06-19) | 2025-06-19 | "Me in Pieces" component |
+| [2.2.0](#220---2025-06-15) | 2025-06-15 | Real stats & hash routing |
+| [2.1.0](#210---2025-06-01) | 2025-06-01 | Books system, PWA |
+| [2.0.0](#200---2025-05-15) | 2025-05-15 | Major restructuring, i18n |
+| [1.5.0](#150---2025-04-01) | 2025-04-01 | Core pages |
+| [1.0.0](#100---2025-03-01) | 2025-03-01 | Initial release |
+
+---
 
 ## [2.2.8] - 2025-07-15
 
@@ -189,31 +203,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## Version History Summary
-
-- **2.2.x**: Trophy system, advanced commit categorization, "Me in Pieces" component
-- **2.1.x**: Books system, Service Worker, PWA features
-- **2.0.x**: Major restructuring, i18n, theme system, performance optimization
-- **1.5.x**: Core pages (Projects, History, Creations, About)
-- **1.0.x**: Initial release with basic structure
-
 ## Migration Notes
 
-### From 2.1.x to 2.2.x
-- No breaking changes
-- New trophy system is opt-in (user interaction based)
-- All existing features remain functional
+**2.1.x → 2.2.x**: No breaking changes. Trophy system is opt-in.
 
-### From 2.0.x to 2.1.x
-- No breaking changes
-- Books system is additive
-- Service Worker automatically registers
+**2.0.x → 2.1.x**: No breaking changes. Books system and Service Worker are additive.
 
-### From 1.x to 2.0.x
-- **Breaking**: Component import paths changed
-- **Breaking**: Hardcoded text replaced with i18n keys
-- **Action Required**: Update any custom components to use new structure
-- **Action Required**: Add language preference handling if customized
+**1.x → 2.0.x**: ⚠️ **Breaking Changes**
+- Component import paths changed
+- Hardcoded text replaced with i18n keys
+- Update custom components to new structure
+- Add language preference handling if customized
 
 ## Deprecations
 

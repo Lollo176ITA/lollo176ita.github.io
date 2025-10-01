@@ -1,5 +1,7 @@
 # Hash Routing System Documentation
 
+[⬅️ Torna al README](../../README.md)
+
 ## Overview
 This project uses a custom hash routing system optimized for GitHub Pages deployment. The system provides client-side routing while maintaining compatibility with static hosting.
 

@@ -1,5 +1,7 @@
 # Lighthouse Metrics Automation
 
+[⬅️ Torna al README](../../README.md)
+
 Documentation for the automated Lighthouse performance metrics collection system.
 
 ## Overview
@@ -393,12 +395,6 @@ jobs:
           name: lighthouse-results
           path: src/data/project-stats.json
 ```
-
-## Related Documentation
-
-- [Performance Optimization](./PERFORMANCE_OPTIMIZATION.md) - Optimization strategies
-- [Real Stats](../REAL-STATS.md) - Statistics system overview
-- [Architecture](../ARCHITECTURE.md) - Project architecture
 
 ---
 

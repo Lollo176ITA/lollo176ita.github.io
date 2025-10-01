@@ -94,7 +94,16 @@
   },
   "footer": {
     "copyright": "© {{year}} Lollo. Tutti i diritti riservati.",
-    "siteQuality": "Qualità del Sito"
+    "siteQuality": "Qualità del Sito",
+    "documentation": {
+      "title": "Documentazione",
+      "readme": "README",
+      "architecture": "Architettura",
+      "components": "Componenti",
+      "changelog": "Registro Modifiche",
+      "commits": "Guida Commit",
+      "stats": "Sistema Statistiche"
+    }
   },
   "wip": {
     "title": "Sito in costruzione",

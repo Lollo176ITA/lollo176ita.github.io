@@ -95,7 +95,16 @@
   },
   "footer": {
     "copyright": "© {{year}} Lollo. All rights reserved.",
-    "siteQuality": "Site Quality"
+    "siteQuality": "Site Quality",
+    "documentation": {
+      "title": "Documentation",
+      "readme": "README",
+      "architecture": "Architecture",
+      "components": "Components",
+      "changelog": "Changelog",
+      "commits": "Commit Guide",
+      "stats": "Real Stats System"
+    }
   },
   "wip": {
     "title": "Site Under Construction",

@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTwitter, FaLinkedin, FaInstagram, FaGithub, FaTrophy } from "react-icons/fa";
+import { FaTwitter, FaLinkedin, FaInstagram, FaGithub, FaTrophy, FaBook } from "react-icons/fa";
 import { SiLighthouse } from "react-icons/si";
 import ThemeSwitch from "./ThemeSwitch";
 import HashLink from "./HashLink";
@@ -67,6 +67,16 @@ export default function Footer() {
             <FaTrophy className="text-lg" />
             <span>{t('trophies.viewTrophies')}</span>
           </HashLink>
+
+          <a
+            href="https://github.com/lollo176ita/lollo176ita.github.io#readme"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-white transition text-sm flex items-center space-x-2"
+          >
+            <FaBook className="text-lg" />
+            <span>{t('footer.documentation.title')}</span>
+          </a>
         </div>
         
         {/* Footer Text */}

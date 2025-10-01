@@ -1,513 +1,152 @@
 # Component Documentation
 
-Complete documentation of React components used throughout the project.
+[⬅️ Back to README](../README.md)
+
+Complete reference for all React components in the project.
 
 ## Table of Contents
 
-- [Common Components](#common-components)
-- [Layout Components](#layout-components)
-- [Page Components](#page-components)
-- [Book System Components](#book-system-components)
-- [Animation Components](#animation-components)
+- [Common Components](#common-components) - Shared UI components
+- [Layout Components](#layout-components) - Page layout and structure
+- [Page Components](#page-components) - Route-specific pages
+- [Book System](#book-system-components) - Book reading system
+- [Animation Components](#animation-components) - Animation utilities
+- [Best Practices](#component-best-practices) - Component guidelines
 
 ## Common Components
 
-Shared components used throughout the application for consistency and reusability.
-
 ### Header.js
-
-**Purpose**: Main site header with navigation and interactive features.
-
-**Location**: `src/components/common/Header.js`
-
-**Features**:
-- Responsive navigation menu
-- Easter egg "Stocazzato" (10 rapid clicks on logo)
+Main site header with responsive navigation and mobile hamburger menu.
+- Easter egg: "Stocazzato" page (10 rapid logo clicks)
 - Hash routing integration
 - Dark/light mode support
-- Mobile-friendly hamburger menu
-
-**Props**: None
-
-**State**:
-- `isOpen`: Mobile menu open/closed state
-- `clickCount`: Counter for easter egg activation
-- `stocazzatoMode`: Easter egg mode active flag
-
-**Usage**:
-```jsx
-import { Header } from './components/common';
-
-<Header />
-```
 
 ### Footer.js
-
-**Purpose**: Site footer with copyright and useful links.
-
-**Location**: `src/components/common/Footer.js`
-
-**Features**:
-- Social media links
-- Copyright information
-- Responsive design
-- Trophy system link
-
-**Props**: None
-
-**Usage**:
-```jsx
-import { Footer } from './components/common';
-
-<Footer />
-```
+Site footer with social links, copyright, and trophy system link.
 
 ### Navbar.js
+Navigation bar with active page indicator and collapsible mobile menu.
 
-**Purpose**: Main navigation bar component.
-
-**Location**: `src/components/common/Navbar.js`
-
-**Features**:
-- Section navigation
-- Active page indicator
-- Collapsible mobile menu
-- Smooth transitions
-
-**Props**:
-- `isOpen` (boolean): Controls mobile menu visibility
-- `toggleMenu` (function): Toggle function for mobile menu
+**Props**: `isOpen` (boolean), `toggleMenu` (function)
 
 ### LanguageSwitcher.js
-
-**Purpose**: Language selector for Italian/English switching.
-
-**Location**: `src/components/common/LanguageSwitcher.js`
-
-**Features**:
-- IT/EN language toggle
-- LocalStorage persistence
-- Transition animations
-- Flag icons
-
-**Props**: None
-
-**Usage**:
-```jsx
-import { LanguageSwitcher } from './components/common';
-
-<LanguageSwitcher />
-```
+IT/EN language toggle with LocalStorage persistence and flag icons.
 
 ### ThemeSwitch.js
+Dark/light mode toggle with system preference detection and smooth transitions.
 
-**Purpose**: Light/dark mode toggle.
-
-**Location**: `src/components/common/ThemeSwitch.js`
-
-**Features**:
-- Dark/light mode toggle
-- System preference detection
-- LocalStorage persistence
-- Smooth theme transitions
-
-**Props**: None
-
-**State**:
-- Uses `ThemeContext` for global theme state
-
-**Usage**:
-```jsx
-import { ThemeSwitch } from './components/common';
-
-<ThemeSwitch />
-```
+Uses `ThemeContext` for global theme state.
 
 ### HashLink.js
+Custom hash navigation link for SPA routing without page reload.
 
-**Purpose**: Custom hash navigation link component.
-
-**Location**: `src/components/common/HashLink.js`
-
-**Features**:
-- SPA navigation without reload
-- Browser history management
-- Smooth scrolling
-- Active state tracking
-- Accessibility support
-
-**Props**:
-- `to` (string): Target route path
-- `children` (ReactNode): Link content
-- `className` (string): Additional CSS classes
-- `replace` (boolean): Replace history instead of push
-
-**Usage**:
-```jsx
-import HashLink from './components/common/HashLink';
-
-<HashLink to="/about" className="nav-link">
-  About
-</HashLink>
-```
+**Props**: `to` (string), `children`, `className` (string), `replace` (boolean)
 
 ### TrophySystem.js
+Gamification system with 9 unlockable trophies across 5 rarity levels.
 
-**Purpose**: Gamification system with unlockable achievements.
+**Features**: LocalStorage persistence, animated pop-ups, progress tracking, multilingual support
 
-**Location**: `src/components/common/TrophySystem.js`
+**Components**: `TrophyProvider` (context), `TrophyPopup` (notifications)
 
-**Features**:
-- 9 total trophies with 5 rarity levels
-- LocalStorage persistence
-- Animated pop-ups for unlocks
-- Progress tracking
-- Multilingual support
-
-**Components**:
-- `TrophyProvider`: Context provider
-- `TrophyPopup`: Notification component
-- Trophy unlock logic and triggers
-
-**Usage**:
-```jsx
-import { TrophyProvider, useTrophies } from './components/common/TrophySystem';
-
-// In App.js
-<TrophyProvider>
-  <App />
-</TrophyProvider>
-
-// In components
-const { unlockTrophy, trophies } = useTrophies();
-unlockTrophy('first-visitor');
-```
+**Hook**: `useTrophies()` - Returns `{ unlockTrophy, trophies }`
 
 ## Layout Components
 
-Components specific to page layout and visual structure.
-
 ### Hero.js
-
-**Purpose**: Homepage hero section with introduction and call-to-action.
-
-**Location**: `src/components/layout/Hero.js`
-
-**Features**:
-- Responsive design with images
-- CSS animations
-- Call-to-action button
-- HeroText integration
-- AnimatedGrid background
-
-**Props**: None
-
-**Usage**:
-```jsx
-import { Hero } from './components/layout';
-
-<Hero />
-```
+Homepage hero section with responsive design, call-to-action, HeroText animation, and AnimatedGrid background.
 
 ### HeroText.js
-
-**Purpose**: Animated text for hero section.
-
-**Location**: `src/components/layout/HeroText.js`
-
-**Features**:
-- Typewriter animations
-- Multilingual text
-- Dynamic typing effects
-- Framer Motion integration
-
-**Props**: None
-
-**Dependencies**:
-- Framer Motion for animations
-- i18next for translations
+Animated typewriter text for hero section using Framer Motion and i18next for multilingual support.
 
 ### AnimatedGrid.js
-
-**Purpose**: Animated background grid for visual effects.
-
-**Location**: `src/components/layout/AnimatedGrid.js`
-
-**Features**:
-- Pure CSS animations
-- Geometric patterns
-- Responsive design
-- Performance optimized
-
-**Props**: None
-
-**Usage**:
-```jsx
-import { AnimatedGrid } from './components/layout';
-
-<AnimatedGrid />
-```
+Animated background grid with geometric patterns. Pure CSS, performance-optimized.
 
 ## Page Components
 
-Main page components for different routes.
-
 ### About.js
+Personal information page with timeline, real-time statistics, and skills showcase.
 
-**Purpose**: About page with personal information and statistics.
-
-**Location**: `src/components/pages/About.js`
-
-**Features**:
-- Personal timeline
-- Real-time statistics
-- Skills showcase
-- Responsive layout
-
-**Props**: None
-
-**Hooks Used**:
-- `useStats()`: Fetch project statistics
-- `useTranslation()`: i18n support
+**Hooks**: `useStats()`, `useTranslation()`
 
 ### History.js
-
-**Purpose**: Project history page with GitHub integration.
-
-**Location**: `src/components/pages/History.js`
-
-**Features**:
-- Project timeline
-- GitHub API integration
-- Milestone tracking
-- Version history
-
-**Props**: None
+Project history with GitHub API integration, timeline, and milestone tracking.
 
 ### Projects.js
-
-**Purpose**: Projects showcase page.
-
-**Location**: `src/components/pages/Projects.js`
-
-**Features**:
-- Project grid layout
-- Filtering capabilities
-- Project details modal
-- Technology tags
-
-**Props**: None
+Projects showcase with grid layout, filtering, detail modals, and technology tags.
 
 ### CreationsPage.js
-
-**Purpose**: Creations gallery and overview.
-
-**Location**: `src/components/pages/CreationsPage.js`
-
-**Features**:
-- Books showcase
-- Creative projects grid
-- Category filtering
-- Lighthouse metrics display
-
-**Props**: None
+Creations gallery with books showcase, category filtering, and Lighthouse metrics.
 
 ### TrophiesPage.js
+Trophy achievements page with grid display, progress bar, rarity indicators, and hidden descriptions for locked trophies.
 
-**Purpose**: Trophy achievements display page.
-
-**Location**: `src/components/pages/TrophiesPage.js`
-
-**Features**:
-- Trophy grid display
-- Progress bar
-- Rarity indicators
-- Unlock status
-- Hidden trophy descriptions
-
-**Props**: None
-
-**Hooks Used**:
-- `useTrophies()`: Access trophy system
+**Hook**: `useTrophies()`
 
 ### LighthouseStats.js
-
-**Purpose**: Performance metrics display page.
-
-**Location**: `src/components/pages/LighthouseStats.js`
-
-**Features**:
-- Lighthouse scores visualization
-- Performance metrics
-- Historical data
-- Optimization suggestions
-
-**Props**: None
+Performance metrics visualization with Lighthouse scores, historical data, and optimization suggestions.
 
 ### WorkInProgress.js
-
-**Purpose**: Placeholder for pages under development.
-
-**Location**: `src/components/pages/WorkInProgress.js`
-
-**Features**:
-- Construction message
-- Animated icons
-- Back navigation
-
-**Props**: None
+Placeholder page for features under development with animated icons and back navigation.
 
 ### Stocazzato.js
-
-**Purpose**: Easter egg page activated by logo clicks.
-
-**Location**: `src/components/pages/Stocazzato.js`
-
-**Features**:
-- Special effects
-- Hidden content
-- Exit button
-
-**Props**: None
+Easter egg page (activated by 10 rapid logo clicks) with special effects and hidden content.
 
 ## Book System Components
 
-Components for the book reading and management system.
-
 ### BooksHome.js
-
-**Purpose**: Books homepage with listing and categories.
-
-**Location**: `src/components/books/BooksHome.js`
-
-**Features**:
-- Book grid display
-- Category filtering
-- Book cards with covers
-- Navigation to book pages
-
-**Props**: None
+Books homepage with grid display, category filtering, and book cards with covers.
 
 **Data Source**: `src/data/books.js`
 
 ### BooksRouter.js
+Routing logic with dynamic route matching and parameter parsing.
 
-**Purpose**: Routing logic for book system.
-
-**Location**: `src/components/books/BooksRouter.js`
-
-**Features**:
-- Dynamic route matching
-- Book type and slug parsing
-- Chapter navigation
-- Overview/chapter switching
-
-**Props**: None
-
-**Routes**:
-- `/creations/books` - Books listing
-- `/creations/books/:type/:name/overview` - Book overview
+**Routes**: 
+- `/creations/books` - Listing
+- `/creations/books/:type/:name/overview` - Book details
 - `/creations/books/:type/:name/:chapter` - Chapter reader
 
 ### BookOverview.js
+Book details page with description, chapter list, and metadata.
 
-**Purpose**: Book overview page with details and chapter listing.
-
-**Location**: `src/components/books/BookOverview.js`
-
-**Features**:
-- Book description
-- Chapter list
-- Navigation to chapters
-- Metadata display
-
-**Props**:
-- `bookData` (object): Book information
+**Props**: `bookData` (object)
 
 ### BookChapter.js
+Chapter reader with prev/next navigation and progress tracking.
 
-**Purpose**: Chapter reader with navigation.
+**Props**: `chapter` (object), `bookSlug` (string)
 
-**Location**: `src/components/books/BookChapter.js`
-
-**Features**:
-- Chapter content display
-- Previous/next navigation
-- Progress tracking
-- Responsive typography
-
-**Props**:
-- `chapter` (object): Chapter data
-- `bookSlug` (string): Book identifier
-
-**Hooks Used**:
-- `useHashNavigation()`: Chapter navigation
+**Hook**: `useHashNavigation()`
 
 ## Animation Components
 
-Components handling animations and lazy loading.
-
 ### LazyMotion.js
+Lazy loads Framer Motion features on-demand to reduce bundle size and improve performance.
 
-**Purpose**: Lazy load Framer Motion features to reduce bundle size.
-
-**Location**: `src/components/animations/LazyMotion.js`
-
-**Features**:
-- On-demand feature loading
-- Bundle size optimization
-- Performance improvement
-
-**Props**:
-- `children` (ReactNode): Child components
-
-**Usage**:
-```jsx
-import LazyMotion from './components/animations/LazyMotion';
-
-<LazyMotion>
-  <AnimatedComponent />
-</LazyMotion>
-```
+**Props**: `children` (ReactNode)
 
 ## Component Best Practices
 
 ### File Organization
-
 - One component per file
 - Related components in subdirectories
 - Index files for clean imports
 - Keep components under 300 lines
 
-### Naming Conventions
+### Naming & Props
+- PascalCase for components, camelCase for props/variables
+- Destructure props in function signature
+- Default values when appropriate
+- JSDoc for complex props
 
-- PascalCase for component names
-- camelCase for props and variables
-- Descriptive, self-documenting names
-
-### Props
-
-- Destructure in function signature
-- Provide default values when appropriate
-- Document complex props with JSDoc
-
-### State Management
-
-- Use local state with useState
-- Context for global state
+### State & Performance
+- Local state with `useState`
+- Global state with Context API
 - Custom hooks for reusable logic
-
-### Performance
-
 - Lazy load non-critical components
-- Memoize expensive computations
-- Use React.memo for expensive renders
-
-## Related Documentation
-
-- [Architecture](./ARCHITECTURE.md) - Overall architecture
-- [Hash Routing](./technical/HASH_ROUTING.md) - Routing system
-- [Real Stats](./REAL-STATS.md) - Statistics system
+- Memoize expensive computations with `useMemo`/`useCallback`
+- `React.memo` for expensive renderss
 
 ---
 
