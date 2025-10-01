@@ -20,24 +20,16 @@ class GitStatsGenerator {
 
   async run() {
     try {
-      console.log('📈 Generating git statistics...');
-      
       if (!this.isGitRepository()) {
         throw new Error('Not a git repository');
       }
 
       const gitStats = this.generateGitStats();
       await this.updateStatsFile(gitStats);
-      
-      console.log('✅ Git statistics completed!');
-      console.log(`Commits: ${gitStats.commits}, Contributors: ${gitStats.contributors}`);
-      
-      // Call next script in chain
       await this.callNextScript();
       
     } catch (error) {
       console.error('❌ Git stats error:', error.message);
-      console.error('🔧 Please ensure this is a valid git repository with commit history');
       process.exit(1);
     }
   }

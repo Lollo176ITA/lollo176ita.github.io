@@ -7,12 +7,9 @@
 const { execa } = require('execa');
 
 (async () => {
-  console.log('🔄 Pre-commit: Updating stats...');
-   
   try {
-    await execa('pnpm', ['run', 'stats'], { stdio: 'inherit' });
-    await execa('git', ['add', 'src/data/project-stats.json', 'public/project-stats.json'], { stdio: 'inherit' });
-    console.log('✅ Pre-commit completed!');
+    await execa('pnpm', ['run', 'stats'], { stdio: 'pipe' });
+    await execa('git', ['add', 'src/data/project-stats.json', 'public/project-stats.json'], { stdio: 'pipe' });
   } catch (error) {
     console.error('❌ Pre-commit error:', error.message);
     process.exit(1);

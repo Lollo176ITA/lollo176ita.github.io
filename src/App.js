@@ -3,7 +3,6 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header, Footer } from './components/common';
 import { Hero } from './components/layout';
 import { TrophyProvider } from './components/common/TrophySystem';
-import GoatCounter from './components/common/GoatCounter';
 
 // Lazy loading per componenti non critici con error boundaries
 const About = React.lazy(() => import('./components/pages/About').catch(() => ({ default: () => <div>Error loading About</div> })));
@@ -61,7 +60,6 @@ class ErrorBoundary extends React.Component {
 export default function App() {
   return (
     <TrophyProvider>
-      <GoatCounter />
       <ErrorBoundary>
         <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
           <Router>

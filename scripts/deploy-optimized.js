@@ -15,8 +15,6 @@ async function runCommand(command, args) {
 }
 
 async function optimizedDeploy() {
-  console.log('🚀 Optimized deployment starting...');
-  
   try {
     const packageJsonPath = path.join(projectRoot, 'package.json');
     const packageJson = JSON.parse(await fs.readFile(packageJsonPath, 'utf8'));
@@ -26,20 +24,15 @@ async function optimizedDeploy() {
       throw new Error("Homepage field not defined in package.json");
     }
 
-    // Generate stats and build
     await runCommand('pnpm', ['run', 'stats']);
     await runCommand('pnpm', ['run', 'build:prod']);
     
-    // Configure PWA for GitHub Pages
     await Promise.all([
       updateServiceWorkerForGitHubPages(homepageUrl),
       optimizeManifest(homepageUrl)
     ]);
     
-    // Deploy
     await runCommand('pnpm', ['run', 'deploy']);
-    
-    console.log('✅ Deployment completed successfully!');
     
   } catch (error) {
     console.error('❌ Deployment error:', error.message);

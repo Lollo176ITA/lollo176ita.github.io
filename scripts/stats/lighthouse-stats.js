@@ -27,8 +27,6 @@ class LighthouseStatsGenerator {
 
   async run() {
     try {
-      console.log('🚀 Generating lighthouse performance statistics...');
-      
       if (!fs.existsSync(CONFIG.buildDir)) {
         throw new Error(`Build directory not found: ${CONFIG.buildDir}`);
       }
@@ -38,11 +36,8 @@ class LighthouseStatsGenerator {
       await this.runLighthouse();
       await this.updateStats();
       
-      console.log('✅ Lighthouse statistics completed!');
-      
     } catch (error) {
       console.error('❌ Lighthouse error:', error.message);
-      console.error('🔧 Please ensure build directory exists and ports are available');
       process.exit(1);
     } finally {
       await this.cleanup();

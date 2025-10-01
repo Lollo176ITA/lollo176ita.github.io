@@ -21,24 +21,16 @@ class StructureStatsGenerator {
 
   async run() {
     try {
-      console.log('🏗️ Generating structure statistics...');
-      
       if (!fs.existsSync(CONFIG.srcDir)) {
         throw new Error(`Source directory not found: ${CONFIG.srcDir}`);
       }
 
       const structureStats = this.generateStructureStats();
       await this.updateStatsFile(structureStats);
-      
-      console.log('✅ Structure statistics completed!');
-      console.log(`Components: ${structureStats.components}, Pages: ${structureStats.pages}`);
-      
-      // Call next script in chain
       await this.callNextScript();
       
     } catch (error) {
       console.error('❌ Structure stats error:', error.message);
-      console.error('🔧 Please check project structure and file organization');
       process.exit(1);
     }
   }

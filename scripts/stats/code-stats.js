@@ -21,24 +21,16 @@ class CodeStatsGenerator {
 
   async run() {
     try {
-      console.log('📊 Generating code statistics...');
-      
       if (!fs.existsSync(CONFIG.srcDir)) {
         throw new Error(`Source directory not found: ${CONFIG.srcDir}`);
       }
 
       const codeStats = this.generateCodeStats();
       await this.updateStatsFile(codeStats);
-      
-      console.log('✅ Code statistics completed!');
-      console.log(`Files: ${codeStats.files}, Lines: ${codeStats.totalLines}`);
-      
-      // Call next script in chain
       await this.callNextScript();
       
     } catch (error) {
       console.error('❌ Code stats error:', error.message);
-      console.error('🔧 Please fix the source code structure or file permissions');
       process.exit(1);
     }
   }
