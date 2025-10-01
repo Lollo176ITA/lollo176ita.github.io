@@ -1,431 +1,511 @@
-# 🏛️ Architettura e Best Practices
+# Project Architecture and Best Practices
 
-Documento che descrive l'architettura del progetto, le best practices adottate e le linee guida per lo sviluppo.
+This document describes the architectural principles, patterns, and development guidelines for the project.
 
-## 🎯 Principi Architetturali
+## Table of Contents
 
-### 1. **Separation of Concerns**
-- **Componenti**: Logica di presentazione
-- **Hooks**: Logica di business e stato
-- **Data**: Dati statici e configurazioni
-- **Services**: Chiamate API e utilità
+- [Architectural Principles](#architectural-principles)
+- [Technology Stack](#technology-stack)
+- [Project Structure](#project-structure)
+- [Design System](#design-system)
+- [Best Practices](#best-practices)
+- [Performance Considerations](#performance-considerations)
+- [State Management](#state-management)
+- [Routing Architecture](#routing-architecture)
 
-### 2. **Component Composition**
-- Preferire composizione a ereditarietà
-- Componenti piccoli e riutilizzabili
-- Props drilling limitato tramite Context
+## Architectural Principles
 
-### 3. **Performance First**
-- Bundle splitting e lazy loading
-- Memoization strategica
-- Ottimizzazione rendering
+### 1. Separation of Concerns
 
-## 🔧 Stack Tecnologico
+The project follows a clear separation of concerns:
 
-### Core
+- **Components**: Presentation logic and UI rendering
+- **Hooks**: Business logic and state management
+- **Data**: Static data and configurations
+- **Utils**: Utility functions and helpers
+- **Context**: Global state management
+
+### 2. Component Composition
+
+- Prefer composition over inheritance
+- Create small, reusable components
+- Minimize props drilling through Context API
+- Use children props for flexible layouts
+
+### 3. Performance First
+
+- Implement code splitting and lazy loading
+- Strategic memoization for expensive operations
+- Optimize rendering with React.memo
+- Bundle size optimization through chunk splitting
+
+## Technology Stack
+
+### Core Framework
+
 ```
-React 18.0+          -> UI Framework
-React Router 6.0+    -> Client-side routing
-Tailwind CSS 3.0+   -> Utility-first CSS
+React 19.1.0               Modern UI framework with concurrent features
+React Router DOM 7.6.2     Client-side routing with hash support
+Tailwind CSS 3.4.15       Utility-first CSS framework
+Framer Motion 12.19.1      Animation library
 ```
 
 ### State Management
+
 ```
-React Context        -> Tema, lingua, preferenze
-useState/useReducer  -> Stato locale componenti
-Custom Hooks         -> Logica riutilizzabile
+React Context              Global state (theme, language, preferences)
+useState/useReducer        Local component state
+Custom Hooks               Reusable business logic
 ```
 
-### Internazionalizzazione
+### Internationalization
+
 ```
-react-i18next        -> Traduzioni e localizzazione
+react-i18next 15.5.3      Translation framework
+i18next 25.2.1            Core i18n engine
 ```
 
-### Icons & UI
+### Build Tools
+
 ```
-react-icons          -> Libreria icone
-Tailwind UI patterns -> Componenti pre-stilizzati
+CRACO 7.1.0               Create React App configuration
+Webpack                    Module bundler
+PostCSS                    CSS processing
+Terser                     JavaScript minification
 ```
 
 ### Development Tools
+
 ```
-Create React App     -> Build toolchain
-ESLint              -> Code linting
-Prettier            -> Code formatting
+ESLint                     Code linting
+Lighthouse                 Performance auditing
+Source Map Explorer        Bundle analysis
+Depcheck                   Dependency checking
 ```
 
-## 📁 Struttura del Progetto
+## Project Structure
 
 ```
 src/
-├── components/              # Componenti React
-│   ├── common/             # Componenti condivisi
-│   │   ├── Header.js       # Intestazione
-│   │   ├── Footer.js       # Piè di pagina
-│   │   ├── Navbar.js       # Navigazione
-│   │   ├── ThemeSwitch.js  # Switch tema
-│   │   └── LanguageSwitcher.js
-│   ├── layout/             # Componenti layout
-│   │   ├── Hero.js         # Sezione hero
-│   │   ├── HeroText.js     # Testo animato
-│   │   └── AnimatedGrid.js # Griglia animata
-│   ├── pages/              # Pagine principali
-│   │   ├── About.js        # Chi sono
-│   │   ├── History.js      # Storia progetto
-│   │   ├── Projects.js     # Progetti
-│   │   └── CreationsPage.js
-│   └── books/              # Sistema libri
-│       ├── BooksHome.js    # Homepage libri
-│       ├── BookOverview.js # Panoramica libro
-│       └── BookChapter.js  # Lettore capitoli
-├── hooks/                  # Custom hooks
-│   ├── useStats.js         # Statistiche
-│   ├── useTheme.js         # Gestione tema
-│   └── useHashNavigation.js # Navigazione hash
-├── contexts/               # React Contexts
-│   └── ThemeContext.js     # Context tema
-├── data/                   # Dati statici
-│   ├── history.it.json     # Timeline italiana
-│   ├── history.en.json     # Timeline inglese
-│   └── books.js            # Dati libri
-├── locales/                # Traduzioni i18n
-│   ├── it/translation.json # Italiano
-│   └── en/translation.json # Inglese
-├── pages/                  # Pagine principali
-│   └── Homepage.js         # Homepage
-├── utils/                  # Utilities
-│   ├── constants.js        # Costanti
-│   └── helpers.js          # Funzioni helper
-└── styles/                 # Stili personalizzati
-    └── index.css           # CSS globale
+├── components/                    # React components
+│   ├── common/                   # Shared components
+│   │   ├── Header.js            # Main header with navigation
+│   │   ├── Footer.js            # Site footer
+│   │   ├── Navbar.js            # Navigation bar
+│   │   ├── ThemeSwitch.js       # Dark/light theme toggle
+│   │   ├── LanguageSwitcher.js  # Language selector
+│   │   ├── HashLink.js          # Custom hash navigation link
+│   │   └── TrophySystem.js      # Gamification system
+│   │
+│   ├── layout/                   # Layout components
+│   │   ├── Hero.js              # Hero section
+│   │   ├── HeroText.js          # Animated hero text
+│   │   └── AnimatedGrid.js      # Background grid animation
+│   │
+│   ├── pages/                    # Page components
+│   │   ├── About.js             # About page
+│   │   ├── History.js           # Project history
+│   │   ├── Projects.js          # Projects showcase
+│   │   ├── CreationsPage.js     # Creations gallery
+│   │   ├── TrophiesPage.js      # Trophy achievements
+│   │   ├── LighthouseStats.js   # Performance metrics
+│   │   └── WorkInProgress.js    # WIP pages
+│   │
+│   ├── books/                    # Book system
+│   │   ├── BooksHome.js         # Books homepage
+│   │   ├── BooksRouter.js       # Book routing logic
+│   │   ├── BookOverview.js      # Book overview page
+│   │   └── BookChapter.js       # Chapter reader
+│   │
+│   └── animations/               # Animation components
+│       └── LazyMotion.js        # Framer Motion lazy loader
+│
+├── hooks/                        # Custom React hooks
+│   ├── useHashRouter.js         # Hash routing hooks
+│   ├── useNavigation.js         # Navigation utilities
+│   └── useStats.js              # Statistics fetching
+│
+├── data/                         # Static data
+│   ├── books.js                 # Books data
+│   ├── trophies.js              # Trophy configurations
+│   ├── history.it.json          # Italian timeline
+│   ├── history.en.json          # English timeline
+│   └── project-stats.json       # Generated statistics
+│
+├── locales/                      # i18n translations
+│   ├── en/translation.json      # English translations
+│   └── it/translation.json      # Italian translations
+│
+├── utils/                        # Utility functions
+│   ├── hashRouter.js            # Hash routing system
+│   ├── analytics.js             # Analytics utilities
+│   ├── serviceWorker.js         # Service Worker management
+│   └── RouteDebugger.js         # Routing debugger
+│
+├── pages/                        # Main pages
+│   └── Homepage.js              # Homepage component
+│
+├── App.js                        # Root component
+├── index.js                      # Application entry point
+├── i18n.js                       # i18n configuration
+└── ThemeContext.js               # Theme context provider
 ```
 
-## 🎨 Design System
+## Design System
 
-### Colori
+### Color Palette
+
+#### Light Mode
+
 ```css
-/* Light Mode */
---primary: #3B82F6      /* Blue-500 */
---secondary: #6B7280    /* Gray-500 */
---accent: #10B981       /* Emerald-500 */
---background: #FFFFFF   /* White */
---surface: #F9FAFB      /* Gray-50 */
---text: #111827         /* Gray-900 */
+Primary:      #3B82F6    /* Blue-500 */
+Secondary:    #6B7280    /* Gray-500 */
+Accent:       #10B981    /* Emerald-500 */
+Background:   #FFFFFF    /* White */
+Surface:      #F9FAFB    /* Gray-50 */
+Text:         #111827    /* Gray-900 */
+```
 
-/* Dark Mode */
---primary: #60A5FA      /* Blue-400 */
---secondary: #9CA3AF    /* Gray-400 */
---accent: #34D399       /* Emerald-400 */
---background: #111827   /* Gray-900 */
---surface: #1F2937      /* Gray-800 */
---text: #F9FAFB         /* Gray-50 */
+#### Dark Mode
+
+```css
+Primary:      #60A5FA    /* Blue-400 */
+Secondary:    #9CA3AF    /* Gray-400 */
+Accent:       #34D399    /* Emerald-400 */
+Background:   #111827    /* Gray-900 */
+Surface:      #1F2937    /* Gray-800 */
+Text:         #F9FAFB    /* Gray-50 */
 ```
 
 ### Typography
-```css
-/* Font Families */
-font-sans: 'Inter', system-ui, sans-serif
-font-mono: 'JetBrains Mono', monospace
 
-/* Scale */
-text-xs: 0.75rem    /* 12px */
-text-sm: 0.875rem   /* 14px */
-text-base: 1rem     /* 16px */
-text-lg: 1.125rem   /* 18px */
-text-xl: 1.25rem    /* 20px */
-text-2xl: 1.5rem    /* 24px */
-text-3xl: 1.875rem  /* 30px */
-text-4xl: 2.25rem   /* 36px */
+```css
+Font Family:
+  - Sans: 'Inter', system-ui, sans-serif
+  - Mono: 'JetBrains Mono', monospace
+
+Font Scale:
+  - xs:   0.75rem   (12px)
+  - sm:   0.875rem  (14px)
+  - base: 1rem      (16px)
+  - lg:   1.125rem  (18px)
+  - xl:   1.25rem   (20px)
+  - 2xl:  1.5rem    (24px)
+  - 3xl:  1.875rem  (30px)
+  - 4xl:  2.25rem   (36px)
 ```
 
 ### Spacing
-```css
-/* Tailwind spacing scale (0.25rem = 4px) */
-0: 0px
-1: 0.25rem   /* 4px */
-2: 0.5rem    /* 8px */
-4: 1rem      /* 16px */
-8: 2rem      /* 32px */
-12: 3rem     /* 48px */
-16: 4rem     /* 64px */
+
+Based on Tailwind's spacing scale (0.25rem = 4px):
+
+```
+0:  0px
+1:  4px
+2:  8px
+4:  16px
+8:  32px
+12: 48px
+16: 64px
 ```
 
-## 🔧 Best Practices
+## Best Practices
 
-### Componenti React
+### Component Guidelines
 
-#### 1. **Naming Convention**
+#### Naming Conventions
+
 ```javascript
-// ✅ Good - PascalCase per componenti
+// Good - PascalCase for components
 export default function UserProfile() {}
 
-// ❌ Bad
+// Bad - camelCase or snake_case
 export default function userProfile() {}
-export default function user_profile() {}
 ```
 
-#### 2. **Destructuring Props**
+#### Props Destructuring
+
 ```javascript
-// ✅ Good - Destructuring diretto
+// Good - Destructure in function signature
 function UserCard({ name, email, avatar }) {
-  return (/* JSX */);
+  return <div>{name}</div>;
 }
 
-// ❌ Bad
+// Avoid - Accessing via props object
 function UserCard(props) {
   return <div>{props.name}</div>;
 }
 ```
 
-#### 3. **Conditional Rendering**
+#### Conditional Rendering
+
 ```javascript
-// ✅ Good - Logical AND per esistenza
+// Good - Logical AND for existence checks
 {user && <UserProfile user={user} />}
 
-// ✅ Good - Ternary per alternative
+// Good - Ternary for alternatives
 {isLoading ? <Spinner /> : <Content />}
 
-// ❌ Bad - Ternary con null
-{isLoading ? <Spinner /> : null}
+// Good - Early return for complex conditions
+if (!user) return null;
+return <UserProfile user={user} />;
 ```
 
-#### 4. **Event Handlers**
+#### Event Handlers
+
 ```javascript
-// ✅ Good - Arrow function inline per semplici
+// Simple handlers - Inline arrow function
 <button onClick={() => setCount(count + 1)}>
 
-// ✅ Good - Function declaration per complessi
+// Complex handlers - Separate function
 const handleSubmit = (event) => {
   event.preventDefault();
-  // complex logic
+  // Complex logic here
 };
+
 <form onSubmit={handleSubmit}>
 ```
 
-### State Management
+### Custom Hooks
 
-#### 1. **useState Pattern**
+#### Guidelines
+
+- Prefix with "use" (e.g., `useHashRouter`)
+- Extract reusable logic from components
+- Return objects for multiple values
+- Keep hooks focused and single-purpose
+
+#### Example
+
 ```javascript
-// ✅ Good - Stato derivato calcolato
-const [todos, setTodos] = useState([]);
-const completedCount = todos.filter(todo => todo.completed).length;
-
-// ❌ Bad - Stato ridondante
-const [todos, setTodos] = useState([]);
-const [completedCount, setCompletedCount] = useState(0);
-```
-
-#### 2. **useEffect Dependencies**
-```javascript
-// ✅ Good - Dipendenze specifiche
-useEffect(() => {
-  fetchUser(userId);
-}, [userId]);
-
-// ❌ Bad - Array vuoto quando ci sono dipendenze
-useEffect(() => {
-  fetchUser(userId);
-}, []); // userId potrebbe cambiare
-```
-
-#### 3. **Custom Hooks**
-```javascript
-// ✅ Good - Logica estratta in hook
-function useGitHubStats(username) {
-  const [stats, setStats] = useState(null);
-  const [loading, setLoading] = useState(true);
+function useHashRouter(pattern) {
+  const [params, setParams] = useState({});
   
   useEffect(() => {
-    fetchGitHubStats(username).then(setStats).finally(() => setLoading(false));
-  }, [username]);
+    const match = matchPath(pattern);
+    setParams(match?.params || {});
+  }, [pattern]);
   
-  return { stats, loading };
+  return { params };
 }
 ```
 
-### Performance
+### File Organization
 
-#### 1. **React.memo**
+- One component per file
+- Co-locate related components in subdirectories
+- Index files for clean imports
+- Keep files under 300 lines when possible
+
+### Code Style
+
+- Use functional components with hooks
+- Prefer const over let
+- Use template literals for string concatenation
+- Destructure objects and arrays
+- Use optional chaining (`?.`) for nested properties
+- Use nullish coalescing (`??`) for default values
+
+## Performance Considerations
+
+### Code Splitting
+
 ```javascript
-// ✅ Good - Memo per componenti che renderizzano spesso
-const ExpensiveComponent = React.memo(function ExpensiveComponent({ data }) {
-  return <div>{/* expensive rendering */}</div>;
+// Lazy load non-critical components
+const About = React.lazy(() => import('./components/pages/About'));
+const History = React.lazy(() => import('./components/pages/History'));
+
+// Wrap in Suspense
+<Suspense fallback={<LoadingSpinner />}>
+  <About />
+</Suspense>
+```
+
+### Memoization
+
+```javascript
+// Memoize expensive components
+const MemoizedComponent = React.memo(ExpensiveComponent);
+
+// Memoize expensive calculations
+const sortedData = useMemo(
+  () => data.sort(compareFunction),
+  [data]
+);
+
+// Memoize callback functions
+const handleClick = useCallback(
+  () => doSomething(value),
+  [value]
+);
+```
+
+### Bundle Optimization
+
+- Strategic chunk splitting (see `craco.config.js`)
+- Separate vendor bundles for large libraries
+- Tree shaking for unused code elimination
+- Minification and compression in production
+
+Current bundle metrics:
+- Main bundle: ~131KB (73% reduction from initial)
+- 12 separate chunks for optimal loading
+- Brotli and Gzip compression enabled
+
+## State Management
+
+### Local State
+
+Use `useState` for component-level state:
+
+```javascript
+function Counter() {
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount(count + 1)}>{count}</button>;
+}
+```
+
+### Global State
+
+Use Context API for app-wide state:
+
+```javascript
+// ThemeContext.js
+export const ThemeContext = createContext();
+
+export function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('light');
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+// Usage in components
+const { theme, setTheme } = useContext(ThemeContext);
+```
+
+### Complex State
+
+Use `useReducer` for complex state logic:
+
+```javascript
+function reducer(state, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { count: state.count + 1 };
+    case 'DECREMENT':
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+  return (
+    <button onClick={() => dispatch({ type: 'INCREMENT' })}>
+      {state.count}
+    </button>
+  );
+}
+```
+
+## Routing Architecture
+
+### Hash-Based Routing
+
+The project uses a custom hash-based routing system optimized for GitHub Pages:
+
+```javascript
+// Basic navigation
+<HashLink to="/about">About</HashLink>
+
+// Programmatic navigation
+const { navigate } = useHashNavigation();
+navigate('/projects');
+
+// Route parameters
+const params = useHashParams('books/:type/:slug');
+```
+
+### Supported Routes
+
+```
+/                                    Homepage
+/about                              About page
+/projects                           Projects showcase
+/history                            Project history
+/creations                          Creations overview
+/creations/books                    Books listing
+/creations/books/:type/:name/overview    Book overview
+/creations/books/:type/:name/:chapter    Book chapter
+/trophies                           Trophy achievements
+/lighthouse-stats                   Performance metrics
+/stocazzato                         Easter egg page
+```
+
+For detailed routing documentation, see [technical/HASH_ROUTING.md](./technical/HASH_ROUTING.md).
+
+## Testing Guidelines
+
+### Component Testing
+
+```javascript
+import { render, screen } from '@testing-library/react';
+import UserProfile from './UserProfile';
+
+test('renders user name', () => {
+  render(<UserProfile name="John Doe" />);
+  expect(screen.getByText('John Doe')).toBeInTheDocument();
 });
 ```
 
-#### 2. **useMemo per calcoli costosi**
+### Hook Testing
+
 ```javascript
-// ✅ Good
-const expensiveValue = useMemo(() => {
-  return data.reduce((acc, item) => acc + item.value, 0);
-}, [data]);
+import { renderHook, act } from '@testing-library/react';
+import useCounter from './useCounter';
+
+test('increments counter', () => {
+  const { result } = renderHook(() => useCounter());
+  
+  act(() => {
+    result.current.increment();
+  });
+  
+  expect(result.current.count).toBe(1);
+});
 ```
 
-#### 3. **useCallback per handlers**
-```javascript
-// ✅ Good - Prevent child re-renders
-const handleClick = useCallback(() => {
-  onItemClick(item.id);
-}, [item.id, onItemClick]);
-```
+## Accessibility
 
-### CSS/Styling
+- Use semantic HTML elements
+- Provide alt text for images
+- Ensure keyboard navigation works
+- Maintain sufficient color contrast
+- Use ARIA attributes when necessary
+- Test with screen readers
 
-#### 1. **Tailwind Utilities**
-```jsx
-// ✅ Good - Utility classes
-<div className="flex items-center justify-between p-4 bg-white rounded-lg shadow">
+Current accessibility score: 88/100 (Lighthouse)
 
-// ❌ Bad - Inline styles
-<div style={{ display: 'flex', alignItems: 'center', ... }}>
-```
+## Documentation
 
-#### 2. **Responsive Design**
-```jsx
-// ✅ Good - Mobile-first responsive
-<div className="text-sm md:text-base lg:text-lg">
+- Document complex logic with comments
+- Use JSDoc for function documentation
+- Keep README files updated
+- Document breaking changes in CHANGELOG
+- Include usage examples in component documentation
 
-// ✅ Good - Responsive grid
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-```
+## Version Control
 
-#### 3. **Dark Mode**
-```jsx
-// ✅ Good - Dark mode variants
-<div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
-```
-
-### Accessibilità
-
-#### 1. **Semantic HTML**
-```jsx
-// ✅ Good
-<main>
-  <section>
-    <h1>Page Title</h1>
-    <article>Content</article>
-  </section>
-</main>
-
-// ❌ Bad
-<div>
-  <div>
-    <div>Page Title</div>
-    <div>Content</div>
-  </div>
-</div>
-```
-
-#### 2. **ARIA Labels**
-```jsx
-// ✅ Good
-<button aria-label="Close dialog" onClick={onClose}>
-  <XIcon />
-</button>
-
-<input aria-describedby="email-error" />
-<div id="email-error">Invalid email</div>
-```
-
-#### 3. **Keyboard Navigation**
-```jsx
-// ✅ Good
-<div 
-  role="button"
-  tabIndex={0}
-  onKeyDown={(e) => e.key === 'Enter' && onClick()}
-  onClick={onClick}
->
-```
-
-## 🔄 Development Workflow
-
-### 1. **Feature Development**
-```bash
-# Crea branch feature
-git checkout -b feature/new-component
-
-# Sviluppa la feature
-# - Crea/modifica componenti
-# - Aggiorna traduzioni se necessario
-# - Testa la funzionalità
-
-# Commit con messaggio descrittivo
-git commit -m "feat: add new user profile component"
-
-# Push e Pull Request
-git push origin feature/new-component
-```
-
-### 2. **Code Review Checklist**
-- [ ] Componenti seguono naming convention
-- [ ] Props sono documentate
-- [ ] State management è appropriato
-- [ ] Performance considerations (memo, callback)
-- [ ] Accessibilità implementata
-- [ ] Responsive design testato
-- [ ] Traduzioni aggiornate
-- [ ] ESLint warnings risolti
-
-### 3. **Testing Strategy**
-```javascript
-// Unit Tests (quando implementati)
-- Componenti isolati
-- Custom hooks
-- Utility functions
-
-// Integration Tests
-- User interactions
-- Navigation flow
-- API integrations
-
-// E2E Tests
-- Complete user journeys
-- Cross-browser compatibility
-```
-
-## 📊 Monitoring e Analytics
-
-### Performance Metrics
-- **LCP**: Largest Contentful Paint < 2.5s
-- **FID**: First Input Delay < 100ms
-- **CLS**: Cumulative Layout Shift < 0.1
-- **Bundle Size**: Mantieni sotto 250KB gzipped
-
-### User Experience
-- Mobile-first responsive design
-- Dark/light mode support
-- Internazionalizzazione completa
-- Navigazione accessibile
-
-## 🚀 Deployment
-
-### Build Process
-```bash
-# Development
-npm start        # Dev server con hot reload
-
-# Production Build
-npm run build    # Ottimized build per deployment
-
-# Testing
-npm test         # Run test suite
-
-# Linting
-npm run lint     # ESLint check
-npm run lint:fix # Auto-fix issues
-```
-
-### Deployment Checklist
-- [ ] Build successful
-- [ ] No console errors
-- [ ] All routes working
-- [ ] Mobile responsive
-- [ ] Dark mode functional
-- [ ] All languages working
-- [ ] Performance metrics good
-- [ ] SEO meta tags updated
+- Follow [Conventional Commits](./CONVENTIONAL_COMMITS.md)
+- Create feature branches from main
+- Write descriptive commit messages
+- Keep commits focused and atomic
+- Review code before merging
 
 ---
 
-*Questo documento è vivo e deve essere aggiornato man mano che il progetto evolve.*
+Last updated: October 2025

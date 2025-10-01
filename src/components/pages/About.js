@@ -21,11 +21,12 @@ import {
   SiUnity, 
   SiJavascript, 
   SiTailwindcss,
-  SiNodedotjs,  SiHtml5,
+  SiNodedotjs,
+  SiHtml5,
   SiCss3,
-  SiGit,
-  SiVscodium
+  SiGit
 } from 'react-icons/si';
+import { VscVscode } from 'react-icons/vsc';
 import RandomStats from '../common/RandomStats';
 import { MeInPieces } from '../common';
 import HashLink from '../common/HashLink';
@@ -51,11 +52,13 @@ export default function About() {
     { icon: SiJavascript, name: 'JavaScript', color: '#F7DF1E' },
     { icon: SiDrupal, name: 'Drupal', color: '#0678BE' },
     { icon: SiUnity, name: 'Unity', color: '#000000' },
-    { icon: SiTailwindcss, name: 'Tailwind', color: '#06B6D4' },    { icon: SiNodedotjs, name: 'Node.js', color: '#339933' },
+    { icon: SiTailwindcss, name: 'Tailwind', color: '#06B6D4' },
+    { icon: SiNodedotjs, name: 'Node.js', color: '#339933' },
     { icon: SiHtml5, name: 'HTML5', color: '#E34F26' },
     { icon: SiCss3, name: 'CSS3', color: '#1572B6' },
     { icon: SiGit, name: 'Git', color: '#F05032' },
-    { icon: SiVscodium, name: 'VS Code', color: '#007ACC' }  ];
+    { icon: VscVscode, name: 'VS Code', color: '#007ACC' }
+  ];
   
   const interests = [
     { title: t('aboutPage.musicTitle'), description: t('aboutPage.musicText'), icon: FaMusic, color: '#F59E0B' },

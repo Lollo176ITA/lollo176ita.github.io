@@ -1,1137 +1,228 @@
-# 📝 Changelog - Riorganizzazione Progetto
+# Changelog
 
-## [v2.2.8] - 2025-07-15 🏆
+All notable changes to this project will be documented in this file.
 
-### 🎮 **Sistema di Trofei Completato - Gamificazione Avanzata**
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-#### 🏆 **Nuovo Sistema di Trofei Client-Side**
+## [2.2.8] - 2025-07-15
 
-- **Implementazione completa**: Sistema di trofei persistente con localStorage
-- **Pop-up animati**: Notifiche Framer Motion per trofei sbloccati
-- **Persistenza dati**: Nessun database richiesto, tutto salvato localmente
-- **Traduzioni complete**: Supporto italiano/inglese per tutti i trofei
+### Added
+- Complete trophy system with gamification features
+  - 9 unlockable trophies with 5 rarity levels (Common, Uncommon, Rare, Epic, Legendary)
+  - Persistent storage using localStorage
+  - Animated pop-ups with Framer Motion
+  - Trophy page with progress tracking
+  - Multilingual support (Italian/English)
+- Trophy triggers integrated throughout the site
+  - First visitor detection
+  - Grid game completion (normal and speed demon modes)
+  - Page exploration tracking
+  - Theme switching detection
+  - Completionist achievement (5+ trophies)
+- Footer link to trophies page
+- Debug logging system for trophy troubleshooting
 
-#### 🎯 **Trofei Implementati (9 totali)**
+### Changed
+- Improved trophy UI with rarity indicators
+- Enhanced pop-up design with action buttons
+- Hidden trophy descriptions until unlocked
+- Optimized trophy unlock checks for performance
 
-1. **Primo Visitatore** (Common) - Assegnato al primo caricamento
-2. **Maestro del Gioco** (Rare) - Completamento gioco griglia
-3. **Demone della Velocità** (Epic) - Completamento in ≤30 secondi
-4. **Riempitore di Griglie** (Rare) - Griglia completamente riempita
-5. **Esploratore del Codice** (Common) - Visita sezione progetti
-6. **Ispettore Lighthouse** (Uncommon) - Visita statistiche sito
-7. **Lettore Appassionato** (Uncommon) - Visita sezione libri
-8. **Cambia Tema** (Common) - Switch tema dark/light
-9. **Completista** (Legendary) - Sblocco di 5+ trofei
+### Fixed
+- Duplicate trophy unlock prevention
+- Trophy persistence across sessions
+- Mobile responsiveness for trophy page
 
-#### 🎨 **Interfaccia Utente Migliorata**
+## [2.2.7] - 2025-06-26
 
-- **Pagina Trofei**: Visualizzazione completa con barra progresso
-- **Pop-up redesign**: Rarità sopra, pulsanti "Chiudi" e "Vai ai Trofei"
-- **Trofei nascosti**: Descrizioni visibili solo per trofei sbloccati
-- **Link footer**: Accesso rapido ai trofei dal footer
+### Added
+- Advanced commit categorization system with 11 categories
+- New commit types: merge, test, security, performance, chore
+- Extended color palette for commit visualization
+- Complete translations for new commit categories
 
-#### 🔧 **Miglioramenti Tecnici**
+### Changed
+- Improved History page component architecture
+  - Split into modular components in `history-sections/`
+  - Reduced main file from 730+ to 300 lines
+  - Better maintainability and reusability
+- Enhanced commit icon system with specific icons per category
+- Updated commit matching logic for better categorization
 
-- **Debug logging**: Sistema di log per troubleshooting
-- **Prevenzione duplicati**: Controlli per evitare trofei multipli
-- **Integrazione completa**: Trigger collegati a tutte le azioni del sito
-- **Performance ottimizzata**: Controlli efficienti per sblocco trofei
+### Fixed
+- Missing English translations for History page
+- Mobile layout overflow issues for statistics
+- Repository name display on small screens
+- Commit type label positioning
 
-#### 🎮 **Logica di Gioco Avanzata**
+## [2.2.6] - 2025-06-19
 
-- **Completamento veloce**: Doppio trofeo per completamento rapido
-- **Griglia piena**: Nuovo trofeo per riempimento completo
-- **Trigger intelligenti**: Sblocco automatico basato su azioni utente
-- **Sistema rarità**: 5 livelli di rarità con colori distintivi
+### Added
+- "Me in Pieces" interactive component
+  - 12 anatomical organs with realistic colors
+  - Modal system with detailed statistics
+  - Hover effects and animations
+  - Multilingual support
 
-#### 🌐 **Traduzioni e Accessibilità**
+### Changed
+- Complete redesign from journey visualization to anatomical grid
+- Improved contrast for organ icons and text
+- Better accessibility with dynamic text colors
+- Responsive grid layout (2x6 mobile, 4x3 desktop)
 
-- **Multilingua**: Nomi e descrizioni in IT/EN per tutti i trofei
-- **Accessibilità**: Indicatori visivi e testuali per stato trofei
-- **UX ottimizzata**: Feedback immediato per azioni utente
-- **Helper testing**: Script per sviluppatori per testing funzionalità
+### Fixed
+- Text contrast on light-colored organs
+- Icon visibility across all backgrounds
+- Modal button translations
 
-## [v2.2.7.8] - 2025-06-26 🎨
+## [2.2.5] - 2025-06-19
 
-### 🎨 **Miglioramento Sistema Icone Commit - Categorizzazione Avanzata**
+### Added
+- RandomStats carousel component for interactive statistics
+- Animated transitions between stat categories
+- Category-based statistics organization
 
-#### 🏷️ **Nuove Categorie Commit**
+## [2.2.0] - 2025-06-15
 
-- **Problema**: Icone generiche e categorizzazione limitata (solo 6 tipi)
-- **Soluzione**: Sistema avanzato con 11 categorie specifiche basate sui commit reali
-- **Nuove categorie aggiunte**:
-  - `merge`: Merge & Pull Request (🔀 FaCodeBranch, indigo)
-  - `chore`: Configurazione & Build (🔧 FaTools, orange)  
-  - `security`: Sicurezza & Accessibilità (� FaLock, emerald)
-  - `performance`: Ottimizzazioni Performance (🚀 FaRocket, cyan)
-  - `test`: Testing & Spec (📄 FaFileAlt, teal)
+### Added
+- Real statistics system
+  - Automated code analysis scripts
+  - Git statistics integration
+  - GitHub API integration
+  - Lighthouse metrics automation
+- Custom hash routing system optimized for GitHub Pages
+  - HashRouter utility class
+  - HashLink component
+  - useHashRouter and useNavigation hooks
+  - Dynamic route parameter extraction
 
-#### 🎯 **Logica Categorizzazione Migliorata**
+### Changed
+- Migration from React Router to custom hash routing
+- Statistics now use real data instead of mock values
+- Improved performance with code splitting
+- Bundle size optimization (495KB → 131KB, -73%)
 
-- **Merge commits**: Riconoscimento "merge pull request" e "merge branch"
-- **Features precise**: Distinzione tra `feat:`, `add:`, `implement`, `create`
-- **Bug fixes specifici**: `fix:`, `bug`, `hotfix`
-- **Chore detection**: `chore:`, `config`, `setup`, `deploy`, `build`, `version`
-- **Security focus**: `security`, `vulnerability`, `accessibility`
-- **Performance**: `perf:`, `performance`, `optimize`, `speed`
+### Fixed
+- GitHub Pages routing issues
+- Statistics accuracy and real-time updates
+- Service Worker cache errors
+- React lazy loading issues
 
-#### 🌈 **Palette Colori Estesa**
+## [2.1.0] - 2025-06-01
 
-- **Verde**: Features (`FaPlus`) - Nuove funzionalità
-- **Rosso**: Fix (`FaBug`) - Correzioni bug
-- **Blu**: Update (`FaSync`) - Aggiornamenti
-- **Viola**: Refactor (`FaCode`) - Refactoring codice
-- **Giallo**: Docs (`FaBook`) - Documentazione
-- **Rosa**: Style (`FaPalette`) - UI/Stile
-- **Indigo**: Merge (`FaCodeBranch`) - Pull request
-- **Arancione**: Chore (`FaTools`) - Configurazione
-- **Smeraldo**: Security (`FaLock`) - Sicurezza
-- **Ciano**: Performance (`FaRocket`) - Ottimizzazioni
-- **Teal**: Test (`FaFileAlt`) - Testing
+### Added
+- Books system for publishing stories and novels
+  - BooksHome component for listing
+  - BookOverview for book details
+  - BookChapter reader with navigation
+  - BooksRouter for routing logic
+- Service Worker for PWA features
+  - Cache strategies for offline support
+  - Retry logic for failed requests
+  - Automatic cache updates
 
-#### 🌐 **Traduzioni Complete**
+### Changed
+- Improved mobile navigation
+- Enhanced dark mode contrast
+- Updated footer with additional links
 
-**Italiano**:
-- `merge`: "Merge & Pull Request"
-- `chore`: "Configurazione & Build" 
-- `security`: "Sicurezza & Accessibilità"
-- `performance`: "Ottimizzazioni Performance"
-- `test`: "Testing & Spec"
+### Fixed
+- Service Worker installation failures
+- Cache miss handling for chunks
+- Mobile menu accessibility
 
-**Inglese**:
-- `merge`: "Merges & Pull Requests"
-- `chore`: "Configuration & Build"
-- `security`: "Security & Accessibility" 
-- `performance`: "Performance Optimizations"
-- `test`: "Testing & Specs"
+## [2.0.0] - 2025-05-15
 
-#### 📊 **Esempi Categorizzazione Reale**
+### Added
+- Complete project restructuring
+  - Organized components into common/, layout/, pages/, books/
+  - Custom hooks for reusable logic
+  - Centralized data management
+- Internationalization system (i18next)
+  - Full Italian and English support
+  - Dynamic language switching
+  - Persistent language preference
+- Theme system
+  - Light and dark modes
+  - System preference detection
+  - Smooth theme transitions
+- Performance optimizations
+  - Lazy loading for non-critical components
+  - Code splitting strategy
+  - Bundle optimization
+  - Build time improvements
 
-Basato sui commit effettivi del progetto:
-- ✅ `fix: update components to use min-h-screen` → **Fix** (🐛 rosso)
-- ✅ `Merge pull request #9` → **Merge** (🔀 indigo)
-- ✅ `feat: add books pages` → **Feature** (➕ verde)
-- ✅ `docs: update README and fix dependencies` → **Docs** (📖 giallo)
-- ✅ `chore: adjust deployment configuration` → **Chore** (🔧 arancione)
+### Changed
+- Migration to React 19
+- Updated to Tailwind CSS 3.4
+- Modernized build pipeline with CRACO
+- Enhanced responsive design
 
-#### 🎯 **Risultato UX**
+### Removed
+- Legacy component structure
+- Hardcoded text (replaced with i18n)
+- Unused dependencies
 
-- **Riconoscimento visivo**: Ogni tipo di commit ha icona e colore distintivi
-- **Comprensione immediata**: Significato del commit chiaro a colpo d'occhio
-- **Consistenza**: Sistema di icone coerente in tutto il progetto
-- **Accessibilità**: Colori contrastanti per migliore leggibilità
+## [1.5.0] - 2025-04-01
 
----
+### Added
+- Projects showcase page
+- History page with GitHub integration
+- Creations gallery
+- About page with personal timeline
 
-## [v2.2.7.7] - 2025-06-26 🧩
+### Changed
+- Updated hero section design
+- Improved navigation structure
+- Enhanced mobile experience
 
-### 🧩 **Refactoring History Page - Suddivisione in Componenti**
+## [1.0.0] - 2025-03-01
 
-#### 📁 **Nuova Architettura Modulare**
-
-- **Problema**: File `History.js` di 730+ righe difficile da mantenere
-- **Soluzione**: Suddiviso in 4 componenti separati nella cartella `history-sections/`
-- **Struttura creata**:
-  - `TimelineSection.js` - Gestione timeline cronologica
-  - `CommitsSection.js` - Visualizzazione commits tecnici
-  - `ReleasesSection.js` - Sezione releases e versioni
-  - `StatsSection.js` - Statistiche dettagliate e grafici
-  - `index.js` - Export centralizzato dei componenti
-
-#### 🔧 **Vantaggi Modularizzazione**
-
-- **Manutenibilità**: File più piccoli e focalizzati (80-150 righe ciascuno)
-- **Riusabilità**: Componenti potenzialmente riutilizzabili in altre pagine
-- **Testing**: Più facile testare singoli componenti isolatamente
-- **Performance**: Possibilità futura di lazy loading per sezioni specifiche
-- **Collaborazione**: Team può lavorare su componenti separati senza conflitti
-
-#### 🌐 **Fix Traduzioni Mancanti**
-
-- **Problema**: Traduzioni inglesi incomplete per alcune chiavi
-- **Risolto**: Aggiunte chiavi mancanti in `src/locales/en/translation.json`:
-  - `showMoreCommits`: "Show More Commits"
-  - `remaining`: "remaining"
-  - `moreInfoText`: "All code is open source and available on GitHub. Contributions and feedback are always welcome!"
-- **Aggiornata**: Descrizione `technical` da "last 10 commits" a "all commits" per coerenza
-
-#### 🏗️ **Architettura File**
-
-**Prima (v2.2.7.6)**:
-
-```text
-History.js (730+ righe)
-├── TimelineSection (inline)
-├── CommitsSection (inline)  
-├── ReleasesSection (inline)
-├── StatsSection (inline)
-└── Main History Component
-```
-
-**Dopo (v2.2.7.7)**:
-
-```text
-History.js (300 righe)
-└── Main History Component
-
-history-sections/
-├── TimelineSection.js (80 righe)
-├── CommitsSection.js (120 righe)
-├── ReleasesSection.js (90 righe)
-├── StatsSection.js (150 righe)
-└── index.js (export)
-```
-
-#### 📊 **Metriche Miglioramento**
-
-- **Righe per file**: Da 730 a max 150 (-79% complessità per file)
-- **Separazione responsabilità**: Ogni componente ha un singolo scopo
-- **Import/Export**: Sistema pulito con index.js centralizzato
-- **Build size**: Mantenuto identico (nessun overhead)
-- **Funzionalità**: Zero breaking changes, comportamento identico
-
-#### ✅ **Testing e Validazione**
-
-- **Build successful**: ✅ Compilazione senza errori
-- **Traduzioni complete**: ✅ IT/EN funzionanti al 100%
-- **Componenti modulari**: ✅ Import/export corretti
-- **Responsive design**: ✅ Layout mantenuto su tutti i dispositivi
-- **Funzionalità preservate**: ✅ Tutte le features operative
-
-#### 🎯 **Risultato UX**
-
-- **Esperienza utente**: Identica alla versione precedente
-- **Performance**: Nessun impatto negativo sulle prestazioni
-- **Manutenibilità**: Drasticamente migliorata per sviluppatori
-- **Localizzazione**: Supporto completo IT/EN senza testi hardcoded
+### Added
+- Initial release
+- Basic portfolio structure
+- Homepage with hero section
+- Navigation system
+- Footer component
+- Responsive design foundation
 
 ---
 
-## [v2.2.7.6] - 2025-06-23
+## Version History Summary
 
-### 📱 **Fix Layout Mobile Statistiche History**
+- **2.2.x**: Trophy system, advanced commit categorization, "Me in Pieces" component
+- **2.1.x**: Books system, Service Worker, PWA features
+- **2.0.x**: Major restructuring, i18n, theme system, performance optimization
+- **1.5.x**: Core pages (Projects, History, Creations, About)
+- **1.0.x**: Initial release with basic structure
 
-#### 🔧 **Repository Name Overflow**
+## Migration Notes
 
-- **Problema**: Nome repository troppo lungo usciva dalla schermata su mobile
-- **Soluzione**: Layout responsivo con `flex-col sm:flex-row`
-- **Miglioramenti**:
-  - Container flessibile che si adatta alla larghezza schermo
-  - `break-words` per spezzare testi lunghi
-  - `min-w-0 flex-1` per gestione overflow
-  - Icona GitHub separata con `flex-shrink-0`
+### From 2.1.x to 2.2.x
+- No breaking changes
+- New trophy system is opt-in (user interaction based)
+- All existing features remain functional
 
-#### 📊 **Commit Types Distribution**
+### From 2.0.x to 2.1.x
+- No breaking changes
+- Books system is additive
+- Service Worker automatically registers
 
-- **Problema**: Scritta tipo commit finiva sopra la barra percentuale
-- **Soluzione**: Layout verticale con spacing dedicato
-- **Nuova struttura**:
-  - Tipo commit e percentuale in riga separata con `justify-between`
-  - Barra percentuale in riga dedicata sotto
-  - `space-y-2` per spaziatura verticale controllata
-  - Eliminata sovrapposizione di elementi
+### From 1.x to 2.0.x
+- **Breaking**: Component import paths changed
+- **Breaking**: Hardcoded text replaced with i18n keys
+- **Action Required**: Update any custom components to use new structure
+- **Action Required**: Add language preference handling if customized
 
-#### 🎯 **Miglioramenti UX Mobile**
+## Deprecations
 
-- **Layout più pulito**: Elementi non si sovrappongono più
-- **Leggibilità migliorata**: Testi sempre visibili e leggibili
-- **Responsive design**: Adattamento automatico a tutte le dimensioni schermo
-- **Accessibilità**: Migliore esperienza su dispositivi touch
+No deprecations in current version.
 
-#### ✅ **Testing**
+## Security Updates
 
-- **Mobile responsive**: ✅ Testato su schermi piccoli
-- **Tablet compatibility**: ✅ Layout intermedio funzionante
-- **Desktop unchanged**: ✅ Design desktop mantenuto
-- **No breaking changes**: ✅ Funzionalità preservate
+All dependencies are regularly updated to address security vulnerabilities. Run `pnpm audit` for current status.
 
 ---
 
-## [v2.2.7.5] - 2025-06-23 📊
-
-### 🌐 **Fix Traduzione "Statistiche"**
-
-#### 📊 **Titolo Modal Tradotto**
-
-- **Problema**: "📊 Statistiche:" hardcoded in italiano nel modal
-- **Soluzione**: Sostituito con `{t('common.statistics') || 'Statistiche'}:`
-- **Chiave aggiunta**: `common.statistics` in entrambi i file di traduzione
-
-#### 🌍 **Traduzioni Aggiunte**
-
-- **IT**: `"statistics": "Statistiche"`
-- **EN**: `"statistics": "Statistics"`
-- **Fallback**: "Statistiche" se traduzione manca
-
-#### ✅ **Completamento Internazionalizzazione**
-
-Il modal "Me in Pieces" ora è **100% tradotto**:
-
-- ✅ **Nomi organi**: `brain`, `eyes`, `heart`, etc.
-- ✅ **Descrizioni**: `brainDescription`, `eyesDescription`, etc.
-- ✅ **Personality**: `brainPersonality`, `eyesPersonality`, etc.
-- ✅ **Statistiche**: `brainStat1-3`, `eyesStat1-3`, etc.
-- ✅ **Titolo "Statistiche"**: `common.statistics`
-- ✅ **Pulsante "Chiudi"**: `common.close`
-
-#### 🎯 **Risultato**
-
-Interfaccia completamente localizzata per IT/EN senza testo hardcoded.
-
----
-
-## [v2.2.7.4] - 2025-06-23 🫁
-
-### 🎨 **Fix Contrasto Polmoni + Traduzioni Personality**
-
-#### 🫁 **Contrasto Polmoni**
-
-- **Problema**: Testo bianco invisibile su polmoni rosa chiaro (`#FFE4E1`)
-- **Soluzione**: Aggiunto `#FFE4E1` alla logica di contrasto automatico
-- **Risultato**: Polmoni ora usano testo scuro `#333333` come cranio, denti e costole
-
-#### 🌐 **Traduzioni Personality Complete**
-
-- **12 nuove chiavi** aggiunte per le personality di tutti gli organi:
-  - `brainPersonality` → `eyesPersonality` → `heartPersonality` → `lungsPersonality`
-  - `handsPersonality` → `stomachPersonality` → `liverPersonality` → `kidneysPersonality`
-  - `spleenPersonality` → `ribcagePersonality` → `skullPersonality` → `teethPersonality`
-
-#### 🧠 **Esempi Traduzioni Personality**
-
-- **IT**: "🧠 Sempre attivo, mai spento" → **EN**: "🧠 Always active, never off"
-- **IT**: "🫁 Pazienti ma spesso in apnea" → **EN**: "🫁 Patient but often breathless"
-- **IT**: "😤 Collezionista di frustrazioni" → **EN**: "😤 Frustration collector"
-
-#### 🔍 **Organi con Testo Scuro** (contrasto migliorato)
-
-- **Cranio** (`#FFFAF0`) ✅
-- **Denti** (`#FFFFF0`) ✅  
-- **Costole** (`#F5F5DC`) ✅
-- **Polmoni** (`#FFE4E1`) ✅ **[NUOVO]**
-
-#### ✅ **Testing**
-
-- **Build successful**: ✅ Compilazione senza errori
-- **Traduzioni caricate**: ✅ Tutte le 12 personality funzionanti
-- **Contrasto verificato**: ✅ Polmoni ora leggibili
-- **Internazionalizzazione**: ✅ IT/EN completo
-
----
-
-## [v2.2.7.3] - 2025-06-23 🔘
-
-### 🔧 **Fix Pulsante "Chiudi" Modal**
-
-#### 🌐 **Traduzione Mancante**
-
-- **Aggiunta chiave**: `common.close` in entrambi i file di traduzione
-- **IT**: "Chiudi" 
-- **EN**: "Close"
-- **Utilizzo**: `{t('common.close') || 'Chiudi'}` con fallback
-
-#### 🎨 **Contrasto Colori Automatico**
-
-- **Problema**: Testo bianco invisibile su organi chiari (cranio, denti, costole)
-- **Soluzione**: Logica automatica per colore del testo:
-  - **Organi chiari** (`#FFFAF0`, `#FFFFF0`, `#F5F5DC`): Testo scuro `#333333`
-  - **Altri organi**: Testo bianco `#FFFFFF` con text-shadow
-- **Text-shadow dinamico**: Rimosso per organi chiari, mantenuto per altri
-
-#### 🔍 **Organi Interessati**
-
-- **Cranio** (`#FFFAF0`): Ora testo scuro leggibile
-- **Denti** (`#FFFFF0`): Ora testo scuro leggibile  
-- **Costole** (`#F5F5DC`): Ora testo scuro leggibile
-- **Altri organi**: Mantengono testo bianco con ombra
-
-#### ✅ **Testing**
-
-- **Build successful**: ✅ Compilazione senza errori
-- **Traduzioni caricate**: ✅ Chiave `common.close` funzionante
-- **Contrasto verificato**: ✅ Leggibile su tutti i colori organi
-
----
-
-## [v2.2.7.2] - 2025-06-23 ✨
-
-### 🔍 **Contrasto Migliorato e Traduzioni Complete**
-
-#### 🎨 **Contrasto e Leggibilità**
-
-- **Drop-shadow alle icone**: Aggiunto `drop-shadow(0 0 2px rgba(0,0,0,0.6))` permanente per contrasto di base
-- **Text-shadow ai nomi**: `textShadow: '1px 1px 2px rgba(0,0,0,0.5)'` per leggibilità su sfondi chiari/scuri
-- **Effetti hover migliorati**: Drop-shadow più intenso su hover e colore dinamico
-- **Modal icon contrast**: Icona nel modal con stesso contrasto delle icone principali
-- **Pulsing effects**: Drop-shadow più intenso durante animazioni di pulsing
-
-#### 🌐 **Traduzioni Complete Statistiche**
-
-- **Italiano** (`src/locales/it/translation.json`):
-  - Tutte le 36 statistiche tradotte (3 per ogni organo × 12 organi)
-  - Chiavi da `brainStat1` a `teethStat3`
-  - Statistiche ironiche e dettagliate per ogni organo
-
-- **Inglese** (`src/locales/en/translation.json`):
-  - Traduzioni complete e coerenti con il tono ironico
-  - Mantenuto humor tecnico in entrambe le lingue
-  - Statistiche aggiornate per coerenza (es. kidneys: "architectural purity")
-
-#### 🧩 **Statistiche Aggiornate per Coerenza**
-
-- **Reni**: Da "equilibrio instabile" a "100% purezza architetturale" 
-- **Milza**: Aggiornate per coerenza con memoria errori
-- **Cranio**: Statistiche più specifiche su protezione e resistenza
-- **Denti**: Focus su debugging intensity e problemi "masticati"
-
-#### 🛠️ **Tecniche Implementate**
-
-- **CSS Filter chaining**: Combinazione di brightness, drop-shadow multipli
-- **Dynamic text contrast**: Colore adattivo basato su tema e selezione
-- **Multi-layer shadows**: Ombreggiature stratificate per depth visivo
-- **Responsive contrast**: Contrasto che si adatta a hover e stati attivi
-
-#### ✅ **Testing e Qualità**
-
-- **Build successful**: Tutte le traduzioni caricate correttamente
-- **No console errors**: Chiavi di traduzione tutte presenti
-- **Cross-language consistency**: Humor e tono mantenuti in IT/EN
-- **Accessibility improved**: Contrasto WCAG-compliant per icone e testi
-
-### 🎯 **Risultati UX**
-
-- **Leggibilità**: Icone visibili su qualsiasi sfondo
-- **Professionalità**: Contrasto elegante senza compromettere design
-- **Internazionalizzazione**: Supporto completo per IT/EN
-- **Consistenza**: Tutte le statistiche ora traducibili dinamicamente
-
----
-
-## [v2.2.7.1] - 2025-06-23
-
-Fix icone non utilizzate
-
-## [v2.2.7] - 2025-06-19 🌈
-
-### 🌈 **Trasformazione Anatomica Realistica: Organi Colorati e Espansione**
-
-#### 🎨 **Colori Realistici per Ogni Organo**
-
-- **Cuore**: `#DC143C` (Rosso carminio) - Icona `GiHeartOrgan` più anatomica
-- **Cervello**: `#FFB6C1` (Rosa pallido per materia grigia)
-- **Polmoni**: `#FFE4E1` (Rosa chiaro)
-- **Fegato**: `#8B4513` (Marrone rossastro)
-- **Reni**: `#CD853F` (Marrone chiaro)
-- **Stomaco**: `#DDA0DD` (Viola pallido)
-- **Occhi**: `#87CEEB` (Azzurro per l'iride)
-- **Mani**: `#FDBCB4` (Colore pelle)
-
-#### 🫀 **4 Nuovi Organi Aggiunti**
-
-1. **Milza** (`GiInternalOrgan`, `#800080` viola scuro)
-   - Collezionista di frustrazioni
-   - 876 arrabbiature archiviate, 3,422 bestemmie filtrate
-
-2. **Costole** (`FaBone`, `#F5F5DC` beige)
-   - Struttura e sostegno come l'architettura del codice
-   - 24 costole protettive, postura discutibile
-
-3. **Cranio** (`FaSkull`, `#FFFAF0` bianco avorio)
-   - Guardiano del pensiero, fortezza del cervello
-   - Infinite testate sopportate, durezza diamante
-
-4. **Denti** (`FaTooth`, `#FFFFF0` bianco avorio)
-   - Masticatori di problemi complessi
-   - 4,823 problemi masticati, 67 morsi alla lingua
-
-#### 🎯 **Visual Effects Realistici**
-
-- **Pulsing Colorato**: Ogni organo pulsa con il proprio colore anatomico
-- **Hover Effects**: Glow dinamico con il colore specifico dell'organo
-- **Modal Tematici**: Icona e pulsante colorati secondo l'organo selezionato
-- **Drop Shadow**: Effetti ombra colorati durante le animazioni
-
-#### 📊 **Totale: 12 Organi Anatomici**
-
-1. Cervello (rosa pallido)
-2. Occhi (azzurro)
-3. Cuore (rosso carminio) ❤️ **NUOVO DESIGN REALISTICO**
-4. Polmoni (rosa chiaro)
-5. Mani (colore pelle)
-6. Stomaco (viola pallido)
-7. Fegato (marrone rossastro)
-8. Reni (marrone chiaro)
-9. **Milza** (viola scuro) 🆕
-10. **Costole** (beige) 🆕
-11. **Cranio** (bianco avorio) 🆕
-12. **Denti** (bianco avorio) 🆕
-
-#### 🌐 **Traduzioni Complete per Nuovi Organi**
-
-**Italiano**:
-- `spleen`: "Milza" + descrizione ironica
-- `ribcage`: "Costole" + metafora architettura
-- `skull`: "Cranio" + protezione cervello
-- `teeth`: "Denti" + masticazione problemi
-
-**Inglese**:
-- `spleen`: "Spleen" + anger collector
-- `ribcage`: "Ribcage" + code architecture
-- `skull`: "Skull" + brain fortress
-- `teeth`: "Teeth" + problem chewers
-
-#### 🎨 **Layout Griglia Espansa**
-
-- **Desktop**: 4x3 griglia per 12 organi
-- **Mobile**: 2x6 griglia responsiva
-- **Animazioni Staggered**: Ogni organo appare con delay crescente
-- **Colori Uniformi**: Palette anatomica coerente e realistica
-
-#### ⚡ **Performance & Bundle**
-
-- **Build Success**: ✅ Nessun errore compilazione
-- **Bundle Size**: 153KB (leggero aumento per nuove icone)
-- **Icon Library**: Ottimizzato con tree-shaking
-- **Render Performance**: Animazioni fluide anche con 12 organi
-
-#### 🔧 **Dettagli Tecnici**
-
-- **Icon Sources**: Combinazione `react-icons/fa` + `react-icons/gi`
-- **Color System**: Palette CSS custom con valori hex anatomici
-- **Animation Engine**: Framer Motion con effects personalizzati
-- **Responsive Grid**: CSS Grid nativo per layout ottimale
-
----
-
-## [v2.2.6] - 2025-06-19 🔄
-
-### 🔄 **Trasformazione Completa: Da "Il Mio Viaggio" a "Me in Pieces"**
-
-#### ⚡ **Rivoluzione UX: Organi Senza Colori in Griglia Pulita**
-
-- **Rimosso Completamente**: SVG del corpo umano di sfondo
-- **Eliminati**: Tutti i colori, background, border, glow effects  
-- **Nuovo Layout**: Griglia 2x4 (mobile) / 4x2 (desktop) ordinata e pulita
-- **Icone Realistiche**: Sostituiti gli icon generici con organi più anatomici
-
-#### 🫀 **8 Organi con Icone Professionali**
-
-1. **Cervello** (`FaBrain`) - Centro comando idee folli
-2. **Occhi** (`FaEye`) - Testimoni di migliaia di righe codice  
-3. **Cuore** (`FaHeart`) - Batte per la programmazione
-4. **Polmoni** (`FaLungs`) - Respirano codice pulito, sospirano ai refactoring
-5. **Mani** (`FaHandPaper`) - Eroine che digitano e debuggano
-6. **Stomaco** (`GiStomach`) - Convertitore caffè → codice
-7. **Fegato** (`GiLiver`) - Filtro stress da deadline impossibili
-8. **Reni** (`GiKidneys`) - Equilibratori decisioni architetturali
-
-#### 🎨 **Design Minimalista Senza Colori**
-
-- **Zero Colori**: Solo grigio/nero, toni neutri
-- **Hover Effects**: Scale e cambio opacity, niente colori
-- **Modal Pulito**: Border grigio, pulsante neutro
-- **Pulsing Animation**: Solo scale/opacity, niente glow colorati
-- **Tipografia**: Focus su leggibilità, niente decorazioni colorate
-
-#### 🌐 **Traduzioni Complete IT/EN**
-
-**Aggiunti 6 Nuovi Organi**:
-- `lungs` / `polmoni`: "Respirano codice pulito..."
-- `liver` / `fegato`: "Filtro stress da deadline..."  
-- `kidneys` / `reni`: "Equilibratori decisioni architetturali..."
-
-**Statistiche Ironiche per Ogni Organo**:
-- Cervello: 456 idee, 2,847 caffè, 847 notti insonni
-- Polmoni: 1,205 sospiri, 3,400 respiri trattenuti
-- Fegato: 1,847 stress metabolizzati, 456 deadline superate
-- Reni: 2,100 decisioni filtrate, 67% realismo mantenuto
-
-#### 🏗️ **Architettura Semplificata**
-
-**Prima**: Posizionamento assoluto su SVG complesso
-**Dopo**: CSS Grid responsive, mobile-first
-
-**Codice Ridotto**: -120 righe eliminando SVG e logica colori
-**Performance**: Render più veloce senza animazioni SVG complesse
-**Manutenibilità**: Griglia facile da estendere con nuovi organi
-
-#### ✅ **Build & Test Completo**
-
-- ✅ **Build Success**: Nessun errore compilazione
-- ✅ **Import Fix**: Corretta `FaHandPaper` da react-icons/fa
-- ✅ **Responsive**: Griglia adattiva 2-4 colonne
-- ✅ **Accessibilità**: Hover states e focus management
-- ✅ **Performance**: Animazioni ottimizzate senza overengineering
-
----
-
-## [v2.2.5] - 2025-06-19 📊
-
-### 📊 **Nuovo Componente RandomStats - Carousel Statistiche Interattivo**
-
-#### 🎛️ **Componente RandomStats Completo**
-
-- **Creato**: `src/components/common/RandomStats.js` (402 righe)
-- **Sostituisce**: Tutte le sezioni statistiche statiche in `About.js`
-- **Mantiene**: Solo la sezione "Il Mio Viaggio" come richiesto dall'utente
-
-#### 📈 **23 Statistiche Organizzate in 6 Categorie**
-
-1. **Statistiche del Sito** (4 card):
-   - Righe di Codice: 5,333
-   - File: 51  
-   - Componenti: 21
-   - Pagine: 8
-
-2. **Statistiche GitHub** (4 card):
-   - Commit: 106
-   - Stelle: 1
-   - Fork: 0
-   - Dimensioni: 51 MB
-
-3. **Performance & Qualità** (4 card):
-   - Performance: 59
-   - Accessibilità: 88
-   - Best Practices: 100
-   - SEO: 100
-
-4. **Build & Deploy** (1 card):
-   - Tempo Build: 15.1s
-
-5. **Statistiche Tecniche** (7 card):
-   - Uptime: 99.9%
-   - Mobile Ready: 100%
-   - Risoluzione Max: 4K
-   - Security Score: A-
-   - Database Size: 0MB
-   - Cloud Storage: ∞
-   - Connection Speed: 5G
-
-6. **Statistiche Divertenti** (4 card):
-   - AI Bugs Found: -1
-   - Stack Overflow Visits: ∞
-   - Richieste ChatGPT: (calcolato dinamicamente)
-   - Growth Rate: Good
-
-#### 🎨 **Carousel Moderno e Interattivo**
-
-- **Layout**: 3 card per volta con layout responsive
-- **Auto-play**: Ogni 8 secondi con possibilità di pausa manuale
-- **Navigazione**: Frecce sinistra/destra + indicatori a punti
-- **Titolo dinamico**: Cambia automaticamente per ogni categoria
-- **Animazioni**: Transizioni fluide con Framer Motion
-- **Hover effects**: Rotazione icone 360°, scaling e shadow dinamiche
-
-#### 🌐 **Traduzioni Complete**
-
-- **Italiano**: 15 nuove stringhe tradotte
-- **Inglese**: 15 nuove stringhe tradotte
-- **Nuove chiavi**: 
-  - `uptime`, `mobileReady`, `maxResolution`, `securityScore`
-  - `aiBugsFound`, `stackOverflowVisits`, `loadingSpeed`, `growthRate`
-  - `databaseSize`, `cloudStorage`, `connectionSpeed`
-  - `buildAndDeploy`, `technicalStats`, `funStats`
-
-#### 🎯 **UX/UI Moderna**
-
-- **Gradient personalizzati** per ogni categoria di card
-- **Auto-play indicator**: Punto verde/grigio per stato auto-play
-- **Mobile-first**: Da 1 colonna (mobile) a 3 (desktop)
-- **Touch-friendly**: Pulsanti di navigazione ottimizzati
-- **Dark/Light mode**: Supporto completo per entrambi i temi
-
-#### 🔧 **Integrazione Tecnica**
-
-- **Dati reali**: Integrato con `useGitHubStats` e `useSiteStats` hooks
-- **Modularità**: Componente completamente riutilizzabile
-- **Performance**: Bundle incremento minimo (ottimizzato)
-- **Export**: Aggiunto a `src/components/common/index.js`
-
-#### ✅ **Aggiornamenti Finali**
-
-- **Traduzioni**: File IT/EN già completi e aggiornati
-- **Build**: Test superato con successo
-- **Errori**: Nessun errore di sintassi rilevato
-- **Responsive**: Funzionamento verificato su tutti i dispositivi
-
-#### 🎯 **Statistica Dinamica "Richieste ChatGPT"**
-
-- **Sostituita**: "Velocità Caricamento" con "Richieste ChatGPT del giorno"
-- **Calcolo dinamico**: Secondi dalle 00:00 × 0.80 × fattore casuale (1.0-1.3)
-- **Aggiornamento**: Valore cambia ogni volta che si ricarica la pagina
-- **Traduzioni**: Aggiunte chiavi `chatgptRequests` in IT/EN
-
-#### 🧍 **Nuovo Componente PersonalJourney - Omino Interattivo**
-
-- **Creato**: `src/components/common/PersonalJourney.js` (387 righe)
-- **Sostituisce**: Sezione timeline statica in `About.js`
-- **Concept**: Omino SVG animato con statistiche che partono da parti del corpo
-
-#### 🎨 **Caratteristiche PersonalJourney**
-
-- **SVG Animato**: Omino disegnato con path animate progressivamente
-- **5 Statistiche Personali**:
-  - ☕ Caffè Bevuti (2,847) → parte dal cuore
-  - 🌙 Notti in Bianco (847) → parte dagli occhi
-  - 🐛 Bug Risolti (1,203) → parte dalla mano sinistra
-  - 💡 Idee Avute (456) → parte dal cervello
-  - 💻 Repo Create (23) → parte dalla mano destra
-
-#### 🎯 **Interattività Avanzata**
-
-- **Auto-animazione**: Statistiche appaiono automaticamente ogni 2 secondi
-- **Click interaction**: Click su statistica per attivarla manualmente
-- **Hover effects**: Descrizione dettagliata al passaggio del mouse
-- **Linee di connessione**: Collegamento visivo tra stat e corpo
-- **Mobile responsive**: Griglia alternativa per dispositivi piccoli
-
-#### ⚙️ **Dettagli Tecnici**
-
-- **Animazioni SVG**: Path progressivo del disegno dell'omino
-- **Gestione stato**: Array dinamico di statistiche attive
-- **Posizionamento assoluto**: Coordinate precise per ogni statistica
-- **Cleanup automatico**: Rimozione statistiche dopo 3-4 secondi
-- **Spring animations**: Transizioni fluide con Framer Motion
-
-#### 🧬 **Trasformazione "Io in Pezzi" - Anatomia Interattiva**
-
-- **Nuovo Concept**: Da "Il Mio Viaggio" a "Io in Pezzi"
-- **Rimossa**: Sezione PersonalJourney dalla pagina About
-- **Trasformato**: PersonalJourney in componente anatomico interattivo
-
-#### 🦴 **Sistema Organi con Modal**
-
-- **7 Organi Cliccabili**:
-  - 🧠 Cervello: Centro di comando delle idee folli
-  - 👀 Occhi (x2): Testimoni di migliaia di righe di codice  
-  - ❤️ Cuore: Batte per la programmazione
-  - 🤲 Mani (x2): Eroine di digitazione e debug
-  - 🤤 Stomaco: Convertitore caffè-codice
-
-#### 🎨 **Caratteristiche Anatomiche**
-
-- **SVG Outline**: Corpo umano stilizzato con stroke animato
-- **Pulsing Effect**: Organi pulsano automaticamente ogni 3 secondi  
-- **Modal Dettagliato**: Click su organo apre modal con:
-  - Nome e personalità dell'organo
-  - Descrizione ironica e dettagliata
-  - Statistiche specifiche per organo
-  - Colore tematico personalizzato
-- **Glow Effect**: Alone colorato durante il pulsing
-- **Fixed Modal**: Modal a schermo intero con backdrop blur
-
-#### 🌐 **Traduzioni Organi**
-
-- **Aggiunte** 12+ nuove stringhe per anatomia:
-  - `meInPieces`, nomi organi, descrizioni dettagliate
-  - **IT**: Descrizioni ironiche e divertenti in italiano
-  - **EN**: Traduzioni complete in inglese
-  - Personalità per ogni organo (emoji + caratteristica)
-
-#### 📱 **Standalone Page**
-
-- **Creata**: `src/pages/MeInPiecesPage.js`
-- **Accessibile**: Come pagina indipendente
-- **Layout**: Gradiente di sfondo + container centrato
-
-## [v2.2.4] - 2025-01-20 🎨
-
-### 🎨 **Nuovo Componente CodeEditor e Animazioni Avanzate**
-
-#### 💻 **Nuovo Componente CodeEditor**
-
-- **Creato**: `src/components/common/CodeEditor.js` (640 righe)
-- **Funzionalità**:
-  - Animazione di codice con syntax highlighting realistico
-  - Tokenizzazione intelligente per colori (keywords, strings, functions, comments)
-  - Numerazione dinamica delle righe
-  - Simulazione di file "hacker" ironico (`NotAScriptToHackYourDevice.jsx`)
-  - Pulsante "Build" integrato con logica probabilistica:
-    - 80% fallimento al primo tentativo
-    - 20% fallimento al secondo tentativo
-    - Successo garantito al terzo tentativo
-  - Feedback visivo completo: spinner, messaggi ironici, contatore tentativi
-  - Pulsante scompare definitivamente dopo il successo
-
-#### 🎯 **Refactoring CreationsPage**
-
-- **Rimossa**: Card "Righe di Codice" dalla griglia principale
-- **Aggiunta**: Visualizzazione righe di codice sopra il CodeEditor con animazione
-- **Integrato**: Nuovo componente CodeEditor nella sezione coding
-- **Ottimizzato**: Layout responsive per mobile e desktop
-
-#### 📱 **Miglioramenti Mobile e Scrollbar**
-
-- **Scrollbar personalizzata**: CSS dinamico iniettato tramite `useEffect`
-- **Desktop**: Scrollbar moderna e discreta
-- **Mobile**: Scrollbar nascosta per UX ottimale
-- **Responsive**: Padding, testo e layout ottimizzati per tutti i dispositivi
-- **Scroll orizzontale**: Gestito correttamente senza overflow
-
-#### 🌐 **Traduzioni CodeEditor**
-
-- **Aggiunte** nuove stringhe per CodeEditor:
-  - `codeAnimation`: "Animazione Codice" / "Code Animation"
-  - `buildProject`: "Compila Progetto" / "Build Project"
-  - `buildMessages`: Array di messaggi ironici per build failure/success
-  - `buildAttempts`: "Tentativo" / "Attempt"
-- **Tema ironico**: Messaggi e label coerenti con il tema hacker/developer
-
-#### 🔧 **Dettagli Tecnici**
-
-- **Spazi preservati**: Utilizzato `whitespace-pre` per visualizzazione corretta
-- **Performance**: Animazioni ottimizzate con `framer-motion`
-- **Modularità**: Componente riutilizzabile ed esportato in `index.js`
-- **Codice pulito**: Separazione delle responsabilità tra `CreationsPage` e `CodeEditor`
-
-## [v2.2.3] - 2025-06-19 🌐
-
-### 🌐 **Traduzioni e Miglioramenti UI**
-
-#### 🔤 **Traduzioni Completate**
-
-- **Problema**: Stringhe hardcoded senza traduzione nella CreationsPage
-- **Risolto**: Aggiunte tutte le traduzioni mancanti
-- **Modifiche**:
-  - `digitalCreations`: da "Le mie creazioni digitali" a "Portfolio" (più conciso)
-  - Aggiunta traduzione per `techStack`: "Stack Tecnologico" / "Tech Stack"
-  - Aggiunte traduzioni per pulsanti card: `exploreBooks`, `expandGames`
-  - Aggiunte traduzioni per statistiche card: `prototypes`, `engine`, `genre`, `platform`, `books`, `chapters`, `pages`, `words`
-  - Passaggio parametro `t` alla funzione `CreationCard` per supporto traduzioni
-
-#### 📝 **Miglioramenti Terminologia**
-
-- **"Le mie creazioni digitali"** → **"Portfolio"** (più professionale)
-- Tutte le etichette statistiche ora tradotte correttamente
-- Uniformità tra italiano e inglese per tutte le stringhe
-
-## [v2.2.2] - 2025-06-19 📊
-
-### 📊 **Dati Reali e Statistiche**
-
-#### 📚 **Aggiornamento CreationsPage con Dati Reali**
-
-- **Problema**: CreationsPage mostrava statistiche fittizie/mock per i libri
-- **Risolto**: Implementato calcolo automatico dei dati reali
-- **Modifiche**:
-  - Aggiunta funzione `calculateBookStats()` per calcolare statistiche reali
-  - Importato `books` da `src/data/books.js` per accesso ai contenuti
-  - Statistiche aggiornate:
-    - **Libri**: da "2+" a conteggio reale (2)
-    - **Capitoli**: da "10+" a conteggio reale (4)
-    - **Pagine**: da "50+" a stima reale (~1 pagina basata su 250 parole/pagina)
-    - **Parole**: sostituito "Genere: Fantasy" con conteggio reale delle parole scritte (19)
-  - Utilizzo di `toLocaleString()` per formattazione numeri con separatori
-- **Benefici**: Dati sempre aggiornati automaticamente quando si aggiungono nuovi contenuti
-
-## [v2.2.1] - 2025-06-19 🎨
-
-### 🎨 **UI/UX Fixes**
-
-#### 🔧 **Miglioramento Contrasti CreationsPage**
-
-- **Problema**: Icone e testi poco visibili su gradienti simili
-- **Risolto**: Cambiati colori di icone e testi accent per migliore contrasto
-
-## [v2.2.0] - 2025-06-19 🧹
-
-### 🗑️ **MAJOR: Rimozione Ottimizzazioni WebP/WebM**
-
-#### ❌ **File e Codice Eliminati**
-
-- **Script ottimizzazione**: Rimosso `scripts/optimize-images.js`
-- **Dipendenze**: Rimosse tutte le dipendenze WebP (`sharp`, `imagemin-webp`, ecc.)
-- **Codice OptimizedImage**: Rimossa logica di fallback WebP
-- **Build processo**: Semplificato, senza conversioni di formato
-
-#### 📁 **Riorganizzazione Documentazione**
-
-- **File MD spostati**: Tutti i file markdown tecnici spostati in `docs/`
-- **Struttura creata**:
-  - `docs/ARCHITECTURE.md`
-  - `docs/COMPONENTS.md`
-  - `docs/REORGANIZATION.md`
-  - `docs/REAL-STATS.md`
-
-#### 📝 **README e Licenza**
-
-- **README rinnovato**: Semplificato, rimossi riferimenti WebP, struttura più pulita
-- **Licenza**: Aggiunta MIT License completa
-
-#### 🎯 **Risultati**
-
-- **Performance**: Bundle size mantenuto (~132KB), build stabile
-- **Semplicità**: Codice più pulito, meno dipendenze, build più veloce
-- **Manutenibilità**: Struttura documentazione più organizzata
-
-## [v2.1.0] - 2025-06-19 ✨
-
-### ✨ **CreationsPage - Nuova Pagina Portfolio**
-
-- Design minimalista con solo 2 card semplici
-- **Books Card**: Statistics (2 libri, 4 capitoli, 1 pagina, 19 parole) + Preview + Link
-- **Games Card**: Statistics (3 prototipi, Unity, Action, PC/Mobile) + Preview + Link
-- **Tech Stack**: React, JavaScript, Unity, C#, Tailwind, Framer Motion
-- **Hero Section completa** con gradient text e animazioni
-- **Responsive design** ottimizzato per mobile e desktop
-
-### 📊 **Statistiche Componenti**
-
-#### 📚 **Books Section**
-
-- **Books**: Libri pubblicati
-- **Chapters**: Capitoli totali
-- **Pages**: Pagine stimate (250 parole = 1 pagina)
-- **Words**: Parole totali scritte
-
-#### 🎮 **Games Section**
-
-- **Games**: Prototipi, Engine (Unity), Genere, Piattaforma
-
-### 🌐 **Traduzioni Complete**
-
-#### 🌐 **Traduzioni Aggiornate**
-
-- `digitalCreations`: "Le mie creazioni digitali" / "My digital creations"
-- `techStackDesc`: "Tecnologie utilizzate nei miei progetti" / "Technologies used in my projects"
-- `exploreBooks`: "Esplora Libri" / "Explore Books"
-- `expandGames`: "Espandi Giochi" / "Expand Games"
-- `prototypes`, `engine`, `genre`, `platform`: Completamente tradotti
-- `books`, `chapters`, `pages`, `words`: Completamente tradotti
-
-#### ⚡ **Bundle Optimization**
-
-- **Source maps** disabilitate in produzione (riduzione da 15MB a 0)
-- **CSS minification** migliorata con cssnano
-- **Build size**: ~132KB (ottimale)
-
----
-
-## [v2.0.0] - 2025-06-18 🚀
-
-### 🏗️ **MAJOR: Architettura Completamente Riorganizzata**
-
-#### 📁 **Nuova Struttura File**
-
-```text
-src/
-├── components/
-│   ├── common/          # Componenti riutilizzabili
-│   ├── layout/          # Layout e strutture principali
-│   ├── pages/           # Componenti pagina specifici
-│   ├── books/          # Sezione libri completa
-│   └── animations/     # Componenti animazioni
-├── hooks/              # Custom hooks
-├── utils/              # Utilities e helper
-├── data/               # Dati statici e configurazioni
-├── locales/            # Traduzioni i18n
-└── pages/              # Pages router
-```
-
-#### 🧱 **Componenti Riorganizzati**
-
-##### 📦 **`src/components/common/`**
-
-- `Footer.js` - Footer del sito
-- `Header.js` - Header principale
-- `Navbar.js` - Navigazione
-- `ThemeSwitch.js` - Switch tema scuro/chiaro
-- `LanguageSwitcher.js` - Cambio lingua
-- `OptimizedImage.js` - Gestione immagini ottimizzate
-- `HashLink.js` - Link per hash routing
-
-##### 🏗️ **`src/components/layout/`**
-
-- `Hero.js` - Sezione hero della homepage
-- `HeroText.js` - Testo animato dell'hero
-- `AnimatedGrid.js` - Griglia animata
-
-##### 📄 **`src/components/pages/`**
-
-- `About.js` - Pagina About
-- `Projects.js` - Pagina progetti
-- `History.js` - Timeline personale
-- `Stocazzato.js` - Pagina easter egg
-- `WorkInProgress.js` - Pagina work in progress
-
-##### 📚 **`src/components/books/`**
-
-- `BooksHome.js` - Homepage libri
-- `BookOverview.js` - Overview singolo libro
-- `BookChapter.js` - Capitolo libro
-- `BooksRouter.js` - Router sezione libri
-
-##### 🎬 **`src/components/animations/`**
-
-- `LazyMotion.js` - Lazy loading animazioni Framer Motion
-
-#### 🔧 **Utils e Hooks**
-
-##### 🛠️ **`src/utils/`**
-
-- `hashRouter.js` - Gestione hash routing
-- `serviceWorker.js` - Service worker personalizzato
-- `analytics.js` - Analytics e tracking
-- `RouteDebugger.js` - Debug routing
-
-##### 🪝 **`src/hooks/`**
-
-- `useHashRouter.js` - Hook per hash routing
-- `useNavigation.js` - Hook navigazione
-- `useStats.js` - Hook statistiche sito
-
-#### 🗄️ **Dati e Configurazioni**
-
-##### 📊 **`src/data/`**
-
-- `books.js` - Database libri completo
-- `history.en.json` / `history.it.json` - Timeline tradotta
-- `project-stats.json` - Statistiche progetto
-
-#### 🌐 **Traduzioni**
-
-##### 🗣️ **`src/locales/`**
-
-- `en/translation.json` - Traduzioni inglesi
-- `it/translation.json` - Traduzioni italiane
-- Supporto completo i18n con react-i18next
-
-### 🎯 **Benefici Riorganizzazione**
-
-#### ✅ **Vantaggi**
-
-- **Modularità**: Ogni componente ha una responsabilità specifica
-- **Manutenibilità**: Codice più facile da trovare e modificare
-- **Scalabilità**: Struttura pronta per espansioni future
-- **Performance**: Import ottimizzati, lazy loading
-- **Developer Experience**: Sviluppo più fluido e intuitivo
-
-#### 📈 **Metriche**
-
-- **Build time**: Ridotto del 15%
-- **Bundle size**: Mantenuto (~132KB)
-- **Code maintainability**: Migliorato drasticamente
-- **Developer productivity**: +40% velocità sviluppo
-
----
-
-## [v1.8.5] - 2024-12-28 🔄
-
-### 🔄 **Hash Routing Implementation**
-
-#### 🛣️ **Sistema Routing Personalizzato**
-
-- **Implementato**: Sistema di hash routing personalizzato per GitHub Pages
-- **File**: `src/utils/hashRouter.js`
-- **Funzionalità**:
-  - Navigazione client-side con hash (#about, #projects, ecc.)
-  - Gestione browser back/forward
-  - Scroll automatico alle sezioni
-  - URL persistenti e condivisibili
-
-#### 🏠 **Homepage Routing**
-
-- **Problema**: GitHub Pages non supporta client-side routing per SPA
-- **Soluzione**: Hash routing con fallback alla homepage
-- **Benefici**: 
-  - URL condivisibili (es: `site.com/#about`)
-  - Navigazione fluida senza refresh
-  - Compatibilità piena con GitHub Pages
-
-### 📱 **Mobile Optimization**
-
-#### 🔧 **UI/UX Mobile**
-
-- **Menu mobile**: Animazioni fluide, touch-friendly
-- **Responsive**: Perfetta visualizzazione su tutti i dispositivi
-- **Performance**: Lazy loading componenti, animazioni ottimizzate
-
----
-
-## [v1.8.0] - 2024-12-20 🎨
-
-### 🎨 **Major UI/UX Redesign**
-
-#### 🌟 **Nuovo Design System**
-
-- **Tema scuro**: Design moderno con gradients e glassmorphism
-- **Animazioni**: Framer Motion per transizioni fluide
-- **Typography**: Migliorata leggibilità e gerarchia visiva
-- **Colors**: Palette coerente con accent colors vibrant
-
-#### 🏠 **Homepage Completamente Ridisegnata**
-
-- **Hero Section**: Testo animato con gradient, call-to-action prominente
-- **About**: Cards con hover effects e animazioni staggered
-- **Projects**: Grid responsive con filtri e animazioni
-- **Timeline**: Storia personale interattiva con milestone
-
-#### 📚 **Sezione Books Completa**
-
-- **Router**: Sistema navigazione dedicato per i libri
-- **Book Overview**: Pagine dettagliate per ogni libro
-- **Chapters**: Sistema di lettura capitoli con navigazione
-- **Database**: Struttura dati completa per gestione contenuti
-
-### 🌐 **Internationalizzazione**
-
-#### 🗣️ **Supporto Multilingua**
-
-- **i18next**: Implementazione completa italiano/inglese
-- **Language Switcher**: Toggle animato nella navbar
-- **Context**: Ogni stringa localizzata, inclusi contenuti dinamici
-- **Fallback**: Gestione automatica traduzioni mancanti
-
-### ⚡ **Performance Optimization**
-
-#### 🚀 **Bundle Optimization**
-
-- **Code Splitting**: Lazy loading delle route e componenti
-- **Tree Shaking**: Eliminazione codice non utilizzato
-- **Image Optimization**: WebP con fallback, lazy loading immagini
-- **CSS**: Purging automatico, minification avanzata
-
-#### 📊 **Metrics**
-
-- **Lighthouse Score**: 95+ su tutte le metriche
-- **Bundle Size**: ~132KB (eccellente per SPA React)
-- **First Paint**: <1.2s
-- **Interactive**: <2.1s
-
----
-
-## [v1.0.0] - 2024-12-01 🎉
-
-### 🎉 **Initial Release**
-
-#### ⚡ **Tech Stack**
-
-- **Framework**: React 18 con Hooks
-- **Styling**: Tailwind CSS + Custom CSS
-- **Animations**: Framer Motion
-- **Icons**: React Icons (FontAwesome, SimpleIcons)
-- **Build**: Create React App ottimizzato
-- **Deploy**: GitHub Pages con custom domain
-
-#### 🏗️ **Features Iniziali**
-
-- **Single Page Application**: Navigazione fluida
-- **Responsive Design**: Mobile-first approach
-- **Theme Support**: Dark/Light mode toggle
-- **Component Architecture**: Modulare e riutilizzabile
-
----
-
-### 📝 **Note Versioning**
-
-- **Major (X.0.0)**: Cambiamenti architetturali significativi
-- **Minor (0.X.0)**: Nuove features, componenti, sezioni
-- **Patch (0.0.X)**: Bug fixes, ottimizzazioni, miglioramenti UI
-
-### 🎯 **Roadmap Futuro**
-
-- [ ] **Blog System**: CMS integrato per articoli
-- [ ] **Portfolio Projects**: Showcase progetti dettagliati
-- [ ] **Contact Form**: Sistema messaggi con backend
-- [ ] **Analytics**: Dashboard statistiche visitatori
-- [ ] **PWA**: Progressive Web App capabilities
+Last updated: October 1, 2025

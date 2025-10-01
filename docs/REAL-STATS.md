@@ -1,243 +1,422 @@
-# 📊 Sistema di Statistiche Reali
+# Real Statistics System
 
-Questo documento descrive il sistema implementato per calcolare e utilizzare statistiche reali del progetto invece di dati mock.
+Documentation for the automated statistics generation and integration system.
 
-## 🎯 Panoramica
+## Overview
 
-Il sistema di statistiche reali analizza automaticamente il progetto locale e combina i dati con informazioni dall'API GitHub per fornire metriche accurate e aggiornate.
+The real statistics system automatically analyzes the local project and combines data with GitHub API information to provide accurate, up-to-date metrics displayed throughout the site.
 
-## 🏗️ Architettura
+## Architecture
 
-### 📁 File Principali
+### Core Files
 
 ```
-scripts/
-├── generate-stats.js        # Script principale calcolo statistiche  
-└── pre-commit-hook.js       # Hook automatico pre-commit
+scripts/stats/
+├── code-stats.js          # Code analysis script
+├── git-stats.js           # Git statistics
+├── lighthouse-stats.js    # Performance metrics
+└── structure-stats.js     # Project structure analysis
 
 src/
-├── hooks/useStats.js        # Hook React aggiornati
-└── data/project-stats.json  # Statistiche generate
+├── hooks/useStats.js      # React hooks for statistics
+└── data/project-stats.json # Generated statistics data
 
 public/
-└── project-stats.json      # Copia per accesso HTTP
+└── project-stats.json     # Public statistics file
 ```
 
-## 🔧 Funzionalità
+## Features
 
-### 1. **Script di Generazione** (`generate-stats.js`)
+### 1. Code Analysis
 
-Scansiona automaticamente il progetto e calcola:
+Automatically scans the project to calculate:
 
-#### 📄 **Analisi Codice**
-- **File totali**: Conta tutti i file di codice (.js, .jsx, .css, .json, .md)
-- **Righe di codice**: Escluse righe vuote e commenti
-- **Distribuzione linguaggi**: Percentuali per tipo di file
-- **Componenti React**: Rilevamento automatico componenti
+**File Metrics**:
+- Total files count by type (.js, .jsx, .css, .json, .md)
+- Lines of code (excluding empty lines and comments)
+- Language distribution percentages
+- React component detection
 
-#### 🏗️ **Struttura Progetto**
-- **Route**: Conta `<Route>` in App.js
-- **Hooks**: File in `src/hooks/`
-- **Libri**: Analizza `src/data/books.js`
-- **Capitoli**: Conta capitoli nei libri
+**Project Structure**:
+- Route count (from App.js)
+- Custom hooks count (from `src/hooks/`)
+- Book data analysis (from `src/data/books.js`)
+- Chapter counting across books
 
-#### 🔄 **Statistiche Git**
-- **Commit totali**: `git rev-list --count HEAD`
-- **Contributors**: `git shortlog -sn`
-- **Branch**: `git branch -r`
-- **Ultimo commit**: Hash, messaggio, autore, data
+### 2. Git Statistics
 
-#### 📦 **Informazioni Package**
-- **Nome e versione**: Da `package.json`
-- **Dipendenze**: Conta dependencies + devDependencies
-- **Script**: Numero di script npm disponibili
+Collects repository information:
 
-### 2. **Hook React Aggiornati** (`useStats.js`)
+- Total commits: `git rev-list --count HEAD`
+- Contributors: `git shortlog -sn`
+- Branch listing: `git branch -r`
+- Latest commit details (hash, message, author, date)
 
-#### `useGitHubStats()`
-- **Dati combinati**: Locale + GitHub API
-- **Fallback intelligente**: Se API non disponibile, usa dati locali
-- **Linguaggi**: Percentuali da GitHub o analisi locale
-- **Commit accurati**: Dati Git locali invece che API
+### 3. Package Information
 
-#### `useSiteStats()`  
-- **Metriche reali**: Carica da `project-stats.json`
-- **Performance**: Build time e dimensioni
-- **Struttura**: Componenti, route, file reali
+Extracts from `package.json`:
 
-#### `usePersonalStats()`
-- **Calcoli basati su dati reali**: Usa commit e statistiche progetto
-- **Stime intelligenti**: Caffè per commit, bug fix percentuali
+- Project name and version
+- Dependencies count (production + development)
+- Available npm scripts
+- Package manager information
 
-## ⚙️ Configurazione e Utilizzo
+### 4. Performance Metrics
 
-### Script NPM
+Lighthouse integration for:
+
+- Performance score
+- Accessibility score
+- Best Practices score
+- SEO score
+
+See [LIGHTHOUSE_METRICS.md](./development/LIGHTHOUSE_METRICS.md) for details.
+
+## React Hooks
+
+### useGitHubStats()
+
+Fetches and combines local and GitHub API data.
+
+**Features**:
+- Combined local + GitHub API data
+- Intelligent fallback to local data if API unavailable
+- Language percentages from GitHub or local analysis
+- Accurate commit data from local Git
+
+**Usage**:
+```javascript
+import { useGitHubStats } from '../hooks/useStats';
+
+function StatsComponent() {
+  const { stats, loading, error } = useGitHubStats();
+  
+  if (loading) return <Spinner />;
+  if (error) return <Error message={error} />;
+  
+  return <div>Total Commits: {stats.totalCommits}</div>;
+}
+```
+
+**Returned Data**:
+```javascript
+{
+  totalCommits: number,
+  languages: { [language]: percentage },
+  contributors: number,
+  lastUpdate: string,
+  stars: number,
+  forks: number
+}
+```
+
+### useSiteStats()
+
+Loads statistics from generated `project-stats.json`.
+
+**Features**:
+- Real project metrics
+- Performance data
+- Structure information
+- Build statistics
+
+**Usage**:
+```javascript
+import { useSiteStats } from '../hooks/useStats';
+
+function SiteStatsComponent() {
+  const stats = useSiteStats();
+  
+  return (
+    <div>
+      <p>Components: {stats.components}</p>
+      <p>Routes: {stats.routes}</p>
+    </div>
+  );
+}
+```
+
+**Returned Data**:
+```javascript
+{
+  components: number,
+  routes: number,
+  hooks: number,
+  totalFiles: number,
+  linesOfCode: number,
+  languages: { [language]: { files, lines, percentage } },
+  buildTime: string,
+  bundleSize: string
+}
+```
+
+### usePersonalStats()
+
+Calculates derived statistics based on real data.
+
+**Features**:
+- Calculations based on actual commit count
+- Intelligent estimates (coffee per commit, bug fix percentages)
+- Real-time data integration
+
+**Usage**:
+```javascript
+import { usePersonalStats } from '../hooks/useStats';
+
+function PersonalStatsComponent() {
+  const stats = usePersonalStats();
+  
+  return (
+    <div>
+      <p>Coffee Consumed: {stats.coffeeConsumed}</p>
+      <p>Bugs Fixed: {stats.bugsFixed}</p>
+    </div>
+  );
+}
+```
+
+## Configuration and Usage
+
+### NPM Scripts
 
 ```bash
-# Genera statistiche manualmente
-npm run stats
+# Generate statistics manually
+pnpm run stats
 
-# Genera statistiche e avvia dev server
-npm run stats:watch
+# Generate statistics with Lighthouse metrics
+pnpm run stats:lighthouse
 
-# Build con statistiche aggiornate (automatico)
-npm run build
+# Copy stats to public folder
+pnpm run stats:copy
 
-# Hook pre-commit (manuale)
-npm run precommit
+# Validate statistics
+pnpm run stats:test
 ```
 
-### Automazione Build
+### Build Automation
 
-Le statistiche vengono **automaticamente rigenerate** ad ogni build:
+Statistics are automatically regenerated on each build:
 
 ```json
 {
   "scripts": {
-    "build": "npm run stats && react-scripts build"
+    "predeploy": "pnpm run build:prod && pnpm run stats",
+    "stats": "node scripts/stats/code-stats.js && cp src/data/project-stats.json public/project-stats.json"
   }
 }
 ```
 
-### Pre-commit Hook
+### Manual Generation
 
-Per aggiornare le statistiche ad ogni commit:
+To manually generate statistics:
 
 ```bash
-# Aggiungi al tuo git hook
-cp scripts/pre-commit-hook.js .git/hooks/pre-commit
-chmod +x .git/hooks/pre-commit
+# Navigate to project root
+cd /path/to/project
+
+# Run statistics generation
+node scripts/stats/code-stats.js
+
+# Copy to public folder
+cp src/data/project-stats.json public/project-stats.json
 ```
 
-## 📊 Dati Generati
+## Generated Statistics File
 
-### Esempio Output `project-stats.json`:
+The `project-stats.json` file contains:
 
 ```json
 {
-  "generated": "2025-06-18T12:28:42.678Z",
-  "generationTime": 258,
   "project": {
     "name": "lollo176ita.github.io",
-    "version": "0.1.0",
-    "dependencies": 20,
-    "devDependencies": 5
+    "version": "2.2.8",
+    "description": "Personal website and portfolio"
   },
   "code": {
-    "files": 48,
-    "totalLines": 4240,
-    "codeLines": 3958,
+    "totalFiles": 150,
+    "linesOfCode": 8500,
     "languages": {
-      "JavaScript": { "files": 39, "lines": 3062, "percentage": 81.1 },
-      "JSON": { "files": 6, "lines": 616, "percentage": 16.3 },
-      "CSS": { "files": 2, "lines": 96, "percentage": 2.5 }
-    }
-  },
-  "structure": {
-    "components": 19,
-    "routes": 8,
-    "books": 2,
-    "chapters": 4,
-    "hooks": 3
+      "JavaScript": { "files": 85, "lines": 6200, "percentage": 72.9 },
+      "CSS": { "files": 25, "lines": 1500, "percentage": 17.6 },
+      "JSON": { "files": 15, "lines": 400, "percentage": 4.7 },
+      "Markdown": { "files": 25, "lines": 400, "percentage": 4.7 }
+    },
+    "components": 45,
+    "hooks": 8,
+    "routes": 12
   },
   "git": {
-    "commits": 95,
+    "totalCommits": 350,
     "contributors": 1,
-    "branches": 12,
+    "branches": 3,
     "lastCommit": {
-      "hash": "c8f7114",
-      "message": "feat: Update project structure", 
-      "author": "Lollo176ITA",
-      "date": "2025-06-18T10:35:30.000Z"
+      "hash": "abc123...",
+      "message": "Latest commit message",
+      "author": "lollo176ita",
+      "date": "2025-10-01"
     }
-  }
+  },
+  "dependencies": {
+    "total": 45,
+    "production": 20,
+    "development": 25
+  },
+  "performance": {
+    "lighthouse": {
+      "performance": 57,
+      "accessibility": 88,
+      "bestPractices": 100,
+      "seo": 100
+    },
+    "buildTime": "13.1s",
+    "bundleSize": "131KB"
+  },
+  "generated": "2025-10-01T12:00:00.000Z"
 }
 ```
 
-## 🎨 Utilizzo nei Componenti
+## Data Display
 
-### About.js
+Statistics are displayed in various components:
+
+### About Page
+- Total commits
+- Lines of code
+- Project duration
+- Technologies used
+
+### History Page
+- Commit timeline
+- Version milestones
+- Contributor information
+
+### Creations Page
+- Lighthouse metrics
+- Performance scores
+- Build statistics
+
+### Homepage
+- Quick statistics overview
+- Recent activity
+- Project highlights
+
+## GitHub API Integration
+
+### Rate Limiting
+
+The GitHub API has rate limits:
+- Unauthenticated: 60 requests/hour
+- Authenticated: 5000 requests/hour
+
+The system handles rate limiting by:
+- Caching responses
+- Falling back to local data
+- Showing appropriate error messages
+
+### Authentication
+
+To increase rate limits, add a GitHub token:
+
+```env
+# .env.local
+REACT_APP_GITHUB_TOKEN=your_github_token
+```
+
+Generate a token at: [GitHub Settings > Developer settings > Personal access tokens](https://github.com/settings/tokens)
+
+Required scopes:
+- `public_repo` (read-only access to public repositories)
+
+## Error Handling
+
+The statistics system includes robust error handling:
+
+### Network Errors
+- Falls back to local statistics
+- Shows cached data when available
+- Displays user-friendly error messages
+
+### Missing Data
+- Provides default values
+- Logs warnings in development
+- Continues operation with partial data
+
+### Validation
+- Validates generated statistics
+- Checks for required fields
+- Ensures data type correctness
+
+## Performance Considerations
+
+### Caching
+- Statistics cached in localStorage
+- Automatic cache invalidation after 1 hour
+- Manual refresh available
+
+### Bundle Size
+- Statistics file excluded from main bundle
+- Loaded on-demand for statistics pages
+- Gzip compression reduces file size
+
+### Generation Time
+- Code analysis: ~2-3 seconds
+- Git statistics: ~1 second
+- Lighthouse audit: ~30 seconds (optional)
+- Total: ~5 seconds (without Lighthouse)
+
+## Troubleshooting
+
+### Statistics Not Updating
+
+1. Clear local cache:
 ```javascript
-import { useGitHubStats, useSiteStats, usePersonalStats } from '../hooks/useStats';
-
-function About() {
-  const githubStats = useGitHubStats(); // Dati reali Git + GitHub
-  const siteStats = useSiteStats();     // Metriche progetto reali
-  const personalStats = usePersonalStats(); // Statistiche personali
-
-  return (
-    <div>
-      <p>Commit reali: {githubStats.commits}</p>
-      <p>Righe di codice: {siteStats.linesOfCode.toLocaleString()}</p>
-      <p>Componenti: {siteStats.components}</p>
-    </div>
-  );
-}
+localStorage.removeItem('project-stats-cache');
 ```
 
-### History.js
-```javascript
-import { useGitHubStats } from '../hooks/useStats';
-
-function History() {
-  const { commits, lastCommit, languages } = useGitHubStats();
-  
-  return (
-    <div>
-      <p>Ultimo commit: {lastCommit?.message}</p>
-      <p>Linguaggi: {Object.keys(languages).join(', ')}</p>
-    </div>
-  );
-}
+2. Regenerate manually:
+```bash
+pnpm run stats
 ```
 
-## 🔄 Workflow di Aggiornamento
+3. Check file permissions:
+```bash
+ls -la src/data/project-stats.json
+```
 
-### Sviluppo Locale
-1. **Modifica codice** → Crea/modifica file
-2. **`npm run stats`** → Rigenera statistiche
-3. **`npm start`** → Vedi statistiche aggiornate in tempo reale
+### GitHub API Errors
 
-### Commit
-1. **`git add .`** → Aggiungi modifiche
-2. **`npm run precommit`** → Aggiorna statistiche automaticamente  
-3. **`git commit`** → Commit include statistiche aggiornate
+1. Check rate limit:
+```bash
+curl https://api.github.com/rate_limit
+```
 
-### Deploy
-1. **`npm run build`** → Build con statistiche fresche
-2. **`npm run deploy`** → Deploy con dati accurati
+2. Add authentication token (see [GitHub API Integration](#github-api-integration))
 
-## 🎯 Benefici
+3. Use local fallback data
 
-### ✅ **Accuratezza**
-- **Dati reali** invece di mock/stime
-- **Aggiornamento automatico** ad ogni modifica
-- **Sincronizzazione** con stato effettivo progetto
+### Build Errors
 
-### ⚡ **Performance**  
-- **Cache intelligente** per evitare ricalcoli
-- **Fallback robusti** se API non disponibili
-- **Generazione veloce** (<300ms)
+1. Ensure scripts are executable:
+```bash
+chmod +x scripts/stats/*.js
+```
 
-### 🛠️ **Manutenibilità**
-- **Zero configurazione manuale** 
-- **Auto-discovery** di componenti e struttura
-- **Evolutivo** con crescita progetto
+2. Check Node.js version (>= 18.0.0):
+```bash
+node --version
+```
 
-### 📈 **Insights**
-- **Metriche reali crescita** del progetto
-- **Distribuzione linguaggi accurata**
-- **Timeline commit effettiva**
+3. Verify dependencies:
+```bash
+pnpm install
+```
 
-## 🚀 Estensioni Future
+## Related Documentation
 
-- [ ] **Build performance tracking**: Tempo build per commit
-- [ ] **Lighthouse scores automatici**: Metriche performance
-- [ ] **Dependency analysis**: Analisi dipendenze e vulnerabilità  
-- [ ] **Code complexity metrics**: Calcolo complessità ciclomatica
-- [ ] **Test coverage integration**: Statistiche coverage test
-- [ ] **Bundle size tracking**: Evoluzione dimensioni nel tempo
+- [Architecture](./ARCHITECTURE.md) - Project architecture
+- [Lighthouse Metrics](./development/LIGHTHOUSE_METRICS.md) - Performance monitoring
+- [Performance Optimization](./development/PERFORMANCE_OPTIMIZATION.md) - Optimization strategies
 
 ---
 
-**Questo sistema trasforma le statistiche da dati approssimativi a metriche precise e significative, fornendo una visione accurata dello stato e crescita del progetto.**
+Last updated: October 2025

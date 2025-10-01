@@ -1,54 +1,66 @@
-# 🚀 Lighthouse Metrics Automation
+# Lighthouse Metrics Automation
+
+Documentation for the automated Lighthouse performance metrics collection system.
 
 ## Overview
 
-Il progetto ora include un sistema automatizzato per raccogliere metriche reali di performance usando Lighthouse. Le metriche vengono utilizzate nella pagina `/creations` per mostrare dati concreti invece di valori stimati.
+The project includes an automated system to collect real performance metrics using Lighthouse. These metrics are displayed on the `/creations` page, providing concrete data instead of estimated values.
 
-## 📊 Metriche Raccolte
+## Collected Metrics
 
-- **Performance** (0-100): Velocità di caricamento e ottimizzazioni
-- **Accessibility** (0-100): Compatibilità con screen reader e WCAG
-- **Best Practices** (0-100): Sicurezza, HTTPS, console errors
-- **SEO** (0-100): Ottimizzazione per motori di ricerca
+The system tracks four key Lighthouse scores:
 
-## 🛠️ Scripts Disponibili
+- **Performance** (0-100): Page load speed and optimization
+- **Accessibility** (0-100): Screen reader compatibility and WCAG compliance
+- **Best Practices** (0-100): Security, HTTPS, console errors
+- **SEO** (0-100): Search engine optimization
 
-### Generazione Statistiche Base
+## Available Scripts
+
+### Generate Base Statistics
+
 ```bash
-npm run stats
+pnpm run stats
 ```
-Genera le statistiche del progetto senza metriche Lighthouse.
 
-### Generazione Completa con Lighthouse
+Generates project statistics without Lighthouse metrics.
+
+### Generate Complete Statistics with Lighthouse
+
 ```bash
-npm run stats:lighthouse
+pnpm run stats:lighthouse
 ```
-Esegue build completo + audit Lighthouse + generazione statistiche.
 
-### Copia File Pubblico
+Executes complete build + Lighthouse audit + statistics generation.
+
+### Copy Statistics to Public Folder
+
 ```bash
-npm run stats:copy
+pnpm run stats:copy
 ```
-Copia il file delle statistiche nella cartella public per l'uso runtime.
 
-### Test Metriche
+Copies the statistics file to the public folder for runtime access.
+
+### Validate Metrics
+
 ```bash
-npm run stats:test
+pnpm run stats:test
 ```
-Verifica che le metriche siano valide e complete.
 
-## 📈 Integrazione nel Progetto
+Verifies that metrics are valid and complete.
 
-### Script generate-stats.js
+## Project Integration
 
-Il file `scripts/generate-stats.js` ora include una funzione `getLighthouseScores()` che:
+### Statistics Generation Script
 
-1. **Avvia un server locale** della build in produzione
-2. **Esegue audit Lighthouse** automaticamente
-3. **Estrae le metriche** (Performance, Accessibility, Best Practices, SEO)
-4. **Salva i risultati** in `src/data/project-stats.json`
+The `scripts/stats/code-stats.js` file includes a `getLighthouseScores()` function that:
 
-### Utilizzo nelle Componenti
+1. Starts a local server with the production build
+2. Executes automated Lighthouse audit
+3. Extracts metrics (Performance, Accessibility, Best Practices, SEO)
+4. Saves results to `src/data/project-stats.json`
+
+### Component Usage
 
 ```javascript
 // src/hooks/useStats.js
@@ -75,7 +87,7 @@ export const useStats = () => {
 };
 ```
 
-### Visualizzazione in /creations
+### Display in Creations Page
 
 ```javascript
 // src/components/pages/CreationsPage.js
@@ -109,11 +121,14 @@ const { lighthouse } = useStats();
 </div>
 ```
 
-## ⚙️ Configurazione
+## Configuration
 
-### Lighthouse Config
+### Lighthouse Configuration
+
+Optional configuration file for custom audit settings:
+
 ```javascript
-// scripts/lighthouse.config.js (se necessario)
+// scripts/lighthouse.config.js
 module.exports = {
   extends: 'lighthouse:default',
   settings: {
@@ -135,26 +150,32 @@ module.exports = {
 ```
 
 ### Server Configuration
+
+Local server setup for Lighthouse audit:
+
 ```javascript
-// scripts/generate-stats.js - Server setup
+// scripts/stats/code-stats.js - Server setup
 const server = spawn('npx', ['serve', '-s', 'build', '-p', port], {
   stdio: 'pipe',
   shell: true
 });
 
-// Attendi che il server sia pronto
+// Wait for server to be ready
 await new Promise(resolve => {
   server.stdout.on('data', (data) => {
     if (data.toString().includes('Accepting connections')) {
-      setTimeout(resolve, 2000); // Attesa extra per stabilità
+      setTimeout(resolve, 2000); // Extra wait for stability
     }
   });
 });
 ```
 
-## 📋 Output delle Metriche
+## Metrics Output
 
-### Format JSON
+### JSON Format
+
+Standard output format for generated metrics:
+
 ```json
 {
   "lighthouse": {
@@ -168,7 +189,10 @@ await new Promise(resolve => {
 }
 ```
 
-### Metriche Dettagliate (opzionale)
+### Detailed Metrics (Optional)
+
+Extended format with additional performance data:
+
 ```json
 {
   "lighthouse": {
@@ -177,57 +201,205 @@ await new Promise(resolve => {
       "metrics": {
         "firstContentfulPaint": 1200,
         "largestContentfulPaint": 2500,
-        "totalBlockingTime": 150
+        "totalBlockingTime": 150,
+        "cumulativeLayoutShift": 0.1,
+        "speedIndex": 2000
       }
+    },
+    "accessibility": {
+      "score": 92,
+      "details": "..."
     }
   }
 }
 ```
 
-## 🚀 Benefici
+## Benefits
 
-1. **Metriche Reali**: Dati effettivi invece di stime
-2. **Automazione**: Generazione automatica ad ogni build
-3. **Visibilità**: Metriche visibili sulla pagina /creations
-4. **CI/CD Ready**: Integrabile in pipeline di deploy
-5. **Performance Tracking**: Monitoraggio nel tempo
+### Automation
+- Automatic generation on every build
+- No manual intervention required
+- CI/CD pipeline integration ready
 
-## ⚠️ Note Tecniche
+### Real Data
+- Actual metrics instead of estimates
+- Updated with each deployment
+- Historical tracking capability
 
-- **Porta**: Lo script trova automaticamente una porta libera
-- **Timeout**: 30 secondi massimi per l'audit
-- **Fallback**: Se Lighthouse fallisce, usa valori di default
-- **Cleanup**: Server automaticamente terminato dopo l'audit
-- **Error Handling**: Gestione robusta degli errori
+### Visibility
+- Metrics displayed on /creations page
+- Performance trends over time
+- Transparent project quality
 
-## 🔧 Troubleshooting
+### Integration
+- Easy integration with build process
+- Minimal performance overhead
+- Robust error handling
 
-### Problema: Lighthouse non trova la pagina
+## Technical Notes
+
+### Port Management
+- Script automatically finds available port
+- Default range: 3000-3100
+- Automatic cleanup after audit
+
+### Timeout Configuration
+- Default: 30 seconds maximum for audit
+- Configurable for slower systems
+- Graceful fallback on timeout
+
+### Error Handling
+- Fallback to default values on failure
+- Server automatically terminated after audit
+- Detailed error logging for debugging
+
+### Performance Impact
+- Adds ~30-45 seconds to build time
+- Only runs when explicitly requested
+- Skippable for development builds
+
+## Troubleshooting
+
+### Issue: Lighthouse Cannot Find Page
+
+**Symptoms**: Audit fails with connection error
+
+**Solution**:
 ```bash
-# Verifica che la build esista
-npm run build
+# Verify build exists
+pnpm run build
 
-# Verifica che il server sia raggiungibile
+# Verify server is reachable
 curl http://localhost:3000
+
+# Check for port conflicts
+lsof -i :3000
 ```
 
-### Problema: Timeout durante l'audit
+### Issue: Audit Timeout
+
+**Symptoms**: Lighthouse times out before completing audit
+
+**Solution**:
 ```javascript
-// Aumenta il timeout in generate-stats.js
+// Increase timeout in code-stats.js
 const result = await lighthouse(url, {
   port: chromePort,
   output: 'json'
-}, null, undefined, { timeout: 60000 }); // 60 secondi
+}, null, undefined, { 
+  timeout: 60000 // Increase to 60 seconds
+});
 ```
 
-### Problema: Chrome non disponibile
+### Issue: Chrome Not Available
+
+**Symptoms**: Chrome/Chromium binary not found
+
+**Solution**:
 ```bash
-# Installa Chrome/Chromium
+# macOS
+brew install --cask google-chrome
+
 # Ubuntu/Debian
 sudo apt-get install chromium-browser
 
 # Windows
-# Download da https://www.google.com/chrome/
+# Download from https://www.google.com/chrome/
 ```
 
-Questo sistema garantisce metriche accurate e aggiornate per mostrare le reali performance del sito!
+### Issue: Inconsistent Results
+
+**Symptoms**: Metrics vary significantly between runs
+
+**Possible Causes**:
+- System load during audit
+- Network conditions
+- Chrome extensions interference
+
+**Solution**:
+- Run audit on idle system
+- Use headless mode (already default)
+- Clear Chrome cache before audit
+- Run multiple audits and average results
+
+## Best Practices
+
+### When to Run Lighthouse Audit
+
+**Recommended**:
+- Before deployment
+- After major performance changes
+- During release process
+- Weekly for tracking trends
+
+**Not Recommended**:
+- During active development
+- On every commit
+- In hot-reload mode
+
+### Interpreting Scores
+
+**Performance**:
+- 90-100: Excellent
+- 50-89: Needs improvement
+- 0-49: Poor
+
+**Target Scores**:
+- Performance: 70+ (current: 57)
+- Accessibility: 90+ (current: 88)
+- Best Practices: 95+ (current: 100)
+- SEO: 95+ (current: 100)
+
+### Optimization Tips
+
+Based on audit results:
+- Reduce bundle size for better performance
+- Implement lazy loading for images
+- Optimize font loading strategy
+- Minimize render-blocking resources
+
+## Integration with CI/CD
+
+### GitHub Actions Example
+
+```yaml
+name: Lighthouse CI
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: pnpm install
+      
+      - name: Build
+        run: pnpm run build
+      
+      - name: Run Lighthouse
+        run: pnpm run stats:lighthouse
+      
+      - name: Upload results
+        uses: actions/upload-artifact@v2
+        with:
+          name: lighthouse-results
+          path: src/data/project-stats.json
+```
+
+## Related Documentation
+
+- [Performance Optimization](./PERFORMANCE_OPTIMIZATION.md) - Optimization strategies
+- [Real Stats](../REAL-STATS.md) - Statistics system overview
+- [Architecture](../ARCHITECTURE.md) - Project architecture
+
+---
+
+Last updated: October 2025

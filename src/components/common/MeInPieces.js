@@ -348,7 +348,7 @@ const MeInPieces = () => {
 
                 {/* Statistiche */}
                 <div className="space-y-2">                  <h5 className="font-semibold text-gray-800 dark:text-white mb-3">
-                    📊 {t('common.statistics') || 'Statistiche'}:
+                    {t('common.statistics') || 'Statistiche'}:
                   </h5>
                   {selectedOrgan.stats.map((stat, index) => (
                     <motion.div
