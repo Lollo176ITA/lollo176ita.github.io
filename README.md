@@ -2,10 +2,7 @@
 
 > A modern and interactive web platform showcasing my journey, projects, and passion for programming and technology.
 
-[![React](https://img.shields.io/badge/React-19.1.0-61DAFB?style=flat-square&logo=react)](https://reactjs.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.15-06B6D4?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
-[![pnpm](https://img.shields.io/badge/pnpm-Package_Manager-F69220?style=flat-square&logo=pnpm)](https://pnpm.io/)
+Built with React, Tailwind CSS, and pnpm. Licensed under MIT.
 
 ---
 
@@ -138,6 +135,7 @@ pnpm run preview  # Serve la build locale in modalita preview
 pnpm run build  # Build standard con Vite
 pnpm run build:prod  # Esegui la build di produzione ottimizzata
 pnpm run build:analyze  # Esegui la build con analisi del bundle
+pnpm run predeploy  # Prepara contenuti generati e crea la build finale
 
 # Qualita
 pnpm run test  # Esegui i test con Vitest
@@ -146,12 +144,7 @@ pnpm run test:ui  # Apri la UI interattiva di Vitest
 # Automazione
 pnpm run docs:sync  # Sincronizza le sezioni Markdown gestite automaticamente
 pnpm run stats  # Rigenera le statistiche del progetto
-pnpm run version:tag  # Stampa il tag release derivato dalla versione
 pnpm run prepare:content  # Sincronizza docs e statistiche generate
-
-# Deploy
-pnpm run predeploy  # Prepara contenuti e genera la build finale
-pnpm run deploy  # Pubblica `build/` su GitHub Pages con `gh-pages`
 ```
 <!-- AUTO:README_IT_COMMANDS:END -->
 
@@ -244,17 +237,16 @@ pnpm test -- --watch
 
 #### GitHub Pages (Automatico)
 
-Il sito viene automaticamente deployato su GitHub Pages ad ogni push sul branch principale.
+Il sito viene automaticamente validato su `dev`, promosso su `main` e pubblicato su GitHub Pages dalla pipeline GitHub Actions.
 
-#### Deployment Manuale
+#### Trigger Manuale
 
 ```bash
-# Build e deploy
-pnpm run predeploy
-pnpm run deploy
+# Avvia la pipeline completa
+git push origin dev
 
-# Oppure deploy ottimizzato
-pnpm run deploy:optimized
+# Solo per verificare localmente l'artefatto finale
+pnpm run predeploy
 ```
 
 Il sito sarà disponibile su: `https://lollo176ita.github.io`
@@ -370,7 +362,7 @@ The project uses modern web technologies to ensure optimal performance and a smo
 - **Internationalization**: react-i18next for multilingual support
 - **Build & Optimization**: CRACO, Webpack Bundle Analyzer, Brotli/Gzip compression
 
-📖 **For complete technology stack details, see [ARCHITECTURE.md](docs/ARCHITECTURE.md)**
+For complete technology stack details, see [ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ### Project Architecture
 
@@ -385,11 +377,11 @@ The project follows a modular architecture based on modern React best practices:
 - `docs/` - Complete technical documentation
 
 **Architectural Principles**:
-- ✅ Separation of Concerns (separate components, hooks, utilities)
-- ✅ Component Composition (small, reusable components)
-- ✅ Performance First (lazy loading, code splitting, bundle optimization)
+- Separation of Concerns (separate components, hooks, utilities)
+- Component Composition (small, reusable components)
+- Performance First (lazy loading, code splitting, bundle optimization)
 
-📖 **For complete structure and detailed architectural patterns, see:**
+For complete structure and detailed architectural patterns, see:
 - [ARCHITECTURE.md](docs/ARCHITECTURE.md) - Architecture and design patterns
 - [COMPONENTS.md](docs/COMPONENTS.md) - Complete component documentation
 
@@ -426,6 +418,7 @@ pnpm run preview  # Serve the local build in preview mode
 pnpm run build  # Run the standard Vite build
 pnpm run build:prod  # Run the optimized production build
 pnpm run build:analyze  # Build with bundle analysis enabled
+pnpm run predeploy  # Prepare generated content and build the final artifact
 
 # Quality
 pnpm run test  # Run the Vitest suite
@@ -434,12 +427,7 @@ pnpm run test:ui  # Open the interactive Vitest UI
 # Automation
 pnpm run docs:sync  # Sync the managed Markdown sections
 pnpm run stats  # Regenerate project statistics
-pnpm run version:tag  # Print the release tag derived from the version
 pnpm run prepare:content  # Sync generated docs and stats
-
-# Deploy
-pnpm run predeploy  # Prepare generated content and build for release
-pnpm run deploy  # Publish `build/` to GitHub Pages with `gh-pages`
 ```
 <!-- AUTO:README_EN_COMMANDS:END -->
 
@@ -532,17 +520,16 @@ pnpm test -- --watch
 
 #### GitHub Pages (Automatic)
 
-The site is automatically deployed to GitHub Pages on every push to the main branch.
+The site is automatically validated on `dev`, promoted to `main`, and published to GitHub Pages by the GitHub Actions pipeline.
 
-#### Manual Deployment
+#### Manual Trigger
 
 ```bash
-# Build and deploy
-pnpm run predeploy
-pnpm run deploy
+# Trigger the full pipeline
+git push origin dev
 
-# Or optimized deploy
-pnpm run deploy:optimized
+# Only verify the final artifact locally
+pnpm run predeploy
 ```
 
 The site will be available at: `https://lollo176ita.github.io`

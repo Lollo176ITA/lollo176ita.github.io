@@ -14,18 +14,15 @@
 | `pnpm run test:ui` | Avvia la UI interattiva di Vitest | Debug dei test in locale |
 | `pnpm run docs:sync` | Aggiorna le sezioni auto-generate di README e docs | Prima di commit e nei job GitHub |
 | `pnpm run stats` | Rigenera `project-stats.json` e lo copia in `public/` | Aggiornamento metriche repository |
-| `pnpm run version:tag` | Restituisce il tag release da `package.json` (es. `v2.5.0`) | Automazione release e debug locale |
 | `pnpm run prepare:content` | Esegue `docs:sync` e `stats` nella sequenza corretta | Prima di build e deploy |
-| `pnpm run predeploy` | Sincronizza contenuti generati e poi crea la build finale | Base comune per deploy locale e CI |
-| `pnpm run deploy` | Pubblica `build/` su GitHub Pages usando `gh-pages` | Deploy manuale dal proprio ambiente |
+| `pnpm run predeploy` | Sincronizza contenuti generati e poi crea la build finale | Build completa pronta per il deploy automatico |
 <!-- AUTO:SCRIPTS_GUIDE_TABLE:END -->
 
 ### Flusso di deploy consigliato
 
 <!-- AUTO:SCRIPTS_GUIDE_FLOW:START -->
 ```bash
-pnpm run predeploy  # Sincronizza docs/stats e genera la build finale
-pnpm run deploy     # Pubblica ./build con gh-pages
+git push origin dev  # Avvia validazione, merge automatico su main e deploy Pages
 ```
 <!-- AUTO:SCRIPTS_GUIDE_FLOW:END -->
 
@@ -96,7 +93,6 @@ Sono mantenuti come riferimento ma non vengono più chiamati dalla pipeline.
 | `eslint-plugin-react` | Regole ESLint specifiche per React | .eslintrc.json |
 | `eslint-plugin-react-hooks` | Regole ESLint per gli hook React | .eslintrc.json |
 | `execa` | Esecuzione processi child da Node.js | Script di automazione |
-| `gh-pages` | Pubblicazione della cartella `build/` su GitHub Pages | Script `deploy` |
 | `glob` | Ricerca file tramite pattern glob | Script di statistiche |
 | `jsdom` | DOM emulato per test in ambiente Node | Vitest |
 | `lighthouse` | Audit automatici di performance e qualita | scripts/stats/lighthouse-stats.js |
