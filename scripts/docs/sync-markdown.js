@@ -65,6 +65,13 @@ const SCRIPT_METADATA = {
     docsDescription: 'Rigenera `project-stats.json` e lo copia in `public/`',
     docsWhen: 'Aggiornamento metriche repository',
   },
+  'stats:lighthouse': {
+    group: 'automation',
+    readmeIt: 'Esegue Lighthouse sulla build e aggiorna le metriche pubblicate',
+    readmeEn: 'Run Lighthouse on the build and refresh the published metrics',
+    docsDescription: 'Esegue Lighthouse sulla build e aggiorna i file stats serviti dal sito',
+    docsWhen: 'Aggiornamento report performance in CI o locale',
+  },
   'prepare:content': {
     group: 'automation',
     readmeIt: 'Sincronizza docs e statistiche generate',
@@ -173,6 +180,7 @@ const SCRIPT_ORDER = [
   'test:ui',
   'docs:sync',
   'stats',
+  'stats:lighthouse',
   'prepare:content',
   'predeploy',
 ];

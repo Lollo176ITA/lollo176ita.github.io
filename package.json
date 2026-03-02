@@ -25,6 +25,7 @@
     "test:ui": "vitest --ui",
     "docs:sync": "node scripts/docs/sync-markdown.js",
     "stats": "node scripts/stats/generate-stats.js && cp src/data/project-stats.json public/project-stats.json",
+    "stats:lighthouse": "node scripts/stats/lighthouse-stats.js",
     "prepare:content": "pnpm run docs:sync && pnpm run stats",
     "predeploy": "pnpm run prepare:content && pnpm run build:prod"
   },

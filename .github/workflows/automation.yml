@@ -87,6 +87,13 @@ jobs:
       - name: Synchronize generated content
         run: pnpm run prepare:content
 
+      - name: Build deploy artifact
+        run: pnpm run build:prod
+
+      - name: Run Lighthouse audit
+        timeout-minutes: 4
+        run: pnpm run stats:lighthouse
+
       - name: Commit generated files
         id: sync
         run: |
@@ -97,9 +104,6 @@ jobs:
             git commit -m "chore: sync generated content"
           fi
           echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-
-      - name: Build deploy artifact
-        run: pnpm run build:prod
 
       - name: Check if release tag already exists
         id: tag_check

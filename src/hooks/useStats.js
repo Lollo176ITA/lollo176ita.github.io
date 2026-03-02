@@ -7,13 +7,16 @@ let loadingPromise = null;
 /**
  * Carica le statistiche reali del progetto
  */
-const loadProjectStats = async () => {
+export const loadProjectStats = async () => {
   if (projectStatsCache) return projectStatsCache;
   if (loadingPromise) return loadingPromise;
   
   loadingPromise = (async () => {
     try {
-      const response = await fetch('/project-stats.json');
+      const cacheBust = typeof window !== 'undefined' ? `?t=${Date.now()}` : '';
+      const response = await fetch(`/project-stats.json${cacheBust}`, {
+        cache: 'no-store'
+      });
       if (response.ok) {
         projectStatsCache = await response.json();
         return projectStatsCache;
@@ -170,14 +173,14 @@ export function useSiteStats() {
           books: p.structure?.books || 0,
           chapters: p.structure?.chapters || 0,
           hooks: p.structure?.hooks || 0,
-          buildTime: p.performance?.avgBuildTime || 0,
-          buildSize: p.project?.size?.buildSize || 0,
+          buildTime: p.performance?.avgBuildTime || p.generationTime || 0,
+          buildSize: p.performance?.buildSize || p.project?.size?.buildSize || 0,
           lastBuild: p.generated ? new Date(p.generated) : null,
           languages: p.code?.languages || {},
           version: p.project?.version || '',
           dependencies: (p.project?.dependencies || 0) + (p.project?.devDependencies || 0),
           performance: {
-            avgBuildTime: p.performance?.avgBuildTime || 0,
+            avgBuildTime: p.performance?.avgBuildTime || p.generationTime || 0,
             lighthouse: p.performance?.lighthouse || {}
           },
           loading: false

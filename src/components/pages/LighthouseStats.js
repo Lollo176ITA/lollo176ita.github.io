@@ -16,23 +16,42 @@ import {
   FaTachometerAlt
 } from 'react-icons/fa';
 import { SiLighthouse } from 'react-icons/si';
-import statsData from '../../data/project-stats.json';
 import { useTrophies } from '../common/TrophySystem';
+import { loadProjectStats } from '../../hooks/useStats';
 
 const LighthouseStats = () => {
   const { t } = useTranslation();
   const [selectedMetric, setSelectedMetric] = useState('performance');
   const [isLoading, setIsLoading] = useState(true);
+  const [statsData, setStatsData] = useState({ performance: {} });
   const { visitPage } = useTrophies();
 
   const lighthouse = statsData.performance?.lighthouse || {};
   const lastUpdated = lighthouse.lastUpdated ? new Date(lighthouse.lastUpdated) : new Date();
 
   useEffect(() => {
+    let isMounted = true;
+
+    const hydrateStats = async () => {
+      const projectStats = await loadProjectStats();
+      if (isMounted && projectStats) {
+        setStatsData(projectStats);
+      }
+    };
+
+    hydrateStats();
+
     // Simula un caricamento per l'animazione
-    const timer = setTimeout(() => setIsLoading(false), 800);
+    const timer = setTimeout(() => {
+      if (isMounted) {
+        setIsLoading(false);
+      }
+    }, 800);
     visitPage('lighthouse');
-    return () => clearTimeout(timer);
+    return () => {
+      isMounted = false;
+      clearTimeout(timer);
+    };
   }, [visitPage]);
 
   // Mappa dei punteggi Lighthouse
