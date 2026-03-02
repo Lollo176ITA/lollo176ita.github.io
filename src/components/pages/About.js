@@ -27,6 +27,7 @@ import {
   SiGit
 } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
+import ReactCountryFlag from 'react-country-flag';
 import RandomStats from '../common/RandomStats';
 import { MeInPieces } from '../common';
 import HashLink from '../common/HashLink';
@@ -42,7 +43,7 @@ export default function About() {
   const personalInfo = [
     { icon: FaCalendarAlt, label: t('aboutPage.age'), value: `${age} ${t('aboutPage.years')}` },
     { icon: FaUniversity, label: t('aboutPage.university'), value: 'Sapienza Università di Roma' },
-    { icon: FaMapMarkerAlt, label: t('aboutPage.location'), value: 'Roma, Italia 🇮🇹' },
+    { icon: FaMapMarkerAlt, label: t('aboutPage.location'), value: <span className="inline-flex items-center gap-1">Roma, Italia <ReactCountryFlag countryCode="IT" svg style={{ width: '1.2em', height: '1.2em' }} /></span> },
     { icon: FaLanguage, label: t('aboutPage.languages'), value: 'Italiano, English' },
     { icon: FaRocket, label: t('aboutPage.experience'), value: `${experienceYears}+ ${t('aboutPage.years')}` }
   ];

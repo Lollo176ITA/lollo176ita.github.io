@@ -8,6 +8,7 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [2.4.0](#240---2026-03-02) | 2026-03-02 | Performance & cleanup: icons, unified stats, dead code removal |
 | [2.3.0](#230---2025-10-01) | 2025-10-01 | Documentation refactoring |
 | [2.2.8](#228---2025-07-15) | 2025-07-15 | Trophy system, gamification |
 | [2.2.7](#227---2025-06-26) | 2025-06-26 | Advanced commit categorization |
@@ -19,6 +20,36 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 | [1.0.0](#100---2025-03-01) | 2025-03-01 | Initial release |
 
 ---
+
+## [2.4.0] - 2026-03-02
+
+### Added
+- `react-icons` integration for consistent, scalable iconography across all components
+- `react-country-flag` for proper flag rendering (replaces emoji flag 🇮🇹)
+
+### Changed
+- **Emoji → Icons migration**: replaced all user-facing emoji with `react-icons` (Fa*, Hi*) and inline SVGs
+  - `MeInPieces.js`: personality strings and fallback labels
+  - `About.js`: section labels and decorations
+  - `CreationsPage.js`: rocket icon
+  - `App.js`: error boundary icon
+  - `CodeEditor.js`: inline SVG icons
+  - `serviceWorker.js`: inline SVG icons for notifications
+- **Unified statistics pipeline**: merged 3 separate scripts (`code-stats.js`, `structure-stats.js`, `git-stats.js`) into a single `generate-stats.js`
+- **Simplified `useStats.js`**: reduced fallback duplication, leaner default values, cleaner data flow
+- **Simplified `MeInPieces.js`**: shorter personality fallback strings, less repetition
+- Updated `package.json` scripts to use the new unified stats command
+- Updated `SCRIPTS-GUIDE.md` documentation to reflect the new pipeline
+
+### Removed
+- `src/reportWebVitals.js` — dead code, never called
+- `src/utils/RouteDebugger.js` — dead code, never imported
+- Legacy stats scripts (`code-stats.js`, `structure-stats.js`, `git-stats.js`) — replaced by `generate-stats.js`
+- All user-facing emoji throughout the codebase
+
+### Fixed
+- Bundle clarity: fewer unused exports, cleaner dependency graph
+- Documentation accuracy: scripts guide now matches actual project structure
 
 ## [2.3.0] - 2025-10-01
 
@@ -230,6 +261,8 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## Migration Notes
 
+**2.3.x → 2.4.x**: No breaking changes. Emoji replaced with `react-icons` — new dependencies `react-icons` and `react-country-flag` are required. Run `pnpm install` after updating. Stats scripts consolidated: use `pnpm stats` instead of individual scripts.
+
 **2.2.x → 2.3.x**: No breaking changes. Documentation improvements only.
 
 **2.1.x → 2.2.x**: No breaking changes. Trophy system is opt-in.
@@ -252,4 +285,4 @@ All dependencies are regularly updated to address security vulnerabilities. Run 
 
 ---
 
-Last updated: October 1, 2025
+Last updated: July 21, 2025

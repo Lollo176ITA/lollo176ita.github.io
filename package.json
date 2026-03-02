@@ -22,7 +22,7 @@
     "build:prod": "GENERATE_SOURCEMAP=false craco build",
     "build:analyze": "ANALYZE=true pnpm run build && pnpx source-map-explorer 'build/static/js/*.js'",
     "test": "craco test",
-    "stats": "node scripts/stats/code-stats.js && cp src/data/project-stats.json public/project-stats.json",
+    "stats": "node scripts/stats/generate-stats.js && cp src/data/project-stats.json public/project-stats.json",
     "predeploy": "pnpm run build:prod && pnpm run stats",
     "deploy": "gh-pages -d build",
     "deploy:optimized": "node scripts/deploy-optimized.js"

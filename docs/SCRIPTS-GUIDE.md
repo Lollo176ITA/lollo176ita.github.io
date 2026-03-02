@@ -51,52 +51,52 @@ chmod +x .git/hooks/pre-commit
 
 ## Script di statistiche (`scripts/stats/`)
 
-Questi script vengono eseguiti **in catena** (ognuno chiama il successivo):
+### `scripts/stats/generate-stats.js` (Script unificato)
 
+**Cosa fa:** Genera tutte le statistiche del progetto in un unico passaggio.
+
+- **Code stats**: conta file, righe di codice/commenti/vuote, linguaggi usati
+- **Structure stats**: conta componenti, pagine, hooks, utility, rotte, libri/capitoli
+- **Git stats**: commit, contributori, branch, età repo, frequenza commit
+- Salva tutto in `src/data/project-stats.json`
+
+**Uso:**
+
+```bash
+pnpm run stats
 ```
-code-stats.js → structure-stats.js → git-stats.js → lighthouse-stats.js (opzionale)
-```
 
-### `scripts/stats/code-stats.js`
-**Cosa fa:** Analizza il codice sorgente in `src/`.
-- Conta file per tipo (JS, TS, CSS, JSON, MD)
-- Conta righe di codice, commenti e righe vuote
-- Calcola percentuali per linguaggio
-- Salva in `src/data/project-stats.json`
+### `scripts/stats/lighthouse-stats.js` (Separato, opzionale)
 
-### `scripts/stats/structure-stats.js`
-**Cosa fa:** Analizza la struttura del progetto React.
-- Conta componenti, pagine, hooks, utility
-- Conta rotte definite in `App.js`
-- Conta libri e capitoli da `data/books.js`
-- Conta Context React
-
-### `scripts/stats/git-stats.js`
-**Cosa fa:** Analizza il repository Git.
-- Conta commit totali, contributori, branch
-- Info sull'ultimo commit
-- Calcola età del repo e frequenza dei commit
-
-### `scripts/stats/lighthouse-stats.js`
 **Cosa fa:** Esegue audit Lighthouse automatizzato.
+
 - Avvia un server statico sulla build
 - Esegue Lighthouse in headless Chrome
 - Salva metriche di performance, accessibilità, SEO, best practices
-- ⚠️ Richiede Chrome installato e la build già generata
+- Richiede Chrome installato e la build già generata
+
+**Uso:**
+
+```bash
+node scripts/stats/lighthouse-stats.js
+```
+
+### Script legacy (non più usati direttamente)
+
+I file `code-stats.js`, `structure-stats.js`, `git-stats.js` sono stati sostituiti da `generate-stats.js`.
+Sono mantenuti come riferimento ma non vengono più chiamati dalla pipeline.
 
 ---
 
 ## File di utility nel codice
 
 | File | Scopo | Usato? |
-|------|-------|--------|
-| `src/utils/serviceWorker.js` | Registrazione Service Worker | ✅ Solo `registerServiceWorker()` |
-| `src/utils/analytics.js` | Tracking analytics (GA, Plausible) | ⚠️ Disabilitato di default |
-| `src/utils/hashRouter.js` | Utility routing hash per GitHub Pages | ✅ Usato in Header, Books, Navbar |
-| `src/utils/RouteDebugger.js` | Debug visuale delle rotte (solo dev) | ❌ Mai importato |
-| `src/reportWebVitals.js` | Monitoring Web Vitals | ✅ Ma solo console.log |
-| `public/sw.js` | Service Worker con caching strategies | ✅ Registrato in produzione |
-| `public/trophy-test-helper.js` | Helper per test dei trofei (console) | 🔧 Solo per debug manuale |
+| ------ | ------- | -------- |
+| `src/utils/serviceWorker.js` | Registrazione Service Worker | Si, solo `registerServiceWorker()` |
+| `src/utils/analytics.js` | Tracking analytics (GA, Plausible) | Disabilitato di default |
+| `src/utils/hashRouter.js` | Utility routing hash per GitHub Pages | Si, usato in Header, Books, Navbar |
+| `public/sw.js` | Service Worker con caching strategies | Si, registrato in produzione |
+| `public/trophy-test-helper.js` | Helper per test dei trofei (console) | Solo per debug manuale |
 
 ---
 

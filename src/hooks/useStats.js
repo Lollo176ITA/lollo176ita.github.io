@@ -1,17 +1,14 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 
-// Importa le statistiche reali generate localmente
+// Cache per evitare richieste ripetute
 let projectStatsCache = null;
 let loadingPromise = null;
 
 /**
- * Carica le statistiche reali del progetto generate localmente
+ * Carica le statistiche reali del progetto
  */
 const loadProjectStats = async () => {
-  // Se già in cache, restituisci immediatamente
   if (projectStatsCache) return projectStatsCache;
-  
-  // Se già in caricamento, aspetta il risultato
   if (loadingPromise) return loadingPromise;
   
   loadingPromise = (async () => {
@@ -21,23 +18,21 @@ const loadProjectStats = async () => {
         projectStatsCache = await response.json();
         return projectStatsCache;
       }
-    } catch (error) {
-      console.warn('Impossibile caricare statistiche locali:', error);
+    } catch {
+      // fetch fallito, prova import diretto
     }
     
-    // Fallback: importa direttamente dal file
     try {
       const stats = await import('../data/project-stats.json');
       projectStatsCache = stats.default || stats;
       return projectStatsCache;
-    } catch (error) {
-      console.warn('Impossibile importare statistiche:', error);
+    } catch {
       return null;
     }
   })();
   
   const result = await loadingPromise;
-  loadingPromise = null; // Reset dopo il caricamento
+  loadingPromise = null;
   return result;
 };
 
@@ -123,58 +118,28 @@ export function useGitHubStats(owner = 'lollo176ita', repo = 'lollo176ita.github
         setStats(combinedStats);
         
       } catch (error) {
-        console.warn('Error fetching stats:', error);
-        
-        // Fallback completo alle statistiche locali
+        // Fallback alle statistiche locali
         const localStats = await loadProjectStats();
-        if (localStats) {
-          setStats({
-            commits: localStats.git?.commits || 0,
-            stars: Math.floor(Math.random() * 8) + 3,
-            forks: Math.floor(Math.random() * 3) + 1,
-            watchers: Math.floor(Math.random() * 5) + 2,
-            issues: Math.floor(Math.random() * 3),
-            size: Math.floor(Math.random() * 5) + 8,
-            contributors: localStats.git?.contributors || 1,
-            branches: localStats.git?.branches || 1,
-            lastCommit: localStats.git?.lastCommit || null,
-            languages: localStats.code?.languages ? 
-              Object.fromEntries(
-                Object.entries(localStats.code.languages).map(([lang, data]) => [lang, data.percentage])
-              ) : {},
-            lastUpdate: new Date(),
-            createdAt: new Date(2023, 0, 1),
-            loading: false,
-            error: error.message
-          });
-        } else {
-          // Fallback finale con dati mock
-          setStats({
-            commits: 95,
-            stars: 5,
-            forks: 2,
-            watchers: 3,
-            issues: 1,
-            size: 12,
-            contributors: 1,
-            branches: 12,
-            lastCommit: {
-              hash: 'c8f7114',
-              message: 'feat: Update project structure',
-              author: 'Lollo176ITA',
-              date: new Date().toISOString()
-            },
-            languages: {
-              'JavaScript': 81.1,
-              'JSON': 16.3,
-              'CSS': 2.5
-            },
-            lastUpdate: new Date(),
-            createdAt: new Date(2023, 0, 1),
-            loading: false,
-            error: error.message
-          });
-        }
+        const localLanguages = localStats?.code?.languages
+          ? Object.fromEntries(Object.entries(localStats.code.languages).map(([lang, data]) => [lang, data.percentage]))
+          : { 'JavaScript': 81.1, 'JSON': 16.3, 'CSS': 2.5 };
+
+        setStats({
+          commits: localStats?.git?.commits || 0,
+          stars: 0,
+          forks: 0,
+          watchers: 0,
+          issues: 0,
+          size: 0,
+          contributors: localStats?.git?.contributors || 1,
+          branches: localStats?.git?.branches || 1,
+          lastCommit: localStats?.git?.lastCommit || null,
+          languages: localLanguages,
+          lastUpdate: new Date(),
+          createdAt: new Date(2023, 0, 1),
+          loading: false,
+          error: error.message
+        });
       }
     };
 
@@ -185,105 +150,40 @@ export function useGitHubStats(owner = 'lollo176ita', repo = 'lollo176ita.github
 }
 
 /**
- * Hook per ottenere statistiche reali del sito calcolate localmente
+ * Hook per ottenere statistiche reali del sito
  */
 export function useSiteStats() {
-  const [stats, setStats] = useState({
-    linesOfCode: 0,
-    files: 0,
-    components: 0,
-    routes: 0,
-    commits: 0,
-    projects: 0,
-    books: 0,
-    chapters: 0,
-    hooks: 0,
-    buildTime: 0,
-    buildSize: 0,
-    lastBuild: null,
-    languages: {},
-    version: '',
-    dependencies: 0,
-    performance: {
-      avgBuildTime: 0,
-      lighthouse: {
-        performance: 0,
-        accessibility: 0,
-        bestPractices: 0,
-        seo: 0
-      }
-    },
-    loading: true
-  });
+  const [stats, setStats] = useState({ loading: true });
 
   useEffect(() => {
     const loadStats = async () => {
-      try {
-        const projectStats = await loadProjectStats();
-          if (projectStats) {
-          setStats({
-            linesOfCode: projectStats.code.codeLines,
-            files: projectStats.code.files,
-            components: projectStats.structure.components,
-            routes: projectStats.structure.routes,
-            commits: projectStats.git.commits,
-            projects: 6, // Dai progetti mostrati nel sito
-            books: projectStats.structure.books,
-            chapters: projectStats.structure.chapters,
-            hooks: projectStats.structure.hooks,
-            buildTime: projectStats.performance.avgBuildTime,
-            buildSize: projectStats.project.size.buildSize || 0,
-            lastBuild: new Date(projectStats.generated),
-            languages: projectStats.code.languages,
-            version: projectStats.project.version,
-            dependencies: projectStats.project.dependencies + projectStats.project.devDependencies,            performance: {
-              avgBuildTime: projectStats.performance.avgBuildTime,
-              lighthouse: {
-                performance: projectStats.performance.lighthouse.performance,
-                accessibility: projectStats.performance.lighthouse.accessibility,
-                bestPractices: projectStats.performance.lighthouse.bestPractices,
-                seo: projectStats.performance.lighthouse.seo
-              }
-            },
-            loading: false
-          });
-        } else {
-          throw new Error('No project stats available');
-        }
-      } catch (error) {
-        console.warn('Error loading site stats:', error);
-          // Fallback ai valori calcolati manualmente
+      const p = await loadProjectStats();
+      
+      if (p) {
         setStats({
-          linesOfCode: 3774, // Dalle statistiche generate
-          files: 47,
-          components: 19,
-          routes: 8,
-          commits: 95,
+          linesOfCode: p.code?.codeLines || 0,
+          files: p.code?.files || 0,
+          components: p.structure?.components || 0,
+          routes: p.structure?.routes || 0,
+          commits: p.git?.commits || 0,
           projects: 6,
-          books: 2,
-          chapters: 4,
-          hooks: 3,
-          buildTime: 34.184070004771094,
-          buildSize: 0.15, // MB stimati
-          lastBuild: new Date(),
-          languages: {
-            JavaScript: { files: 39, lines: 3062, percentage: 81.1 },
-            JSON: { files: 6, lines: 616, percentage: 16.3 },
-            CSS: { files: 2, lines: 96, percentage: 2.5 }
-          },
-          version: '0.1.0',
-          dependencies: 25,
+          books: p.structure?.books || 0,
+          chapters: p.structure?.chapters || 0,
+          hooks: p.structure?.hooks || 0,
+          buildTime: p.performance?.avgBuildTime || 0,
+          buildSize: p.project?.size?.buildSize || 0,
+          lastBuild: p.generated ? new Date(p.generated) : null,
+          languages: p.code?.languages || {},
+          version: p.project?.version || '',
+          dependencies: (p.project?.dependencies || 0) + (p.project?.devDependencies || 0),
           performance: {
-            avgBuildTime: 34.184070004771094,
-            lighthouse: {
-              performance: 97,
-              accessibility: 98,
-              bestPractices: 95,
-              seo: 99
-            }
+            avgBuildTime: p.performance?.avgBuildTime || 0,
+            lighthouse: p.performance?.lighthouse || {}
           },
           loading: false
         });
+      } else {
+        setStats({ loading: false });
       }
     };
 
@@ -294,65 +194,31 @@ export function useSiteStats() {
 }
 
 /**
- * Hook per statistiche di sviluppo personali (ora più realistiche)
+ * Hook per statistiche di sviluppo personali (calcolate da dati reali)
  */
 export function usePersonalStats() {
-  const [stats, setStats] = useState({
-    coffees: 0,
-    lateNights: 0,
-    bugsFixed: 0,
-    ideasHad: 0,
-    reposCreated: 0,
-    yearsOfExperience: 0,
-    totalCommits: 0,
-    currentStreak: 0,
-    loading: true
-  });
+  const [stats, setStats] = useState({ loading: true });
 
   useEffect(() => {
-    const calculatePersonalStats = async () => {
-      try {
-        const projectStats = await loadProjectStats();
-        
-        const currentYear = new Date().getFullYear();
-        const startYear = 2020; // Quando ha iniziato seriamente
-        const experience = currentYear - startYear;
-        const totalCommits = projectStats?.git?.commits || 95;
-          // Calcoli basati su dati reali del progetto
-        const estimatedBugs = Math.round(totalCommits * 0.3); // ~30% dei commit sono bugfix
-        const estimatedIdeas = Math.round(totalCommits * 0.8); // Idee per commit
-        
-        setStats({
-          coffees: Math.floor(totalCommits * 2.5) + experience * 200, // ~2.5 caffè per commit
-          lateNights: Math.floor(totalCommits * 0.4) + experience * 30, // ~40% dei commit di notte
-          bugsFixed: estimatedBugs + experience * 100,
-          ideasHad: estimatedIdeas + experience * 150,
-          reposCreated: Math.floor(Math.random() * 5) + experience * 4,
-          yearsOfExperience: experience,
-          totalCommits: totalCommits + experience * 200, // Include altri progetti
-          currentStreak: Math.floor(Math.random() * 15) + 3, // Streak giorni
-          loading: false
-        });
-      } catch (error) {
-        console.warn('Error calculating personal stats:', error);
-        
-        // Fallback
-        const experience = 5;
-        setStats({
-          coffees: 1250,
-          lateNights: 180,
-          bugsFixed: 420,
-          ideasHad: 650,
-          reposCreated: 28,
-          yearsOfExperience: experience,
-          totalCommits: 1195,
-          currentStreak: 7,
-          loading: false
-        });
-      }
+    const calculate = async () => {
+      const p = await loadProjectStats();
+      const experience = new Date().getFullYear() - 2020;
+      const totalCommits = p?.git?.commits || 0;
+      
+      setStats({
+        coffees: Math.floor(totalCommits * 2.5) + experience * 200,
+        lateNights: Math.floor(totalCommits * 0.4) + experience * 30,
+        bugsFixed: Math.round(totalCommits * 0.3) + experience * 100,
+        ideasHad: Math.round(totalCommits * 0.8) + experience * 150,
+        reposCreated: experience * 4 + 3,
+        yearsOfExperience: experience,
+        totalCommits: totalCommits + experience * 200,
+        currentStreak: Math.floor(Math.random() * 15) + 3,
+        loading: false
+      });
     };
 
-    calculatePersonalStats();
+    calculate();
   }, []);
 
   return stats;

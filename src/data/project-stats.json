@@ -1,11 +1,11 @@
 {
-  "generated": "2025-10-30T09:14:17.570Z",
-  "generationTime": 13621,
+  "generated": "2026-03-02T11:27:25.938Z",
+  "generationTime": 378,
   "project": {
     "name": "lollo176ita.github.io",
     "version": "2.2.8",
-    "dependencies": 13,
-    "devDependencies": 17,
+    "dependencies": 11,
+    "devDependencies": 16,
     "scripts": 16,
     "size": {
       "buildSize": 0,
@@ -13,30 +13,29 @@
     }
   },
   "code": {
-    "files": 60,
-    "totalLines": 8135,
-    "codeLines": 6376,
-    "blankLines": 508,
-    "commentLines": 1251,
+    "files": 58,
+    "totalLines": 7852,
+    "codeLines": 6106,
+    "blankLines": 482,
+    "commentLines": 1264,
     "languages": {
       "JavaScript": {
-        "files": 53,
-        "lines": 6882,
-        "percentage": 84.6
+        "files": 51,
+        "lines": 6586,
+        "percentage": 83.9
       },
       "CSS": {
         "files": 2,
-        "lines": 140,
-        "percentage": 1.7
+        "lines": 151,
+        "percentage": 1.9
       },
       "JSON": {
         "files": 5,
-        "lines": 1113,
-        "percentage": 13.7
+        "lines": 1115,
+        "percentage": 14.2
       }
     },
-    "lastUpdated": "2025-10-30T09:14:03.362Z",
-    "generationTime": 182
+    "lastUpdated": "2026-03-02T11:27:25.741Z"
   },
   "structure": {
     "components": 36,
@@ -45,33 +44,31 @@
     "routes": 9,
     "books": 2,
     "chapters": 4,
-    "utils": 4,
+    "utils": 3,
     "contexts": 1,
-    "lastUpdated": "2025-10-30T09:14:03.550Z",
-    "generationTime": 41
+    "lastUpdated": "2026-03-02T11:27:25.786Z"
   },
   "git": {
-    "commits": 134,
+    "commits": 135,
     "contributors": 2,
     "branches": 4,
     "lastCommit": {
-      "hash": "01cb9f4",
-      "message": "feat: improve documentation with refactoring and navigation enhancements",
+      "hash": "6cb0f39",
+      "message": "feat: update website language to Italian and improve accessibility features",
       "author": "Lollo176ITA",
-      "date": "2025-10-01T11:10:11+02:00",
-      "filesChanged": 1
+      "date": "2026-03-02T12:18:40+01:00",
+      "filesChanged": 26
     },
     "repoAge": {
-      "days": 386,
+      "days": 509,
       "firstCommit": "2024-10-08T21:26:09.000Z"
     },
     "commitFrequency": {
-      "commitsPerDay": 0.35,
-      "commitsPerWeek": 2.43,
-      "commitsPerMonth": 10.41
+      "commitsPerDay": 0.27,
+      "commitsPerWeek": 1.89,
+      "commitsPerMonth": 8.1
     },
-    "lastUpdated": "2025-10-30T09:14:03.826Z",
-    "generationTime": 149
+    "lastUpdated": "2026-03-02T11:27:25.938Z"
   },
   "performance": {
     "avgBuildTime": 0,

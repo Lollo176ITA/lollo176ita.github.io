@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { 
+  FaCheck, FaTimes, FaSearch, FaLock, FaLaptopCode, 
+  FaRedo, FaPray, FaSkullCrossbones, FaKey, FaGlobe, 
+  FaTheaterMasks, FaPartyHorn 
+} from 'react-icons/fa';
+import { HiSparkles } from 'react-icons/hi';
 
 // Build Button Component
 function BuildButton() {
@@ -22,18 +28,18 @@ function BuildButton() {
         // 80% failure rate on first attempt
         success = Math.random() < 0.2;
         message = success 
-          ? "🎉 Hacking successful! You're in the mainframe!" 
-          : "❌ Access denied! Firewall detected...";
+          ? "Hacking successful! You're in the mainframe!" 
+          : "Access denied! Firewall detected...";
       } else if (newAttempts === 2) {
         // 20% failure rate on second attempt  
         success = Math.random() < 0.8;
         message = success 
-          ? "✅ Backdoor opened! Data extraction complete!" 
-          : "❌ ICE detected! Abort mission!";
+          ? "Backdoor opened! Data extraction complete!" 
+          : "ICE detected! Abort mission!";
       } else {
         // Always works on third attempt or later
         success = true;
-        message = "✅ System compromised! Welcome to the dark side!";
+        message = "System compromised! Welcome to the dark side!";
       }
         
       setBuildResult({ success, message });
@@ -57,8 +63,8 @@ function BuildButton() {
             animate={{ rotate: 360 }}
             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
           />          <span>
-            {buildAttempts === 1 ? "🔍 Scanning network..." : 
-             buildAttempts === 2 ? "🔓 Bypassing security..." : "💻 Deploying payload..."}
+            {buildAttempts === 1 ? <><FaSearch className="inline mr-1" />Scanning network...</> : 
+             buildAttempts === 2 ? <><FaLock className="inline mr-1" />Bypassing security...</> : <><FaLaptopCode className="inline mr-1" />Deploying payload...</>}
           </span>
         </motion.div>
       ) : buildResult?.success ? (
@@ -77,8 +83,8 @@ function BuildButton() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}        >
           {buildAttempts === 0 ? "Execute" : 
-           buildAttempts === 1 ? "🔄 Retry Hack" : 
-           "🙏 Final Attempt"}
+           buildAttempts === 1 ? <><FaRedo className="inline mr-1" />Retry Hack</> : 
+           <><FaPray className="inline mr-1" />Final Attempt</>}
         </motion.button>
       )}
       
@@ -91,6 +97,7 @@ function BuildButton() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.3 }}
         >
+          {buildResult.success ? <FaCheck className="inline mr-1" /> : <FaTimes className="inline mr-1" />}
           {buildResult.message}
         </motion.span>
       )}
@@ -627,10 +634,10 @@ export default function CodeEditor() {
         transition={{ delay: 3.0 }}
       >
         <div className="flex flex-wrap space-x-2 md:space-x-4 text-xs md:text-sm">
-          <span className="text-red-400">💀 Malware</span>
-          <span className="text-yellow-400">🔐 Crypto</span>
-          <span className="text-blue-400">🌐 Network</span>
-          <span className="text-purple-400 hidden sm:inline">🎭 Stealth</span>
+          <span className="text-red-400"><FaSkullCrossbones className="inline mr-1" />Malware</span>
+          <span className="text-yellow-400"><FaKey className="inline mr-1" />Crypto</span>
+          <span className="text-blue-400"><FaGlobe className="inline mr-1" />Network</span>
+          <span className="text-purple-400 hidden sm:inline"><FaTheaterMasks className="inline mr-1" />Stealth</span>
         </div>
         <BuildButton />
       </motion.div>

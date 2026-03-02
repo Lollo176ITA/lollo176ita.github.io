@@ -328,8 +328,8 @@ function StatsOverview({ stats, t }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8 }}
-      >        <h4 className="text-xl font-bold text-center text-gray-800 dark:text-white mb-6">
-          🚀 {t('creations.performanceTitle')}
+      >        <h4 className="text-xl font-bold text-center text-gray-800 dark:text-white mb-6 flex items-center justify-center gap-2">
+          <FaRocket className="text-blue-500" /> {t('creations.performanceTitle')}
         </h4>
         <div className="p-6 bg-gradient-to-r from-green-500/10 via-blue-500/10 to-purple-500/10 rounded-xl border border-gray-200 dark:border-gray-700">
           {/* Lighthouse Scores */}
