@@ -21,7 +21,8 @@ const CONFIG = {
   lighthouseReportPath: path.join(__dirname, '..', '..', 'lighthouse-report.json'),
   serverStartupTimeoutMs: 10000,
   serverRequestTimeoutSeconds: 2,
-  lighthouseTimeoutMs: 180000
+  lighthouseTimeoutMs: 180000,
+  processShutdownTimeoutMs: 5000
 };
 
 class LighthouseStatsGenerator {
@@ -61,7 +62,7 @@ class LighthouseStatsGenerator {
 
       this.serverProcess = spawn('npx', ['serve', '-s', CONFIG.buildDir, '-p', CONFIG.lighthousePort], {
         stdio: 'pipe',
-        detached: false
+        detached: process.platform !== 'win32'
       });
 
       this.serverProcess.stdout.on('data', (data) => {
@@ -261,11 +262,63 @@ class LighthouseStatsGenerator {
 
   async cleanup() {
     if (this.serverProcess) {
-      this.serverProcess.kill();
+      await this.stopServerProcess();
     }
     if (fs.existsSync(CONFIG.lighthouseReportPath)) {
       fs.unlinkSync(CONFIG.lighthouseReportPath);
     }
+  }
+
+  async stopServerProcess() {
+    const proc = this.serverProcess;
+    this.serverProcess = null;
+
+    if (!proc || proc.killed) {
+      return;
+    }
+
+    await new Promise((resolve) => {
+      let finished = false;
+      let forceKillTimer = null;
+
+      const finish = () => {
+        if (finished) return;
+        finished = true;
+        if (forceKillTimer) {
+          clearTimeout(forceKillTimer);
+        }
+        proc.stdout?.destroy();
+        proc.stderr?.destroy();
+        resolve();
+      };
+
+      proc.once('close', finish);
+      proc.once('exit', finish);
+
+      try {
+        if (process.platform !== 'win32' && proc.pid) {
+          process.kill(-proc.pid, 'SIGTERM');
+        } else {
+          proc.kill('SIGTERM');
+        }
+      } catch {
+        finish();
+        return;
+      }
+
+      forceKillTimer = setTimeout(() => {
+        try {
+          if (process.platform !== 'win32' && proc.pid) {
+            process.kill(-proc.pid, 'SIGKILL');
+          } else {
+            proc.kill('SIGKILL');
+          }
+        } catch {
+          // Ignore force-kill errors; the process may already be gone.
+        }
+        finish();
+      }, CONFIG.processShutdownTimeoutMs);
+    });
   }
 }
 

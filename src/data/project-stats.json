@@ -1,6 +1,6 @@
 {
-  "generated": "2026-03-02T14:45:52.365Z",
-  "generationTime": 14644,
+  "generated": "2026-03-02T15:04:51.450Z",
+  "generationTime": 14459,
   "project": {
     "name": "lollo176ita.github.io",
     "version": "2.5.0",
@@ -78,22 +78,22 @@
       "bestPractices": 100,
       "seo": 100,
       "metrics": {
-        "firstContentfulPaint": 1971.2492,
-        "largestContentfulPaint": 3039.451,
+        "firstContentfulPaint": 1963.9718,
+        "largestContentfulPaint": 3037.1095,
         "cumulativeLayoutShift": 0,
-        "totalBlockingTime": 60,
-        "timeToInteractive": 3039.451,
-        "speedIndex": 3878.3395239918764,
+        "totalBlockingTime": 40,
+        "timeToInteractive": 3037.1095,
+        "speedIndex": 3869.7685180130898,
         "firstMeaningfulPaint": 0,
-        "serverResponseTime": 2.6719999999999997,
-        "maxPotentialFID": 110,
+        "serverResponseTime": 2.496,
+        "maxPotentialFID": 90,
         "domSize": 170,
-        "mainThreadWorkBreakdown": 1484.7600000000014,
+        "mainThreadWorkBreakdown": 1473.9720000000066,
         "networkRequests": 12
       },
       "url": "http://localhost:3000",
       "formFactor": "mobile",
-      "lastUpdated": "2026-03-02T14:45:52.366Z",
+      "lastUpdated": "2026-03-02T15:04:51.451Z",
       "fallback": false
     },
     "buildSize": "1.3M"

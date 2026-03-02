@@ -13,7 +13,10 @@ export const loadProjectStats = async () => {
   
   loadingPromise = (async () => {
     try {
-      const response = await fetch('/project-stats.json');
+      const cacheBust = typeof window !== 'undefined' ? `?t=${Date.now()}` : '';
+      const response = await fetch(`/project-stats.json${cacheBust}`, {
+        cache: 'no-store'
+      });
       if (response.ok) {
         projectStatsCache = await response.json();
         return projectStatsCache;
