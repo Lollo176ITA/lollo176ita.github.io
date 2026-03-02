@@ -18,7 +18,10 @@ const CONFIG = {
   buildStatsFile: path.join(__dirname, '..', '..', 'build', 'project-stats.json'),
   lighthousePort: 3000,
   lighthouseUrl: 'http://localhost:3000',
-  lighthouseReportPath: path.join(__dirname, '..', '..', 'lighthouse-report.json')
+  lighthouseReportPath: path.join(__dirname, '..', '..', 'lighthouse-report.json'),
+  serverStartupTimeoutMs: 10000,
+  serverRequestTimeoutSeconds: 2,
+  lighthouseTimeoutMs: 180000
 };
 
 class LighthouseStatsGenerator {
@@ -48,6 +51,14 @@ class LighthouseStatsGenerator {
 
   async startStaticServer() {
     return new Promise((resolve, reject) => {
+      let settled = false;
+      const settle = (fn, value) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timeoutId);
+        fn(value);
+      };
+
       this.serverProcess = spawn('npx', ['serve', '-s', CONFIG.buildDir, '-p', CONFIG.lighthousePort], {
         stdio: 'pipe',
         detached: false
@@ -55,19 +66,29 @@ class LighthouseStatsGenerator {
 
       this.serverProcess.stdout.on('data', (data) => {
         if (data.toString().includes('Accepting connections')) {
-          resolve();
+          settle(resolve);
         }
       });
 
-      this.serverProcess.on('error', reject);
-      setTimeout(() => reject(new Error('Server startup timeout')), 10000);
+      this.serverProcess.stderr.on('data', () => {
+        // Drain stderr to avoid pipe backpressure in CI.
+      });
+
+      this.serverProcess.on('error', (error) => settle(reject, error));
+
+      const timeoutId = setTimeout(
+        () => settle(reject, new Error('Server startup timeout')),
+        CONFIG.serverStartupTimeoutMs
+      );
     });
   }
 
   async waitForServer() {
     for (let i = 0; i < 10; i++) {
       try {
-        await execAsync(`curl -s ${CONFIG.lighthouseUrl} > /dev/null`);
+        await execAsync(
+          `curl -s --fail --max-time ${CONFIG.serverRequestTimeoutSeconds} ${CONFIG.lighthouseUrl} > /dev/null`
+        );
         return;
       } catch (error) {
         if (i === 9) throw new Error('Server not responding');
@@ -78,23 +99,47 @@ class LighthouseStatsGenerator {
 
   async runLighthouse() {
     return new Promise((resolve, reject) => {
+      let settled = false;
+      const settle = (fn, value) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timeoutId);
+        fn(value);
+      };
+
       const lighthouseProcess = spawn('npx', [
         'lighthouse',
         CONFIG.lighthouseUrl,
         '--only-categories=performance,accessibility,best-practices,seo',
+        '--quiet',
         '--output=json',
         `--output-path=${CONFIG.lighthouseReportPath}`,
         '--chrome-flags=--headless --disable-gpu --no-sandbox'
       ], {
-        stdio: 'pipe',
+        stdio: ['ignore', 'pipe', 'pipe'],
         cwd: path.dirname(CONFIG.lighthouseReportPath)
       });
 
-      lighthouseProcess.on('close', (code) => {
-        code === 0 ? resolve() : reject(new Error(`Lighthouse failed with code: ${code}`));
+      lighthouseProcess.stdout.on('data', () => {
+        // Drain stdout to avoid child process blocking on full buffers.
       });
 
-      lighthouseProcess.on('error', reject);
+      lighthouseProcess.stderr.on('data', () => {
+        // Drain stderr to avoid child process blocking on full buffers.
+      });
+
+      lighthouseProcess.on('close', (code) => {
+        code === 0
+          ? settle(resolve)
+          : settle(reject, new Error(`Lighthouse failed with code: ${code}`));
+      });
+
+      lighthouseProcess.on('error', (error) => settle(reject, error));
+
+      const timeoutId = setTimeout(() => {
+        lighthouseProcess.kill('SIGTERM');
+        settle(reject, new Error('Lighthouse timeout exceeded'));
+      }, CONFIG.lighthouseTimeoutMs);
     });
   }
 
