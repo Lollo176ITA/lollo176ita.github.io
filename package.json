@@ -23,8 +23,11 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:ui": "vitest --ui",
+    "docs:sync": "node scripts/docs/sync-markdown.js",
     "stats": "node scripts/stats/generate-stats.js && cp src/data/project-stats.json public/project-stats.json",
-    "predeploy": "pnpm run build:prod && pnpm run stats",
+    "version:tag": "node scripts/release/get-version-tag.js",
+    "prepare:content": "pnpm run docs:sync && pnpm run stats",
+    "predeploy": "pnpm run prepare:content && pnpm run build:prod",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {

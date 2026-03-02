@@ -201,6 +201,7 @@ function getProjectMetadata() {
     return {
       name: pkg.name,
       version: pkg.version,
+      scripts: Object.keys(pkg.scripts || {}).length,
       dependencies: Object.keys(pkg.dependencies || {}).length,
       devDependencies: Object.keys(pkg.devDependencies || {}).length
     };

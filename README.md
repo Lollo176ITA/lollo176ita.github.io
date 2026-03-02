@@ -128,30 +128,32 @@ npm install
 
 #### Comandi Disponibili
 
+<!-- AUTO:README_IT_COMMANDS:START -->
 ```bash
 # Sviluppo
-pnpm start                  # Avvia server sviluppo (localhost:3000)
+pnpm start  # Avvia il dev server Vite su `localhost:3000`
+pnpm run preview  # Serve la build locale in modalita preview
 
 # Build
-pnpm run build             # Build standard
-pnpm run build:prod        # Build produzione (no source maps)
-pnpm run build:analyze     # Build con analisi bundle
+pnpm run build  # Build standard con Vite
+pnpm run build:prod  # Esegui la build di produzione ottimizzata
+pnpm run build:analyze  # Esegui la build con analisi del bundle
+
+# Qualita
+pnpm run test  # Esegui i test con Vitest
+pnpm run test:ui  # Apri la UI interattiva di Vitest
+
+# Automazione
+pnpm run docs:sync  # Sincronizza le sezioni Markdown gestite automaticamente
+pnpm run stats  # Rigenera le statistiche del progetto
+pnpm run version:tag  # Stampa il tag release derivato dalla versione
+pnpm run prepare:content  # Sincronizza docs e statistiche generate
 
 # Deploy
-pnpm run predeploy         # Build + genera statistiche
-pnpm run deploy            # Deploy su GitHub Pages
-pnpm run deploy:optimized  # Deploy con ottimizzazioni
-
-# Test
-pnpm test                  # Esegui test suite
-
-# Statistiche
-pnpm run stats             # Genera statistiche progetto
-
-# Utility
-pnpm run lint              # Controllo linting
-pnpm run lint:fix          # Fix automatico problemi linting
+pnpm run predeploy  # Prepara contenuti e genera la build finale
+pnpm run deploy  # Pubblica `build/` su GitHub Pages con `gh-pages`
 ```
+<!-- AUTO:README_IT_COMMANDS:END -->
 
 ### Configurazione
 
@@ -414,30 +416,32 @@ npm install
 
 #### Available Commands
 
+<!-- AUTO:README_EN_COMMANDS:START -->
 ```bash
 # Development
-pnpm start                  # Start development server (localhost:3000)
+pnpm start  # Start the Vite dev server on `localhost:3000`
+pnpm run preview  # Serve the local build in preview mode
 
 # Build
-pnpm run build             # Standard build
-pnpm run build:prod        # Production build (no source maps)
-pnpm run build:analyze     # Build with bundle analysis
+pnpm run build  # Run the standard Vite build
+pnpm run build:prod  # Run the optimized production build
+pnpm run build:analyze  # Build with bundle analysis enabled
+
+# Quality
+pnpm run test  # Run the Vitest suite
+pnpm run test:ui  # Open the interactive Vitest UI
+
+# Automation
+pnpm run docs:sync  # Sync the managed Markdown sections
+pnpm run stats  # Regenerate project statistics
+pnpm run version:tag  # Print the release tag derived from the version
+pnpm run prepare:content  # Sync generated docs and stats
 
 # Deploy
-pnpm run predeploy         # Build + generate statistics
-pnpm run deploy            # Deploy to GitHub Pages
-pnpm run deploy:optimized  # Deploy with optimizations
-
-# Test
-pnpm test                  # Run test suite
-
-# Statistics
-pnpm run stats             # Generate project statistics
-
-# Utilities
-pnpm run lint              # Check linting
-pnpm run lint:fix          # Auto-fix linting issues
+pnpm run predeploy  # Prepare generated content and build for release
+pnpm run deploy  # Publish `build/` to GitHub Pages with `gh-pages`
 ```
+<!-- AUTO:README_EN_COMMANDS:END -->
 
 ### Configuration
 
@@ -616,4 +620,3 @@ This project is distributed under the MIT license. See the [LICENSE](LICENSE) fi
 ---
 
 **Version**: 2.2.8 | **Last Updated**: October 2025
-
