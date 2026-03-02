@@ -25,8 +25,7 @@
     "test:ui": "vitest --ui",
     "stats": "node scripts/stats/generate-stats.js && cp src/data/project-stats.json public/project-stats.json",
     "predeploy": "pnpm run build:prod && pnpm run stats",
-    "deploy": "gh-pages -d build",
-    "deploy:optimized": "node scripts/deploy-optimized.js"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": ["./.eslintrc.json"]

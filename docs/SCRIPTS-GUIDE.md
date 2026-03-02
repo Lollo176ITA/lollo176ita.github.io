@@ -17,39 +17,13 @@
 
 ```
 pnpm run deploy          # Deploy standard (predeploy automatico)
-# oppure
-pnpm run deploy:optimized  # Deploy con ottimizzazioni extra per GitHub Pages
+# oppure usare solo
+pnpm run deploy        # Deploy standard su GitHub Pages
 ```
 
 ---
 
 ## Script nella cartella `scripts/`
-
-### `scripts/deploy-optimized.js`
-**Cosa fa:** Esegue un deploy completo con ottimizzazioni specifiche per GitHub Pages.
-- Genera statistiche del progetto
-- Esegue la build di produzione
-- Aggiorna il Service Worker con i path corretti per GitHub Pages
-- Ottimizza il `manifest.json` con scope e start_url corretti
-- Pubblica su GitHub Pages con `gh-pages`
-
-**Quando usarlo:** Quando il deploy standard non funziona correttamente su GitHub Pages (problemi di path, SW non funzionante).
-
-### `scripts/pre-commit-hook.js`
-**Cosa fa:** Hook Git pre-commit che aggiorna automaticamente le statistiche.
-- Esegue `pnpm run stats` per rigenerare `project-stats.json`
-- Aggiunge i file aggiornati al commit
-
-**Come attivarlo:**
-```bash
-# Copia come hook Git
-cp scripts/pre-commit-hook.js .git/hooks/pre-commit
-chmod +x .git/hooks/pre-commit
-```
-
----
-
-## Script di statistiche (`scripts/stats/`)
 
 ### `scripts/stats/generate-stats.js` (Script unificato)
 
