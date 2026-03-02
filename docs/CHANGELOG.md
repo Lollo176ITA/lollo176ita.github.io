@@ -8,6 +8,7 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [2.5.0](#250---2026-03-02) | 2026-03-02 | Migration from CRA to Vite |
 | [2.4.0](#240---2026-03-02) | 2026-03-02 | Performance & cleanup: icons, unified stats, dead code removal |
 | [2.3.0](#230---2025-10-01) | 2025-10-01 | Documentation refactoring |
 | [2.2.8](#228---2025-07-15) | 2025-07-15 | Trophy system, gamification |
@@ -20,6 +21,36 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 | [1.0.0](#100---2025-03-01) | 2025-03-01 | Initial release |
 
 ---
+
+## [2.5.0] - 2026-03-02
+
+### Added
+- `vite` as the new build tool replacing CRA
+- `@vitejs/plugin-react` for JSX transform
+- `vite-plugin-compression2` for gzip compression (replaces `compression-webpack-plugin`)
+- `vitest` + `jsdom` as test runner (replaces `react-scripts test`)
+- `.eslintrc.json` standalone config (replaces `eslint-config-react-app`)
+- `vite.config.js` with manual chunk splitting for framer-motion, react-router, i18n, vendors
+
+### Changed
+- Build time: ~30-60s (CRA) → ~3s (Vite) — **~10x faster**
+- Dev server: hot reload in ms instead of seconds
+- `process.env.NODE_ENV` → `import.meta.env.PROD / DEV` in `serviceWorker.js`, `index.js`, `analytics.js`
+- `process.env.PUBLIC_URL` removed — hardcoded to `/` (sito sulla root del dominio)
+- Output directory remains `build/` for compatibility with existing deploy scripts
+- `package.json` scripts: `start`, `build`, `build:prod`, `build:analyze`, `test` updated
+
+### Removed
+- `react-scripts@5.0.1` — CRA eliminato, zero deprecated transitive dependencies
+- `@craco/craco` — non piu' necessario senza CRA
+- `craco.config.js` — configurazione webpack migrata in `vite.config.js`
+- `compression-webpack-plugin`, `css-minimizer-webpack-plugin`, `terser-webpack-plugin`, `webpack-bundle-analyzer` — plugin webpack non necessari
+- `eslint-config-react-app`, `source-map-explorer` — sostituiti
+- Tutti i warning di pacchetti deprecati legati a CRA
+
+### Fixed
+- Zero deprecated subdependencies (era: 22+ con CRA)
+- Peer dependency warnings TypeScript eliminati
 
 ## [2.4.0] - 2026-03-02
 
@@ -261,9 +292,9 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## Migration Notes
 
-**2.3.x → 2.4.x**: No breaking changes. Emoji replaced with `react-icons` — new dependencies `react-icons` and `react-country-flag` are required. Run `pnpm install` after updating. Stats scripts consolidated: use `pnpm stats` instead of individual scripts.
+**2.4.x → 2.5.x**: No breaking changes to the app code. Build toolchain replaced: run `pnpm install` to install new dev dependencies. `process.env.NODE_ENV` removed from source — now uses `import.meta.env.PROD/DEV`.
 
-**2.2.x → 2.3.x**: No breaking changes. Documentation improvements only.
+**2.3.x → 2.4.x**: No breaking changes.
 
 **2.1.x → 2.2.x**: No breaking changes. Trophy system is opt-in.
 

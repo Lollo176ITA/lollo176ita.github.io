@@ -1,6 +1,6 @@
 {
   "name": "lollo176ita.github.io",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "private": true,
   "homepage": "https://lollo176ita.github.io",
   "dependencies": {
@@ -12,26 +12,24 @@
     "react-i18next": "^15.5.3",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.2",
-    "react-scripts": "^5.0.1",
     "tailwindcss": "^3.4.15",
     "web-vitals": "^5.0.3"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "build:prod": "GENERATE_SOURCEMAP=false craco build",
-    "build:analyze": "ANALYZE=true pnpm run build && pnpx source-map-explorer 'build/static/js/*.js'",
-    "test": "craco test",
+    "start": "vite",
+    "build": "vite build",
+    "build:prod": "vite build",
+    "build:analyze": "ANALYZE=true vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:ui": "vitest --ui",
     "stats": "node scripts/stats/generate-stats.js && cp src/data/project-stats.json public/project-stats.json",
     "predeploy": "pnpm run build:prod && pnpm run stats",
     "deploy": "gh-pages -d build",
     "deploy:optimized": "node scripts/deploy-optimized.js"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": ["./.eslintrc.json"]
   },
   "browserslist": {
     "production": [
@@ -46,21 +44,24 @@
     ]
   },
   "devDependencies": {
-    "@craco/craco": "^7.1.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
+    "@vitejs/plugin-react": "^5.1.4",
+    "@vitest/ui": "^4.0.18",
     "autoprefixer": "^10.4.21",
-    "compression-webpack-plugin": "^11.1.0",
-    "css-minimizer-webpack-plugin": "^7.0.2",
-    "eslint-config-react-app": "^7.0.1",
+    "eslint": "^10.0.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
     "execa": "^9.6.0",
     "gh-pages": "^6.3.0",
     "glob": "^11.0.3",
+    "jsdom": "^28.1.0",
     "lighthouse": "^12.6.1",
     "postcss": "^8.5.6",
     "serve": "^14.2.4",
-    "source-map-explorer": "^2.5.3",
-    "terser-webpack-plugin": "^5.3.14",
-    "webpack-bundle-analyzer": "^4.10.2"
+    "vite": "^7.3.1",
+    "vite-bundle-visualizer": "^1.2.1",
+    "vite-plugin-compression2": "^2.5.0",
+    "vitest": "^4.0.18"
   }
 }

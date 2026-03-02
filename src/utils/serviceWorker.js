@@ -4,12 +4,12 @@
  * Registra il Service Worker con configurazione GitHub Pages
  */
 export const registerServiceWorker = async () => {
-  if (!('serviceWorker' in navigator) || process.env.NODE_ENV !== 'production') {
+  if (!('serviceWorker' in navigator) || !import.meta.env.PROD) {
     return;
   }
 
   try {
-    const swPath = process.env.PUBLIC_URL ? `${process.env.PUBLIC_URL}/sw.js` : '/sw.js';
+    const swPath = '/sw.js';
     
     // Verifica che il SW esista prima di registrarlo
     const swResponse = await fetch(swPath, { method: 'HEAD' }).catch(() => null);
@@ -18,7 +18,7 @@ export const registerServiceWorker = async () => {
     }
     
     const registration = await navigator.serviceWorker.register(swPath, {
-      scope: process.env.PUBLIC_URL || '/'
+      scope: '/'
     });
     
     // Gestisci aggiornamenti SW

@@ -15,7 +15,7 @@ root.render(
 );
 
 // Service Worker solo in produzione
-if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+if (import.meta.env.PROD && 'serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     // Attendi che React si sia inizializzato completamente
     setTimeout(() => {

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { 
   FaCheck, FaTimes, FaSearch, FaLock, FaLaptopCode, 
   FaRedo, FaPray, FaSkullCrossbones, FaKey, FaGlobe, 
-  FaTheaterMasks, FaPartyHorn 
+  FaTheaterMasks, FaGift 
 } from 'react-icons/fa';
 import { HiSparkles } from 'react-icons/hi';
 

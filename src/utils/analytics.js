@@ -100,6 +100,6 @@ export class AnalyticsManager {
 // Default instance - Disabled by default for privacy
 export const analytics = new AnalyticsManager({
   enableAnalytics: false, // Set to true when you want analytics
-  debug: process.env.NODE_ENV === 'development',
+  debug: import.meta.env.DEV,
   trackingId: 'G-ZJGF6S026N' // Your GA4 ID ready for when you need it
 });
