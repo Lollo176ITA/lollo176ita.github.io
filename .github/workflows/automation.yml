@@ -65,7 +65,24 @@ jobs:
           git remote set-url origin "https://x-access-token:${{ secrets.WORKFLOW_PUSH_TOKEN }}@github.com/${{ github.repository }}.git"
           git fetch origin main --tags
           git checkout -B main origin/main
-          git merge --no-ff --no-edit "${GITHUB_SHA}"
+          if git merge-base --is-ancestor "${GITHUB_SHA}" HEAD; then
+            echo "main already contains ${GITHUB_SHA}"
+            exit 0
+          fi
+          git merge --no-commit --no-ff "${GITHUB_SHA}" || true
+          for file in src/data/project-stats.json public/project-stats.json; do
+            if git ls-files -u -- "$file" | grep -q .; then
+              echo "Resolving generated-file conflict with main version: $file"
+              git checkout --ours -- "$file"
+              git add "$file"
+            fi
+          done
+          if git diff --name-only --diff-filter=U | grep -q .; then
+            echo "Unresolved merge conflicts remain:"
+            git diff --name-only --diff-filter=U
+            exit 1
+          fi
+          git commit --no-edit
 
       - name: Synchronize generated content
         run: pnpm run prepare:content
