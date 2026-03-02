@@ -33,7 +33,7 @@ export default function WorkInProgress() {
       <h1 className="text-5xl font-extrabold text-black dark:text-white text-center mb-6">{t('wip.title')}</h1>
       <p className="text-lg text-black dark:text-white text-center mb-8">{t('wip.text')}</p>      <HashLink to="/">
         <motion.button
-          className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-full hover:bg-black hover:dark:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition duration-300"
+          className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-full hover:bg-black hover:dark:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 focus:ring-2 focus:ring-black dark:focus:ring-white transition duration-300"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >

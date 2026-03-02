@@ -177,14 +177,16 @@ export default function AnimatedGrid() {
             </p>
             <div id="game-container" className="grid grid-cols-9 gap-1 relative z-10">
                 {gridItems.map((item, index) => (
-                    <motion.div
+                    <motion.button
                         key={item.id}
+                        type="button"
                         onClick={() => handleCellClick(item.id)}
                         onMouseDown={() => handleDragStart(item.id)}
                         onMouseUp={() => handleDragEnd(item.id)}
+                        aria-label={item.letter || t('grid.emptyCell', { defaultValue: 'Empty cell' })}
                         className={`w-8 h-8 bg-gray-300 rounded-md flex items-center justify-center dark:text-black cursor-pointer select-none ${
                             selectedCell === item.id ? 'ring-2 ring-blue-500' : ''
-                        }`}
+                        } focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500`}
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{
@@ -198,7 +200,7 @@ export default function AnimatedGrid() {
                         }}
                     >
                         {item.letter}
-                    </motion.div>
+                    </motion.button>
                 ))}
             </div>
         </div>

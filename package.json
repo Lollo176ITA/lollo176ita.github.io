@@ -4,8 +4,6 @@
   "private": true,
   "homepage": "https://lollo176ita.github.io",
   "dependencies": {
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
     "framer-motion": "^12.19.1",
     "i18next": "^25.2.1",
     "react": "^19.1.0",
@@ -19,15 +17,14 @@
     "web-vitals": "^5.0.3"
   },
   "scripts": {
-    "predeploy": "pnpm run build:prod && pnpm run stats",
-    "deploy": "gh-pages -d build",
     "start": "craco start",
     "build": "craco build",
-    "build:analyze": "pnpm run build && pnpx source-map-explorer 'build/static/js/*.js'",
     "build:prod": "GENERATE_SOURCEMAP=false craco build",
+    "build:analyze": "ANALYZE=true pnpm run build && pnpx source-map-explorer 'build/static/js/*.js'",
     "test": "craco test",
-    "eject": "react-scripts eject",
     "stats": "node scripts/stats/code-stats.js && cp src/data/project-stats.json public/project-stats.json",
+    "predeploy": "pnpm run build:prod && pnpm run stats",
+    "deploy": "gh-pages -d build",
     "deploy:optimized": "node scripts/deploy-optimized.js"
   },
   "eslintConfig": {
@@ -50,17 +47,16 @@
   },
   "devDependencies": {
     "@craco/craco": "^7.1.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
     "autoprefixer": "^10.4.21",
-    "brotli-webpack-plugin": "^1.1.0",
     "compression-webpack-plugin": "^11.1.0",
     "css-minimizer-webpack-plugin": "^7.0.2",
-    "depcheck": "^1.4.7",
     "eslint-config-react-app": "^7.0.1",
     "execa": "^9.6.0",
     "gh-pages": "^6.3.0",
     "glob": "^11.0.3",
     "lighthouse": "^12.6.1",
-    "node-fetch": "^3.3.2",
     "postcss": "^8.5.6",
     "serve": "^14.2.4",
     "source-map-explorer": "^2.5.3",

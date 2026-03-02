@@ -165,7 +165,7 @@ export default function BookOverview({ type, name }) {
                     
                     <HashLink
                       to={`/creations/books/${type}/${name}/${chapter.slug}`}
-                      className="ml-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                      className="ml-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                     >
                       {t('books.read')}
                     </HashLink>

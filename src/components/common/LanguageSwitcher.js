@@ -17,7 +17,9 @@ export default function LanguageSwitcher() {
   return (
     <button
       onClick={toggleLanguage}
+      type="button"
       aria-label="Switch Language"
+      className="rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
     >
       <ReactCountryFlag
         countryCode={countryCode}

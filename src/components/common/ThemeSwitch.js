@@ -16,8 +16,9 @@ export default function ThemeSwitch() {
   return (
     <button
       onClick={handleToggle}
+      type="button"
       aria-label="Toggle theme"
-      className="relative w-14 h-8 bg-gray-300 dark:bg-gray-600 rounded-full shadow-inner transition-colors duration-300 focus:outline-none"
+      className="relative w-14 h-8 bg-gray-300 dark:bg-gray-600 rounded-full shadow-inner transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
     >
       <div
         className={`absolute top-1 left-1 w-6 h-6 bg-white dark:bg-black rounded-full flex items-center justify-center transform transition-transform duration-300 ${

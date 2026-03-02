@@ -94,7 +94,7 @@ export default function BooksHome() {
                       
                       <HashLink
                         to={`/creations/books/${book.type}/${book.slug}/overview`}
-                        className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors group-hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                        className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors group-hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                       >
                         {t('books.readMore')}
                         <FiArrowLeft className="w-4 h-4 ml-2 rotate-180" />

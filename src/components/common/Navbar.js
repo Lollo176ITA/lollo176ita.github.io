@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import HashLink from './HashLink';
 import { useActiveRoute } from '../../hooks/useNavigation';
 
-export default function Navbar({ isOpen, toggleMenu }) {
+export default function Navbar({ isOpen, toggleMenu, navId = 'primary-navigation' }) {
   const { t } = useTranslation();
   const { isActive, isActivePartial } = useActiveRoute();
   
@@ -22,19 +22,28 @@ export default function Navbar({ isOpen, toggleMenu }) {
   };
 
   return (
-    <div
+    <nav
+      id={navId}
+      aria-label="Navigazione principale"
+      aria-hidden={!isOpen}
       className={`fixed top-0 left-0 h-full w-64 bg-white dark:bg-black shadow-lg transform ${
         isOpen ? 'translate-x-0' : '-translate-x-full'
       } transition-transform duration-300 ease-in-out z-20`}
     >
-      <button onClick={toggleMenu} className="absolute top-4 right-4 text-3xl focus:outline-none">
+      <button
+        type="button"
+        onClick={toggleMenu}
+        aria-label={t('common.close')}
+        className="absolute top-4 right-4 text-3xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 rounded-md"
+      >
         &times; {/* Icona di chiusura */}
-      </button>      <ul className="flex flex-col p-8 space-y-6 mt-12">
+      </button>
+      <ul className="flex flex-col p-8 space-y-6 mt-12">
         <li><HashLink to="/" onClick={handleLinkClick} className={getLinkClassName("/")}>{t('nav.home')}</HashLink></li>
         <li><HashLink to="/about" onClick={handleLinkClick} className={getLinkClassName("/about")}>{t('nav.about')}</HashLink></li>
         <li><HashLink to="/creations" onClick={handleLinkClick} className={getLinkClassName("/creations")}>{t('nav.creations')}</HashLink></li>
         <li><HashLink to="/history" onClick={handleLinkClick} className={getLinkClassName("/history")}>{t('nav.history')}</HashLink></li>
       </ul>
-    </div>
+    </nav>
   );
 }

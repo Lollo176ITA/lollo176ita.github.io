@@ -18,7 +18,8 @@
   "grid": {
     "thanks": "Thanks for playing!",
     "clickDemo": "Click me to try the demo!",
-    "enjoyDemo": "Enjoy the demo!"
+    "enjoyDemo": "Enjoy the demo!",
+    "emptyCell": "Empty cell"
   },  "creations": {
     "heroTitle": "My Creations",
     "subtitle": "Discover my digital creations: from interactive games to engaging books",

@@ -33,6 +33,18 @@ html {
   font-display: swap;
 }
 
+a {
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.22em;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
 
 @tailwind base;
 @tailwind components;
@@ -99,4 +111,3 @@ html {
   content-visibility: auto;
   contain-intrinsic-size: 200px;
 }
-

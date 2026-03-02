@@ -20,7 +20,9 @@ export default function Footer() {
             href="https://twitter.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white transition text-xl"
+            aria-label="Twitter"
+            title="Twitter"
+            className="text-gray-400 hover:text-white transition text-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white rounded-full"
           >
             <FaTwitter />
           </a>
@@ -28,7 +30,9 @@ export default function Footer() {
             href="https://www.linkedin.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white transition text-xl"
+            aria-label="LinkedIn"
+            title="LinkedIn"
+            className="text-gray-400 hover:text-white transition text-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white rounded-full"
           >
             <FaLinkedin />
           </a>
@@ -36,7 +40,9 @@ export default function Footer() {
             href="https://www.instagram.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white transition text-xl"
+            aria-label="Instagram"
+            title="Instagram"
+            className="text-gray-400 hover:text-white transition text-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white rounded-full"
           >
             <FaInstagram />
           </a>
@@ -44,7 +50,9 @@ export default function Footer() {
             href="https://github.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white transition text-xl"
+            aria-label="GitHub"
+            title="GitHub"
+            className="text-gray-400 hover:text-white transition text-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white rounded-full"
           >
             <FaGithub />
           </a>

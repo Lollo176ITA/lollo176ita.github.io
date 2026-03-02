@@ -32,7 +32,8 @@ export default function HashLink({
     }
   };
   
-  const finalClassName = `${className} ${isActive ? activeClassName : ''}`.trim();
+  const focusClasses = 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 focus-visible:rounded-md';
+  const finalClassName = `${className} ${isActive ? activeClassName : ''} ${focusClasses}`.trim();
   
   return (
     <a 

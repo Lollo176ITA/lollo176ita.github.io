@@ -67,18 +67,15 @@ export default function App() {
             <Suspense fallback={<LoadingSpinner />}>
               <Routes>
                 <Route path="/" element={<Hero />} />
-                {/* Pagina "Chi sono" */}
                 <Route path="/about" element={<About />} />
-                {/* Pagina Lighthouse Stats */}
                 <Route path="/lighthouse" element={<LighthouseStats />} />
-                {/* Pagina Trofei */}
                 <Route path="/trophies" element={<TrophiesPage />} />
-                {/* Rotta per gestire percorsi non definiti */}
-                <Route path="*" element={<WorkInProgress />} />
                 <Route path="/creations" element={<CreationsPage />} />
                 <Route path="/creations/books/*" element={<BooksRouter />} />
                 <Route path="/history" element={<History />} />
-                <Route path="/stocazzato" element={<Stocazzato />} />      
+                <Route path="/stocazzato" element={<Stocazzato />} />
+                {/* Wildcard DEVE essere l'ultima rotta, altrimenti cattura tutto */}
+                <Route path="*" element={<WorkInProgress />} />
               </Routes>
             </Suspense>
             <Footer />

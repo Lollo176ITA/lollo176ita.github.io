@@ -220,66 +220,11 @@ async function staleWhileRevalidateStrategy(request, cacheName) {
 }
 
 // Background sync per statistiche offline
-self.addEventListener('sync', event => {
-  if (event.tag === 'stats-sync') {
-    event.waitUntil(syncStats());
-  }
-});
-
-async function syncStats() {
-  try {
-    const response = await fetch('/project-stats.json');
-    if (response.ok) {
-      const cache = await caches.open(DYNAMIC_CACHE);
-      cache.put('/project-stats.json', response.clone());
-      console.log('SW: Stats synced');
-    }
-  } catch (error) {
-    console.error('SW: Stats sync failed', error);
-  }
-}
-
-// Push notifications (per future implementazioni)
-self.addEventListener('push', event => {
-  if (event.data) {
-    const data = event.data.json();
-    
-    const options = {
-      body: data.body,
-      icon: '/logo192.png',
-      badge: '/logo192.png',
-      tag: 'performance-update',
-      renotify: true
-    };
-    
-    event.waitUntil(
-      self.registration.showNotification(data.title, options)
-    );
-  }
-});
+// (Rimosso: non usato attivamente)
 
 // Message handler per comunicazione con main thread
 self.addEventListener('message', event => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
-  
-  if (event.data && event.data.type === 'GET_CACHE_STATS') {
-    getCacheStats().then(stats => {
-      event.ports[0].postMessage({ stats });
-    });
-  }
 });
-
-async function getCacheStats() {
-  const cacheNames = await caches.keys();
-  const stats = {};
-  
-  for (const cacheName of cacheNames) {
-    const cache = await caches.open(cacheName);
-    const keys = await cache.keys();
-    stats[cacheName] = keys.length;
-  }
-  
-  return stats;
-}

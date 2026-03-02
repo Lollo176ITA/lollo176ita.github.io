@@ -1,6 +1,6 @@
 {
-  "generated": "2025-10-01T07:38:18.799Z",
-  "generationTime": 12791,
+  "generated": "2025-10-30T09:14:17.570Z",
+  "generationTime": 13621,
   "project": {
     "name": "lollo176ita.github.io",
     "version": "2.2.8",
@@ -14,15 +14,15 @@
   },
   "code": {
     "files": 60,
-    "totalLines": 8104,
-    "codeLines": 6364,
-    "blankLines": 507,
-    "commentLines": 1233,
+    "totalLines": 8135,
+    "codeLines": 6376,
+    "blankLines": 508,
+    "commentLines": 1251,
     "languages": {
       "JavaScript": {
         "files": 53,
-        "lines": 6869,
-        "percentage": 84.8
+        "lines": 6882,
+        "percentage": 84.6
       },
       "CSS": {
         "files": 2,
@@ -31,12 +31,12 @@
       },
       "JSON": {
         "files": 5,
-        "lines": 1095,
-        "percentage": 13.5
+        "lines": 1113,
+        "percentage": 13.7
       }
     },
-    "lastUpdated": "2025-10-01T07:38:05.481Z",
-    "generationTime": 115
+    "lastUpdated": "2025-10-30T09:14:03.362Z",
+    "generationTime": 182
   },
   "structure": {
     "components": 36,
@@ -47,31 +47,31 @@
     "chapters": 4,
     "utils": 4,
     "contexts": 1,
-    "lastUpdated": "2025-10-01T07:38:05.663Z",
-    "generationTime": 39
+    "lastUpdated": "2025-10-30T09:14:03.550Z",
+    "generationTime": 41
   },
   "git": {
-    "commits": 130,
+    "commits": 134,
     "contributors": 2,
     "branches": 4,
     "lastCommit": {
-      "hash": "53b2b51",
-      "message": "feat: add GoatCounter component for tracking visits",
+      "hash": "01cb9f4",
+      "message": "feat: improve documentation with refactoring and navigation enhancements",
       "author": "Lollo176ITA",
-      "date": "2025-07-24T14:23:16+02:00",
-      "filesChanged": 4
+      "date": "2025-10-01T11:10:11+02:00",
+      "filesChanged": 1
     },
     "repoAge": {
-      "days": 357,
+      "days": 386,
       "firstCommit": "2024-10-08T21:26:09.000Z"
     },
     "commitFrequency": {
-      "commitsPerDay": 0.36,
-      "commitsPerWeek": 2.55,
-      "commitsPerMonth": 10.92
+      "commitsPerDay": 0.35,
+      "commitsPerWeek": 2.43,
+      "commitsPerMonth": 10.41
     },
-    "lastUpdated": "2025-10-01T07:38:05.900Z",
-    "generationTime": 123
+    "lastUpdated": "2025-10-30T09:14:03.826Z",
+    "generationTime": 149
   },
   "performance": {
     "avgBuildTime": 0,
@@ -81,20 +81,20 @@
       "bestPractices": 100,
       "seo": 100,
       "metrics": {
-        "firstContentfulPaint": 755.0751,
-        "largestContentfulPaint": 2877.4723,
+        "firstContentfulPaint": 757.5697,
+        "largestContentfulPaint": 2876.2681000000002,
         "cumulativeLayoutShift": 0,
         "totalBlockingTime": 56,
-        "timeToInteractive": 2877.4723000000004,
-        "speedIndex": 3848.7555013818464,
+        "timeToInteractive": 2876.2681000000002,
+        "speedIndex": 3857.672147948961,
         "firstMeaningfulPaint": 0,
-        "serverResponseTime": 1.545,
-        "maxPotentialFID": 100,
-        "domSize": 167,
-        "mainThreadWorkBreakdown": 1141.812000000001,
+        "serverResponseTime": 1.2489999999999999,
+        "maxPotentialFID": 94,
+        "domSize": 171,
+        "mainThreadWorkBreakdown": 1274.4120000000034,
         "networkRequests": 12
       },
-      "lastUpdated": "2025-10-01T07:38:18.801Z",
+      "lastUpdated": "2025-10-30T09:14:17.571Z",
       "fallback": false
     },
     "buildSize": "804K"

@@ -49,27 +49,37 @@ export default function Header() {
   // Non mostrare la topbar se siamo in /stocazzato
   if (currentPath === 'stocazzato') return null;
 
+  const navId = 'primary-navigation';
+
   return (
     <header className="fixed top-0 w-full bg-white text-black dark:bg-black dark:text-white py-4 z-30 shadow-lg dark:shadow-white">
       <div className="container mx-auto flex justify-between items-center px-8">
         <div className="flex items-center space-x-4">
-          <button onClick={toggleMenu} className="text-3xl focus:outline-none">
+          <button
+            type="button"
+            onClick={toggleMenu}
+            aria-label="Apri il menu di navigazione"
+            aria-expanded={isOpen}
+            aria-controls={navId}
+            className="text-3xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 rounded-md"
+          >
             <FiMenu />
           </button>
-          <div
+          <button
+            type="button"
             className={`text-2xl font-bold select-none transition-all duration-500 ${
               stocazzatoMode ? 'pointer-events-none opacity-40' : 'cursor-pointer'
-            }`}
+            } focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 rounded-md`}
             onClick={handleLolloClick}
             title="Click me!"
           >
             Lollo176ITA
-          </div>
+          </button>
         </div>
         <div className="flex items-center space-x-4">
           <LanguageSwitcher />
         </div>
-        <Navbar isOpen={isOpen} toggleMenu={toggleMenu} />
+        <Navbar isOpen={isOpen} toggleMenu={toggleMenu} navId={navId} />
       </div>
     </header>
   );

@@ -18,7 +18,8 @@
   "grid": {
     "thanks": "Grazie per aver giocato!",
     "clickDemo": "Cliccami per provare la demo!",
-    "enjoyDemo": "Divertiti con la demo!"
+    "enjoyDemo": "Divertiti con la demo!",
+    "emptyCell": "Cella vuota"
   },  "creations": {
     "heroTitle": "Le mie creazioni",
     "subtitle": "Scopri le mie creazioni digitali: dai giochi interattivi ai libri coinvolgenti",
