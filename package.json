@@ -25,10 +25,8 @@
     "test:ui": "vitest --ui",
     "docs:sync": "node scripts/docs/sync-markdown.js",
     "stats": "node scripts/stats/generate-stats.js && cp src/data/project-stats.json public/project-stats.json",
-    "version:tag": "node scripts/release/get-version-tag.js",
     "prepare:content": "pnpm run docs:sync && pnpm run stats",
-    "predeploy": "pnpm run prepare:content && pnpm run build:prod",
-    "deploy": "gh-pages -d build"
+    "predeploy": "pnpm run prepare:content && pnpm run build:prod"
   },
   "eslintConfig": {
     "extends": ["./.eslintrc.json"]
@@ -55,7 +53,6 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "execa": "^9.6.0",
-    "gh-pages": "^6.3.0",
     "glob": "^11.0.3",
     "jsdom": "^28.1.0",
     "lighthouse": "^12.6.1",

@@ -65,13 +65,6 @@ const SCRIPT_METADATA = {
     docsDescription: 'Rigenera `project-stats.json` e lo copia in `public/`',
     docsWhen: 'Aggiornamento metriche repository',
   },
-  'version:tag': {
-    group: 'automation',
-    readmeIt: 'Stampa il tag release derivato dalla versione',
-    readmeEn: 'Print the release tag derived from the version',
-    docsDescription: 'Restituisce il tag release da `package.json` (es. `v2.5.0`)',
-    docsWhen: 'Automazione release e debug locale',
-  },
   'prepare:content': {
     group: 'automation',
     readmeIt: 'Sincronizza docs e statistiche generate',
@@ -80,18 +73,11 @@ const SCRIPT_METADATA = {
     docsWhen: 'Prima di build e deploy',
   },
   predeploy: {
-    group: 'deploy',
-    readmeIt: 'Prepara contenuti e genera la build finale',
-    readmeEn: 'Prepare generated content and build for release',
+    group: 'build',
+    readmeIt: 'Prepara contenuti generati e crea la build finale',
+    readmeEn: 'Prepare generated content and build the final artifact',
     docsDescription: 'Sincronizza contenuti generati e poi crea la build finale',
-    docsWhen: 'Base comune per deploy locale e CI',
-  },
-  deploy: {
-    group: 'deploy',
-    readmeIt: 'Pubblica `build/` su GitHub Pages con `gh-pages`',
-    readmeEn: 'Publish `build/` to GitHub Pages with `gh-pages`',
-    docsDescription: 'Pubblica `build/` su GitHub Pages usando `gh-pages`',
-    docsWhen: 'Deploy manuale dal proprio ambiente',
+    docsWhen: 'Build completa pronta per il deploy automatico',
   },
   preview: {
     group: 'development',
@@ -138,10 +124,6 @@ const DEV_DEPENDENCY_METADATA = {
   execa: {
     description: 'Esecuzione processi child da Node.js',
     usage: 'Script di automazione',
-  },
-  'gh-pages': {
-    description: 'Pubblicazione della cartella `build/` su GitHub Pages',
-    usage: 'Script `deploy`',
   },
   glob: {
     description: 'Ricerca file tramite pattern glob',
@@ -191,10 +173,8 @@ const SCRIPT_ORDER = [
   'test:ui',
   'docs:sync',
   'stats',
-  'version:tag',
   'prepare:content',
   'predeploy',
-  'deploy',
 ];
 
 const README_GROUPS = [
@@ -307,8 +287,7 @@ function buildScriptsGuideTable() {
 function buildDeployFlow() {
   return [
     '```bash',
-    'pnpm run predeploy  # Sincronizza docs/stats e genera la build finale',
-    'pnpm run deploy     # Pubblica ./build con gh-pages',
+    'git push origin dev  # Avvia validazione, merge automatico su main e deploy Pages',
     '```',
   ].join('\n');
 }

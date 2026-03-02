@@ -1,12 +1,12 @@
 {
-  "generated": "2026-03-02T12:05:26.374Z",
-  "generationTime": 364,
+  "generated": "2026-03-02T12:44:14.436Z",
+  "generationTime": 337,
   "project": {
     "name": "lollo176ita.github.io",
     "version": "2.5.0",
     "dependencies": 10,
-    "devDependencies": 19,
-    "scripts": 13,
+    "devDependencies": 18,
+    "scripts": 11,
     "size": {
       "buildSize": 0,
       "buildSizeGzipped": 0
@@ -35,7 +35,7 @@
         "percentage": 14.1
       }
     },
-    "lastUpdated": "2026-03-02T12:05:26.192Z"
+    "lastUpdated": "2026-03-02T12:44:14.254Z"
   },
   "structure": {
     "components": 36,
@@ -46,18 +46,18 @@
     "chapters": 4,
     "utils": 3,
     "contexts": 1,
-    "lastUpdated": "2026-03-02T12:05:26.233Z"
+    "lastUpdated": "2026-03-02T12:44:14.296Z"
   },
   "git": {
-    "commits": 140,
+    "commits": 143,
     "contributors": 2,
-    "branches": 4,
+    "branches": 5,
     "lastCommit": {
-      "hash": "999f0df",
-      "message": "refactor: remove optimized deploy script and pre-commit hook, update project stats and manifest",
+      "hash": "ecc5298",
+      "message": "fix:  automation job to merge dev branch into main with validation and token verification",
       "author": "Lollo176ITA",
-      "date": "2026-03-02T12:55:50+01:00",
-      "filesChanged": 7
+      "date": "2026-03-02T13:33:03+01:00",
+      "filesChanged": 1
     },
     "repoAge": {
       "days": 509,
@@ -68,7 +68,7 @@
       "commitsPerWeek": 1.96,
       "commitsPerMonth": 8.4
     },
-    "lastUpdated": "2026-03-02T12:05:26.374Z"
+    "lastUpdated": "2026-03-02T12:44:14.436Z"
   },
   "performance": {
     "avgBuildTime": 0,
