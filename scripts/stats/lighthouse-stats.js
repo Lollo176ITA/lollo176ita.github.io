@@ -7,13 +7,15 @@ const fs = require('fs');
 const path = require('path');
 const { spawn } = require('child_process');
 const { promisify } = require('util');
-const { exec, execSync } = require('child_process');
+const { exec } = require('child_process');
 
 const execAsync = promisify(exec);
 
 const CONFIG = {
   buildDir: path.join(__dirname, '..', '..', 'build'),
   statsFile: path.join(__dirname, '..', '..', 'src', 'data', 'project-stats.json'),
+  publicStatsFile: path.join(__dirname, '..', '..', 'public', 'project-stats.json'),
+  buildStatsFile: path.join(__dirname, '..', '..', 'build', 'project-stats.json'),
   lighthousePort: 3000,
   lighthouseUrl: 'http://localhost:3000',
   lighthouseReportPath: path.join(__dirname, '..', '..', 'lighthouse-report.json')
@@ -82,7 +84,7 @@ class LighthouseStatsGenerator {
         '--only-categories=performance,accessibility,best-practices,seo',
         '--output=json',
         `--output-path=${CONFIG.lighthouseReportPath}`,
-        '--chrome-flags="--headless --disable-gpu --no-sandbox"'
+        '--chrome-flags=--headless --disable-gpu --no-sandbox'
       ], {
         stdio: 'pipe',
         cwd: path.dirname(CONFIG.lighthouseReportPath)
@@ -122,14 +124,30 @@ class LighthouseStatsGenerator {
         ...buildStats,
         lighthouse: {
           ...lighthouseData,
+          url: CONFIG.lighthouseUrl,
+          formFactor: 'mobile',
           lastUpdated: new Date().toISOString(),
           fallback: false
         }
       }
     };
 
-    fs.writeFileSync(CONFIG.statsFile, JSON.stringify(newStats, null, 2));
+    this.writeJsonFile(CONFIG.statsFile, newStats);
+    this.syncPublishedStats(newStats);
     this.displayResults(newStats);
+  }
+
+  writeJsonFile(filePath, data) {
+    fs.mkdirSync(path.dirname(filePath), { recursive: true });
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+  }
+
+  syncPublishedStats(stats) {
+    this.writeJsonFile(CONFIG.publicStatsFile, stats);
+
+    if (fs.existsSync(CONFIG.buildDir)) {
+      this.writeJsonFile(CONFIG.buildStatsFile, stats);
+    }
   }
 
   async parseLighthouseReport() {

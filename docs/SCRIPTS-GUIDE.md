@@ -14,6 +14,7 @@
 | `pnpm run test:ui` | Avvia la UI interattiva di Vitest | Debug dei test in locale |
 | `pnpm run docs:sync` | Aggiorna le sezioni auto-generate di README e docs | Prima di commit e nei job GitHub |
 | `pnpm run stats` | Rigenera `project-stats.json` e lo copia in `public/` | Aggiornamento metriche repository |
+| `pnpm run stats:lighthouse` | Esegue Lighthouse sulla build e aggiorna i file stats serviti dal sito | Aggiornamento report performance in CI o locale |
 | `pnpm run prepare:content` | Esegue `docs:sync` e `stats` nella sequenza corretta | Prima di build e deploy |
 | `pnpm run predeploy` | Sincronizza contenuti generati e poi crea la build finale | Build completa pronta per il deploy automatico |
 <!-- AUTO:SCRIPTS_GUIDE_TABLE:END -->

@@ -144,6 +144,7 @@ pnpm run test:ui  # Apri la UI interattiva di Vitest
 # Automazione
 pnpm run docs:sync  # Sincronizza le sezioni Markdown gestite automaticamente
 pnpm run stats  # Rigenera le statistiche del progetto
+pnpm run stats:lighthouse  # Esegue Lighthouse sulla build e aggiorna le metriche pubblicate
 pnpm run prepare:content  # Sincronizza docs e statistiche generate
 ```
 <!-- AUTO:README_IT_COMMANDS:END -->
@@ -427,6 +428,7 @@ pnpm run test:ui  # Open the interactive Vitest UI
 # Automation
 pnpm run docs:sync  # Sync the managed Markdown sections
 pnpm run stats  # Regenerate project statistics
+pnpm run stats:lighthouse  # Run Lighthouse on the build and refresh the published metrics
 pnpm run prepare:content  # Sync generated docs and stats
 ```
 <!-- AUTO:README_EN_COMMANDS:END -->

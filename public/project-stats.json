@@ -1,12 +1,12 @@
 {
-  "generated": "2026-03-02T12:44:14.436Z",
-  "generationTime": 337,
+  "generated": "2026-03-02T14:31:07.114Z",
+  "generationTime": 14517,
   "project": {
     "name": "lollo176ita.github.io",
     "version": "2.5.0",
     "dependencies": 10,
     "devDependencies": 18,
-    "scripts": 11,
+    "scripts": 12,
     "size": {
       "buildSize": 0,
       "buildSizeGzipped": 0
@@ -14,14 +14,14 @@
   },
   "code": {
     "files": 58,
-    "totalLines": 7883,
-    "codeLines": 6136,
-    "blankLines": 486,
-    "commentLines": 1261,
+    "totalLines": 7904,
+    "codeLines": 6152,
+    "blankLines": 489,
+    "commentLines": 1263,
     "languages": {
       "JavaScript": {
         "files": 51,
-        "lines": 6620,
+        "lines": 6639,
         "percentage": 84
       },
       "CSS": {
@@ -31,11 +31,11 @@
       },
       "JSON": {
         "files": 5,
-        "lines": 1112,
+        "lines": 1114,
         "percentage": 14.1
       }
     },
-    "lastUpdated": "2026-03-02T12:44:14.254Z"
+    "lastUpdated": "2026-03-02T14:30:31.209Z"
   },
   "structure": {
     "components": 36,
@@ -46,17 +46,17 @@
     "chapters": 4,
     "utils": 3,
     "contexts": 1,
-    "lastUpdated": "2026-03-02T12:44:14.296Z"
+    "lastUpdated": "2026-03-02T14:30:31.253Z"
   },
   "git": {
-    "commits": 143,
+    "commits": 145,
     "contributors": 2,
     "branches": 5,
     "lastCommit": {
-      "hash": "ecc5298",
-      "message": "fix:  automation job to merge dev branch into main with validation and token verification",
+      "hash": "a1cfeb5",
+      "message": "fix: enhance merge process to handle generated file conflicts and prevent unnecessary merges",
       "author": "Lollo176ITA",
-      "date": "2026-03-02T13:33:03+01:00",
+      "date": "2026-03-02T15:04:14+01:00",
       "filesChanged": 1
     },
     "repoAge": {
@@ -68,32 +68,34 @@
       "commitsPerWeek": 1.96,
       "commitsPerMonth": 8.4
     },
-    "lastUpdated": "2026-03-02T12:44:14.436Z"
+    "lastUpdated": "2026-03-02T14:30:31.383Z"
   },
   "performance": {
     "avgBuildTime": 0,
     "lighthouse": {
-      "performance": 94,
-      "accessibility": 86,
+      "performance": 91,
+      "accessibility": 90,
       "bestPractices": 100,
       "seo": 100,
       "metrics": {
-        "firstContentfulPaint": 757.5697,
-        "largestContentfulPaint": 2876.2681000000002,
+        "firstContentfulPaint": 1963.3488,
+        "largestContentfulPaint": 3035.3940000000002,
         "cumulativeLayoutShift": 0,
-        "totalBlockingTime": 56,
-        "timeToInteractive": 2876.2681000000002,
-        "speedIndex": 3857.672147948961,
+        "totalBlockingTime": 39,
+        "timeToInteractive": 3035.3940000000002,
+        "speedIndex": 3853.407642011542,
         "firstMeaningfulPaint": 0,
-        "serverResponseTime": 1.2489999999999999,
-        "maxPotentialFID": 94,
-        "domSize": 171,
-        "mainThreadWorkBreakdown": 1274.4120000000034,
+        "serverResponseTime": 2.2270000000000003,
+        "maxPotentialFID": 89,
+        "domSize": 170,
+        "mainThreadWorkBreakdown": 1411.6440000000046,
         "networkRequests": 12
       },
-      "lastUpdated": "2025-10-30T09:14:17.571Z",
+      "url": "http://localhost:3000",
+      "formFactor": "mobile",
+      "lastUpdated": "2026-03-02T14:31:07.114Z",
       "fallback": false
     },
-    "buildSize": "804K"
+    "buildSize": "1.3M"
   }
 }
