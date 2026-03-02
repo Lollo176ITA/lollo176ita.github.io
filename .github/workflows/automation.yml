@@ -5,8 +5,7 @@ on:
   push:
     branches:
       - main
-      - master
-      - main-static
+      - dev
 
 permissions:
   contents: write
@@ -18,8 +17,53 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  promote-dev-to-main:
+    if: github.actor != 'github-actions[bot]' && github.ref_name == 'dev'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout dev
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify automation token
+        run: |
+          if [ -z "${{ secrets.WORKFLOW_PUSH_TOKEN }}" ]; then
+            echo "Missing WORKFLOW_PUSH_TOKEN secret. Add a PAT with contents:write to enable auto-merge from dev to main."
+            exit 1
+          fi
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Validate branch
+        run: |
+          pnpm test
+          pnpm run build:prod
+
+      - name: Merge dev into main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin "https://x-access-token:${{ secrets.WORKFLOW_PUSH_TOKEN }}@github.com/${{ github.repository }}.git"
+          git fetch origin main
+          git checkout -B main origin/main
+          git merge --no-ff --no-edit "${GITHUB_SHA}"
+          git push origin main
+
   sync-generated-files:
-    if: github.actor != 'github-actions[bot]'
+    if: github.actor != 'github-actions[bot]' && github.ref_name == 'main'
     runs-on: ubuntu-latest
     outputs:
       source_sha: ${{ steps.head.outputs.sha }}
@@ -83,7 +127,7 @@ jobs:
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
   create-release:
-    if: github.actor != 'github-actions[bot]' && needs.sync-generated-files.outputs.tag_exists != 'true'
+    if: github.actor != 'github-actions[bot]' && needs.sync-generated-files.outputs.tag_exists != 'true' && github.ref_name == 'main'
     needs:
       - sync-generated-files
     runs-on: ubuntu-latest
@@ -118,7 +162,7 @@ jobs:
             });
 
   deploy-pages:
-    if: github.actor != 'github-actions[bot]'
+    if: github.actor != 'github-actions[bot]' && github.ref_name == 'main'
     needs:
       - sync-generated-files
     runs-on: ubuntu-latest
