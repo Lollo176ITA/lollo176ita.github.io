@@ -129,10 +129,27 @@ function PrerenderShell({ url }) {
   );
 }
 
+function releasePrerenderHandles() {
+  const activeHandles = typeof process !== 'undefined' && process._getActiveHandles
+    ? process._getActiveHandles()
+    : [];
+
+  for (const handle of activeHandles) {
+    if (handle?.constructor?.name !== 'MessagePort') {
+      continue;
+    }
+
+    handle.unref?.();
+    handle.close?.();
+  }
+}
+
 export async function prerender({ url }) {
   const html = renderToString(<PrerenderShell url={url} />);
   const { parseLinks } = await import('vite-prerender-plugin/parse');
   const routeMeta = getRouteMeta(url);
+
+  releasePrerenderHandles();
 
   return {
     html,
