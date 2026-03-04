@@ -23,7 +23,7 @@ import {
   SiTailwindcss,
   SiNodedotjs,
   SiHtml5,
-  SiCss3,
+  SiCss,
   SiGit
 } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
@@ -56,7 +56,7 @@ export default function About() {
     { icon: SiTailwindcss, name: 'Tailwind', color: '#06B6D4' },
     { icon: SiNodedotjs, name: 'Node.js', color: '#339933' },
     { icon: SiHtml5, name: 'HTML5', color: '#E34F26' },
-    { icon: SiCss3, name: 'CSS3', color: '#1572B6' },
+    { icon: SiCss, name: 'CSS3', color: '#1572B6' },
     { icon: SiGit, name: 'Git', color: '#F05032' },
     { icon: VscVscode, name: 'VS Code', color: '#007ACC' }
   ];
