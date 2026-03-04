@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { HashRouter } from '../../utils/hashRouter';
 
 export default function HashLink({ 
@@ -9,40 +9,21 @@ export default function HashLink({
   replace = false,
   ...props 
 }) {
-  const [isActive, setIsActive] = React.useState(false);
-  
-  React.useEffect(() => {
-    const checkActive = () => {
-      const currentPath = HashRouter.getCurrentPath();
-      const targetPath = to.replace(/^#?\/?/, '');
-      setIsActive(currentPath === targetPath);
-    };
-    
-    checkActive();
-    window.addEventListener('hashchange', checkActive);
-    return () => window.removeEventListener('hashchange', checkActive);
-  }, [to]);
-  
-  const handleClick = (e) => {
-    e.preventDefault();
-    if (replace) {
-      HashRouter.replaceHash(to);
-    } else {
-      HashRouter.navigate(to);
-    }
-  };
-  
+  const location = useLocation();
+  const currentPath = HashRouter.getCurrentPath(location.pathname);
+  const targetPath = HashRouter.getCurrentPath(to);
+  const isActive = currentPath === targetPath;
   const focusClasses = 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 focus-visible:rounded-md';
   const finalClassName = `${className} ${isActive ? activeClassName : ''} ${focusClasses}`.trim();
   
   return (
-    <a 
-      href={HashRouter.buildUrl(to.split('/'))}
-      onClick={handleClick}
+    <Link 
+      to={HashRouter.buildUrl(to)}
+      replace={replace}
       className={finalClassName}
       {...props}
     >
       {children}
-    </a>
+    </Link>
   );
 }

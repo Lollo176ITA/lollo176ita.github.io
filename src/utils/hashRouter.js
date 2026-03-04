@@ -1,77 +1,81 @@
-/**
- * Centralized hash routing utilities for GitHub Pages compatibility
- */
-import React from 'react';
-
 export class HashRouter {
-  static parseHash() {
-    const hash = window.location.hash.replace(/^#\/?/, '');
-    return hash.split('/').filter(Boolean);
+  static normalizePath(path = '') {
+    if (!path) {
+      return '';
+    }
+
+    return String(path)
+      .replace(/^#/, '')
+      .replace(/^\/+/, '')
+      .replace(/\/+$/, '');
+  }
+
+  static normalizeUrlPath(path = '') {
+    const normalizedPath = this.normalizePath(path);
+    return normalizedPath ? `/${normalizedPath}` : '/';
   }
 
   static navigate(path) {
-    // Ensure path starts with /
-    const cleanPath = path.startsWith('/') ? path : `/${path}`;
-    window.location.hash = cleanPath;
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const cleanPath = this.normalizeUrlPath(path);
+    window.history.pushState({}, '', cleanPath);
+    window.dispatchEvent(new PopStateEvent('popstate'));
   }
 
   static replaceHash(path) {
-    const cleanPath = path.startsWith('/') ? path : `/${path}`;
-    window.location.replace(`${window.location.pathname}${window.location.search}#${cleanPath}`);
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const cleanPath = this.normalizeUrlPath(path);
+    window.history.replaceState({}, '', cleanPath);
+    window.dispatchEvent(new PopStateEvent('popstate'));
   }
 
-  static buildUrl(parts) {
-    return `#/${parts.filter(Boolean).join('/')}`;
+  static buildUrl(partsOrPath) {
+    const path = Array.isArray(partsOrPath)
+      ? partsOrPath.filter(Boolean).join('/')
+      : partsOrPath;
+
+    return this.normalizeUrlPath(path);
   }
 
-  static getCurrentPath() {
-    return this.parseHash().join('/');
+  static getCurrentPath(pathname = null) {
+    if (pathname !== null) {
+      return this.normalizePath(pathname);
+    }
+
+    if (typeof window === 'undefined') {
+      return '';
+    }
+
+    return this.normalizePath(window.location.pathname);
   }
 
   static matchPath(pattern, path = null) {
     const currentPath = path || this.getCurrentPath();
-    const patternParts = pattern.split('/').filter(Boolean);
-    const pathParts = currentPath.split('/').filter(Boolean);
-    
+    const patternParts = this.normalizePath(pattern).split('/').filter(Boolean);
+    const pathParts = this.normalizePath(currentPath).split('/').filter(Boolean);
     const params = {};
-    
+
     if (patternParts.length !== pathParts.length) {
       return null;
     }
-    
-    for (let i = 0; i < patternParts.length; i++) {
+
+    for (let i = 0; i < patternParts.length; i += 1) {
       const patternPart = patternParts[i];
       const pathPart = pathParts[i];
-      
+
       if (patternPart.startsWith(':')) {
-        // Dynamic parameter
         params[patternPart.slice(1)] = decodeURIComponent(pathPart);
       } else if (patternPart !== pathPart) {
         return null;
       }
     }
-    
+
     return params;
   }
-}
-
-export function useHashRouter() {
-  const [path, setPath] = React.useState(() => HashRouter.getCurrentPath());
-  
-  React.useEffect(() => {
-    const handleHashChange = () => {
-      setPath(HashRouter.getCurrentPath());
-    };
-    
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
-  
-  return {
-    path,
-    navigate: HashRouter.navigate,
-    replace: HashRouter.replaceHash,
-    matchPath: HashRouter.matchPath,
-    buildUrl: HashRouter.buildUrl
-  };
 }

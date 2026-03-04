@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { HashRouter } from '../utils/hashRouter';
 import { analytics } from '../utils/analytics';
 
@@ -6,16 +7,10 @@ import { analytics } from '../utils/analytics';
  * Hook per gestire lo stato attivo delle route
  */
 export function useActiveRoute() {
-  const [currentPath, setCurrentPath] = useState(() => HashRouter.getCurrentPath());
-  
-  useEffect(() => {
-    const handleHashChange = () => {
-      setCurrentPath(HashRouter.getCurrentPath());
-    };
-    
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);  const isActive = (path) => {
+  const location = useLocation();
+  const currentPath = HashRouter.getCurrentPath(location.pathname);
+
+  const isActive = (path) => {
     // Normalize both paths to compare consistently
     const normalizedPath = path.replace(/^\//, ''); // Remove leading slash
     const normalizedCurrent = currentPath.replace(/^\//, ''); // Remove leading slash
@@ -39,7 +34,10 @@ export function useActiveRoute() {
     }
     
     // Only match if current path starts with the normalized path AND it's not empty
-    return normalizedCurrent.startsWith(normalizedPath) && normalizedCurrent !== '';
+    return (
+      normalizedCurrent !== '' &&
+      (normalizedCurrent === normalizedPath || normalizedCurrent.startsWith(`${normalizedPath}/`))
+    );
   };
   
   return {
@@ -53,36 +51,37 @@ export function useActiveRoute() {
  * Hook per la gestione avanzata della navigazione con analytics
  */
 export function useNavigationTracking() {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [history, setHistory] = useState([]);
-    useEffect(() => {
-    const handleHashChange = () => {
-      const currentPath = HashRouter.getCurrentPath();
-      const previousPath = history[history.length - 1];
-      
-      setHistory(prev => [...prev.slice(-9), currentPath]); // Keep last 10 entries
-      
-      // Track page view
-      analytics.trackPageView(currentPath);
-      
-      // Track navigation if we have a previous path
-      if (previousPath) {
-        analytics.trackNavigation(previousPath, currentPath);
+  const previousPathRef = useRef(null);
+
+  useEffect(() => {
+    const currentPath = HashRouter.getCurrentPath(location.pathname);
+
+    setHistory(prevHistory => {
+      if (prevHistory[prevHistory.length - 1] === currentPath) {
+        return prevHistory;
       }
-    };
-      // Add initial page
-    const initialPath = HashRouter.getCurrentPath();
-    setHistory([initialPath]);
-    
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [history]); // Added history dependency
+
+      return [...prevHistory.slice(-9), currentPath];
+    });
+
+    analytics.trackPageView(currentPath);
+
+    if (previousPathRef.current && previousPathRef.current !== currentPath) {
+      analytics.trackNavigation(previousPathRef.current, currentPath);
+    }
+
+    previousPathRef.current = currentPath;
+  }, [location.pathname]);
   
   const canGoBack = history.length > 1;
   const previousPath = history[history.length - 2];
   
   const goBack = () => {
     if (canGoBack) {
-      HashRouter.navigate(`/${previousPath}`);
+      navigate(-1);
     }
   };
   

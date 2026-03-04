@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { FaTrophy, FaTimes } from 'react-icons/fa';
 import { TROPHIES, getRarityColor } from '../../data/trophies';
+import HashLink from './HashLink';
 
 // Context per gestire i trofei globalmente
 const TrophyContext = createContext();
@@ -24,12 +25,6 @@ const TrophyPopup = ({ trophy, onClose }) => {
   if (!trophy) return null;
 
   const IconComponent = trophy.icon;
-  
-  const handleGoToTrophies = () => {
-    onClose();
-    // Naviga alla pagina dei trofei
-    window.location.hash = '#/trophies';
-  };
   
   return (
     <motion.div
@@ -94,14 +89,15 @@ const TrophyPopup = ({ trophy, onClose }) => {
             {t('trophies.close')}
           </motion.button>
           
-          <motion.button
-            onClick={handleGoToTrophies}
-            className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {t('trophies.goToTrophies')}
-          </motion.button>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <HashLink
+              to="/trophies"
+              onClick={onClose}
+              className="block px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+            >
+              {t('trophies.goToTrophies')}
+            </HashLink>
+          </motion.div>
         </div>
       </motion.div>
     </motion.div>

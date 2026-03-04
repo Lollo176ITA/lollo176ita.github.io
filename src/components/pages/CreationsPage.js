@@ -28,6 +28,7 @@ import {
 } from 'react-icons/si';
 import HashLink from '../common/HashLink';
 import CodeEditor from '../common/CodeEditor';
+import { useHashNavigation } from '../../hooks/useHashRouter';
 import { useSiteStats } from '../../hooks/useStats';
 import books from '../../data/books';
 
@@ -61,10 +62,10 @@ const calculateBookStats = () => {
 };
 
 // Enhanced Card Component
-function CreationCard({ variant, icon, title, description, stats, techStack, links, hovered, onHover, onLeave, onClick, isActive, directLink, t }) {
+function CreationCard({ variant, icon, title, description, stats, techStack, links, hovered, onHover, onLeave, onClick, isActive, directPath, navigateToPath, t }) {
   const handleClick = () => {
-    if (directLink) {
-      window.location.hash = directLink;
+    if (directPath && navigateToPath) {
+      navigateToPath(directPath);
     } else {
       onClick();
     }
@@ -209,7 +210,7 @@ function CreationCard({ variant, icon, title, description, stats, techStack, lin
             }`}
             whileHover={{ scale: 1.02 }}
           >
-            {directLink ? t('creations.exploreBooks') : t('creations.expandGames')}
+            {directPath ? t('creations.exploreBooks') : t('creations.expandGames')}
           </motion.div>
         )}
 
@@ -420,6 +421,7 @@ function InspirationalQuote({ t }) {
 
 export default function CreationsPage() {
   const { t } = useTranslation();
+  const { navigate } = useHashNavigation();
   const siteStats = useSiteStats();
   const [active, setActive] = useState(null);
   const [hovered, setHovered] = useState(null);
@@ -495,6 +497,7 @@ export default function CreationsPage() {
               onLeave={() => setHovered(null)}
               onClick={() => setActive(active === 'games' ? null : 'games')}
               isActive={active === 'games'}
+              navigateToPath={navigate}
               t={t}
             />
 
@@ -509,7 +512,8 @@ export default function CreationsPage() {
               hovered={hovered === 'novel'}
               onHover={() => setHovered('novel')}
               onLeave={() => setHovered(null)}
-              directLink="#/creations/books"
+              directPath="/creations/books"
+              navigateToPath={navigate}
               isActive={false}
               t={t}
             />

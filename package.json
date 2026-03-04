@@ -30,7 +30,9 @@
     "predeploy": "pnpm run prepare:content && pnpm run build:prod"
   },
   "eslintConfig": {
-    "extends": ["./.eslintrc.json"]
+    "extends": [
+      "./.eslintrc.json"
+    ]
   },
   "browserslist": {
     "production": [
@@ -62,6 +64,7 @@
     "vite": "^7.3.1",
     "vite-bundle-visualizer": "^1.2.1",
     "vite-plugin-compression2": "^2.5.0",
+    "vite-prerender-plugin": "^0.5.12",
     "vitest": "^4.0.18"
   }
 }

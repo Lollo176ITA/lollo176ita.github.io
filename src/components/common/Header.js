@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useLocation } from 'react-router-dom';
 import Navbar from "./Navbar";
 import { FiMenu } from "react-icons/fi";
 import LanguageSwitcher from './LanguageSwitcher';
@@ -12,7 +13,8 @@ export default function Header() {
   const timerRef = useRef(null);
   const countRef = useRef(0);
   const { navigate } = useHashNavigation();
-  const currentPath = HashRouter.getCurrentPath();
+  const location = useLocation();
+  const currentPath = HashRouter.getCurrentPath(location.pathname);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
