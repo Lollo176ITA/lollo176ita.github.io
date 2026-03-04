@@ -1,11 +1,11 @@
 {
-  "generated": "2026-03-02T15:19:17.826Z",
-  "generationTime": 21089,
+  "generated": "2026-03-04T16:28:38.249Z",
+  "generationTime": 20577,
   "project": {
     "name": "lollo176ita.github.io",
     "version": "2.5.0",
     "dependencies": 10,
-    "devDependencies": 18,
+    "devDependencies": 19,
     "scripts": 12,
     "size": {
       "buildSize": 0,
@@ -13,32 +13,32 @@
     }
   },
   "code": {
-    "files": 58,
-    "totalLines": 7905,
-    "codeLines": 6155,
-    "blankLines": 489,
-    "commentLines": 1261,
+    "files": 61,
+    "totalLines": 8167,
+    "codeLines": 6375,
+    "blankLines": 528,
+    "commentLines": 1264,
     "languages": {
       "JavaScript": {
-        "files": 51,
-        "lines": 6642,
-        "percentage": 84
+        "files": 54,
+        "lines": 6902,
+        "percentage": 84.5
       },
       "CSS": {
         "files": 2,
         "lines": 151,
-        "percentage": 1.9
+        "percentage": 1.8
       },
       "JSON": {
         "files": 5,
-        "lines": 1112,
-        "percentage": 14.1
+        "lines": 1114,
+        "percentage": 13.6
       }
     },
-    "lastUpdated": "2026-03-02T15:18:51.290Z"
+    "lastUpdated": "2026-03-04T16:28:10.707Z"
   },
   "structure": {
-    "components": 36,
+    "components": 37,
     "pages": 15,
     "hooks": 3,
     "routes": 9,
@@ -46,56 +46,56 @@
     "chapters": 4,
     "utils": 3,
     "contexts": 1,
-    "lastUpdated": "2026-03-02T15:18:51.310Z"
+    "lastUpdated": "2026-03-04T16:28:10.722Z"
   },
   "git": {
-    "commits": 154,
-    "contributors": 3,
-    "branches": 4,
+    "commits": 161,
+    "contributors": 4,
+    "branches": 5,
     "lastCommit": {
-      "hash": "56e9eed",
-      "message": "Merge commit 'a211c1f29661d5d6526c5a1dd23a532b9db3ecf6'",
+      "hash": "aa0753e",
+      "message": "Merge commit 'd6b53f01c1ea017fd4c619632b3875d95f3d2990'",
       "author": "github-actions[bot]",
-      "date": "2026-03-02T15:18:50Z",
-      "filesChanged": 8
+      "date": "2026-03-04T16:28:09Z",
+      "filesChanged": 19
     },
     "repoAge": {
-      "days": 509,
+      "days": 511,
       "firstCommit": "2024-10-08T21:26:09.000Z"
     },
     "commitFrequency": {
-      "commitsPerDay": 0.3,
-      "commitsPerWeek": 2.1,
-      "commitsPerMonth": 9
+      "commitsPerDay": 0.32,
+      "commitsPerWeek": 2.24,
+      "commitsPerMonth": 9.6
     },
-    "lastUpdated": "2026-03-02T15:18:51.356Z"
+    "lastUpdated": "2026-03-04T16:28:10.760Z"
   },
   "performance": {
     "avgBuildTime": 0,
     "lighthouse": {
-      "performance": 80,
+      "performance": 82,
       "accessibility": 90,
       "bestPractices": 100,
       "seo": 100,
       "metrics": {
-        "firstContentfulPaint": 2372.7192,
-        "largestContentfulPaint": 3016.7219999999998,
+        "firstContentfulPaint": 2270.2309,
+        "largestContentfulPaint": 2734.4618,
         "cumulativeLayoutShift": 0,
-        "totalBlockingTime": 376.00000000000045,
-        "timeToInteractive": 3031.1207400000003,
-        "speedIndex": 4539.0228259999885,
+        "totalBlockingTime": 398.61545,
+        "timeToInteractive": 2879.2808999999997,
+        "speedIndex": 4367.650867999997,
         "firstMeaningfulPaint": 0,
-        "serverResponseTime": 3.5620000000000003,
-        "maxPotentialFID": 315,
-        "domSize": 170,
-        "mainThreadWorkBreakdown": 3457.007999999973,
-        "networkRequests": 12
+        "serverResponseTime": 3.843000000000001,
+        "maxPotentialFID": 289,
+        "domSize": 171,
+        "mainThreadWorkBreakdown": 3130.019999999982,
+        "networkRequests": 13
       },
       "url": "http://localhost:3000",
       "formFactor": "mobile",
-      "lastUpdated": "2026-03-02T15:19:17.826Z",
+      "lastUpdated": "2026-03-04T16:28:38.249Z",
       "fallback": false
     },
-    "buildSize": "1.3M"
+    "buildSize": "2.6M"
   }
 }

@@ -102,5 +102,6 @@ Sono mantenuti come riferimento ma non vengono più chiamati dalla pipeline.
 | `vite` | Dev server e build tool principale | Script `start`, `build`, `build:prod` |
 | `vite-bundle-visualizer` | Visualizzazione grafica del bundle | Analisi bundle |
 | `vite-plugin-compression2` | Compressione gzip in fase di build | vite.config.js |
+| `vite-prerender-plugin` | Dipendenza di supporto al toolchain | Tooling del progetto |
 | `vitest` | Test runner principale del progetto | Script `test` e `test:ui` |
 <!-- AUTO:SCRIPTS_GUIDE_DEVDEPS:END -->
