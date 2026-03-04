@@ -1,50 +1,27 @@
-import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { HashRouter } from '../../utils/hashRouter';
 import BooksHome from './BooksHome';
 import BookOverview from './BookOverview';
 import BookChapter from './BookChapter';
 
 export default function BooksRouter() {
-  const [currentView, setCurrentView] = React.useState('home');
-  const [routeParams, setRouteParams] = React.useState({});
-  React.useEffect(() => {
-    const updateRoute = () => {
-      // Match different book routes
-      const overviewMatch = HashRouter.matchPath('creations/books/:type/:name/overview');
-      const chapterMatch = HashRouter.matchPath('creations/books/:type/:name/:chapter');
-      
-      if (overviewMatch) {
-        setCurrentView('overview');
-        setRouteParams(overviewMatch);
-      } else if (chapterMatch) {
-        setCurrentView('chapter');
-        setRouteParams(chapterMatch);
-      } else {
-        setCurrentView('home');
-        setRouteParams({});
-      }
-    };
+  const location = useLocation();
+  const overviewMatch = HashRouter.matchPath('creations/books/:type/:name/overview', location.pathname);
+  const chapterMatch = HashRouter.matchPath('creations/books/:type/:name/:chapter', location.pathname);
 
-    updateRoute();
-    window.addEventListener('hashchange', updateRoute);
-    return () => window.removeEventListener('hashchange', updateRoute);
-  }, []);
+  if (overviewMatch) {
+    return <BookOverview type={overviewMatch.type} name={overviewMatch.name} />;
+  }
 
-  // Add loading state for better UX
-  if (currentView === 'loading') {
+  if (chapterMatch) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-      </div>
+      <BookChapter
+        type={chapterMatch.type}
+        name={chapterMatch.name}
+        chapter={chapterMatch.chapter}
+      />
     );
   }
 
-  switch (currentView) {
-    case 'overview':
-      return <BookOverview type={routeParams.type} name={routeParams.name} />;
-    case 'chapter':
-      return <BookChapter type={routeParams.type} name={routeParams.name} chapter={routeParams.chapter} />;
-    default:
-      return <BooksHome />;
-  }
+  return <BooksHome />;
 }

@@ -12,10 +12,11 @@ export class AnalyticsManager {
   /**
    * Track a page view
    */
-  trackPageView(path, title = document.title) {
+  trackPageView(path, title = typeof document !== 'undefined' ? document.title : '') {
     if (!this.enableAnalytics) return;
     
-    const fullPath = `/#/${path}`;
+    const normalizedPath = String(path || '').replace(/^\/+/, '');
+    const fullPath = normalizedPath ? `/${normalizedPath}` : '/';
     
     if (this.debug) {
       console.log('Analytics: Page view', { path: fullPath, title });

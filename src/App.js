@@ -1,8 +1,9 @@
 import React, { Suspense } from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { FaExclamationTriangle } from 'react-icons/fa';
 import { Header, Footer } from './components/common';
 import { Hero } from './components/layout';
+import RouteMetadata from './components/common/RouteMetadata';
 import { TrophyProvider } from './components/common/TrophySystem';
 
 // Lazy loading per componenti non critici con error boundaries
@@ -62,10 +63,11 @@ class ErrorBoundary extends React.Component {
 
 export default function App() {
   return (
-    <TrophyProvider>
-      <ErrorBoundary>
-        <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
-          <Router>
+    <ErrorBoundary>
+      <Router>
+        <TrophyProvider>
+          <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
+            <RouteMetadata />
             <Header /> 
             <Suspense fallback={<LoadingSpinner />}>
               <Routes>
@@ -82,9 +84,9 @@ export default function App() {
               </Routes>
             </Suspense>
             <Footer />
-          </Router>
-        </div>
-      </ErrorBoundary>
-    </TrophyProvider>
+          </div>
+        </TrophyProvider>
+      </Router>
+    </ErrorBoundary>
   );
 }
