@@ -113,22 +113,15 @@ function generateStructureStats() {
 
   const components = countInDir(path.join(CONFIG.srcDir, 'components'));
   const hooks = countInDir(path.join(CONFIG.srcDir, 'hooks'));
-  const utils = countInDir(path.join(CONFIG.srcDir, 'utils'));
+  const utils = countInDir(path.join(CONFIG.srcDir, 'lib'));
   const contexts = toInt(exec(`find "${CONFIG.srcDir}" \\( -name "*Context*.js" -o -name "*Context*.jsx" -o -name "*Context*.ts" -o -name "*Context*.tsx" \\) -type f | wc -l`));
 
-  // Pages: src/pages + src/components/pages
-  let pages = countInDir(path.join(CONFIG.srcDir, 'pages')) + countInDir(path.join(CONFIG.srcDir, 'components', 'pages'));
-  if (pages === 0) {
-    pages = toInt(exec(`find "${CONFIG.srcDir}" \\( -name "*Page.js" -o -name "*Page.jsx" \\) -type f | wc -l`));
-  }
-
-  // Routes from App.js
-  let routes = 0;
-  const appFile = path.join(CONFIG.srcDir, 'App.js');
-  if (fs.existsSync(appFile)) {
-    const content = fs.readFileSync(appFile, 'utf8');
-    routes = (content.match(/<Route\s+[^>]*path\s*=\s*["'][^"']*["'][^>]*>/g) || []).length;
-  }
+  // Pagine dell'App Router: un file page.(js|jsx|ts|tsx) per route
+  const appDir = path.join(CONFIG.srcDir, 'app');
+  const pages = fs.existsSync(appDir)
+    ? toInt(exec(`find "${appDir}" -name "page.*" -type f | wc -l`))
+    : 0;
+  const routes = pages;
 
   return {
     components, pages, hooks, routes,

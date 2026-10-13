@@ -47,7 +47,9 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Validate branch
-        run: pnpm test
+        run: |
+          pnpm run lint
+          pnpm test
 
       - name: Resolve version
         id: version
@@ -88,7 +90,7 @@ jobs:
         run: pnpm run prepare:content
 
       - name: Build deploy artifact
-        run: pnpm run build:prod
+        run: pnpm run build
 
       - name: Commit generated files
         id: sync
@@ -142,7 +144,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build
+          path: ./out
 
       - name: Deploy to GitHub Pages
         id: deployment

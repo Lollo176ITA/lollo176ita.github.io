@@ -1,61 +1,57 @@
 {
-  "generated": "2026-10-13T10:35:33.333Z",
-  "generationTime": 310,
+  "generated": "2026-10-13T10:48:41.179Z",
+  "generationTime": 291,
   "project": {
     "name": "lollo176ita.github.io",
     "version": "2.5.0",
+    "scripts": 8,
     "dependencies": 9,
-    "devDependencies": 14,
-    "scripts": 10,
-    "size": {
-      "buildSize": 0,
-      "buildSizeGzipped": 0
-    }
+    "devDependencies": 10
   },
   "code": {
-    "files": 47,
-    "totalLines": 4367,
-    "codeLines": 3289,
-    "blankLines": 311,
-    "commentLines": 767,
+    "files": 8,
+    "totalLines": 443,
+    "codeLines": 237,
+    "blankLines": 15,
+    "commentLines": 191,
     "languages": {
-      "JavaScript": {
-        "files": 41,
-        "lines": 3600,
-        "percentage": 82.4
+      "TypeScript": {
+        "files": 6,
+        "lines": 252,
+        "percentage": 56.9
       },
       "CSS": {
         "files": 1,
-        "lines": 113,
-        "percentage": 2.6
+        "lines": 130,
+        "percentage": 29.3
       },
       "JSON": {
-        "files": 5,
-        "lines": 654,
-        "percentage": 15
+        "files": 1,
+        "lines": 61,
+        "percentage": 13.8
       }
     },
-    "lastUpdated": "2026-10-13T10:35:33.180Z"
+    "lastUpdated": "2026-10-13T10:48:41.017Z"
   },
   "structure": {
-    "components": 27,
-    "pages": 12,
-    "hooks": 3,
-    "routes": 7,
+    "components": 1,
+    "pages": 1,
+    "hooks": 0,
+    "routes": 1,
     "utils": 1,
-    "contexts": 1,
-    "lastUpdated": "2026-10-13T10:35:33.219Z"
+    "contexts": 0,
+    "lastUpdated": "2026-10-13T10:48:41.044Z"
   },
   "git": {
-    "commits": 162,
+    "commits": 163,
     "contributors": 4,
     "branches": 5,
     "lastCommit": {
-      "hash": "1a49085",
-      "message": "chore: sync generated content",
-      "author": "github-actions[bot]",
-      "date": "2026-03-04T16:28:38Z",
-      "filesChanged": 3
+      "hash": "6ee1e09",
+      "message": "refactor: remove unused components and files; update route metadata and project data",
+      "author": "Lollo176ITA",
+      "date": "2026-10-13T12:37:04+02:00",
+      "filesChanged": 59
     },
     "repoAge": {
       "days": 734,
@@ -66,6 +62,6 @@
       "commitsPerWeek": 1.54,
       "commitsPerMonth": 6.6
     },
-    "lastUpdated": "2026-10-13T10:35:33.333Z"
+    "lastUpdated": "2026-10-13T10:48:41.179Z"
   }
 }

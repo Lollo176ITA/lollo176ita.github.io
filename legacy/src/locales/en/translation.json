@@ -185,21 +185,5 @@
     "ribcagePersonality": "🦴 Structure and support",
     "skullPersonality": "💀 Guardian of thought",
     "teethPersonality": "🦷 Problem chewers"
-  },
-  "trophies": {
-    "unlocked": "Trophy Unlocked!",
-    "close": "Close",
-    "goToTrophies": "Go to Trophies",
-    "myTrophies": "My Trophies",
-    "viewTrophies": "View Trophies",
-    "lockedTrophy": "Locked trophy",
-    "rarity": {
-      "common": "Common",
-      "uncommon": "Uncommon",
-      "rare": "Rare",
-      "epic": "Epic",
-      "legendary": "Legendary",
-      "community": "Community"
-    }
   }
 }

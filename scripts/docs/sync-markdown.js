@@ -9,26 +9,26 @@ const packageJson = JSON.parse(
 );
 
 const SCRIPT_METADATA = {
-  start: {
+  dev: {
     group: 'development',
-    readmeIt: 'Avvia il dev server Vite su `localhost:3000`',
-    readmeEn: 'Start the Vite dev server on `localhost:3000`',
-    docsDescription: 'Avvia il dev server Vite locale (hot reload)',
+    readmeIt: 'Avvia il dev server Next.js su `localhost:3000`',
+    readmeEn: 'Start the Next.js dev server on `localhost:3000`',
+    docsDescription: 'Avvia il dev server Next.js (Turbopack, hot reload)',
     docsWhen: 'Sviluppo quotidiano',
   },
   build: {
     group: 'build',
-    readmeIt: 'Build standard con Vite',
-    readmeEn: 'Run the standard Vite build',
-    docsDescription: 'Genera la build standard con Vite',
-    docsWhen: 'Verifica locale del bundle',
+    readmeIt: 'Genera l\'export statico in `out/`',
+    readmeEn: 'Generate the static export in `out/`',
+    docsDescription: 'Esegue `next build` con `output: "export"` e scrive il sito statico in `out/`',
+    docsWhen: 'Verifica locale e deploy',
   },
-  'build:prod': {
-    group: 'build',
-    readmeIt: 'Esegui la build di produzione ottimizzata',
-    readmeEn: 'Run the optimized production build',
-    docsDescription: 'Genera la build di produzione ottimizzata',
-    docsWhen: 'Prima del deploy',
+  lint: {
+    group: 'quality',
+    readmeIt: 'Controlla il codice con ESLint',
+    readmeEn: 'Lint the code with ESLint',
+    docsDescription: 'Esegue ESLint con la configurazione di Next.js',
+    docsWhen: 'Prima di push e release',
   },
   test: {
     group: 'quality',
@@ -36,13 +36,6 @@ const SCRIPT_METADATA = {
     readmeEn: 'Run the Vitest suite',
     docsDescription: 'Esegue la suite test con Vitest',
     docsWhen: 'Prima di push e release',
-  },
-  'test:ui': {
-    group: 'quality',
-    readmeIt: 'Apri la UI interattiva di Vitest',
-    readmeEn: 'Open the interactive Vitest UI',
-    docsDescription: 'Avvia la UI interattiva di Vitest',
-    docsWhen: 'Debug dei test in locale',
   },
   'docs:sync': {
     group: 'automation',
@@ -72,77 +65,56 @@ const SCRIPT_METADATA = {
     docsDescription: 'Sincronizza contenuti generati e poi crea la build finale',
     docsWhen: 'Build completa pronta per il deploy automatico',
   },
-  preview: {
-    group: 'development',
-    readmeIt: 'Serve la build locale in modalita preview',
-    readmeEn: 'Serve the local build in preview mode',
-    docsDescription: 'Serve la build locale in modalita preview',
-    docsWhen: 'Controllo post-build in locale',
-  },
 };
 
 const DEV_DEPENDENCY_METADATA = {
-  '@testing-library/jest-dom': {
-    description: 'Matcher DOM aggiuntivi per i test',
-    usage: 'Vitest + Testing Library',
+  '@tailwindcss/turbopack': {
+    description: 'Loader Turbopack per Tailwind CSS v4',
+    usage: 'next.config.ts',
   },
-  '@testing-library/react': {
-    description: 'Utility di render e query per componenti React',
-    usage: 'Test componenti React',
+  '@types/node': {
+    description: 'Tipi TypeScript per Node.js',
+    usage: 'TypeScript',
   },
-  '@vitejs/plugin-react': {
-    description: 'Plugin React ufficiale per Vite',
-    usage: 'vite.config.js',
+  '@types/react': {
+    description: 'Tipi TypeScript per React',
+    usage: 'TypeScript',
   },
-  '@vitest/ui': {
-    description: 'Interfaccia web interattiva per Vitest',
-    usage: 'Script `test:ui`',
+  '@types/react-dom': {
+    description: 'Tipi TypeScript per React DOM',
+    usage: 'TypeScript',
   },
-  autoprefixer: {
-    description: 'Aggiunge i vendor prefix al CSS',
-    usage: 'postcss.config.js',
+  'babel-plugin-react-compiler': {
+    description: 'React Compiler (memoizzazione automatica)',
+    usage: 'next.config.ts (`reactCompiler`)',
   },
   eslint: {
-    description: 'Linting JavaScript e JSX',
-    usage: 'Controlli statici',
+    description: 'Linting di TypeScript e JSX',
+    usage: 'Script `lint`',
   },
-  'eslint-plugin-react': {
-    description: 'Regole ESLint specifiche per React',
-    usage: '.eslintrc.json',
+  'eslint-config-next': {
+    description: 'Regole ESLint ufficiali di Next.js',
+    usage: 'eslint.config.mjs',
   },
-  'eslint-plugin-react-hooks': {
-    description: 'Regole ESLint per gli hook React',
-    usage: '.eslintrc.json',
+  tailwindcss: {
+    description: 'Framework CSS utility-first',
+    usage: 'src/app/globals.css',
   },
-  jsdom: {
-    description: 'DOM emulato per test in ambiente Node',
-    usage: 'Vitest',
-  },
-  postcss: {
-    description: 'Pipeline di trasformazione CSS',
-    usage: 'postcss.config.js',
-  },
-  vite: {
-    description: 'Dev server e build tool principale',
-    usage: 'Script `start`, `build`, `build:prod`',
-  },
-  'vite-plugin-compression2': {
-    description: 'Compressione gzip in fase di build',
-    usage: 'vite.config.js',
+  typescript: {
+    description: 'Type checking',
+    usage: 'tsconfig.json, `next build`',
   },
   vitest: {
-    description: 'Test runner principale del progetto',
-    usage: 'Script `test` e `test:ui`',
+    description: 'Test runner del progetto',
+    usage: 'Script `test`',
   },
 };
 
 const SCRIPT_ORDER = [
-  'start',
-  'preview',
+  'dev',
   'build',
-  'build:prod',
+  'lint',
   'test',
-  'test:ui',
   'docs:sync',
   'stats',
   'prepare:content',

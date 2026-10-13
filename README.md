@@ -8,22 +8,17 @@ Personal website of Lorenzo Censi (Lollo176ITA). English below.
 
 ## Italiano
 
-### Cosa c'è
+### Stato
 
-- **Home** con il minigioco della griglia di lettere
-- **About**: profilo, stack e interessi
-- **Creazioni**: i progetti pubblici su GitHub
-- **Storia**: timeline del sito, commit e release presi dalle API GitHub
-- **Trofei** sbloccabili, salvati nel browser
-- Italiano e inglese, tema chiaro e scuro
+Il sito è in ricostruzione con Next.js. La versione precedente (Vite + React Router) è in `legacy/` come riferimento per il porting e verrà eliminata a lavoro finito.
 
 ### Stack
 
-React 19, React Router 7, Tailwind CSS 3, framer-motion, react-i18next, build con Vite e prerender delle pagine principali.
+Next.js 16.4 (App Router, export statico per GitHub Pages), React 19.3 con React Compiler, TypeScript, Tailwind CSS 4, componenti [shadcn/ui](https://ui.shadcn.com) su Base UI, Vitest.
 
 ### Sviluppo
 
-Serve Node 22 e pnpm.
+Serve Node 22.12 o superiore e pnpm.
 
 ```bash
 git clone https://github.com/Lollo176ITA/lollo176ita.github.io.git
@@ -36,17 +31,15 @@ pnpm install
 <!-- AUTO:README_IT_COMMANDS:START -->
 ```bash
 # Sviluppo
-pnpm start  # Avvia il dev server Vite su `localhost:3000`
-pnpm run preview  # Serve la build locale in modalita preview
+pnpm run dev  # Avvia il dev server Next.js su `localhost:3000`
 
 # Build
-pnpm run build  # Build standard con Vite
-pnpm run build:prod  # Esegui la build di produzione ottimizzata
+pnpm run build  # Genera l'export statico in `out/`
 pnpm run predeploy  # Prepara contenuti generati e crea la build finale
 
 # Qualita
+pnpm run lint  # Controlla il codice con ESLint
 pnpm run test  # Esegui i test con Vitest
-pnpm run test:ui  # Apri la UI interattiva di Vitest
 
 # Automazione
 pnpm run docs:sync  # Sincronizza le sezioni Markdown gestite automaticamente
@@ -67,22 +60,17 @@ MIT, vedi [LICENSE](LICENSE).
 
 ## English
 
-### What's inside
+### Status
 
-- **Home** with the letter-grid mini-game
-- **About**: profile, stack and interests
-- **Creations**: public projects on GitHub
-- **History**: site timeline, commits and releases from the GitHub API
-- Unlockable **trophies**, stored in the browser
-- Italian and English, light and dark theme
+The site is being rebuilt with Next.js. The previous version (Vite + React Router) lives in `legacy/` as a porting reference and will be removed once the work is done.
 
 ### Tech stack
 
-React 19, React Router 7, Tailwind CSS 3, framer-motion, react-i18next, built with Vite with prerendered main pages.
+Next.js 16.4 (App Router, static export for GitHub Pages), React 19.3 with the React Compiler, TypeScript, Tailwind CSS 4, [shadcn/ui](https://ui.shadcn.com) components on Base UI, Vitest.
 
 ### Development
 
-Requires Node 22 and pnpm.
+Requires Node 22.12 or newer and pnpm.
 
 ```bash
 git clone https://github.com/Lollo176ITA/lollo176ita.github.io.git
@@ -95,17 +83,15 @@ pnpm install
 <!-- AUTO:README_EN_COMMANDS:START -->
 ```bash
 # Development
-pnpm start  # Start the Vite dev server on `localhost:3000`
-pnpm run preview  # Serve the local build in preview mode
+pnpm run dev  # Start the Next.js dev server on `localhost:3000`
 
 # Build
-pnpm run build  # Run the standard Vite build
-pnpm run build:prod  # Run the optimized production build
+pnpm run build  # Generate the static export in `out/`
 pnpm run predeploy  # Prepare generated content and build the final artifact
 
 # Quality
+pnpm run lint  # Lint the code with ESLint
 pnpm run test  # Run the Vitest suite
-pnpm run test:ui  # Open the interactive Vitest UI
 
 # Automation
 pnpm run docs:sync  # Sync the managed Markdown sections
