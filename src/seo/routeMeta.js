@@ -1,6 +1,6 @@
 const SITE_URL = 'https://lollo176ita.github.io';
 
-function normalizePathname(pathname = '/') {
+export function normalizePathname(pathname = '/') {
   if (!pathname || pathname === '/') {
     return '/';
   }
@@ -18,14 +18,6 @@ export function buildCanonicalUrl(pathname = '/') {
 export function getRouteMeta(pathname = '/') {
   const normalizedPath = normalizePathname(pathname);
 
-  if (normalizedPath.startsWith('/creations/books')) {
-    return {
-      title: 'Books | Lollo176ITA',
-      description: 'Libri, capitoli e racconti pubblicati da Lollo176ITA.',
-      canonicalPath: normalizedPath,
-    };
-  }
-
   const routeMeta = {
     '/': {
       title: 'Lollo176ITA | Web & Game Developer',
@@ -37,15 +29,11 @@ export function getRouteMeta(pathname = '/') {
     },
     '/creations': {
       title: 'Creations | Lollo176ITA',
-      description: 'Una selezione delle creazioni principali: giochi, codice, libri e progetti interattivi.',
+      description: 'Una selezione delle creazioni principali: app Android, siti web, strumenti e giochi.',
     },
     '/history': {
       title: 'History | Lollo176ITA',
       description: 'Timeline del progetto, release, commit e statistiche storiche del sito.',
-    },
-    '/lighthouse': {
-      title: 'Lighthouse Stats | Lollo176ITA',
-      description: 'Andamento delle metriche Lighthouse del progetto con riepilogo performance e accessibilita.',
     },
     '/trophies': {
       title: 'Trophies | Lollo176ITA',

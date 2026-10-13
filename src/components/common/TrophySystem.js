@@ -188,9 +188,7 @@ export const TrophyProvider = ({ children }) => {
     
     // Trofei basati sulle pagine visitate con timeout per evitare loop
     const trophyMap = {
-      'creations': 'code_explorer',
-      'lighthouse': 'lighthouse_checker',
-      'books': 'book_reader'
+      'creations': 'code_explorer'
     };
     
     const trophyId = trophyMap[pageName];

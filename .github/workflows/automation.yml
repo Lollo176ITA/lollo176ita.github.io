@@ -90,10 +90,6 @@ jobs:
       - name: Build deploy artifact
         run: pnpm run build:prod
 
-      - name: Run Lighthouse audit
-        timeout-minutes: 4
-        run: pnpm run stats:lighthouse
-
       - name: Commit generated files
         id: sync
         run: |

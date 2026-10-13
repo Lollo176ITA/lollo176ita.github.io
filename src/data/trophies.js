@@ -2,8 +2,6 @@ import {
   FaStar, 
   FaGamepad, 
   FaCode, 
-  FaRocket, 
-  FaHeart, 
   FaFire, 
   FaGem, 
   FaCrown
@@ -41,26 +39,6 @@ export const TROPHIES = {
     color: 'text-blue-500',
     rarity: 'common'
   },
-  LIGHTHOUSE_CHECKER: {
-    id: 'lighthouse_checker',
-    name: 'Ispettore Lighthouse',
-    nameEn: 'Lighthouse Inspector',
-    description: 'Hai controllato le statistiche del sito!',
-    descriptionEn: 'You checked the site statistics!',
-    icon: FaRocket,
-    color: 'text-green-500',
-    rarity: 'uncommon'
-  },
-  BOOK_READER: {
-    id: 'book_reader',
-    name: 'Lettore Appassionato',
-    nameEn: 'Book Reader',
-    description: 'Hai letto un capitolo dei miei libri!',
-    descriptionEn: 'You read a chapter of my books!',
-    icon: FaHeart,
-    color: 'text-red-500',
-    rarity: 'uncommon'
-  },
   THEME_SWITCHER: {
     id: 'theme_switcher',
     name: 'Cambia Tema',
@@ -78,7 +56,7 @@ export const TROPHIES = {
     description: 'Hai visitato tutte le sezioni!',
     descriptionEn: 'You visited all sections!',
     icon: FaCrown,
-    color: 'text-gold-500',
+    color: 'text-yellow-500',
     rarity: 'legendary'
   },
   SPEED_DEMON: {

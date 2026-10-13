@@ -10,9 +10,7 @@ export default defineConfig(({ mode }) => {
     '/',
     '/about',
     '/creations',
-    '/creations/books',
     '/history',
-    '/lighthouse',
     '/trophies',
   ];
 

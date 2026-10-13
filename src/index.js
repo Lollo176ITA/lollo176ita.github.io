@@ -13,17 +13,3 @@ root.render(
     </ThemeProvider>
   </React.StrictMode>
 );
-
-// Service Worker solo in produzione
-if (import.meta.env.PROD && 'serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    // Attendi che React si sia inizializzato completamente
-    setTimeout(() => {
-      import('./utils/serviceWorker').then(({ registerServiceWorker }) => {
-        registerServiceWorker();
-      }).catch(() => {
-        // Service Worker non disponibile, non critico
-      });
-    }, 1000);
-  });
-}

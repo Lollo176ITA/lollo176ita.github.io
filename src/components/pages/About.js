@@ -4,13 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { 
   FaCode, 
   FaGamepad, 
-  FaGithub, 
   FaUniversity,
   FaCalendarAlt,
   FaMapMarkerAlt,
   FaLanguage,
   FaRocket,
-  FaHeart,
   FaMusic,
   FaPlane,
   FaBookOpen
@@ -28,15 +26,13 @@ import {
 } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
 import ReactCountryFlag from 'react-country-flag';
-import RandomStats from '../common/RandomStats';
 import { MeInPieces } from '../common';
-import HashLink from '../common/HashLink';
-import { useGitHubStats, usePersonalStats } from '../../hooks/useStats';
+import { useGitHubStats } from '../../hooks/useStats';
 
 export default function About() {
-  const { t } = useTranslation();  const gitHubStats = useGitHubStats();
-  const personalStats = usePersonalStats();
-    const age = new Date().getFullYear() - 2004 - (new Date().getMonth() < 2 || (new Date().getMonth() === 2 && new Date().getDate() < 30) ? 1 : 0);
+  const { t } = useTranslation();
+  const gitHubStats = useGitHubStats();
+  const age = new Date().getFullYear() - 2004 - (new Date().getMonth() < 2 || (new Date().getMonth() === 2 && new Date().getDate() < 30) ? 1 : 0);
   const currentYear = new Date().getFullYear();
   const experienceYears = currentYear - 2020; // Started coding seriously around 2020
 
@@ -103,21 +99,6 @@ export default function About() {
           className="text-center mb-16 mt-4"
           variants={itemVariants}
         >
-          <div className="relative inline-block mb-8">
-            <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-blue-500 to-purple-600 p-1">
-              <div className="w-full h-full rounded-full bg-white dark:bg-gray-800 flex items-center justify-center">
-                <span className="text-4xl font-bold text-gray-800 dark:text-white">L</span>
-              </div>
-            </div>
-            <motion.div
-              className="absolute -top-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center"
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-            >
-              <div className="w-3 h-3 bg-white rounded-full"></div>
-            </motion.div>
-          </div>
-          
           <h1 className="text-5xl md:text-6xl font-bold text-gray-800 dark:text-white mb-4">
             Lorenzo Censi
           </h1>
@@ -157,84 +138,7 @@ export default function About() {
         {/* Me In Pieces - Anatomical Journey */}
         <MeInPieces />
 
-        {/* Random Stats Carousel */}
-        <RandomStats />
-
-        {/* Personal Journey Stats - Il Mio Viaggio 
-        <motion.section 
-          className="mb-16"
-          variants={itemVariants}
-        >
-          <h3 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-8">
-            {t('aboutPage.personalStats')}
-          </h3>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <motion.div 
-              className="bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl p-6 text-white text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaCoffee className="text-4xl mx-auto mb-3" />
-              <div className="text-3xl font-bold">
-                {personalStats.loading ? '...' : personalStats.coffees.toLocaleString()}
-              </div>
-              <div className="text-sm opacity-90">{t('aboutPage.coffees')}</div>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl p-6 text-white text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaMoon className="text-4xl mx-auto mb-3" />
-              <div className="text-3xl font-bold">
-                {personalStats.loading ? '...' : personalStats.lateNights}
-              </div>
-              <div className="text-sm opacity-90">{t('aboutPage.lateNights')}</div>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-gradient-to-br from-red-500 to-red-600 rounded-xl p-6 text-white text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaBug className="text-4xl mx-auto mb-3" />
-              <div className="text-3xl font-bold">
-                {personalStats.loading ? '...' : personalStats.bugsFixed.toLocaleString()}
-              </div>
-              <div className="text-sm opacity-90">{t('aboutPage.bugsFixed')}</div>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl p-6 text-white text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaLightbulb className="text-4xl mx-auto mb-3" />
-              <div className="text-3xl font-bold">
-                {personalStats.loading ? '...' : personalStats.ideasHad.toLocaleString()}
-              </div>
-              <div className="text-sm opacity-90">{t('aboutPage.ideasHad')}</div>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl p-6 text-white text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaGithub className="text-4xl mx-auto mb-3" />
-              <div className="text-3xl font-bold">
-                {personalStats.loading ? '...' : personalStats.reposCreated}
-              </div>
-              <div className="text-sm opacity-90">{t('aboutPage.reposCreated')}</div>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl p-6 text-white text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaCalendarAlt className="text-4xl mx-auto mb-3" />
-              <div className="text-3xl font-bold">
-                {personalStats.loading ? '...' : personalStats.yearsOfExperience}
-              </div>
-              <div className="text-sm opacity-90">{t('aboutPage.years')}</div>
-            </motion.div>          </div>
-        </motion.section>*/}        {/* Tech Stack */}
+        {/* Tech Stack */}
         <motion.section 
           className="mb-16"
           variants={itemVariants}
@@ -381,56 +285,7 @@ export default function About() {
               </ul>
             </motion.div>
           </div>
-        </motion.section>        {/* Call to Action */}
-        <motion.section 
-          className="text-center"
-          variants={itemVariants}
-        >
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white max-w-4xl mx-auto">
-            <FaHeart className="text-4xl mx-auto mb-4" />
-            <h3 className="text-2xl font-bold mb-4">
-              {t('aboutPage.ctaTitle')}
-            </h3>
-            <p className="text-lg opacity-90 mb-6">
-              {t('aboutPage.ctaDescription')}
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <HashLink
-                to="/creations"
-                className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center"
-              >
-                <FaRocket className="mr-2" />
-                {t('aboutPage.moreCreations')}
-              </HashLink>
-              <HashLink
-                to="/history"
-                className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors inline-flex items-center"
-              >
-                <FaGithub className="mr-2" />
-                {t('aboutPage.moreHistory')}
-              </HashLink>
-            </div>
-            
-            {/* Social Links */}
-            <div className="mt-8 pt-6 border-t border-white/20">
-              <p className="text-sm opacity-75 mb-4">Seguimi sui social</p>
-              <div className="flex justify-center space-x-4">
-                <motion.a 
-                  href="https://github.com/lollo176ita" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <FaGithub className="text-lg" />
-                </motion.a>
-                {/* Aggiungi altri social qui se necessario */}
-              </div>
-            </div>
-          </div>
-        </motion.section>
-      </motion.main>
+        </motion.section>      </motion.main>
     </div>
   );
 }

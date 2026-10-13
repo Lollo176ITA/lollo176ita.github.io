@@ -30,13 +30,6 @@ const SCRIPT_METADATA = {
     docsDescription: 'Genera la build di produzione ottimizzata',
     docsWhen: 'Prima del deploy',
   },
-  'build:analyze': {
-    group: 'build',
-    readmeIt: 'Esegui la build con analisi del bundle',
-    readmeEn: 'Build with bundle analysis enabled',
-    docsDescription: 'Build con analisi del bundle',
-    docsWhen: 'Analisi performance bundle',
-  },
   test: {
     group: 'quality',
     readmeIt: 'Esegui i test con Vitest',
@@ -64,13 +57,6 @@ const SCRIPT_METADATA = {
     readmeEn: 'Regenerate project statistics',
     docsDescription: 'Rigenera `project-stats.json` e lo copia in `public/`',
     docsWhen: 'Aggiornamento metriche repository',
-  },
-  'stats:lighthouse': {
-    group: 'automation',
-    readmeIt: 'Esegue Lighthouse sulla build e aggiorna le metriche pubblicate',
-    readmeEn: 'Run Lighthouse on the build and refresh the published metrics',
-    docsDescription: 'Esegue Lighthouse sulla build e aggiorna i file stats serviti dal sito',
-    docsWhen: 'Aggiornamento report performance in CI o locale',
   },
   'prepare:content': {
     group: 'automation',
@@ -128,37 +114,17 @@ const DEV_DEPENDENCY_METADATA = {
     description: 'Regole ESLint per gli hook React',
     usage: '.eslintrc.json',
   },
-  execa: {
-    description: 'Esecuzione processi child da Node.js',
-    usage: 'Script di automazione',
-  },
-  glob: {
-    description: 'Ricerca file tramite pattern glob',
-    usage: 'Script di statistiche',
-  },
   jsdom: {
     description: 'DOM emulato per test in ambiente Node',
     usage: 'Vitest',
-  },
-  lighthouse: {
-    description: 'Audit automatici di performance e qualita',
-    usage: 'scripts/stats/lighthouse-stats.js',
   },
   postcss: {
     description: 'Pipeline di trasformazione CSS',
     usage: 'postcss.config.js',
   },
-  serve: {
-    description: 'Server statico locale per test build',
-    usage: 'Preview e Lighthouse',
-  },
   vite: {
     description: 'Dev server e build tool principale',
     usage: 'Script `start`, `build`, `build:prod`',
-  },
-  'vite-bundle-visualizer': {
-    description: 'Visualizzazione grafica del bundle',
-    usage: 'Analisi bundle',
   },
   'vite-plugin-compression2': {
     description: 'Compressione gzip in fase di build',
@@ -175,12 +141,10 @@ const SCRIPT_ORDER = [
   'preview',
   'build',
   'build:prod',
-  'build:analyze',
   'test',
   'test:ui',
   'docs:sync',
   'stats',
-  'stats:lighthouse',
   'prepare:content',
   'predeploy',
 ];

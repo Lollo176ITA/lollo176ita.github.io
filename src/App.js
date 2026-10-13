@@ -12,8 +12,6 @@ const History = React.lazy(() => import('./components/pages/History').catch(() =
 const CreationsPage = React.lazy(() => import('./components/pages/CreationsPage').catch(() => ({ default: () => <div>Error loading Creations</div> })));
 const Stocazzato = React.lazy(() => import('./components/pages/Stocazzato').catch(() => ({ default: () => <div>Error loading Stocazzato</div> })));
 const WorkInProgress = React.lazy(() => import('./components/pages/WorkInProgress').catch(() => ({ default: () => <div>Error loading WorkInProgress</div> })));
-const BooksRouter = React.lazy(() => import('./components/books/BooksRouter').catch(() => ({ default: () => <div>Error loading Books</div> })));
-const LighthouseStats = React.lazy(() => import('./components/pages/LighthouseStats').catch(() => ({ default: () => <div>Error loading LighthouseStats</div> })));
 const TrophiesPage = React.lazy(() => import('./components/pages/TrophiesPage').catch(() => ({ default: () => <div>Error loading TrophiesPage</div> })));
 
 // Componente di loading migliorato
@@ -73,10 +71,8 @@ export default function App() {
               <Routes>
                 <Route path="/" element={<Hero />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/lighthouse" element={<LighthouseStats />} />
                 <Route path="/trophies" element={<TrophiesPage />} />
                 <Route path="/creations" element={<CreationsPage />} />
-                <Route path="/creations/books/*" element={<BooksRouter />} />
                 <Route path="/history" element={<History />} />
                 <Route path="/stocazzato" element={<Stocazzato />} />
                 {/* Wildcard DEVE essere l'ultima rotta, altrimenti cattura tutto */}

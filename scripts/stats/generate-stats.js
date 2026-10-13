@@ -2,10 +2,7 @@
 
 /**
  * Unified project statistics generator
- * Combines: code-stats, structure-stats, git-stats
- * 
- * Generates a single project-stats.json with all metrics.
- * Lighthouse stats are excluded (run separately with: node scripts/stats/lighthouse-stats.js)
+ * Generates a single project-stats.json with code, structure and git metrics.
  */
 
 const fs = require('fs');
@@ -133,21 +130,8 @@ function generateStructureStats() {
     routes = (content.match(/<Route\s+[^>]*path\s*=\s*["'][^"']*["'][^>]*>/g) || []).length;
   }
 
-  // Books & chapters from data/books.js
-  let booksCount = 0, chaptersCount = 0;
-  const booksFile = path.join(CONFIG.srcDir, 'data', 'books.js');
-  if (fs.existsSync(booksFile)) {
-    const content = fs.readFileSync(booksFile, 'utf8');
-    booksCount = (content.match(/{\s*\n?\s*type:/g) || []).length;
-    const chapterMatches = content.match(/chapters:\s*\[([\s\S]*?)\]/g) || [];
-    for (const match of chapterMatches) {
-      chaptersCount += (match.match(/{\s*slug:/g) || []).length;
-    }
-  }
-
   return {
     components, pages, hooks, routes,
-    books: booksCount, chapters: chaptersCount,
     utils, contexts,
     lastUpdated: new Date().toISOString()
   };
@@ -235,9 +219,7 @@ function main() {
     project: { ...existing.project, ...project },
     code,
     structure,
-    git,
-    // Preserve existing performance/lighthouse data
-    performance: existing.performance || {}
+    git
   };
 
   writeStatsFile(stats);
